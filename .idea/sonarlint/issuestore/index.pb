@@ -9,3 +9,15 @@ g
 7app/src/main/java/pl/edu/pb/filmoteka/MainActivity.java,2\2\22aa19447b9b280b3800645d772739cbe4a1abb5
 f
 6app/src/main/java/pl/edu/pb/filmoteka/ApiResponse.java,d\3\d3fb49527e040fdd1d2ce0b2ef9e7719ad6ab44d
+y
+Iapp/src/androidTest/java/pl/edu/pb/filmoteka/ExampleInstrumentedTest.java,c\9\c98fb2dd49f20f669992530bbabbbd21db5bf170
+`
+0app/src/main/java/pl/edu/pb/filmoteka/Movie.java,8\5\85f0372a592a6e4876c13881064add919e23baec
+g
+7app/src/main/java/pl/edu/pb/filmoteka/MovieResults.java,0\2\0294d9021a5b55dd93182da8d1ae855d775652e8
+f
+6app/src/main/java/pl/edu/pb/filmoteka/MovieResult.java,f\e\feb556ecaa57588b84e7f435f396fbd9d24594d9
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+]
+-.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
