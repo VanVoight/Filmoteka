@@ -21,3 +21,9 @@ S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
 ]
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
+g
+7app/src/main/java/pl/edu/pb/filmoteka/RegisterView.java,f\c\fc87fea48c7c1412f089c1611025f09238c55ae3
+k
+;app/src/main/java/pl/edu/pb/filmoteka/RegisterActivity.java,2\2\2278135c893c3a08d0a5781a19b06f216ac1e7ba
+h
+8app/src/main/java/pl/edu/pb/filmoteka/LoginActivity.java,b\7\b72353a689ce19944251d86fc310c78bab9d0b75

@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Filmoteka</string>
+    <string name="username_hint">Nazwa użytkownika</string>
+    <string name="password_hint">Hasło</string>
+    <string name="repeat_password_hint">Powtórz hasło</string>
+    <string name="button_signup">Zarejestruj się</string>
+    <string name="button_signin_text">Zaloguj się</string>
+    <string name="button_signin">Masz już konto? Zaloguj się</string>
+    <string name="button_signup_text">Nie masz jeszcze konta? Zarejestruj się</string>
+    <string name="name_hint">Imię</string>
+    <string name="surname_hint">Nazwisko</string>
+    <string name="email_hint">E-mail</string>
 </resources>
