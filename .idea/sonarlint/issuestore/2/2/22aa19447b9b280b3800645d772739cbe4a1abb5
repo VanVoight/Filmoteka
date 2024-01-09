@@ -1,9 +1,9 @@
 
 j
-java:S1192."MDefine a constant instead of duplicating this literal "MainActivity" 3 times.(Œ£ƒ8ªûÉ‡Í1
+java:S1192C"MDefine a constant instead of duplicating this literal "MainActivity" 3 times.(Œ£ƒ8’¬üóÎ1
 L
-java:S1874"/Remove this use of "execute"; it is deprecated.(½õºâ8‹üÉ‡Í1
+java:S1874 "/Remove this use of "execute"; it is deprecated.(½õºâ8“­üóÎ1
 N
-java:S1874"1Remove this use of "AsyncTask"; it is deprecated.(Ç‰£¡8ŒüÉ‡Í1
+java:S1874$"1Remove this use of "AsyncTask"; it is deprecated.(Ç‰£¡8”­üóÎ1
 g
-java:S18744"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(å„Ü8¯üÉ‡Í1
+java:S1874I"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(å„Ü8±­üóÎ1

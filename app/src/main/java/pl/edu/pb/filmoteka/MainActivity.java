@@ -1,30 +1,46 @@
 package pl.edu.pb.filmoteka;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.facebook.stetho.Stetho;
+import com.facebook.stetho.okhttp3.StethoInterceptor;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import pl.edu.pb.filmoteka.DB.AppDatabase;
+import pl.edu.pb.filmoteka.DB.Role;
 
 public class MainActivity extends AppCompatActivity {
-
+    private AppDatabase appDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Stetho.initializeWithDefaults(this);
         setContentView(R.layout.activity_main);
-
+        appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "my-database")
+                .allowMainThreadQueries() // Uwaga: Ta opcja pozwala na wykonywanie operacji bazodanowych na wątku głównym, ale nie jest zalecana w produkcji.
+                .build();
         new MyAsyncTask().execute();
     }
+
 
     private class MyAsyncTask extends AsyncTask<Void, Void, ApiResponse> {
 
         @Override
         protected ApiResponse doInBackground(Void... params) {
             try {
-                OkHttpClient client = new OkHttpClient();
+                OkHttpClient client = new OkHttpClient.Builder()
+                        .addNetworkInterceptor(new StethoInterceptor())
+                        .build();
 
                 Request request = new Request.Builder()
                         .url("https://api.themoviedb.org/3/account/20889746/favorite/movies?language=en-US&page=1&sort_by=created_at.asc")
@@ -38,6 +54,11 @@ public class MainActivity extends AppCompatActivity {
 
                 // Sprawdź, czy odpowiedź zawiera oczekiwane dane
                 if (response.isSuccessful()) {
+                    List<Role> roles = new ArrayList<>();
+                    roles.add(new Role(1, "Administrator"));
+                    roles.add(new Role(2, "Użytkownik"));
+                    roles.add(new Role(3, "Recenzent"));
+                    appDatabase.roleDao().insertRoles(roles);
                     return new ApiResponse(true, responseBody);
                 } else {
                     return new ApiResponse(false, null, "HTTP Error: " + response.code());
