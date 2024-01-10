@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         Stetho.initializeWithDefaults(this);
-        setContentView(R.layout.activity_main);
+
         appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "my-database")
                 .allowMainThreadQueries() // Uwaga: Ta opcja pozwala na wykonywanie operacji bazodanowych na wątku głównym, ale nie jest zalecana w produkcji.
                 .build();
