@@ -3,10 +3,13 @@ package pl.edu.pb.filmoteka;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import com.facebook.stetho.Stetho;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 
@@ -22,9 +25,31 @@ import pl.edu.pb.filmoteka.DB.Role;
 
 public class MainActivity extends AppCompatActivity {
     private AppDatabase appDatabase;
+    Button signin, signup;
+    ImageView imgv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        signin = findViewById(R.id.btnsignin);
+        signup = findViewById(R.id.btnsignup);
+        imgv = findViewById(R.id.imageView3);
+
+        signin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
         Stetho.initializeWithDefaults(this);
         setContentView(R.layout.activity_main);
         appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "my-database")
