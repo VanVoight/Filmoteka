@@ -1,9 +1,15 @@
 
 j
-java:S1192D"MDefine a constant instead of duplicating this literal "MainActivity" 3 times.(Œ£ƒ8’¬üóÎ1
+java:S1192]"MDefine a constant instead of duplicating this literal "MainActivity" 3 times.(Œ£ƒ8¼ÄÉ§Ï1
+J
+java:S1604&"(Make this anonymous inner class a lambda(ğò‹¬şÿÿÿÿ8½ÄÉ§Ï1
+E
+java:S1604."(Make this anonymous inner class a lambda(©º¬8½ÄÉ§Ï1
+F
+java:S1659"$Declare "signup" on a separate line.(ÖÃ‘íşÿÿÿÿ8…ÅÉ§Ï1
 L
-java:S1874!"/Remove this use of "execute"; it is deprecated.(½õºâ8“­üóÎ1
+java:S1874:"/Remove this use of "execute"; it is deprecated.(½õºâ8ÅÉ§Ï1
 N
-java:S1874%"1Remove this use of "AsyncTask"; it is deprecated.(Ç‰£¡8”­üóÎ1
+java:S1874>"1Remove this use of "AsyncTask"; it is deprecated.(Ç‰£¡8 ÅÉ§Ï1
 g
-java:S1874J"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(å„Ü8±­üóÎ1
+java:S1874c"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(å„Ü8¶ÅÉ§Ï1

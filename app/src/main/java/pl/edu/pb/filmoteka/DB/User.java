@@ -31,6 +31,20 @@ public class User {
     public String getEmail(){
         return email;
     }
+    public void setUserName(@NonNull String userName) {
+        this.userName = userName;
+    }
+
+    public void setFirstName(@NonNull String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(@NonNull String lastName) {
+        this.lastName = lastName;
+    }
+    public void setPassword(@NonNull String password) {
+        this.password = password;
+    }
     public void setEmail(@androidx.annotation.NonNull String email) {
         if (isValidEmail(email)){
             this.email=email;

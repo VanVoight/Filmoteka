@@ -47,3 +47,7 @@ f
 6app/src/main/java/pl/edu/pb/filmoteka/DB/UserRole.java,a\b\ab3195f55ec3ea4700f61259a9a42da8e9fb498e
 h
 8app/src/main/java/pl/edu/pb/filmoteka/LoginActivity.java,b\7\b72353a689ce19944251d86fc310c78bab9d0b75
+`
+0app/src/main/java/pl/edu/pb/filmoteka/Movie.java,8\5\85f0372a592a6e4876c13881064add919e23baec
+k
+;app/src/main/java/pl/edu/pb/filmoteka/RegisterActivity.java,2\2\2278135c893c3a08d0a5781a19b06f216ac1e7ba
