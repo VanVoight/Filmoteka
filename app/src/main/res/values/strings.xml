@@ -12,4 +12,5 @@
     <string name="email_hint">E-mail</string>
     <string name="toast_fields">Wszystkie pola są wymagane</string>
     <string name="toast_passwords">Hasła są różne</string>
+    <string name="toast_register">Zarejestrowano pomyślnie</string>
 </resources>

@@ -41,6 +41,9 @@ public class RegisterActivity extends AppCompatActivity {
 			@Override
 			public void onClick(View view){
 				Log.d("RegisterActivity", "Zarejestruj się button clicked");
+				String toastfieldsMessage = getResources().getString(R.string.toast_fields);
+				String toastpasswordsMessage = getResources().getString(R.string.toast_passwords);
+
 				String enteredUsername = username.getText().toString();
 				String enteredPassword = password.getText().toString();
 				String enteredRepassword = repassword.getText().toString();
@@ -49,10 +52,10 @@ public class RegisterActivity extends AppCompatActivity {
 				String enteredEmail = email.getText().toString();
 
 				if(enteredUsername.isEmpty()||enteredEmail.isEmpty()||enteredPassword.isEmpty()||enteredRepassword.isEmpty()|| enteredSurname.isEmpty()||enteredEmail.isEmpty()||eneteredName.isEmpty()){
-					Toast.makeText(RegisterActivity.this, "@string/toast_fields", Toast.LENGTH_SHORT).show();
+					Toast.makeText(RegisterActivity.this, toastfieldsMessage, Toast.LENGTH_SHORT).show();
 				}
 				if (!enteredPassword.equals(enteredRepassword)) {
-					Toast.makeText(RegisterActivity.this, "@string/toast_passwords", Toast.LENGTH_SHORT).show();
+					Toast.makeText(RegisterActivity.this, toastpasswordsMessage, Toast.LENGTH_SHORT).show();
 					return;
 				}
 				User newUser = new User();
@@ -91,7 +94,8 @@ public class RegisterActivity extends AppCompatActivity {
 		@Override
 		protected void onPostExecute(Void aVoid) {
 			Log.d("InsertUserAsyncTask", "onPostExecute");
-			Toast.makeText(RegisterActivity.this, "Pomyślnie zarejestrowano", Toast.LENGTH_SHORT).show();
+			String toastregisterMessage = getResources().getString(R.string.toast_register);
+			Toast.makeText(RegisterActivity.this,toastregisterMessage, Toast.LENGTH_SHORT).show();
 		}
 	}
 }
