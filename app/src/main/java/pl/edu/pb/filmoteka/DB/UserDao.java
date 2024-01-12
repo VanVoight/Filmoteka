@@ -10,7 +10,7 @@ public interface UserDao {
     User getUserById(long userId);
 
     @Insert
-    void insertUser(User user);
+    void insert(User user);
     @Query("SELECT * FROM users WHERE userName = (:userName) AND password = (:password)")
     User login(String userName,String password);
 
