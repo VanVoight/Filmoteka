@@ -2,17 +2,20 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp"
+    android:background="#032c29">
 
     <EditText
         android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:drawableLeft="@drawable/ic_user"
         android:hint="@string/username_hint"
         android:padding="8dp"
-        android:drawableLeft="@drawable/ic_user"
-        android:layout_marginTop="20dp"
-       />
+        android:textColorHint="@color/gold" />
+
     <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"
@@ -21,7 +24,8 @@
         android:padding="8dp"
         android:drawableLeft="@drawable/ic_lock"
         android:layout_marginTop="20dp"
-        android:layout_below="@+id/username"/>
+        android:layout_below="@+id/username"
+        android:textColorHint="@color/gold"/>
 
     <Button
         android:id="@+id/button_signin"
@@ -29,12 +33,25 @@
         android:layout_height="wrap_content"
         android:text="@string/button_signin_text"
         android:layout_marginTop="50dp"
-        android:layout_below="@+id/password"/>
+        android:layout_below="@+id/password"
+        style="@style/ButtonStyle"/>
     <Button
         android:id="@+id/button_signup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/button_signup_text"
         android:layout_marginTop="15dp"
-        android:layout_below="@+id/button_signin"/>
+        android:layout_below="@+id/button_signin"
+        style="@style/ButtonStyle"/>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="200dp"
+        android:layout_height="180dp"
+        android:layout_below="@+id/button_signup"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="25dp"
+        app:srcCompat="@drawable/logo_wout_name" />
 </RelativeLayout>
