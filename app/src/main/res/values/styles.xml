@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ButtonStyle">
+        <item name="android:backgroundTint">#e9b32e</item> <!-- Kolor tła przycisku -->
+        <item name="android:textColor">@color/black</item>
+    </style>
+</resources>

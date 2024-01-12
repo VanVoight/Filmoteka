@@ -29,8 +29,7 @@
         android:layout_marginRight="100dp"
         android:layout_marginBottom="5dp"
         android:layout_below="@+id/imageView3"
-        android:textColor="@color/black"
-        android:backgroundTint="#e9b32e"/>
+        style="@style/ButtonStyle"/>
 
     <Button
         android:id="@+id/btnsignup"
@@ -42,6 +41,5 @@
         android:layout_marginRight="100dp"
         android:layout_marginBottom="5dp"
         android:layout_below="@+id/btnsignin"
-        android:textColor="@color/black"
-        android:backgroundTint="#e9b32e"/>
+        style="@style/ButtonStyle"/>
 </RelativeLayout>
