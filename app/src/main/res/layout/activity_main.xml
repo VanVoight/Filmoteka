@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#032c29"
     tools:context=".MainActivity">
 
 
@@ -27,7 +28,10 @@
         android:layout_marginLeft="100dp"
         android:layout_marginRight="100dp"
         android:layout_marginBottom="5dp"
-        android:layout_below="@+id/imageView3"/>
+        android:layout_below="@+id/imageView3"
+        android:textColor="@color/black"
+        android:backgroundTint="#e9b32e"/>
+
     <Button
         android:id="@+id/btnsignup"
         android:layout_width="match_parent"
@@ -37,5 +41,7 @@
         android:layout_marginLeft="100dp"
         android:layout_marginRight="100dp"
         android:layout_marginBottom="5dp"
-        android:layout_below="@+id/btnsignin"/>
+        android:layout_below="@+id/btnsignin"
+        android:textColor="@color/black"
+        android:backgroundTint="#e9b32e"/>
 </RelativeLayout>
