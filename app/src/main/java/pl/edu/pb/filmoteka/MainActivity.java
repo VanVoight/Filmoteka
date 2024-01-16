@@ -80,11 +80,6 @@ public class MainActivity extends AppCompatActivity {
 
                 // Sprawdź, czy odpowiedź zawiera oczekiwane dane
                 if (response.isSuccessful()) {
-                    List<Role> roles = new ArrayList<>();
-                    roles.add(new Role(1, "Administrator"));
-                    roles.add(new Role(2, "Użytkownik"));
-                    roles.add(new Role(3, "Recenzent"));
-                    appDatabase.roleDao().insertRoles(roles);
                     return new ApiResponse(true, responseBody);
                 } else {
                     return new ApiResponse(false, null, "HTTP Error: " + response.code());

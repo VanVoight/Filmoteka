@@ -14,6 +14,7 @@
         android:drawableLeft="@drawable/ic_user"
         android:hint="@string/username_hint"
         android:padding="8dp"
+        android:textColor="@color/gold"
         android:textColorHint="@color/gold" />
 
     <EditText
@@ -25,6 +26,7 @@
         android:drawableLeft="@drawable/ic_lock"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/username"
+        android:textColor="@color/gold"
         android:textColorHint="@color/gold"/>
 
     <Button

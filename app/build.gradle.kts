@@ -29,9 +29,10 @@ android {
 }
 
 dependencies {
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0")
     implementation ("com.facebook.stetho:stetho:1.5.1")
     implementation ("com.facebook.stetho:stetho-okhttp3:1.5.1")
-    implementation("androidx.room:room-runtime:2.6.1")
+    implementation ("androidx.room:room-runtime:2.6.1")
     annotationProcessor("androidx.room:room-compiler:2.6.1")
     androidTestImplementation("androidx.room:room-testing:2.6.1")
     implementation("androidx.lifecycle:lifecycle-common-java8:2.6.2")
