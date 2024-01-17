@@ -3,4 +3,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gold">#e9b32e</color>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="bottomNavigationBackground">#032c29</color>
+    <color name="selectedItemBackground">#DC9F09</color>
+    <color name="bottomNavigationItemBackground">#021b18</color>
+    <color name="bottomNavigationIconColor">#EFD38F</color>selectedItemBackground
 </resources>

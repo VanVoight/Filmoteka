@@ -1,0 +1,8 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:bottom="-2dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/bottomnavigationselectediconcolor"/>
+            <size android:height="2dp"/>
+        </shape>
+    </item>
+</layer-list>

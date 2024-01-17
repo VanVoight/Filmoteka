@@ -1,15 +1,19 @@
 
 j
-java:S1192]"MDefine a constant instead of duplicating this literal "MainActivity" 3 times.(Œ£ƒ8’¬üóÎ1
+java:S1192X"MDefine a constant instead of duplicating this literal "MainActivity" 3 times.(Œ£ƒ8’¬üóÎ1
 J
 java:S1604&"(Make this anonymous inner class a lambda(ğò‹¬şÿÿÿÿ8¦ôÄíÏ1
 E
 java:S1604."(Make this anonymous inner class a lambda(©º¬8§ôÄíÏ1
 F
 java:S1659"$Declare "signup" on a separate line.(ÖÃ‘íşÿÿÿÿ8æøÄíÏ1
+|
+java:S1450"ZRemove the "appDatabase" field and declare it as a local variable in the relevant methods.(í¯Õ—şÿÿÿÿ8æ·­—Ñ1
 L
 java:S1874:"/Remove this use of "execute"; it is deprecated.(½õºâ8“­üóÎ1
 N
 java:S1874>"1Remove this use of "AsyncTask"; it is deprecated.(Ç‰£¡8”­üóÎ1
 g
-java:S1874c"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(å„Ü8±­üóÎ1
+java:S1874^"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(å„Ü8±­üóÎ1
+Q
+java:S1068"/Remove this unused "appDatabase" private field.(í¯Õ—şÿÿÿÿ8Ñ¸­—Ñ1

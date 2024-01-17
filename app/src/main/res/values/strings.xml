@@ -13,4 +13,7 @@
     <string name="toast_fields">Wszystkie pola są wymagane</string>
     <string name="toast_passwords">Hasła są różne</string>
     <string name="toast_register">Zarejestrowano pomyślnie</string>
+    <string name="title_category">Category</string>
+    <string name="title_home">Home</string>
+    <string name="title_profile">Profile</string>
 </resources>

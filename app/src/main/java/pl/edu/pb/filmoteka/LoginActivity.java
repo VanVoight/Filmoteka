@@ -44,7 +44,6 @@ public class LoginActivity extends AppCompatActivity {
 				if (enteredUsername.isEmpty() || enteredPassword.isEmpty()) {
 					Toast.makeText(LoginActivity.this, getString(R.string.toast_fields), Toast.LENGTH_SHORT).show();
 				} else {
-					// Utwórz instancję AsyncTask i uruchom operacje bazodanowe w osobnym wątku
 					new DatabaseAsyncTask().execute(enteredUsername, enteredPassword);
 				}
 			}
@@ -64,23 +63,27 @@ public class LoginActivity extends AppCompatActivity {
 		protected User doInBackground(String... params) {
 			String username = params[0];
 			String password = params[1];
-
-			// Operacje bazodanowe
 			AppDatabase appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "my-database").build();
 			UserDao userDao = appDatabase.userDao();
 			return userDao.getUserByUsernameAndPassword(username, password);
 		}
-
 		@Override
 		protected void onPostExecute(User user) {
+			Log.d(TAG, "onPostExecute: User: " + user);
 			if (user != null) {
-				// Użytkownik istnieje - dodaj kod obsługi zalogowanego użytkownika
-				// np. przechodzenie do nowego ekranu lub wyświetlanie komunikatu
-				Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
+				runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						Log.d(TAG, "onPostExecute: Starting HomeActivity");
+						Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+						startActivity(intent);
+					}
+				});
 			} else {
-				// Użytkownik nie istnieje - wyświetl komunikat
+				Log.d(TAG, "onPostExecute: Invalid username or password");
 				Toast.makeText(LoginActivity.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
 			}
 		}
 	}
 }
+
