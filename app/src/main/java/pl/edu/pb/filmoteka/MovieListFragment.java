@@ -14,8 +14,17 @@ import java.util.List;
 public class MovieListFragment extends Fragment {
 
 	private RecyclerView recyclerView;
+	private RecyclerView topRatedRecyclerView;
+	private RecyclerView recyclerNowPlaying;
+	private RecyclerView recyclerViewUpcoming;
+	private MovieAdapter topRatedMovieAdapter;
+	private MovieAdapter nowPlayingMovieAdapter;
 	private MovieAdapter movieAdapter;
+	private MovieAdapter upcomingMovieAdapter;
 	private List<Movie> movieList;
+	private List<Movie> topRatedMovieList;
+	private List<Movie> nowPlayingMovieList;
+	private List<Movie> upcomingMovieList;
 
 	public MovieListFragment() {
 
@@ -41,7 +50,43 @@ public class MovieListFragment extends Fragment {
 				movieAdapter.notifyDataSetChanged();
 			}
 		});
+		topRatedRecyclerView = view.findViewById(R.id.recyclerViewTopRated);
+		topRatedRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
+		topRatedMovieAdapter = new MovieAdapter();
+		topRatedRecyclerView.setAdapter(topRatedMovieAdapter);
 
+		MovieList.getTopRatedMovies("eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NmI1OTA2OTU4ZDY0YjRmOWM1MjMzMzQxNjM3M2Y0YiIsInN1YiI6IjY1OTVhYTFjNTkwN2RlMDE2NzYzYmYwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IlVmj8Oxv5RunQqXK55LVmJerMote8EMPNsO6jcEdRA", new MovieList.OnMoviesFetchedListener() {
+			@Override
+			public void onMoviesFetched(List<Movie> movies) {
+				topRatedMovieList = movies;
+				topRatedMovieAdapter.setMovies(topRatedMovieList);
+				topRatedMovieAdapter.notifyDataSetChanged();
+			}
+		});
+		recyclerNowPlaying = view.findViewById(R.id.recyclerNowPlaying);
+		recyclerNowPlaying.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
+		nowPlayingMovieAdapter = new MovieAdapter();
+		recyclerNowPlaying.setAdapter(nowPlayingMovieAdapter);
+		MovieList.getReleasedMovies("eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NmI1OTA2OTU4ZDY0YjRmOWM1MjMzMzQxNjM3M2Y0YiIsInN1YiI6IjY1OTVhYTFjNTkwN2RlMDE2NzYzYmYwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IlVmj8Oxv5RunQqXK55LVmJerMote8EMPNsO6jcEdRA", "2022-01-01", "2022-12-31", new MovieList.OnMoviesFetchedListener() {
+			@Override
+			public void onMoviesFetched(List<Movie> movies) {
+				nowPlayingMovieList = movies;
+				nowPlayingMovieAdapter.setMovies(nowPlayingMovieList);
+				nowPlayingMovieAdapter.notifyDataSetChanged();
+			}
+		});
+		recyclerViewUpcoming = view.findViewById(R.id.recyclerViewUpcoming);
+		recyclerViewUpcoming.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
+		upcomingMovieAdapter = new MovieAdapter();
+		recyclerViewUpcoming.setAdapter(upcomingMovieAdapter);
+		MovieList.getCustomReleaseMovies("eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NmI1OTA2OTU4ZDY0YjRmOWM1MjMzMzQxNjM3M2Y0YiIsInN1YiI6IjY1OTVhYTFjNTkwN2RlMDE2NzYzYmYwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IlVmj8Oxv5RunQqXK55LVmJerMote8EMPNsO6jcEdRA", "2022-01-01", "2022-12-31", new MovieList.OnMoviesFetchedListener() {
+			@Override
+			public void onMoviesFetched(List<Movie> movies) {
+				upcomingMovieList = movies;
+				upcomingMovieAdapter.setMovies(upcomingMovieList);
+				upcomingMovieAdapter.notifyDataSetChanged();
+			}
+		});
 		return view;
 	}
 }
