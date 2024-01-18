@@ -89,4 +89,8 @@ public class Movie {
 	public int getVoteCount() {
 		return vote_count;
 	}
+	public String getPosterUrl() {
+
+		return "https://image.tmdb.org/t/p/w500/" + poster_path;
+	}
 }

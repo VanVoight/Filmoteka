@@ -4,6 +4,10 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +18,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        displayMovieDetailsFragment();
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigation_bar_item_icon_view);
         bottomNavigationView.setSelectedItemId(R.id.menu_home);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -30,5 +35,21 @@ public class HomeActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+    private void displayMovieDetailsFragment() {
+        // Create an instance of MovieDetailsFragment
+        MovieDetailsFragment movieDetailsFragment = new MovieDetailsFragment();
+
+        // Get the FragmentManager
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        // Begin the FragmentTransaction
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        // Replace the fragment_container with MovieDetailsFragment
+        fragmentTransaction.replace(R.id.fragment_container, movieDetailsFragment);
+
+        // Commit the transaction
+        fragmentTransaction.commit();
     }
 }

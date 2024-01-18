@@ -55,3 +55,5 @@ f
 6app/src/main/java/pl/edu/pb/filmoteka/MovieResult.java,f\e\feb556ecaa57588b84e7f435f396fbd9d24594d9
 g
 7app/src/main/java/pl/edu/pb/filmoteka/HomeActivity.java,4\1\4111abbe696d74aabb4862862c5fcaa0b0168f25
+o
+?app/src/main/java/pl/edu/pb/filmoteka/MovieDetailsFragment.java,1\4\14309edc82105e65e5e007a66107bda9be7ce853

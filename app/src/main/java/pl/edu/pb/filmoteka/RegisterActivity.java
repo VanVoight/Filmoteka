@@ -96,6 +96,8 @@ public class RegisterActivity extends AppCompatActivity {
 			Log.d("InsertUserAsyncTask", "onPostExecute");
 			String toastregisterMessage = getResources().getString(R.string.toast_register);
 			Toast.makeText(RegisterActivity.this,toastregisterMessage, Toast.LENGTH_SHORT).show();
+			Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+			startActivity(intent);
 		}
 	}
 }

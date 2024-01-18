@@ -27,7 +27,8 @@
         android:layout_marginTop="20dp"
         android:layout_below="@+id/username"
         android:textColor="@color/gold"
-        android:textColorHint="@color/gold"/>
+        android:textColorHint="@color/gold"
+        android:inputType="textPassword"/>
 
     <Button
         android:id="@+id/button_signin"
