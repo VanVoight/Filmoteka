@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingTop="8dp"
-    android:paddingBottom="8dp"
-    android:paddingStart="16dp"
-    android:paddingEnd="16dp">
 
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<TextView
+    android:id="@+id/TextViewPopular"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/popular_list"
+    android:layout_centerHorizontal="true"
+    android:textColor="@color/gold"
+    android:textStyle="bold"
+    android:textSize="35dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+
+    />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:scrollbars="vertical"
-        android:background="?android:attr/windowBackground" />
+        android:orientation="horizontal"
 
-</LinearLayout>
+        android:layout_below="@+id/TextViewPopular"/>
+</RelativeLayout>

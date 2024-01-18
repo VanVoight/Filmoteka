@@ -18,7 +18,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        displayMovieDetailsFragment();
+        addMovieListFragment();
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigation_bar_item_icon_view);
         bottomNavigationView.setSelectedItemId(R.id.menu_home);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -36,20 +36,17 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
-    private void displayMovieDetailsFragment() {
-        // Create an instance of MovieDetailsFragment
-        MovieDetailsFragment movieDetailsFragment = new MovieDetailsFragment();
-
-        // Get the FragmentManager
+    private void addMovieListFragment() {
         FragmentManager fragmentManager = getSupportFragmentManager();
-
-        // Begin the FragmentTransaction
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        // Replace the fragment_container with MovieDetailsFragment
-        fragmentTransaction.replace(R.id.fragment_container, movieDetailsFragment);
+        // Tworzymy nową instancję MovieListFragment
+        MovieListFragment movieListFragment = new MovieListFragment();
 
-        // Commit the transaction
+        // Dodajemy fragment do kontenera, na przykład do FrameLayout o identyfikatorze "container"
+        fragmentTransaction.replace(R.id.fragment_container, movieListFragment);
+
+        // Commitujemy transakcję
         fragmentTransaction.commit();
     }
 }

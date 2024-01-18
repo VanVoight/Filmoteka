@@ -57,3 +57,13 @@ g
 7app/src/main/java/pl/edu/pb/filmoteka/HomeActivity.java,4\1\4111abbe696d74aabb4862862c5fcaa0b0168f25
 o
 ?app/src/main/java/pl/edu/pb/filmoteka/MovieDetailsFragment.java,1\4\14309edc82105e65e5e007a66107bda9be7ce853
+l
+<app/src/main/java/pl/edu/pb/filmoteka/MovieListFragment.java,e\2\e2491c99051419b7c1b48ece0eaa12c3f137edbc
+l
+<app/src/main/java/pl/edu/pb/filmoteka/MovieFragmentList.java,3\d\3d090f4d2be0f342d4c9ea932d401552a5310ddb
+g
+7app/src/main/java/pl/edu/pb/filmoteka/MovieAdapter.java,4\0\406e413b84445439cc40f50cfaac39559f922bfd
+e
+5app/src/main/java/pl/edu/pb/filmoteka/MovieLists.java,e\e\ee7f736422ecba9f2151b900c78744845477cf77
+d
+4app/src/main/java/pl/edu/pb/filmoteka/MovieList.java,0\3\03f408e38559681b0ec34910c7457b9a207de838
