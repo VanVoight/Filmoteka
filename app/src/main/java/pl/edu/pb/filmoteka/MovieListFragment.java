@@ -67,7 +67,7 @@ public class MovieListFragment extends Fragment {
 		recyclerNowPlaying.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
 		nowPlayingMovieAdapter = new MovieAdapter();
 		recyclerNowPlaying.setAdapter(nowPlayingMovieAdapter);
-		MovieList.getReleasedMovies("eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NmI1OTA2OTU4ZDY0YjRmOWM1MjMzMzQxNjM3M2Y0YiIsInN1YiI6IjY1OTVhYTFjNTkwN2RlMDE2NzYzYmYwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IlVmj8Oxv5RunQqXK55LVmJerMote8EMPNsO6jcEdRA", "2022-01-01", "2022-12-31", new MovieList.OnMoviesFetchedListener() {
+		MovieList.getReleasedMovies("eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NmI1OTA2OTU4ZDY0YjRmOWM1MjMzMzQxNjM3M2Y0YiIsInN1YiI6IjY1OTVhYTFjNTkwN2RlMDE2NzYzYmYwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IlVmj8Oxv5RunQqXK55LVmJerMote8EMPNsO6jcEdRA", "2023-11-01", "2024-01-31", new MovieList.OnMoviesFetchedListener() {
 			@Override
 			public void onMoviesFetched(List<Movie> movies) {
 				nowPlayingMovieList = movies;
@@ -79,7 +79,7 @@ public class MovieListFragment extends Fragment {
 		recyclerViewUpcoming.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
 		upcomingMovieAdapter = new MovieAdapter();
 		recyclerViewUpcoming.setAdapter(upcomingMovieAdapter);
-		MovieList.getCustomReleaseMovies("eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NmI1OTA2OTU4ZDY0YjRmOWM1MjMzMzQxNjM3M2Y0YiIsInN1YiI6IjY1OTVhYTFjNTkwN2RlMDE2NzYzYmYwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IlVmj8Oxv5RunQqXK55LVmJerMote8EMPNsO6jcEdRA", "2022-01-01", "2022-12-31", new MovieList.OnMoviesFetchedListener() {
+		MovieList.getCustomReleaseMovies("eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NmI1OTA2OTU4ZDY0YjRmOWM1MjMzMzQxNjM3M2Y0YiIsInN1YiI6IjY1OTVhYTFjNTkwN2RlMDE2NzYzYmYwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IlVmj8Oxv5RunQqXK55LVmJerMote8EMPNsO6jcEdRA", "2024-02-01", "2024-03-30", new MovieList.OnMoviesFetchedListener() {
 			@Override
 			public void onMoviesFetched(List<Movie> movies) {
 				upcomingMovieList = movies;
