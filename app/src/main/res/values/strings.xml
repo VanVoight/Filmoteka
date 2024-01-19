@@ -22,4 +22,6 @@
     <string name="upcoming_list">Nadchodzące</string>
     <string name="now_playing_list">Teraz w kinach</string>
     <string name="popular_list">Popularne Teraz</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

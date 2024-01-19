@@ -26,7 +26,7 @@ public class HomeActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int itemId = item.getItemId();
                 if (itemId == R.id.menu_category) {
-
+                    addCategoryFragment();
                 } else if (itemId == R.id.menu_home) {
                     addMovieListFragment();
                 } else if (itemId == R.id.menu_profile) {
@@ -39,14 +39,15 @@ public class HomeActivity extends AppCompatActivity {
     private void addMovieListFragment() {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        // Tworzymy nową instancję MovieListFragment
         MovieListFragment movieListFragment = new MovieListFragment();
-
-        // Dodajemy fragment do kontenera, na przykład do FrameLayout o identyfikatorze "container"
         fragmentTransaction.replace(R.id.fragment_container, movieListFragment);
-
-        // Commitujemy transakcję
+        fragmentTransaction.commit();
+    }
+    private void addCategoryFragment() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        CategoryFragment categoryFragment = new CategoryFragment();
+        fragmentTransaction.replace(R.id.fragment_container, categoryFragment);
         fragmentTransaction.commit();
     }
 }
