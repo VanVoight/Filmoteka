@@ -113,7 +113,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 					Bitmap originalBitmap = BitmapFactory.decodeStream(inputStream);
 
 
-					Bitmap roundedBitmap = getRoundedCornerBitmap(originalBitmap, 20);
+					Bitmap roundedBitmap = getRoundedCornerBitmap(originalBitmap, 50);
 
 					return roundedBitmap;
 				} catch (IOException e) {
