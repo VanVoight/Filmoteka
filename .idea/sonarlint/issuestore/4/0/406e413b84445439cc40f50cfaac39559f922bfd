@@ -1,15 +1,19 @@
 
-‡
-java:S1488t"eImmediately return this expression instead of assigning it to the temporary variable "roundedBitmap".(¥À½¯ùÿÿÿÿ8Š¬ÏŒÒ1
-S
-java:S1874Y"6Remove this use of "setColorFilter"; it is deprecated.(®éÜ¿8Ó¬ÏŒÒ1
-L
-java:S1874["/Remove this use of "execute"; it is deprecated.(ëñ€¥8Ô¬ÏŒÒ1
-S
-java:S1874f"1Remove this use of "AsyncTask"; it is deprecated.(¢´¬“ÿÿÿÿÿ8Ö¬ÏŒÒ1
-l
-java:S1874~"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÿà—óùÿÿÿÿ8óÂÎŒÒ1
-R
-java:S1874"5Remove this use of "onPostExecute"; it is deprecated.(¿åß¯8Ü¬ÏŒÒ1
 J
-java:S1068:"-Remove this unused "movieList" private field.(­óÇ£8è¬ÏŒÒ1
+java:S1604J"(Make this anonymous inner class a lambda(ó›¾ûÿÿÿÿ8äüâ™Ò1
+F
+java:S1604«"(Make this anonymous inner class a lambda(Õä8åüâ™Ò1
+‡
+java:S1488"eImmediately return this expression instead of assigning it to the temporary variable "roundedBitmap".(¥À½¯ùÿÿÿÿ8æüâ™Ò1
+S
+java:S1874d"6Remove this use of "setColorFilter"; it is deprecated.(®éÜ¿8 ıâ™Ò1
+L
+java:S1874f"/Remove this use of "execute"; it is deprecated.(ëñ€¥8¡ıâ™Ò1
+S
+java:S1874q"1Remove this use of "AsyncTask"; it is deprecated.(¢´¬“ÿÿÿÿÿ8¤ıâ™Ò1
+m
+java:S1874‰"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÿà—óùÿÿÿÿ8“…£™Ò1
+S
+java:S1874Š"5Remove this use of "onPostExecute"; it is deprecated.(¿åß¯8ªıâ™Ò1
+J
+java:S1068<"-Remove this unused "movieList" private field.(­óÇ£8è¬ÏŒÒ1
