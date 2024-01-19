@@ -1,7 +1,12 @@
 package pl.edu.pb.filmoteka;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -99,14 +104,18 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
 			LoadImageTask(ImageView imageView) {
 				imageViewReference = new WeakReference<>(imageView);
-
 			}
 
 			@Override
 			protected Bitmap doInBackground(String... urls) {
 				try {
 					InputStream inputStream = new URL(urls[0]).openStream();
-					return BitmapFactory.decodeStream(inputStream);
+					Bitmap originalBitmap = BitmapFactory.decodeStream(inputStream);
+
+
+					Bitmap roundedBitmap = getRoundedCornerBitmap(originalBitmap, 20);
+
+					return roundedBitmap;
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -119,13 +128,29 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
 				ImageView imageView = imageViewReference.get();
 
-
 				if (imageView != null && bitmap != null) {
-
 					imageView.setImageBitmap(bitmap);
 				}
 			}
 
+			// Metoda do tworzenia bitmapy z zaokrąglonymi rogami
+			private Bitmap getRoundedCornerBitmap(Bitmap bitmap, int radius) {
+				Bitmap output = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+				Canvas canvas = new Canvas(output);
+
+				final Paint paint = new Paint();
+				final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+				final RectF rectF = new RectF(rect);
+
+				paint.setAntiAlias(true);
+				canvas.drawRoundRect(rectF, radius, radius, paint);
+
+				paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+				canvas.drawBitmap(bitmap, rect, rect, paint);
+
+				return output;
+			}
 		}
+
 	}
 }
