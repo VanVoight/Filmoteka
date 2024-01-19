@@ -16,11 +16,9 @@ import androidx.fragment.app.Fragment;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import androidx.fragment.app.Fragment;
 import com.google.gson.Gson;
+import androidx.fragment.app.Fragment;
 import com.google.gson.reflect.TypeToken;
-
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 
 import java.io.IOException;

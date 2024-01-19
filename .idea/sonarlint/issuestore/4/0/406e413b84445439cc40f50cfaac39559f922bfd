@@ -1,0 +1,13 @@
+
+S
+java:S1874T"6Remove this use of "setColorFilter"; it is deprecated.(®éÜ¿8¶ÍüôÑ1
+L
+java:S1874V"/Remove this use of "execute"; it is deprecated.(ëñ€¥8¸ÍüôÑ1
+S
+java:S1874a"1Remove this use of "AsyncTask"; it is deprecated.(¢´¬“ÿÿÿÿÿ8»ÍüôÑ1
+l
+java:S1874u"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÿà—óùÿÿÿÿ8ÂÍüôÑ1
+R
+java:S1874v"5Remove this use of "onPostExecute"; it is deprecated.(¿åß¯8ÄÍüôÑ1
+J
+java:S10685"-Remove this unused "movieList" private field.(­óÇ£8ÇÍüôÑ1

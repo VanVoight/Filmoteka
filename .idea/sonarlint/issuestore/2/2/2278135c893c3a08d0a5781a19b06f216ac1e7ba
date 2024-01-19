@@ -1,0 +1,19 @@
+
+q
+java:S1192T"TDefine a constant instead of duplicating this literal "InsertUserAsyncTask" 4 times.(£µ¤¼8çÃñÏ1
+E
+java:S1604("(Make this anonymous inner class a lambda(©º¬8’Í«ğÏ1
+J
+java:S1604H"(Make this anonymous inner class a lambda(ğò‹¬şÿÿÿÿ8èÃñÏ1
+b
+java:S1659"EDeclare "password" and all following declarations on a separate line.(¬‡ÏÙ8ÖÏ«ğÏ1
+@
+java:S1659"$Declare "signin" on a separate line.(¡˜C8ÖÏ«ğÏ1
+h
+java:S17646"KCorrect one of the identical sub-expressions on both sides of operator "||"(õÄÖ†8ïÄñÏ1
+L
+java:S1874E"/Remove this use of "execute"; it is deprecated.(ù·¬°8óÄñÏ1
+S
+java:S1874Q"1Remove this use of "AsyncTask"; it is deprecated.(èã¨Îùÿÿÿÿ8„ÅñÏ1
+l
+java:S1874_"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(Û¶…óøÿÿÿÿ8‹ÅñÏ1

@@ -6,9 +6,9 @@
     <color name="high_vote_color">#008577</color>
     <color name="medium_vote_color">#DC9F09</color>
     <color name="low_vote_color">#780A0A</color>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#032c29</color>
+    <color name="colorPrimaryDark">#032c29</color>
+    <color name="colorAccent">#DC9F09</color>
     <color name="bottomNavigationBackground">#032c29</color>
     <color name="selectedItemBackground">#DC9F09</color>
     <color name="bottomNavigationItemBackground">#021b18</color>
