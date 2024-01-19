@@ -3,9 +3,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gold">#e9b32e</color>
-    <color name="high_vote_color">#013220</color>
-    <color name="medium_vote_color">#FFD800</color>
-    <color name="low_vote_color">#8B0000</color>
+    <color name="high_vote_color">#008577</color>
+    <color name="medium_vote_color">#DC9F09</color>
+    <color name="low_vote_color">#780A0A</color>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>

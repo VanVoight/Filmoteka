@@ -18,8 +18,8 @@
     <string name="title_category">Category</string>
     <string name="title_home">Home</string>
     <string name="title_profile">Profile</string>
-    <string name="popular_list">Popularne</string>
     <string name="toprated_list">Najwyżej oceniane</string>
     <string name="upcoming_list">Nadchodzące</string>
     <string name="now_playing_list">Teraz w kinach</string>
+    <string name="popular_list">Popularne Teraz</string>
 </resources>

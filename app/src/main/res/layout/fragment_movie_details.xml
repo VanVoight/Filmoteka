@@ -9,17 +9,14 @@
 
     <ImageView
         android:id="@+id/moviePosterImageView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="572dp"
+        android:layout_height="522dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/titleTextView"
+        android:layout_marginEnd="404dp"
+        android:radius="2dp"
         app:layout_constraintDimensionRatio="h,1:1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.307"
         app:layout_constraintWidth_percent="0.5"
         app:srcCompat="@drawable/placeholder_poster" />
 
@@ -27,10 +24,10 @@
         android:id="@+id/FrameLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="300dp"
         android:layout_marginTop="-60dp"
-        android:layout_marginLeft="-560dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/moviePosterImageView"
+        app:layout_constraintStart_toStartOf="@+id/moviePosterImageView"
         app:layout_constraintTop_toBottomOf="@+id/moviePosterImageView">
 
         <View
@@ -43,46 +40,45 @@
             android:id="@+id/circleView"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:background="@drawable/circle"
             android:layout_gravity="center"
-        />
+            android:background="@drawable/circle" />
+
         <TextView
             android:id="@+id/voteAverageTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="75%"
-            android:textSize="34dp"
-            android:textStyle="bold"
             android:textColor="@android:color/white"
-            android:layout_gravity="center"/>
+            android:textSize="34dp"
+            android:textStyle="bold" />
 
     </FrameLayout>
 
 
     <TextView
         android:id="@+id/titleTextView"
-        android:layout_width="300dp"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Movie Title"
         android:textColor="@color/gold"
-        android:textSize="34dp"
+        android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.103"
+        app:layout_constraintHorizontal_bias="0.023"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/FrameLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/moviePosterImageView" />
 
     <TextView
         android:id="@+id/releaseDateTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:text="Release Date"
         android:textColor="@color/gold"
         android:textSize="24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintHorizontal_bias="0.02"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 
