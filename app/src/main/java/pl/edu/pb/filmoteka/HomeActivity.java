@@ -26,9 +26,9 @@ public class HomeActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int itemId = item.getItemId();
                 if (itemId == R.id.menu_category) {
-                    // Obsługa kliknięcia na "Category"
+
                 } else if (itemId == R.id.menu_home) {
-                    // Obsługa kliknięcia na "Home"
+                    addMovieListFragment();
                 } else if (itemId == R.id.menu_profile) {
                     // Obsługa kliknięcia na "Profile"
                 }
