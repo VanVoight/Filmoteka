@@ -35,6 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/button_signin_text"
+        android:background="@drawable/button_rounded"
         android:layout_marginTop="50dp"
         android:layout_below="@+id/password"
         style="@style/ButtonStyle"/>
@@ -44,6 +45,7 @@
         android:layout_height="wrap_content"
         android:text="@string/button_signup_text"
         android:layout_marginTop="15dp"
+        android:background="@drawable/button_rounded"
         android:layout_below="@+id/button_signin"
         style="@style/ButtonStyle"/>
 

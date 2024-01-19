@@ -28,6 +28,7 @@
         android:layout_marginLeft="100dp"
         android:layout_marginRight="100dp"
         android:layout_marginBottom="5dp"
+        android:background="@drawable/button_rounded"
         android:layout_below="@+id/imageView3"
         style="@style/ButtonStyle"/>
 
@@ -40,6 +41,8 @@
         android:layout_marginLeft="100dp"
         android:layout_marginRight="100dp"
         android:layout_marginBottom="5dp"
+        android:background="@drawable/button_rounded"
         android:layout_below="@+id/btnsignin"
         style="@style/ButtonStyle"/>
+
 </RelativeLayout>

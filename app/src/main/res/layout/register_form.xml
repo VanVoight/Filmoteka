@@ -78,6 +78,7 @@
         android:layout_height="wrap_content"
         android:text="@string/button_signup"
         android:layout_marginTop="50dp"
+        android:background="@drawable/button_rounded"
         android:layout_below="@+id/repeat_password"
         style="@style/ButtonStyle"/>
     <Button
@@ -85,6 +86,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/button_signin"
+        android:background="@drawable/button_rounded"
         android:layout_marginTop="15dp"
         android:layout_below="@+id/button_signup"
         style="@style/ButtonStyle"/>
