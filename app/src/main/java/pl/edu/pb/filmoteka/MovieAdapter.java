@@ -1,4 +1,6 @@
 package pl.edu.pb.filmoteka;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -63,11 +65,20 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 		private int highVoteColor;
 		private int mediumVoteColor;
 		private int lowVoteColor;
+		private String overview;
 
 		public MovieViewHolder(@NonNull View itemView) {
 			super(itemView);
 			titleTextView = itemView.findViewById(R.id.titleTextView);
 			moviePosterImageView = itemView.findViewById(R.id.moviePosterImageView);
+			moviePosterImageView.setOnLongClickListener(new View.OnLongClickListener() {
+				@Override
+				public boolean onLongClick(View v) {
+
+					showAdditionalInfoDialog();
+					return true;
+				}
+			});
 			circle = itemView.findViewById(R.id.circleView);
 			releaseDateTextView = itemView.findViewById(R.id.releaseDateTextView);
 
@@ -82,7 +93,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 			titleTextView.setText(movie.getTitle());
 			titleTextView.setText(movie.getTitle());
 			releaseDateTextView.setText(movie.getReleaseDate());
-
+			overview = movie.getOverview();
 			voteAverageTextView.setText(String.valueOf(movie.getVoteAverage()));
 
 			int circleStrokeColor = getCircleStrokeColorBasedOnVoteAverage(movie.getVoteAverage());
@@ -133,7 +144,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 				}
 			}
 
-			// Metoda do tworzenia bitmapy z zaokrąglonymi rogami
+
 			private Bitmap getRoundedCornerBitmap(Bitmap bitmap, int radius) {
 				Bitmap output = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
 				Canvas canvas = new Canvas(output);
@@ -150,6 +161,21 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
 				return output;
 			}
+		}
+
+		private void showAdditionalInfoDialog() {
+
+			AlertDialog.Builder builder = new AlertDialog.Builder(itemView.getContext());
+			builder.setTitle("Opis:");
+			builder.setMessage(overview);
+			builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+
+					dialog.dismiss();
+				}
+			});
+			builder.show();
 		}
 
 	}
