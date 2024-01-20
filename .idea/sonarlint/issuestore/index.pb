@@ -63,3 +63,13 @@ g
 7app/src/main/java/pl/edu/pb/filmoteka/MovieAdapter.java,4\0\406e413b84445439cc40f50cfaac39559f922bfd
 d
 4app/src/main/java/pl/edu/pb/filmoteka/MovieList.java,0\3\03f408e38559681b0ec34910c7457b9a207de838
+c
+3app/src/main/java/pl/edu/pb/filmoteka/Category.java,b\6\b664aca7f381c67a6e9cbc92c66db9c081cf42ac
+j
+:app/src/main/java/pl/edu/pb/filmoteka/CategoryAdapter.java,f\6\f6caaf541474609ff1dc289eae2774275406361d
+k
+;app/src/main/java/pl/edu/pb/filmoteka/CategoryFragment.java,0\3\033442407f1907021967bbf6849734ae87a432a5
+`
+0app/src/main/java/pl/edu/pb/filmoteka/Video.java,4\e\4e38c3d86b8adeb24abad938dc5cf179e4048df7
+f
+6app/src/main/java/pl/edu/pb/filmoteka/VideoResult.java,5\4\54a9af288659a90c4d1680a9677b901f5bff659f

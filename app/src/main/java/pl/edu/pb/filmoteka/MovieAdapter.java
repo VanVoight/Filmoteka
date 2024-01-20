@@ -1,6 +1,9 @@
 package pl.edu.pb.filmoteka;
+import static pl.edu.pb.filmoteka.MovieList.getMovieVideos;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -9,6 +12,7 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -66,6 +70,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 		private int mediumVoteColor;
 		private int lowVoteColor;
 		private String overview;
+		private String key;
 
 		public MovieViewHolder(@NonNull View itemView) {
 			super(itemView);
@@ -95,7 +100,21 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 			releaseDateTextView.setText(movie.getReleaseDate());
 			overview = movie.getOverview();
 			voteAverageTextView.setText(String.valueOf(movie.getVoteAverage()));
+			getMovieVideos("eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NmI1OTA2OTU4ZDY0YjRmOWM1MjMzMzQxNjM3M2Y0YiIsInN1YiI6IjY1OTVhYTFjNTkwN2RlMDE2NzYzYmYwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IlVmj8Oxv5RunQqXK55LVmJerMote8EMPNsO6jcEdRA", movie.getId(), new MovieList.OnVideosFetchedListener() {
+				@Override
+				public void onVideosFetched(List<Video> videos) {
+					if (videos != null && !videos.isEmpty()) {
+						for (Video video : videos) {
 
+							if ("Trailer".equals(video.getType()) && video.isOfficial()) {
+
+								key = video.getKey();
+								break;
+							}
+						}
+					}
+				}
+			});
 			int circleStrokeColor = getCircleStrokeColorBasedOnVoteAverage(movie.getVoteAverage());
 			circle.getBackground().setColorFilter(circleStrokeColor, PorterDuff.Mode.SRC_ATOP);
 
@@ -164,19 +183,43 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 		}
 
 		private void showAdditionalInfoDialog() {
-
 			AlertDialog.Builder builder = new AlertDialog.Builder(itemView.getContext());
 			builder.setTitle("Opis:");
-			builder.setMessage(overview);
+			builder.setMessage(overview + "\nZwiastun:\n" + "https://www.youtube.com/watch?v=" + key);
+
+
 			builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-
 					dialog.dismiss();
 				}
 			});
+
+
+			builder.setNeutralButton("Otwórz w YouTube", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					openYouTubeVideo();
+				}
+			});
+
 			builder.show();
 		}
+
+		private void openYouTubeVideo() {
+
+			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=" + key));
+
+
+			if (intent.resolveActivity(itemView.getContext().getPackageManager()) != null) {
+				itemView.getContext().startActivity(intent);
+			} else {
+
+				Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=" + key));
+				itemView.getContext().startActivity(browserIntent);
+			}
+		}
+
 
 	}
 }

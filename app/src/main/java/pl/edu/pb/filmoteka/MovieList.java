@@ -241,5 +241,63 @@ public class MovieList {
 			}
 		}
 	}
+	public static void getMovieVideos(String accessToken, int movieId, OnVideosFetchedListener listener) {
+		new FetchMovieVideosTask(listener).execute(accessToken, String.valueOf(movieId));
+	}
+
+	private static class FetchMovieVideosTask extends AsyncTask<String, Void, List<Video>> {
+		private final OnVideosFetchedListener listener;
+
+		FetchMovieVideosTask(OnVideosFetchedListener listener) {
+			this.listener = listener;
+		}
+
+		@Override
+		protected List<Video> doInBackground(String... tokens) {
+			String accessToken = tokens[0];
+			int movieId = Integer.parseInt(tokens[1]);
+			String apiUrl = "https://api.themoviedb.org/3/movie/" + movieId + "/videos?language=pl";
+
+			OkHttpClient client = new OkHttpClient.Builder()
+					.addNetworkInterceptor(new StethoInterceptor())
+					.build();
+
+			Request request = new Request.Builder()
+					.url(apiUrl)
+					.header("Authorization", "Bearer " + accessToken)
+					.header("accept", "application/json")
+					.build();
+
+			try {
+				Response response = client.newCall(request).execute();
+				if (response.isSuccessful()) {
+					Gson gson = new Gson();
+					TypeToken<VideoResult> token = new TypeToken<VideoResult>() {};
+					VideoResult videoResponse = gson.fromJson(response.body().string(), token.getType());
+					return videoResponse.getResults();
+				} else {
+					// Handle error
+					Log.e("MovieList", "Error fetching movie videos");
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(List<Video> videos) {
+			super.onPostExecute(videos);
+
+			if (videos != null) {
+				listener.onVideosFetched(videos);
+			}
+		}
+	}
+
+	public interface OnVideosFetchedListener {
+		void onVideosFetched(List<Video> videos);
+	}
 
 }
