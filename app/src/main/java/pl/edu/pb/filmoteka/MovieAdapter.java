@@ -62,6 +62,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 	public static class MovieViewHolder extends RecyclerView.ViewHolder {
 		private final TextView titleTextView;
 		private ImageView moviePosterImageView;
+		private ImageView topRightIconImageView;
 		private View circle;
 		private List<Movie> movieList;
 		private TextView releaseDateTextView;
@@ -86,7 +87,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 					return true;
 				}
 			});
-			ImageView topRightIconImageView = itemView.findViewById(R.id.topRightIconImageView);
+			topRightIconImageView = itemView.findViewById(R.id.topRightIconImageView);
 			topRightIconImageView.setOnTouchListener(new View.OnTouchListener() {
 				@Override
 				public boolean onTouch(View v, MotionEvent event) {
@@ -206,8 +207,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 		private void showAdditionalInfoDialog() {
 			Context context = itemView.getContext();
 			AlertDialog.Builder builder = new AlertDialog.Builder(itemView.getContext());
-			builder.setTitle("Opis:");
-			String message = overview + "\n" + context.getString(R.string.trailer_title) + "\nhttps://www.youtube.com/watch?v=" + key;
+			builder.setTitle(context.getString(R.string.description_title));
+			String message = overview ;
 			builder.setMessage(message);
 
 

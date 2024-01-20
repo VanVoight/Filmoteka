@@ -39,21 +39,21 @@ public class CategoryFragment extends Fragment {
 
     private List<Category> generateCategories() {
         List<Category> categories = new ArrayList<>();
-        categories.add(new Category("Animowane"));
-        categories.add(new Category("Dramat"));
-        categories.add(new Category("Thriller"));
-        categories.add(new Category("Filmy historyczne"));
-        categories.add(new Category("Horrory"));
-        categories.add(new Category("Filmy romantyczne"));
-        categories.add(new Category("Filmy komediowe"));
-        categories.add(new Category("Filmy muzyczne"));
-        categories.add(new Category("Filmy science fiction"));
-        categories.add(new Category("Filmy fantasy"));
-        categories.add(new Category("Filmy akcji"));
-        categories.add(new Category("Filmy przygodowe"));
-        categories.add(new Category("Westerny"));
-        categories.add(new Category("Filmy kryminalne"));
-        categories.add(new Category("Inne"));
+        categories.add(new Category(getString(R.string.animated_ctg)));
+        categories.add(new Category(getString(R.string.drama_ctg)));
+        categories.add(new Category(getString(R.string.thriller_ctg)));
+        categories.add(new Category(getString(R.string.history_ctg)));
+        categories.add(new Category(getString(R.string.horror_ctg)));
+        categories.add(new Category(getString(R.string.romance_ctg)));
+        categories.add(new Category(getString(R.string.comedy_ctg)));
+        categories.add(new Category(getString(R.string.musical_ctg)));
+        categories.add(new Category(getString(R.string.sci_fi_ctg)));
+        categories.add(new Category(getString(R.string.fantasy_ctg)));
+        categories.add(new Category(getString(R.string.action_ctg)));
+        categories.add(new Category(getString(R.string.adventure_ctg)));
+        categories.add(new Category(getString(R.string.western_ctg)));
+        categories.add(new Category(getString(R.string.criminal_ctg)));
+        categories.add(new Category(getString(R.string.other_ctg)));
         return categories;
     }
 }

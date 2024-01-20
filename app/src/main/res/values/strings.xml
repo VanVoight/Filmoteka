@@ -24,6 +24,22 @@
     <string name="popular_list">Popularne Teraz</string>
     <string name="description_title">Opis:</string>
     <string name="trailer_title">Zwiastun:</string>
-    <string name="trailer_yt">Otwórz w YouTube</string>
+    <string name="trailer_yt">Obejrzyj zwiastun na YouTube</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="animated_ctg">Animowane</string>
+    <string name="drama_ctg">Dramat</string>
+    <string name="thriller_ctg">Thriller</string>
+    <string name="history_ctg">Filmy historyczne</string>
+    <string name="horror_ctg">Horrory</string>
+    <string name="romance_ctg">Filmy romantyczne</string>
+    <string name="comedy_ctg">Filmy komediowe</string>
+    <string name="musical_ctg">Filmy muzyczne</string>
+    <string name="sci_fi_ctg">Filmy science fiction</string>
+    <string name="fantasy_ctg">Filmy fantasy</string>
+    <string name="action_ctg">Filmy akcji</string>
+    <string name="adventure_ctg">Filmy przygodowe</string>
+    <string name="western_ctg">Westerny</string>
+    <string name="criminal_ctg">Filmy kryminalne</string>
+    <string name="other_ctg">Inne</string>
+
 </resources>
