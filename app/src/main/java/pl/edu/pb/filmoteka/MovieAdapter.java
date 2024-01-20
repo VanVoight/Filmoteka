@@ -2,6 +2,7 @@ package pl.edu.pb.filmoteka;
 import static pl.edu.pb.filmoteka.MovieList.getMovieVideos;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -183,9 +184,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 		}
 
 		private void showAdditionalInfoDialog() {
+			Context context = itemView.getContext();
 			AlertDialog.Builder builder = new AlertDialog.Builder(itemView.getContext());
 			builder.setTitle("Opis:");
-			builder.setMessage(overview + "\nZwiastun:\n" + "https://www.youtube.com/watch?v=" + key);
+			String message = overview + "\n" + context.getString(R.string.trailer_title) + "\nhttps://www.youtube.com/watch?v=" + key;
+			builder.setMessage(message);
 
 
 			builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -196,7 +199,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 			});
 
 
-			builder.setNeutralButton("Otwórz w YouTube", new DialogInterface.OnClickListener() {
+			builder.setNeutralButton(context.getString(R.string.trailer_yt), new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 					openYouTubeVideo();
