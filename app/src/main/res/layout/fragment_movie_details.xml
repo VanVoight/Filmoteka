@@ -19,6 +19,17 @@
         app:layout_constraintWidth_percent="0.5"
         app:srcCompat="@drawable/placeholder_poster" />
 
+    <ImageView
+        android:id="@+id/topRightIconImageView"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toEndOf="@+id/moviePosterImageView"
+        app:layout_constraintHorizontal_bias="0.263"
+        app:layout_constraintStart_toStartOf="@+id/moviePosterImageView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_dots_menu" />
+
     <FrameLayout
         android:id="@+id/FrameLayout"
         android:layout_width="wrap_content"

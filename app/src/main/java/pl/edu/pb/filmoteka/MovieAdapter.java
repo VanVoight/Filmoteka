@@ -16,6 +16,7 @@ import android.graphics.RectF;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -85,6 +86,24 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 					return true;
 				}
 			});
+			ImageView topRightIconImageView = itemView.findViewById(R.id.topRightIconImageView);
+			topRightIconImageView.setOnTouchListener(new View.OnTouchListener() {
+				@Override
+				public boolean onTouch(View v, MotionEvent event) {
+					switch (event.getAction()) {
+						case MotionEvent.ACTION_DOWN:
+							// Obsługa naciśnięcia - zmiana drawable
+							topRightIconImageView.setImageResource(R.drawable.img_dots_menu_down);
+							return true;
+						case MotionEvent.ACTION_UP:
+							// Obsługa zwolnienia - przywrócenie pierwotnego drawable
+							topRightIconImageView.setImageResource(R.drawable.img_dots_menu);
+							return true;
+						default:
+							return false;
+					}
+				}
+			});
 			circle = itemView.findViewById(R.id.circleView);
 			releaseDateTextView = itemView.findViewById(R.id.releaseDateTextView);
 
@@ -101,6 +120,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 			releaseDateTextView.setText(movie.getReleaseDate());
 			overview = movie.getOverview();
 			voteAverageTextView.setText(String.valueOf(movie.getVoteAverage()));
+
 			getMovieVideos("eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NmI1OTA2OTU4ZDY0YjRmOWM1MjMzMzQxNjM3M2Y0YiIsInN1YiI6IjY1OTVhYTFjNTkwN2RlMDE2NzYzYmYwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IlVmj8Oxv5RunQqXK55LVmJerMote8EMPNsO6jcEdRA", movie.getId(), new MovieList.OnVideosFetchedListener() {
 				@Override
 				public void onVideosFetched(List<Video> videos) {
