@@ -30,6 +30,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
@@ -120,7 +121,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 			titleTextView.setText(movie.getTitle());
 			releaseDateTextView.setText(movie.getReleaseDate());
 			overview = movie.getOverview();
-			voteAverageTextView.setText(String.valueOf(movie.getVoteAverage()));
+			double voteAverage = movie.getVoteAverage();
+			DecimalFormat decimalFormat = new DecimalFormat("#.#");
+			String formattedVoteAverage = decimalFormat.format(voteAverage);
+			voteAverageTextView.setText(formattedVoteAverage);
 
 			getMovieVideos("eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NmI1OTA2OTU4ZDY0YjRmOWM1MjMzMzQxNjM3M2Y0YiIsInN1YiI6IjY1OTVhYTFjNTkwN2RlMDE2NzYzYmYwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IlVmj8Oxv5RunQqXK55LVmJerMote8EMPNsO6jcEdRA", movie.getId(), new MovieList.OnVideosFetchedListener() {
 				@Override

@@ -42,7 +42,7 @@ public class MovieList {
 		@Override
 		protected List<Movie> doInBackground(String... tokens) {
 			String accessToken = tokens[0];
-			String apiUrl = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language="+language+"&page=1&region="+region+"&sort_by=popularity.desc";
+			String apiUrl = "https://api.themoviedb.org/3/movie/popular?include_adult=false&include_video=false&language="+language+"&page=1&region="+region+"&sort_by=popularity.desc";
 
 			OkHttpClient client = new OkHttpClient.Builder()
 					.addNetworkInterceptor(new StethoInterceptor())
@@ -95,7 +95,7 @@ public class MovieList {
 		@Override
 		protected List<Movie> doInBackground(String... tokens) {
 			String accessToken = tokens[0];
-			String apiUrl = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language="+language+"&page=1&region="+region+"&sort_by=vote_average.desc&without_genres=99,10755&vote_count.gte=200";
+			String apiUrl = "https://api.themoviedb.org/3/movie/top_rated?include_adult=false&include_video=false&language="+language+"&page=1&region="+region+"&sort_by=vote_average.desc&without_genres=99,10755&vote_count.gte=200";
 
 			OkHttpClient client = new OkHttpClient.Builder()
 					.addNetworkInterceptor(new StethoInterceptor())
@@ -134,25 +134,23 @@ public class MovieList {
 			}
 		}
 	}
-	public static void getReleasedMovies(String accessToken, String minDate, String maxDate, OnMoviesFetchedListener listener) {
-		new FetchReleasedMovieListTask(listener, minDate, maxDate).execute(accessToken);
+	public static void getReleasedMovies(String accessToken, OnMoviesFetchedListener listener) {
+		new FetchReleasedMovieListTask(listener).execute(accessToken);
 	}
 
 	private static class FetchReleasedMovieListTask extends AsyncTask<String, Void, List<Movie>> {
 		private final OnMoviesFetchedListener listener;
-		private final String minDate;
-		private final String maxDate;
 
-		FetchReleasedMovieListTask(OnMoviesFetchedListener listener, String minDate, String maxDate) {
+
+		FetchReleasedMovieListTask(OnMoviesFetchedListener listener) {
 			this.listener = listener;
-			this.minDate = minDate;
-			this.maxDate = maxDate;
+
 		}
 
 		@Override
 		protected List<Movie> doInBackground(String... tokens) {
 			String accessToken = tokens[0];
-			String apiUrl = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language="+language+"&page=1&region="+region+"&sort_by=popularity.desc&with_release_type=2|3&release_date.gte=" + minDate + "&release_date.lte=" + maxDate;
+			String apiUrl = "https://api.themoviedb.org/3/movie/now_playing?include_adult=false&include_video=false&language="+language+"&page=1&region="+region+"&sort_by=popularity.desc";
 
 			OkHttpClient client = new OkHttpClient.Builder()
 					.addNetworkInterceptor(new StethoInterceptor())
@@ -191,26 +189,24 @@ public class MovieList {
 			}
 		}
 	}
-	public static void getCustomReleaseMovies(String accessToken, String minDate, String maxDate, OnMoviesFetchedListener listener) {
-		new FetchCustomReleaseMovieListTask(listener, minDate, maxDate).execute(accessToken);
+	public static void getCustomReleaseMovies(String accessToken, OnMoviesFetchedListener listener) {
+		new FetchCustomReleaseMovieListTask(listener).execute(accessToken);
 	}
 
 	private static class FetchCustomReleaseMovieListTask extends AsyncTask<String, Void, List<Movie>> {
 		private final OnMoviesFetchedListener listener;
-		private final String minDate;
-		private final String maxDate;
 
-		FetchCustomReleaseMovieListTask(OnMoviesFetchedListener listener, String minDate, String maxDate) {
+
+		FetchCustomReleaseMovieListTask(OnMoviesFetchedListener listener) {
 			this.listener = listener;
-			this.minDate = minDate;
-			this.maxDate = maxDate;
+
 		}
 
 		@Override
 		protected List<Movie> doInBackground(String... tokens) {
 			String accessToken = tokens[0];
 
-			String apiUrl = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language="+language+"&page=1&region="+region+"&sort_by=popularity.desc&with_release_type=2|3&release_date.gte=" + minDate + "&release_date.lte=" + maxDate;
+			String apiUrl = "https://api.themoviedb.org/3/movie/upcoming?include_adult=false&include_video=false&language="+language+"&page=1&region="+region+"&sort_by=popularity.desc";
 
 			OkHttpClient client = new OkHttpClient.Builder()
 					.addNetworkInterceptor(new StethoInterceptor())
@@ -264,7 +260,7 @@ public class MovieList {
 		protected List<Video> doInBackground(String... tokens) {
 			String accessToken = tokens[0];
 			int movieId = Integer.parseInt(tokens[1]);
-			String apiUrl = "https://api.themoviedb.org/3/movie/" + movieId + "/videos?language=pl";
+			String apiUrl = "https://api.themoviedb.org/3/movie/" + movieId + "/videos?language="+language;
 
 			OkHttpClient client = new OkHttpClient.Builder()
 					.addNetworkInterceptor(new StethoInterceptor())

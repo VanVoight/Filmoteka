@@ -1,25 +1,25 @@
 
 J
-java:S1604R"(Make this anonymous inner class a lambda(ó›¾ûÿÿÿÿ8ºÍ‡¼Ò1
+java:S1604S"(Make this anonymous inner class a lambda(ó›¾ûÿÿÿÿ8ºÍ‡¼Ò1
 E
-java:S1604["(Make this anonymous inner class a lambda(‰À„Í8»Í‡¼Ò1
-E
-java:S1604}"(Make this anonymous inner class a lambda(ÇÏïğ8»Í‡¼Ò1
+java:S1604\"(Make this anonymous inner class a lambda(‰À„Í8»Í‡¼Ò1
 F
-java:S1604×"(Make this anonymous inner class a lambda(Õä8»Í‡¼Ò1
+java:S1604"(Make this anonymous inner class a lambda(ÇÏïğ8»Í‡¼Ò1
+F
+java:S1604Û"(Make this anonymous inner class a lambda(Õä8»Í‡¼Ò1
 E
-java:S1604ß"(Make this anonymous inner class a lambda(Ì©šs8»Í‡¼Ò1
+java:S1604ã"(Make this anonymous inner class a lambda(Ì©šs8»Í‡¼Ò1
 ˆ
-java:S1488¨"eImmediately return this expression instead of assigning it to the temporary variable "roundedBitmap".(¥À½¯ùÿÿÿÿ8»Í‡¼Ò1
+java:S1488¬"eImmediately return this expression instead of assigning it to the temporary variable "roundedBitmap".(¥À½¯ùÿÿÿÿ8»Í‡¼Ò1
 T
-java:S1874"6Remove this use of "setColorFilter"; it is deprecated.(®éÜ¿8üÍ‡¼Ò1
+java:S1874‘"6Remove this use of "setColorFilter"; it is deprecated.(®éÜ¿8üÍ‡¼Ò1
 M
-java:S1874"/Remove this use of "execute"; it is deprecated.(ëñ€¥8üÍ‡¼Ò1
+java:S1874“"/Remove this use of "execute"; it is deprecated.(ëñ€¥8üÍ‡¼Ò1
 T
-java:S1874š"1Remove this use of "AsyncTask"; it is deprecated.(¢´¬“ÿÿÿÿÿ8şÍ‡¼Ò1
+java:S1874"1Remove this use of "AsyncTask"; it is deprecated.(¢´¬“ÿÿÿÿÿ8şÍ‡¼Ò1
 m
-java:S1874²"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÿà—óùÿÿÿÿ8Î‡¼Ò1
+java:S1874¶"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÿà—óùÿÿÿÿ8Î‡¼Ò1
 S
-java:S1874³"5Remove this use of "onPostExecute"; it is deprecated.(¿åß¯8Î‡¼Ò1
+java:S1874·"5Remove this use of "onPostExecute"; it is deprecated.(¿åß¯8Î‡¼Ò1
 J
-java:S1068C"-Remove this unused "movieList" private field.(­óÇ£8’Î‡¼Ò1
+java:S1068D"-Remove this unused "movieList" private field.(­óÇ£8’Î‡¼Ò1

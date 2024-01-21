@@ -25,8 +25,7 @@ public class User {
     public String password;
     @NonNull
     public long userRoleId;
-    public List<Movie> favouriteMovies;
-    public List<Movie> watchedMovies;
+
 
     public long getUserRoleId() {
         return userRoleId;
