@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
 				if (enteredUsername.isEmpty() || enteredPassword.isEmpty()) {
 					Toast.makeText(LoginActivity.this, getString(R.string.toast_fields), Toast.LENGTH_SHORT).show();
 				} else {
-					// Utwórz instancję AsyncTask i uruchom operacje bazodanowe w osobnym wątku
+
 					new DatabaseAsyncTask().execute(enteredUsername, enteredPassword);
 				}
 			}

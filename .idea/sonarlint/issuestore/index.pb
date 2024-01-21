@@ -73,3 +73,5 @@ k
 0app/src/main/java/pl/edu/pb/filmoteka/Video.java,4\e\4e38c3d86b8adeb24abad938dc5cf179e4048df7
 f
 6app/src/main/java/pl/edu/pb/filmoteka/VideoResult.java,5\4\54a9af288659a90c4d1680a9677b901f5bff659f
+y
+Iapp/src/main/java/pl/edu/pb/filmoteka/YourFusedLocationProviderClass.java,0\3\039b26228408846a774345d5065b80e1bd0420e0

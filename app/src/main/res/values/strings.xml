@@ -44,5 +44,8 @@
     <string name="poland">pl</string>
     <string name="en_us">en-US</string>
     <string name="US">US</string>
+    <string name="add_fav">Dodaj do ulubionych</string>
+    <string name="add_seen">Dodaj do obejrzanych</string>
+    <string name="add_to_watch">Dodaj do Do Obejrzenia</string>
 
 </resources>

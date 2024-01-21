@@ -1,4 +1,5 @@
 package pl.edu.pb.filmoteka;
+
 import static pl.edu.pb.filmoteka.MovieList.getMovieVideos;
 
 import android.app.AlertDialog;
@@ -16,10 +17,13 @@ import android.graphics.RectF;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -61,7 +65,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 	}
 
 	public static class MovieViewHolder extends RecyclerView.ViewHolder {
-		private final TextView titleTextView;
+		private TextView titleTextView;
 		private ImageView moviePosterImageView;
 		private ImageView topRightIconImageView;
 		private View circle;
@@ -75,7 +79,34 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 		private int lowVoteColor;
 		private String overview;
 		private String key;
+		private void showPopupMenu(View view, Context context) {
+			PopupMenu popupMenu = new PopupMenu(context, view);
+			MenuInflater inflater = popupMenu.getMenuInflater();
+			inflater.inflate(R.menu.popup_menu, popupMenu.getMenu());
 
+			// Dodaj obsługę kliknięcia w menu
+			popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+				@Override
+				public boolean onMenuItemClick(MenuItem item) {
+					if (item.getItemId() == R.id.menu_favorite) {
+						// Obsługa dodania do ulubionych
+						// Dodaj kod obsługi dla tej opcji
+						return true;
+					} else if (item.getItemId() == R.id.menu_watched) {
+						// Obsługa dodania do obejrzanych
+						// Dodaj kod obsługi dla tej opcji
+						return true;
+					} else if (item.getItemId() == R.id.menu_rate) {
+						// Obsługa oceny filmu
+						// Dodaj kod obsługi dla tej opcji
+						return true;
+					} else {
+						return false;
+					}
+				}
+			});
+			popupMenu.show();
+		}
 		public MovieViewHolder(@NonNull View itemView) {
 			super(itemView);
 			titleTextView = itemView.findViewById(R.id.titleTextView);
@@ -89,23 +120,25 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 				}
 			});
 			topRightIconImageView = itemView.findViewById(R.id.topRightIconImageView);
+
 			topRightIconImageView.setOnTouchListener(new View.OnTouchListener() {
 				@Override
 				public boolean onTouch(View v, MotionEvent event) {
 					switch (event.getAction()) {
 						case MotionEvent.ACTION_DOWN:
-							// Obsługa naciśnięcia - zmiana drawable
 							topRightIconImageView.setImageResource(R.drawable.img_dots_menu_down);
+							showPopupMenu(v, itemView.getContext());
 							return true;
 						case MotionEvent.ACTION_UP:
-							// Obsługa zwolnienia - przywrócenie pierwotnego drawable
 							topRightIconImageView.setImageResource(R.drawable.img_dots_menu);
+
 							return true;
 						default:
 							return false;
 					}
 				}
 			});
+
 			circle = itemView.findViewById(R.id.circleView);
 			releaseDateTextView = itemView.findViewById(R.id.releaseDateTextView);
 
@@ -122,7 +155,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 			releaseDateTextView.setText(movie.getReleaseDate());
 			overview = movie.getOverview();
 			double voteAverage = movie.getVoteAverage();
-			DecimalFormat decimalFormat = new DecimalFormat("#.#");
+			DecimalFormat decimalFormat = new DecimalFormat("#.0");
 			String formattedVoteAverage = decimalFormat.format(voteAverage);
 			voteAverageTextView.setText(formattedVoteAverage);
 
