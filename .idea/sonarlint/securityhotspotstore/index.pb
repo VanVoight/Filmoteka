@@ -77,3 +77,15 @@ y
 Iapp/src/main/java/pl/edu/pb/filmoteka/YourFusedLocationProviderClass.java,0\3\039b26228408846a774345d5065b80e1bd0420e0
 t
 Dapp/src/main/java/pl/edu/pb/filmoteka/MovieListCategoryFragment.java,a\c\acef284178e19011a322d4f8460a07f503d595cd
+c
+3app/src/main/java/pl/edu/pb/filmoteka/DB/Movie.java,f\9\f91a3ef7be9475b0e3ca2349592a1df9b786ffb7
+f
+6app/src/main/java/pl/edu/pb/filmoteka/DB/MovieDao.java,7\7\777233bab8ac89f30920475e6feb4e84bd06fdcb
+m
+=app/src/main/java/pl/edu/pb/filmoteka/DB/FavouriteMovies.java,8\8\880aee0de5548dbdeda956828a920b5a4fe335a2
+p
+@app/src/main/java/pl/edu/pb/filmoteka/DB/FavouriteMoviesDao.java,4\d\4dba8b0f46c0d2532f957056ebe740620f212b79
+l
+<app/src/main/java/pl/edu/pb/filmoteka/DB/FavouriteFilms.java,9\1\918df3c903cae5e7a1affe87b5028575052c0ed4
+j
+:app/src/main/java/pl/edu/pb/filmoteka/SharedViewModel.java,e\1\e10f6e49fa3baddf89e8352073cb95b15d98e073

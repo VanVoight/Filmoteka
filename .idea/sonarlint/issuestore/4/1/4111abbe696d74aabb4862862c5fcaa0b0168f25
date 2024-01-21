@@ -1,5 +1,6 @@
 
 J
-java:S1604"(Make this anonymous inner class a lambda(õßØµüÿÿÿÿ8ˆœ©êÒ1
+java:S1604("(Make this anonymous inner class a lambda(õßØµüÿÿÿÿ8®ÏôìÒ1
 m
-java:S1874"KRemove this use of "setOnNavigationItemSelectedListener"; it is deprecated.(õßØµüÿÿÿÿ8œ©êÒ1
+java:S1874("KRemove this use of "setOnNavigationItemSelectedListener"; it is deprecated.(õßØµüÿÿÿÿ8ÏÏôìÒ1
+C	java:S131a""Add a default case to this switch.(øãş•ÿÿÿÿÿ8ÜÏôìÒ1

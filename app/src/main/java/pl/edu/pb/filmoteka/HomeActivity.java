@@ -10,17 +10,30 @@ import androidx.fragment.app.FragmentTransaction;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity implements CategoryFragment.OnCategoryClickListener {
+    private static final String KEY_CURRENT_INDEX = "currentIndex";
 
+    private SharedViewModel sharedViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        addMovieListFragment();
+        sharedViewModel = new ViewModelProvider(this).get(SharedViewModel.class);
+
+        if (savedInstanceState == null) {
+
+            addMovieListFragment();
+        } else {
+
+            int currentIndex = savedInstanceState.getInt(KEY_CURRENT_INDEX);
+            restoreFragment(currentIndex);
+        }
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigation_bar_item_icon_view);
         bottomNavigationView.setSelectedItemId(R.id.menu_home);
 
@@ -41,6 +54,12 @@ public class HomeActivity extends AppCompatActivity implements CategoryFragment.
         });
     }
     @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putInt(KEY_CURRENT_INDEX, sharedViewModel.getCurrentIndex());
+    }
+    @Override
     public void onCategoryClick(Category category) {
         addCategoryMovies(category.getId(),category.getName());
     }
@@ -50,6 +69,7 @@ public class HomeActivity extends AppCompatActivity implements CategoryFragment.
         MovieListFragment movieListFragment = new MovieListFragment();
         fragmentTransaction.replace(R.id.fragment_container, movieListFragment);
         fragmentTransaction.commit();
+        sharedViewModel.setCurrentIndex(0);
     }
     private void addCategoryFragment() {
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -57,6 +77,7 @@ public class HomeActivity extends AppCompatActivity implements CategoryFragment.
         CategoryFragment categoryFragment = new CategoryFragment();
         fragmentTransaction.replace(R.id.fragment_container, categoryFragment);
         fragmentTransaction.commit();
+        sharedViewModel.setCurrentIndex(1);
     }
     private void addCategoryMovies(int categoryId, String name) {
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -68,5 +89,24 @@ public class HomeActivity extends AppCompatActivity implements CategoryFragment.
         movieListFragment.setArguments(bundle);
         fragmentTransaction.replace(R.id.fragment_container, movieListFragment);
         fragmentTransaction.commit();
+        sharedViewModel.setCurrentIndex(2);
+        sharedViewModel.setCurrentCategoryId(categoryId);
+        sharedViewModel.setCurrentCategoryName(name);
+    }
+    private void restoreFragment(int index) {
+        switch (index) {
+            case 0:
+                addMovieListFragment();
+                break;
+            case 1:
+                addCategoryFragment();
+                break;
+            case 2:
+                int categoryId = sharedViewModel.getCurrentCategoryId();
+                String categoryName = sharedViewModel.getCurrentCategoryName();
+                addCategoryMovies(categoryId, categoryName);
+                break;
+
+        }
     }
 }

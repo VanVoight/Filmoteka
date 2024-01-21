@@ -37,7 +37,6 @@ public class MovieListCategoryFragment extends Fragment {
 			genreName.setText(categoryName);
 		}
 		recyclerView = view.findViewById(R.id.recyclerView);
-
 		recyclerView.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
 		movieAdapter = new MovieAdapter();
 		recyclerView.setAdapter(movieAdapter);

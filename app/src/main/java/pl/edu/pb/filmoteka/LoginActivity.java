@@ -20,7 +20,10 @@ import pl.edu.pb.filmoteka.DB.UserDao;
 public class LoginActivity extends AppCompatActivity {
 	EditText username, password;
 	Button signin, signup;
-
+	private static final String KEY_USERNAME = "username";
+	private static final String KEY_PASSWORD = "password";
+	private String savedUsername;
+	private String savedPassword;
 	private static final String TAG = "LoginActivity";
 
 	@Override
@@ -33,11 +36,20 @@ public class LoginActivity extends AppCompatActivity {
 		signin = findViewById(R.id.button_signin);
 		signup = findViewById(R.id.button_signup);
 
+		if (savedInstanceState != null) {
+			savedUsername = savedInstanceState.getString(KEY_USERNAME);
+			savedPassword = savedInstanceState.getString(KEY_PASSWORD);
+			username.setText(savedUsername);
+			password.setText(savedPassword);
+		}
 		signin.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				String enteredUsername = username.getText().toString();
 				String enteredPassword = password.getText().toString();
+
+				savedUsername = enteredUsername;
+				savedPassword = enteredPassword;
 
 				Log.d(TAG, "onClick: Username: " + enteredUsername + ", Password: " + enteredPassword);
 
@@ -58,7 +70,12 @@ public class LoginActivity extends AppCompatActivity {
 			}
 		});
 	}
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
 
+		outState.putString(KEY_USERNAME, savedUsername);
+		outState.putString(KEY_PASSWORD, savedPassword);
+	}
 	private class DatabaseAsyncTask extends AsyncTask<String, Void, User> {
 		@Override
 		protected User doInBackground(String... params) {
