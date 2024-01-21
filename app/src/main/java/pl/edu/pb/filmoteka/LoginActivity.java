@@ -83,7 +83,8 @@ public class LoginActivity extends AppCompatActivity {
 			String password = params[1];
 
 			// Operacje bazodanowe
-			AppDatabase appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "my-database").build();
+			AppDatabase appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "my-database")
+					.build();
 			UserDao userDao = appDatabase.userDao();
 			return userDao.getUserByUsernameAndPassword(username, password);
 		}
