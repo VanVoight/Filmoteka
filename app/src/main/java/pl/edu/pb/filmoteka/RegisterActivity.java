@@ -16,6 +16,19 @@ import pl.edu.pb.filmoteka.DB.User;
 import pl.edu.pb.filmoteka.DB.AppDatabase;
 import pl.edu.pb.filmoteka.DB.UserDao;
 public class RegisterActivity extends AppCompatActivity {
+	private static final String KEY_USERNAME = "username";
+	private static final String KEY_PASSWORD = "password";
+	private static final String KEY_REPASSWORD = "repassword";
+	private static final String KEY_NAME = "name";
+	private static final String KEY_SURNAME = "surname";
+	private static final String KEY_EMAIL = "email";
+
+	private String savedUsername;
+	private String savedPassword;
+	private String savedRepassword;
+	private String savedName;
+	private String savedSurname;
+	private String savedEmail;
 	EditText username, password, repassword,name,surname,email;
 	Button signup, signin;
 	private AppDatabase appDatabase;
@@ -35,6 +48,22 @@ public class RegisterActivity extends AppCompatActivity {
 		signup = findViewById(R.id.button_signup);
 		signin = findViewById(R.id.button_signin);
 
+		if (savedInstanceState != null) {
+
+			savedUsername = savedInstanceState.getString(KEY_USERNAME);
+			savedPassword = savedInstanceState.getString(KEY_PASSWORD);
+			savedRepassword = savedInstanceState.getString(KEY_REPASSWORD);
+			savedName = savedInstanceState.getString(KEY_NAME);
+			savedSurname = savedInstanceState.getString(KEY_SURNAME);
+			savedEmail = savedInstanceState.getString(KEY_EMAIL);
+
+			username.setText(savedUsername);
+			password.setText(savedPassword);
+			repassword.setText(savedRepassword);
+			name.setText(savedName);
+			surname.setText(savedSurname);
+			email.setText(savedEmail);
+		}
 		appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "my-database")
 				.build();
 		signup.setOnClickListener(new View.OnClickListener(){
@@ -77,7 +106,16 @@ public class RegisterActivity extends AppCompatActivity {
 			}
 		});
 	}
-
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		outState.putString(KEY_USERNAME, username.getText().toString());
+		outState.putString(KEY_PASSWORD, password.getText().toString());
+		outState.putString(KEY_REPASSWORD, repassword.getText().toString());
+		outState.putString(KEY_NAME, name.getText().toString());
+		outState.putString(KEY_SURNAME, surname.getText().toString());
+		outState.putString(KEY_EMAIL, email.getText().toString());
+	}
 	private class InsertUserAsyncTask extends AsyncTask<User, Void, Void> {
 		@Override
 		protected Void doInBackground(User... users) {
