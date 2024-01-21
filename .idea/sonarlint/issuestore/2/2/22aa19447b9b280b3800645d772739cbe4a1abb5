@@ -1,19 +1,32 @@
 
 j
-java:S1192X"MDefine a constant instead of duplicating this literal "MainActivity" 3 times.(Œ£ƒ8¼ÄÉ§Ï1
+java:S1192m"MDefine a constant instead of duplicating this literal "MainActivity" 3 times.(Œ£ƒ8¼ÄÉ§Ï1
 J
-java:S1604&"(Make this anonymous inner class a lambda(ğò‹¬şÿÿÿÿ8½ÄÉ§Ï1
+java:S1604:"(Make this anonymous inner class a lambda(ğò‹¬şÿÿÿÿ8½ÄÉ§Ï1
 E
-java:S1604."(Make this anonymous inner class a lambda(©º¬8½ÄÉ§Ï1
+java:S1604B"(Make this anonymous inner class a lambda(©º¬8½ÄÉ§Ï1
 F
-java:S1659"$Declare "signup" on a separate line.(ÖÃ‘íşÿÿÿÿ8…ÅÉ§Ï1
+java:S1659/"$Declare "signup" on a separate line.(ÖÃ‘íşÿÿÿÿ8…ÅÉ§Ï1
 |
-java:S1450"ZRemove the "appDatabase" field and declare it as a local variable in the relevant methods.(í¯Õ—şÿÿÿÿ8°£ÁÀÑ1
+java:S1450."ZRemove the "appDatabase" field and declare it as a local variable in the relevant methods.(í¯Õ—şÿÿÿÿ8°£ÁÀÑ1
 L
-java:S1874:"/Remove this use of "execute"; it is deprecated.(½õºâ8ÅÉ§Ï1
+java:S1874N"/Remove this use of "execute"; it is deprecated.(½õºâ8ÅÉ§Ï1
 N
-java:S1874>"1Remove this use of "AsyncTask"; it is deprecated.(Ç‰£¡8 ÅÉ§Ï1
+java:S1874S"1Remove this use of "AsyncTask"; it is deprecated.(Ç‰£¡8 ÅÉ§Ï1
 g
-java:S1874^"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(å„Ü8¶ÅÉ§Ï1
+java:S1874s"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(å„Ü8¶ÅÉ§Ï1
+m
+java:S1874"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(Ó»×¶şÿÿÿÿ8ÁœØÒ1
+u
+java:S3252œ"WUse static access with "androidx.core.content.ContextCompat" for "checkSelfPermission".(¥êêí8”ÁœØÒ1
+u
+java:S3252œ"WUse static access with "androidx.core.content.ContextCompat" for "checkSelfPermission".(¥êêí8”ÁœØÒ1
+U
+java:S1874¯"7Remove this use of "getFromLocation"; it is deprecated.(Î¼ï§8—ÁœØÒ1
+y
+java:S3923¿"[Remove this conditional structure or edit its code blocks so that they're not all the same.(¹ÙôÒ8›ÁœØÒ1
+F	java:S108¿")Either remove or fill this block of code.(¹ÙôÒ8›ÁœØÒ1
+F	java:S108À")Either remove or fill this block of code.(‡õñ€8œÁœØÒ1
+F	java:S108Á")Either remove or fill this block of code.(å¥‡8œÁœØÒ1
 Q
-java:S1068"/Remove this unused "appDatabase" private field.(í¯Õ—şÿÿÿÿ8ä£ÁÀÑ1
+java:S1068."/Remove this unused "appDatabase" private field.(í¯Õ—şÿÿÿÿ8ä£ÁÀÑ1

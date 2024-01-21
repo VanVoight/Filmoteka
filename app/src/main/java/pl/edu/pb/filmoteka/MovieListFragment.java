@@ -41,7 +41,7 @@ public class MovieListFragment extends Fragment {
 		movieAdapter = new MovieAdapter();
 		recyclerView.setAdapter(movieAdapter);
 
-
+		MovieList.setLanguageAndRegion(getContext());
 		MovieList.getPopularMovies("eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NmI1OTA2OTU4ZDY0YjRmOWM1MjMzMzQxNjM3M2Y0YiIsInN1YiI6IjY1OTVhYTFjNTkwN2RlMDE2NzYzYmYwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IlVmj8Oxv5RunQqXK55LVmJerMote8EMPNsO6jcEdRA", new MovieList.OnMoviesFetchedListener() {
 			@Override
 			public void onMoviesFetched(List<Movie> movies) {
@@ -54,6 +54,7 @@ public class MovieListFragment extends Fragment {
 		topRatedRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
 		topRatedMovieAdapter = new MovieAdapter();
 		topRatedRecyclerView.setAdapter(topRatedMovieAdapter);
+
 
 		MovieList.getTopRatedMovies("eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NmI1OTA2OTU4ZDY0YjRmOWM1MjMzMzQxNjM3M2Y0YiIsInN1YiI6IjY1OTVhYTFjNTkwN2RlMDE2NzYzYmYwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IlVmj8Oxv5RunQqXK55LVmJerMote8EMPNsO6jcEdRA", new MovieList.OnMoviesFetchedListener() {
 			@Override

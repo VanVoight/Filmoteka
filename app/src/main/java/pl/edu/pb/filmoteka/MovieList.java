@@ -1,5 +1,7 @@
 package pl.edu.pb.filmoteka;
 
+import android.content.Context;
+import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -15,7 +17,13 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class MovieList {
-
+	private static String language;
+	private static String region;
+	public static void setLanguageAndRegion(Context context) {
+		Resources resources = context.getResources();
+		language = resources.getString(R.string.poland);
+		region = resources.getString(R.string.poland);
+	}
 	public interface OnMoviesFetchedListener {
 		void onMoviesFetched(List<Movie> movies);
 	}
@@ -34,7 +42,7 @@ public class MovieList {
 		@Override
 		protected List<Movie> doInBackground(String... tokens) {
 			String accessToken = tokens[0];
-			String apiUrl = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=pl&page=1&sort_by=popularity.desc";
+			String apiUrl = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language="+language+"&page=1&region="+region+"&sort_by=popularity.desc";
 
 			OkHttpClient client = new OkHttpClient.Builder()
 					.addNetworkInterceptor(new StethoInterceptor())
@@ -87,7 +95,7 @@ public class MovieList {
 		@Override
 		protected List<Movie> doInBackground(String... tokens) {
 			String accessToken = tokens[0];
-			String apiUrl = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=pl&page=1&sort_by=vote_average.desc&without_genres=99,10755&vote_count.gte=200";
+			String apiUrl = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language="+language+"&page=1&region="+region+"&sort_by=vote_average.desc&without_genres=99,10755&vote_count.gte=200";
 
 			OkHttpClient client = new OkHttpClient.Builder()
 					.addNetworkInterceptor(new StethoInterceptor())
@@ -144,7 +152,7 @@ public class MovieList {
 		@Override
 		protected List<Movie> doInBackground(String... tokens) {
 			String accessToken = tokens[0];
-			String apiUrl = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=pl&page=1&sort_by=popularity.desc&with_release_type=2|3&release_date.gte=" + minDate + "&release_date.lte=" + maxDate;
+			String apiUrl = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language="+language+"&page=1&region="+region+"&sort_by=popularity.desc&with_release_type=2|3&release_date.gte=" + minDate + "&release_date.lte=" + maxDate;
 
 			OkHttpClient client = new OkHttpClient.Builder()
 					.addNetworkInterceptor(new StethoInterceptor())
@@ -202,7 +210,7 @@ public class MovieList {
 		protected List<Movie> doInBackground(String... tokens) {
 			String accessToken = tokens[0];
 
-			String apiUrl = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=pl&page=1&sort_by=popularity.desc&with_release_type=2|3&release_date.gte=" + minDate + "&release_date.lte=" + maxDate;
+			String apiUrl = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language="+language+"&page=1&region="+region+"&sort_by=popularity.desc&with_release_type=2|3&release_date.gte=" + minDate + "&release_date.lte=" + maxDate;
 
 			OkHttpClient client = new OkHttpClient.Builder()
 					.addNetworkInterceptor(new StethoInterceptor())
