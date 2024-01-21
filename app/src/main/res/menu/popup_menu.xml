@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/menu_favorite"
-        android:title="@string/add_fav" />
+        android:title="@string/add_fav"
+        android:icon="@drawable/img_fav" />
     <item
         android:id="@+id/menu_watched"
-        android:title="@string/add_seen" />
+        android:title="@string/add_seen"
+        android:icon="@drawable/ic_watched"/>
     <item
         android:id="@+id/menu_rate"
-        android:title="@string/add_to_watch"/>
+        android:title="@string/add_to_watch"
+        android:icon="@drawable/ic_list" />
 </menu>

@@ -24,7 +24,7 @@
     <string name="popular_list">Popularne Teraz</string>
     <string name="description_title">Opis:</string>
     <string name="trailer_title">Zwiastun:</string>
-    <string name="trailer_yt">Obejrzyj zwiastun na YouTube</string>
+    <string name="trailer_yt">Zobacz zwiastun na YT</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="animated_ctg">Animowane</string>
     <string name="drama_ctg">Dramat</string>
@@ -49,8 +49,8 @@
     <string name="poland">pl</string>
     <string name="en_us">en-US</string>
     <string name="US">US</string>
-    <string name="add_fav">Dodaj do ulubionych</string>
-    <string name="add_seen">Dodaj do obejrzanych</string>
-    <string name="add_to_watch">Dodaj do Do Obejrzenia</string>
+    <string name="add_fav">+Ulubione</string>
+    <string name="add_seen">+Obejrzane</string>
+    <string name="add_to_watch">+Moja lista</string>
 
 </resources>

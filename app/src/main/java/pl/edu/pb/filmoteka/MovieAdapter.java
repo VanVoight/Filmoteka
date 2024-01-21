@@ -16,6 +16,9 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -84,7 +87,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 			MenuInflater inflater = popupMenu.getMenuInflater();
 			inflater.inflate(R.menu.popup_menu, popupMenu.getMenu());
 
-			// Dodaj obsługę kliknięcia w menu
+
 			popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
 				@Override
 				public boolean onMenuItemClick(MenuItem item) {
@@ -243,10 +246,14 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
 		private void showAdditionalInfoDialog() {
 			Context context = itemView.getContext();
-			AlertDialog.Builder builder = new AlertDialog.Builder(itemView.getContext());
+			AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.CustomAlertDialog);
 			builder.setTitle(context.getString(R.string.description_title));
 			String message = overview ;
-			builder.setMessage(message);
+			ForegroundColorSpan colorSpan = new ForegroundColorSpan(ContextCompat.getColor(context, R.color.gold));
+			SpannableString spannableString = new SpannableString(message);
+			spannableString.setSpan(colorSpan, 0, message.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+			builder.setMessage(spannableString);
 
 
 			builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
