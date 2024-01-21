@@ -27,6 +27,7 @@ public class User {
     public long userRoleId;
 
 
+
     public long getUserRoleId() {
         return userRoleId;
     }

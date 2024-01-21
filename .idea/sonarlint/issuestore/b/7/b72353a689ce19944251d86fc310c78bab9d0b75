@@ -1,19 +1,23 @@
 
+m	java:S117L"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹¥œ™8ŽÃÝÒ1
+r	java:S117M"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŸòŽÂùÿÿÿÿ8ŽÃÝÒ1
 J
 java:S1604$"(Make this anonymous inner class a lambda(ðò‹¬þÿÿÿÿ8æöü—Ñ1
 E
-java:S16044"(Make this anonymous inner class a lambda(©º¬8çöü—Ñ1
+java:S16045"(Make this anonymous inner class a lambda(©º¬8çöü—Ñ1
+J
+java:S1604R"(Make this anonymous inner class a lambda(˜ã¯þÿÿÿÿ8ŽÃÝÒ1
 H
 java:S1659"&Declare "password" on a separate line.(ÅèÍ‹øÿÿÿÿ8­÷ü—Ñ1
 F
 java:S1659"$Declare "signup" on a separate line.(ÖÃ‘íþÿÿÿÿ8­÷ü—Ñ1
 Q
-java:S1874/"/Remove this use of "execute"; it is deprecated.(ÿú›¸úÿÿÿÿ8æ÷ü—Ñ1
+java:S18740"/Remove this use of "execute"; it is deprecated.(ÿú›¸úÿÿÿÿ8æ÷ü—Ñ1
 S
-java:S1874="1Remove this use of "AsyncTask"; it is deprecated.(îî¾«ûÿÿÿÿ8ø÷ü—Ñ1
+java:S1874>"1Remove this use of "AsyncTask"; it is deprecated.(îî¾«ûÿÿÿÿ8ø÷ü—Ñ1
 Y
-java:S1117@"<Rename "username" which hides the field declared at line 21.(¼Ñœ’8¼ãý—Ñ1
+java:S1117A"<Rename "username" which hides the field declared at line 21.(¼Ñœ’8¼ãý—Ñ1
 Y
-java:S1117A"<Rename "password" which hides the field declared at line 21.(×‘Çˆ8¼ãý—Ñ1
+java:S1117B"<Rename "password" which hides the field declared at line 21.(×‘Çˆ8¼ãý—Ñ1
 l
-java:S1874H"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ßÁ›Žÿÿÿÿÿ8ý÷ü—Ñ1
+java:S1874K"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ßÁ›Žÿÿÿÿÿ8ý÷ü—Ñ1
