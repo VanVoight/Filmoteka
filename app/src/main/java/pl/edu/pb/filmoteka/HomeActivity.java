@@ -13,7 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements CategoryFragment.OnCategoryClickListener {
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,12 +23,14 @@ public class HomeActivity extends AppCompatActivity {
         addMovieListFragment();
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigation_bar_item_icon_view);
         bottomNavigationView.setSelectedItemId(R.id.menu_home);
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int itemId = item.getItemId();
                 if (itemId == R.id.menu_category) {
                     addCategoryFragment();
+
                 } else if (itemId == R.id.menu_home) {
                     addMovieListFragment();
                 } else if (itemId == R.id.menu_profile) {
@@ -35,6 +39,10 @@ public class HomeActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+    @Override
+    public void onCategoryClick(Category category) {
+        addCategoryMovies(category.getId(),category.getName());
     }
     private void addMovieListFragment() {
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -48,6 +56,17 @@ public class HomeActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         CategoryFragment categoryFragment = new CategoryFragment();
         fragmentTransaction.replace(R.id.fragment_container, categoryFragment);
+        fragmentTransaction.commit();
+    }
+    private void addCategoryMovies(int categoryId, String name) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        MovieListCategoryFragment movieListFragment = new MovieListCategoryFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt("categoryId", categoryId);
+        bundle.putString("categoryName", name);
+        movieListFragment.setArguments(bundle);
+        fragmentTransaction.replace(R.id.fragment_container, movieListFragment);
         fragmentTransaction.commit();
     }
 }

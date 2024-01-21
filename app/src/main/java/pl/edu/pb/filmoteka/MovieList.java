@@ -303,5 +303,61 @@ public class MovieList {
 	public interface OnVideosFetchedListener {
 		void onVideosFetched(List<Video> videos);
 	}
+	public static void getMoviesByGenre(String accessToken, int genreId, OnMoviesFetchedListener listener) {
+		new FetchMoviesByGenreTask(listener).execute(accessToken, String.valueOf(genreId));
+	}
+
+	private static class FetchMoviesByGenreTask extends AsyncTask<String, Void, List<Movie>> {
+		private final OnMoviesFetchedListener listener;
+
+		FetchMoviesByGenreTask(OnMoviesFetchedListener listener) {
+			this.listener = listener;
+		}
+
+		@Override
+		protected List<Movie> doInBackground(String... tokens) {
+			String accessToken = tokens[0];
+			int genreId = Integer.parseInt(tokens[1]);
+			String apiUrl = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language="+ language + "&page=1&region=" + region + "&sort_by=popularity.desc&with_genres=" + genreId;
+
+			OkHttpClient client = new OkHttpClient.Builder()
+					.addNetworkInterceptor(new StethoInterceptor())
+					.build();
+
+			Request request = new Request.Builder()
+					.url(apiUrl)
+					.header("Authorization", "Bearer " + accessToken)
+					.header("accept", "application/json")
+					.build();
+
+			try {
+				Response response = client.newCall(request).execute();
+				if (response.isSuccessful()) {
+					Gson gson = new Gson();
+					TypeToken<MovieResult> token = new TypeToken<MovieResult>() {
+					};
+					MovieResult movieResponse = gson.fromJson(response.body().string(), token.getType());
+					return movieResponse.getResults();
+				} else {
+					// Handle error
+					Log.e("MovieList", "Error fetching movies by genre");
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(List<Movie> movies) {
+			super.onPostExecute(movies);
+
+			if (movies != null) {
+				listener.onMoviesFetched(movies);
+			}
+		}
+	}
+
 
 }

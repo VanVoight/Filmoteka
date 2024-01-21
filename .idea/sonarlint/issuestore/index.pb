@@ -75,3 +75,5 @@ f
 6app/src/main/java/pl/edu/pb/filmoteka/VideoResult.java,5\4\54a9af288659a90c4d1680a9677b901f5bff659f
 y
 Iapp/src/main/java/pl/edu/pb/filmoteka/YourFusedLocationProviderClass.java,0\3\039b26228408846a774345d5065b80e1bd0420e0
+t
+Dapp/src/main/java/pl/edu/pb/filmoteka/MovieListCategoryFragment.java,a\c\acef284178e19011a322d4f8460a07f503d595cd
