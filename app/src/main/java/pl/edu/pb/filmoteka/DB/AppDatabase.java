@@ -10,4 +10,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract UserRoleDao userRoleDao();
 
     public abstract RoleDao roleDao();
+
+    public abstract Movie movieDao();
+    public abstract FavouriteMovies favouriteMoviesDao();
 }
