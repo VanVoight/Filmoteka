@@ -1,5 +1,8 @@
 package pl.edu.pb.filmoteka;
 
+
+import static android.provider.Settings.System.getString;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -42,7 +45,7 @@ import pl.edu.pb.filmoteka.DB.Role;
 
 public class MainActivity extends AppCompatActivity {
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
-
+    public static String region;
     private AppDatabase appDatabase;
     Button signin, signup;
     ImageView imgv;
@@ -90,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                         .build();
 
                 Request request = new Request.Builder()
-                        .url("https://api.themoviedb.org/3/account/20889746/favorite/movies?language=en-US&page=1&sort_by=created_at.asc")
+                        .url("https://api.themoviedb.org/3/movie/popular?include_adult=false&include_video=false&language=en-us&sort_by=created_at.asc")
                         .get()
                         .addHeader("accept", "application/json")
                         .addHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NmI1OTA2OTU4ZDY0YjRmOWM1MjMzMzQxNjM3M2Y0YiIsInN1YiI6IjY1OTVhYTFjNTkwN2RlMDE2NzYzYmYwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IlVmj8Oxv5RunQqXK55LVmJerMote8EMPNsO6jcEdRA")
@@ -145,8 +148,8 @@ public class MainActivity extends AppCompatActivity {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 initializeLocation();
             } else {
-                showPermissionToast("Na udostępnienie lokalizacji możesz zezwolić w ustawieniach telefonu.");
-            }
+                String permissionMessage = getString(R.string.localization_permission);
+                showPermissionToast(permissionMessage); }
         }
     }
 
@@ -168,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    // nie do końca wiem jak działa to przetwarzanie regionu i jak to połączyć z API
+
     private void determineRegionFromLocation(double latitude, double longitude) {
         Geocoder geocoder = new Geocoder(this, Locale.getDefault());
         try {
@@ -176,21 +179,19 @@ public class MainActivity extends AppCompatActivity {
 
             if (!addresses.isEmpty()) {
                 Address address = addresses.get(0);
-                String region = address.getAdminArea();
-
-                // Możesz tutaj dalej przetwarzać nazwę regionu lub wykorzystać ją według potrzeb
-                // Na przykład, dostosować treści lub funkcje w zależności od regionu
-                updateUIBasedOnRegion(region);
+                String countryCode = address.getCountryCode();
+                setRegionBasedOnCountryCode(countryCode);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
-    private void updateUIBasedOnRegion(String region) {
-        if ("California".equals(region)) {
-        } else if ("New York".equals(region)) {
+    public void setRegionBasedOnCountryCode(String countryCode) {
+        if ("PL".equals(countryCode)) {
+            region = getString(R.string.poland);
         } else {
+            region = getString(R.string.US);
         }
     }
 
