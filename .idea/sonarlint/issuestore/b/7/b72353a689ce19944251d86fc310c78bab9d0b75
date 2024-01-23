@@ -1,25 +1,25 @@
 
-m	java:S117^"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹¥œ™8ÃİÒ1
-r	java:S117_"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŸòÂùÿÿÿÿ8Üğ“ŒÓ1
+m	java:S117^"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹¥œ™8Ÿıú¿Ó1
+r	java:S117_"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŸòÂùÿÿÿÿ8 ıú¿Ó1
 J
-java:S1604-"(Make this anonymous inner class a lambda(ğò‹¬şÿÿÿÿ8æöü—Ñ1
+java:S1604-"(Make this anonymous inner class a lambda(ğò‹¬şÿÿÿÿ8 ıú¿Ó1
 E
-java:S1604A"(Make this anonymous inner class a lambda(©º¬8çöü—Ñ1
+java:S1604A"(Make this anonymous inner class a lambda(©º¬8 ıú¿Ó1
 J
-java:S1604d"(Make this anonymous inner class a lambda(˜ã¯şÿÿÿÿ8ÃİÒ1
+java:S1604d"(Make this anonymous inner class a lambda(˜ã¯şÿÿÿÿ8 ıú¿Ó1
 H
-java:S1659"&Declare "password" on a separate line.(ÅèÍ‹øÿÿÿÿ8­÷ü—Ñ1
+java:S1659"&Declare "password" on a separate line.(ÅèÍ‹øÿÿÿÿ8×ıú¿Ó1
 F
-java:S1659"$Declare "signup" on a separate line.(ÖÃ‘íşÿÿÿÿ8­÷ü—Ñ1
+java:S1659"$Declare "signup" on a separate line.(ÖÃ‘íşÿÿÿÿ8Øıú¿Ó1
 Q
-java:S1874<"/Remove this use of "execute"; it is deprecated.(ÿú›¸úÿÿÿÿ8æ÷ü—Ñ1
+java:S1874<"/Remove this use of "execute"; it is deprecated.(ÿú›¸úÿÿÿÿ8åıú¿Ó1
 W
-java:S1161I":Add the "@Override" annotation above this method signature(Ñ‚«µ8¨Ê‰íÒ1
+java:S1161I":Add the "@Override" annotation above this method signature(Ñ‚«µ8éıú¿Ó1
 S
-java:S1874O"1Remove this use of "AsyncTask"; it is deprecated.(îî¾«ûÿÿÿÿ8ø÷ü—Ñ1
+java:S1874O"1Remove this use of "AsyncTask"; it is deprecated.(îî¾«ûÿÿÿÿ8ëıú¿Ó1
 Y
-java:S1117R"<Rename "username" which hides the field declared at line 21.(¼Ñœ’8¼ãı—Ñ1
+java:S1117R"<Rename "username" which hides the field declared at line 21.(¼Ñœ’8ìıú¿Ó1
 Y
-java:S1117S"<Rename "password" which hides the field declared at line 21.(×‘Çˆ8¼ãı—Ñ1
+java:S1117S"<Rename "password" which hides the field declared at line 21.(×‘Çˆ8ìıú¿Ó1
 l
-java:S1874]"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ßÁ›ÿÿÿÿÿ8˜ú§³Ó1
+java:S1874]"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ßÁ›ÿÿÿÿÿ8îıú¿Ó1

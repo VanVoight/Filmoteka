@@ -1,6 +1,7 @@
 package pl.edu.pb.filmoteka;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -18,11 +19,22 @@ public class HomeActivity extends AppCompatActivity implements CategoryFragment.
     private static final String KEY_CURRENT_INDEX = "currentIndex";
 
     private SharedViewModel sharedViewModel;
+    private String userName;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        Intent intent = getIntent();
+        if(intent != null){
+            userName = intent.getStringExtra("userName");
+        }
+
+
+
         sharedViewModel = new ViewModelProvider(this).get(SharedViewModel.class);
 
         if (savedInstanceState == null) {
@@ -97,6 +109,9 @@ public class HomeActivity extends AppCompatActivity implements CategoryFragment.
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         ProfileFragment profileFragment = new ProfileFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("userName", userName);
+        profileFragment.setArguments(bundle);
         fragmentTransaction.replace(R.id.fragment_container, profileFragment);
         fragmentTransaction.commit();
         sharedViewModel.setCurrentIndex(3);

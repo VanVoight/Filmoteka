@@ -1,35 +1,19 @@
 
-j
-java:S1192p"MDefine a constant instead of duplicating this literal "MainActivity" 3 times.(Œ£ƒ8¼ÄÉ§Ï1
-J
-java:S1604="(Make this anonymous inner class a lambda(ğò‹¬şÿÿÿÿ8½ÄÉ§Ï1
-E
-java:S1604E"(Make this anonymous inner class a lambda(©º¬8½ÄÉ§Ï1
+k
+java:S1192„"MDefine a constant instead of duplicating this literal "MainActivity" 3 times.(Œ£ƒ8¼ÄÉ§Ï1
 K
-java:S1604¢"(Make this anonymous inner class a lambda(‰šãÖşÿÿÿÿ8û“ŒÓ1
-o
-java:S11040"RMake region a static final constant or non-public and provide accessors if needed.(Ï‚Öß8û“ŒÓ1
-I
-java:S14440",Make this "public static region" field final(Ï‚Öß8‚û“ŒÓ1
-F
-java:S16592"$Declare "signup" on a separate line.(ÖÃ‘íşÿÿÿÿ8…ÅÉ§Ï1
-|
-java:S14501"ZRemove the "appDatabase" field and declare it as a local variable in the relevant methods.(í¯Õ—şÿÿÿÿ8°£ÁÀÑ1
-L
-java:S1874Q"/Remove this use of "execute"; it is deprecated.(½õºâ8ÅÉ§Ï1
+java:S1604¶"(Make this anonymous inner class a lambda(‰šãÖşÿÿÿÿ8û“ŒÓ1
 N
-java:S1874V"1Remove this use of "AsyncTask"; it is deprecated.(Ç‰£¡8 ÅÉ§Ï1
+java:S1874j"1Remove this use of "AsyncTask"; it is deprecated.(Ç‰£¡8 ÅÉ§Ï1
 m
-java:S1874‘"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(Ó»×¶şÿÿÿÿ8ÁœØÒ1
+java:S1874¥"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(Ó»×¶şÿÿÿÿ8ÁœØÒ1
 u
-java:S3252Ÿ"WUse static access with "androidx.core.content.ContextCompat" for "checkSelfPermission".(¥êêí8”ÁœØÒ1
+java:S3252³"WUse static access with "androidx.core.content.ContextCompat" for "checkSelfPermission".(¥êêí8”ÁœØÒ1
 u
-java:S3252Ÿ"WUse static access with "androidx.core.content.ContextCompat" for "checkSelfPermission".(¥êêí8”ÁœØÒ1
+java:S3252³"WUse static access with "androidx.core.content.ContextCompat" for "checkSelfPermission".(¥êêí8”ÁœØÒ1
 U
-java:S1874²"7Remove this use of "getFromLocation"; it is deprecated.(Î¼ï§8—ÁœØÒ1
+java:S1874Æ"7Remove this use of "getFromLocation"; it is deprecated.(Î¼ï§8—ÁœØÒ1
 Y
-java:S2696À"6Make the enclosing method "static" or remove this set.(éí•öûÿÿÿÿ8õü“ŒÓ1
+java:S2696Ô"6Make the enclosing method "static" or remove this set.(éí•öûÿÿÿÿ8õü“ŒÓ1
 Y
-java:S2696Â"6Make the enclosing method "static" or remove this set.(¯·¡úÿÿÿÿ8öü“ŒÓ1
-Q
-java:S10681"/Remove this unused "appDatabase" private field.(í¯Õ—şÿÿÿÿ8ä£ÁÀÑ1
+java:S2696Ö"6Make the enclosing method "static" or remove this set.(¯·¡úÿÿÿÿ8öü“ŒÓ1
