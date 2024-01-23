@@ -47,7 +47,7 @@ public class HomeActivity extends AppCompatActivity implements CategoryFragment.
                 } else if (itemId == R.id.menu_home) {
                     addMovieListFragment();
                 } else if (itemId == R.id.menu_profile) {
-                    // Obsługa kliknięcia na "Profile"
+                    addProfileFragment();
                 }
                 return true;
             }
@@ -93,6 +93,14 @@ public class HomeActivity extends AppCompatActivity implements CategoryFragment.
         sharedViewModel.setCurrentCategoryId(categoryId);
         sharedViewModel.setCurrentCategoryName(name);
     }
+    private void addProfileFragment() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        ProfileFragment profileFragment = new ProfileFragment();
+        fragmentTransaction.replace(R.id.fragment_container, profileFragment);
+        fragmentTransaction.commit();
+        sharedViewModel.setCurrentIndex(3);
+    }
     private void restoreFragment(int index) {
         switch (index) {
             case 0:
@@ -106,6 +114,10 @@ public class HomeActivity extends AppCompatActivity implements CategoryFragment.
                 String categoryName = sharedViewModel.getCurrentCategoryName();
                 addCategoryMovies(categoryId, categoryName);
                 break;
+            case 3:
+                addProfileFragment();
+                break;
+
 
         }
     }

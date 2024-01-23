@@ -85,7 +85,9 @@ m
 =app/src/main/java/pl/edu/pb/filmoteka/DB/FavouriteMovies.java,8\8\880aee0de5548dbdeda956828a920b5a4fe335a2
 p
 @app/src/main/java/pl/edu/pb/filmoteka/DB/FavouriteMoviesDao.java,4\d\4dba8b0f46c0d2532f957056ebe740620f212b79
-l
-<app/src/main/java/pl/edu/pb/filmoteka/DB/FavouriteFilms.java,9\1\918df3c903cae5e7a1affe87b5028575052c0ed4
 j
 :app/src/main/java/pl/edu/pb/filmoteka/SharedViewModel.java,e\1\e10f6e49fa3baddf89e8352073cb95b15d98e073
+j
+:app/src/main/java/pl/edu/pb/filmoteka/ProfileFragment.java,b\b\bb28b1a7c95648b43e25edd1ce5d2861791905c9
+X
+(gradle/wrapper/gradle-wrapper.properties,f\b\fbe448ebfc3eb2d4e308f6b8b043666f5b57235e

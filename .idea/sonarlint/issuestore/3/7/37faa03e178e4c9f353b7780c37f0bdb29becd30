@@ -1,7 +1,7 @@
 
-{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(§”æùûÿÿÿÿ8ùŠÕóÎ1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(§”æùûÿÿÿÿ8²Ğ×´Ó1
 M
-java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8¦½ÕÜÒ1
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8„ÃØ´Ó1
 X
 java:S1128
-"6Remove this unused import 'pl.edu.pb.filmoteka.Movie'.(—âõûÿÿÿÿ8§½ÕÜÒ1
+"6Remove this unused import 'pl.edu.pb.filmoteka.Movie'.(—âõûÿÿÿÿ8„ÃØ´Ó1

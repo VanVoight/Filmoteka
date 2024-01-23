@@ -31,6 +31,15 @@ public class User {
     public long getUserRoleId() {
         return userRoleId;
     }
+
+    @NonNull
+    public String getUserFirstName() {
+        return firstName;
+    }
+    public String getUserLastName() {
+        return lastName;
+    }
+
     public void setUserRoleId(long userRoleId) {
         this.userRoleId = userRoleId;
     }

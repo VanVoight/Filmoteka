@@ -53,5 +53,11 @@
     <string name="add_seen">+Obejrzane</string>
     <string name="add_to_watch">+Moja lista</string>
     <string name="localization_permission">Na udostępnienie lokalizacji możesz zezwolić w ustawieniach telefonu.</string>
+    <string name="fav_films">Ulubione filmy</string>
+    <string name="seen_films">Obejrzane filmy</string>
+    <string name="rand_films">Losuj film</string>
+    <string name="edit_profile">Edytuj profil</string>
+    <string name="del_profile">Usuń profil</string>
+    <string name="find_film_hint">Tytuł filmu...</string>
 
 </resources>
