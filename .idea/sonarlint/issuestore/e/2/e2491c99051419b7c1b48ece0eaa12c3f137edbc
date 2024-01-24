@@ -1,0 +1,21 @@
+
+°
+java:S1192-"”Define a constant instead of duplicating this literal "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NmI1OTA2OTU4ZDY0YjRmOWM1MjMzMzQxNjM3M2Y0YiIsInN1YiI6IjY1OTVhYTFjNTkwN2RlMDE2NzYzYmYwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IlVmj8Oxv5RunQqXK55LVmJerMote8EMPNsO6jcEdRA" 4 times.(ƒœä¸ûÿÿÿÿ
+J
+java:S1604-"(Make this anonymous inner class a lambda(ƒœä¸ûÿÿÿÿ8‡¢¹±Ó1
+J
+java:S1604;"(Make this anonymous inner class a lambda(Â¥Ù„úÿÿÿÿ8‡¢¹±Ó1
+J
+java:S1604G"(Make this anonymous inner class a lambda(ÑéÆîşÿÿÿÿ8‡¢¹±Ó1
+J
+java:S1604S"(Make this anonymous inner class a lambda(¥™ ûÿÿÿÿ8‡¢¹±Ó1
+œ
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(çü…öÿÿÿÿÿ
+w
+java:S1450"aRemove the "recyclerNowPlaying" field and declare it as a local variable in the relevant methods.(°‰ùÜ
+v
+java:S1450"[Remove the "recyclerView" field and declare it as a local variable in the relevant methods.(¿á© ıÿÿÿÿ
+y
+java:S1450"cRemove the "recyclerViewUpcoming" field and declare it as a local variable in the relevant methods.(˜†×
+y
+java:S1450"cRemove the "topRatedRecyclerView" field and declare it as a local variable in the relevant methods.(Š½´–

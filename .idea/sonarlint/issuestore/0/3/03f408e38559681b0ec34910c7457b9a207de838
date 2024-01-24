@@ -1,0 +1,51 @@
+
+g
+java:S11927"QDefine a constant instead of duplicating this literal "application/json" 6 times.(ƒÆêµ
+]
+java:S11927"GDefine a constant instead of duplicating this literal "accept" 6 times.(ƒÆêµ
+i
+java:S11926"NDefine a constant instead of duplicating this literal "Authorization" 6 times.(Î²ªıÿÿÿÿ
+`
+java:S1192C"JDefine a constant instead of duplicating this literal "MovieList" 6 times.(Ÿş†
+f
+java:S1192."PDefine a constant instead of duplicating this literal "&page=1&region=" 5 times.(Ä¯·
+o
+java:S1192."YDefine a constant instead of duplicating this literal "&sort_by=popularity.desc" 3 times.(Ä¯·
+c
+java:S11926"HDefine a constant instead of duplicating this literal "Bearer " 6 times.(Î²ªıÿÿÿÿ
+D
+java:S1874!"/Remove this use of "execute"; it is deprecated.(üŞÒQ
+G
+java:S1874$"1Remove this use of "AsyncTask"; it is deprecated.(…Ï
+P
+java:S1874N"5Remove this use of "onPostExecute"; it is deprecated.(¶ö¹ùÿÿÿÿ
+J
+java:S1874W"/Remove this use of "execute"; it is deprecated.(©İÑàúÿÿÿÿ
+G
+java:S1874Y"1Remove this use of "AsyncTask"; it is deprecated.(‚‰ï¿
+Q
+java:S1874ƒ"5Remove this use of "onPostExecute"; it is deprecated.(¶ö¹ùÿÿÿÿ
+K
+java:S1874‹"/Remove this use of "execute"; it is deprecated.(€î‰şÿÿÿÿ
+M
+java:S1874"1Remove this use of "AsyncTask"; it is deprecated.(„å‡àúÿÿÿÿ
+Q
+java:S1874º"5Remove this use of "onPostExecute"; it is deprecated.(¶ö¹ùÿÿÿÿ
+F
+java:S1874Â"/Remove this use of "execute"; it is deprecated.(ìËÒ‚
+M
+java:S1874Å"1Remove this use of "AsyncTask"; it is deprecated.(ò’è¿ÿÿÿÿÿ
+Q
+java:S1874ò"5Remove this use of "onPostExecute"; it is deprecated.(¶ö¹ùÿÿÿÿ
+K
+java:S1874ú"/Remove this use of "execute"; it is deprecated.(ÄÁ­çşÿÿÿÿ
+H
+java:S1874ı"1Remove this use of "AsyncTask"; it is deprecated.(é¡Í¯
+L
+java:S1874¨"5Remove this use of "onPostExecute"; it is deprecated.(çßİ
+K
+java:S1874´"/Remove this use of "execute"; it is deprecated.(¾³Ç§ıÿÿÿÿ
+G
+java:S1874·"1Remove this use of "AsyncTask"; it is deprecated.(Ä¼º+
+Q
+java:S1874ã"5Remove this use of "onPostExecute"; it is deprecated.(¶ö¹ùÿÿÿÿ

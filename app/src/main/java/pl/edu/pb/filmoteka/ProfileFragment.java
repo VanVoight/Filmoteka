@@ -1,10 +1,18 @@
 package pl.edu.pb.filmoteka;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
+import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Space;
 import android.widget.TextView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,19 +54,31 @@ public class ProfileFragment extends Fragment   {
             userNameTextView.setText(userName);
         }
 
-        editProfileButton.setOnClickListener(new View.OnClickListener() {
+        randFilmsButton = view.findViewById(R.id.rand_films_button);
+
+        // Przypisanie obsługi zdarzenia kliknięcia dla przycisku randFilmsButton
+        randFilmsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Metoda do obsługi otwierania okienka popup
+                CustomPopup.showRandomFilmPopup(requireContext());
+            }
+        });
+
+        /*editProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Obsługa kliknięcia przycisku "Edytuj profil"
                 openEditProfileFragment();
             }
-        });
+        });*/
 
         return view;
     }
 
 
-    private void openEditProfileFragment() {
+
+  /*  private void openEditProfileFragment() {
         // Przygotuj dane do przekazania do EditFragmentProfile
         Bundle bundle = new Bundle();
         bundle.putString("userName", userName);
@@ -72,5 +92,5 @@ public class ProfileFragment extends Fragment   {
         transaction.replace(R.id.fragment_container, editFragment);
         transaction.addToBackStack(null);
         transaction.commit();
-    }
+    }*/
 }
