@@ -3,6 +3,8 @@ package pl.edu.pb.filmoteka.DB;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
+
 import kotlinx.coroutines.*;
 
 @Dao
@@ -21,4 +23,6 @@ public interface UserDao {
     @Query("SELECT * FROM users WHERE userName = (:userName)")
     User getUserNamesByName(String userName);
 
+    @Update
+    void updateUser(User user);
 }

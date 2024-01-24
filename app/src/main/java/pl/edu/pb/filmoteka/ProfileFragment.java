@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 
 public class ProfileFragment extends Fragment   {
 
@@ -44,6 +46,31 @@ public class ProfileFragment extends Fragment   {
             userNameTextView.setText(userName);
         }
 
+        editProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Obsługa kliknięcia przycisku "Edytuj profil"
+                openEditProfileFragment();
+            }
+        });
+
         return view;
+    }
+
+
+    private void openEditProfileFragment() {
+        // Przygotuj dane do przekazania do EditFragmentProfile
+        Bundle bundle = new Bundle();
+        bundle.putString("userName", userName);
+
+        // Tworzymy nowy fragment
+        EditProfileFragment editFragment = new EditProfileFragment();
+        editFragment.setArguments(bundle);
+
+        // Otwieramy fragment
+        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, editFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 }
