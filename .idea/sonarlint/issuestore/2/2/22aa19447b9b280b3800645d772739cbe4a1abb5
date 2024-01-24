@@ -1,19 +1,37 @@
 
-k
-java:S1192„"MDefine a constant instead of duplicating this literal "MainActivity" 3 times.(Œ£ƒ8¼ÄÉ§Ï1
+g
+java:S1192…"IUse already-defined constant 'TAG' instead of duplicating its value here.(Œ£ƒ8ÀŸªéÓ1
+J
+java:S1604B"(Make this anonymous inner class a lambda(ğò‹¬şÿÿÿÿ8ÂŸªéÓ1
+E
+java:S1604J"(Make this anonymous inner class a lambda(©º¬8ÂŸªéÓ1
 K
-java:S1604¶"(Make this anonymous inner class a lambda(‰šãÖşÿÿÿÿ8û“ŒÓ1
+java:S1604·"(Make this anonymous inner class a lambda(‰šãÖşÿÿÿÿ8ÂŸªéÓ1
+o
+java:S11045"RMake region a static final constant or non-public and provide accessors if needed.(Ï‚Öß8ÂŸªéÓ1
+I
+java:S14445",Make this "public static region" field final(Ï‚Öß8ÃŸªéÓ1
+F
+java:S16597"$Declare "signup" on a separate line.(ÖÃ‘íşÿÿÿÿ8Á ªéÓ1
+|
+java:S14506"ZRemove the "appDatabase" field and declare it as a local variable in the relevant methods.(í¯Õ—şÿÿÿÿ8Â ªéÓ1
+L
+java:S1874V"/Remove this use of "execute"; it is deprecated.(½õºâ8ä ªéÓ1
 N
-java:S1874j"1Remove this use of "AsyncTask"; it is deprecated.(Ç‰£¡8 ÅÉ§Ï1
+java:S1874k"1Remove this use of "AsyncTask"; it is deprecated.(Ç‰£¡8í ªéÓ1
+h
+java:S1874‹"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(å„Ü8…¡ªéÓ1
 m
-java:S1874¥"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(Ó»×¶şÿÿÿÿ8ÁœØÒ1
+java:S1874¦"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(Ó»×¶şÿÿÿÿ8¡ªéÓ1
 u
-java:S3252³"WUse static access with "androidx.core.content.ContextCompat" for "checkSelfPermission".(¥êêí8”ÁœØÒ1
+java:S3252´"WUse static access with "androidx.core.content.ContextCompat" for "checkSelfPermission".(¥êêí8“¡ªéÓ1
 u
-java:S3252³"WUse static access with "androidx.core.content.ContextCompat" for "checkSelfPermission".(¥êêí8”ÁœØÒ1
+java:S3252´"WUse static access with "androidx.core.content.ContextCompat" for "checkSelfPermission".(¥êêí8“¡ªéÓ1
 U
-java:S1874Æ"7Remove this use of "getFromLocation"; it is deprecated.(Î¼ï§8—ÁœØÒ1
+java:S1874Ç"7Remove this use of "getFromLocation"; it is deprecated.(Î¼ï§8™¡ªéÓ1
 Y
-java:S2696Ô"6Make the enclosing method "static" or remove this set.(éí•öûÿÿÿÿ8õü“ŒÓ1
+java:S2696Ö"6Make the enclosing method "static" or remove this set.(éí•öûÿÿÿÿ8ÕÆ¦Ó1
 Y
-java:S2696Ö"6Make the enclosing method "static" or remove this set.(¯·¡úÿÿÿÿ8öü“ŒÓ1
+java:S2696Ø"6Make the enclosing method "static" or remove this set.(¯·¡úÿÿÿÿ8ÖÆ¦Ó1
+Q
+java:S10686"/Remove this unused "appDatabase" private field.(í¯Õ—şÿÿÿÿ8¡ªéÓ1

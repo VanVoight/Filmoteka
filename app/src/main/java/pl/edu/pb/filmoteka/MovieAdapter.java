@@ -19,6 +19,7 @@ import android.os.AsyncTask;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -43,7 +44,11 @@ import java.util.List;
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
 
 	private List<Movie> movies;
+	private long userId;
 
+	public void setUserId(long userId) {
+		this.userId = userId;
+	}
 	public void setMovies(List<Movie> movies) {
 		this.movies = movies;
 	}
@@ -82,6 +87,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 		private int lowVoteColor;
 		private String overview;
 		private String key;
+		private long userId;
+
+		public void setUserId(long userId) {
+			this.userId = userId;
+		}
 		private void showPopupMenu(View view, Context context) {
 			PopupMenu popupMenu = new PopupMenu(context, view);
 			MenuInflater inflater = popupMenu.getMenuInflater();
@@ -92,16 +102,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 				@Override
 				public boolean onMenuItemClick(MenuItem item) {
 					if (item.getItemId() == R.id.menu_favorite) {
-						// Obsługa dodania do ulubionych
-						// Dodaj kod obsługi dla tej opcji
+						Log.d("ID USER","DZIAŁA EZ:"+userId);
 						return true;
 					} else if (item.getItemId() == R.id.menu_watched) {
-						// Obsługa dodania do obejrzanych
-						// Dodaj kod obsługi dla tej opcji
+
 						return true;
 					} else if (item.getItemId() == R.id.menu_rate) {
-						// Obsługa oceny filmu
-						// Dodaj kod obsługi dla tej opcji
+
 						return true;
 					} else {
 						return false;

@@ -49,6 +49,7 @@ import pl.edu.pb.filmoteka.DB.Role;
 
 public class MainActivity extends AppCompatActivity {
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
+    private static final String TAG = "MainActivity";
     public static String region;
     private AppDatabase appDatabase;
     Button signin, signup;
@@ -80,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         Stetho.initializeWithDefaults(this);
 
         appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "my-database")
-                .allowMainThreadQueries() // Uwaga: Ta opcja pozwala na wykonywanie operacji bazodanowych na wątku głównym, ale nie jest zalecana w produkcji.
+                .allowMainThreadQueries()
                 .build();
         new MyAsyncTask().execute();
         checkLocationPermission();
@@ -92,13 +93,13 @@ public class MainActivity extends AppCompatActivity {
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, 20);
-        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.HOUR_OF_DAY, 16);
+        calendar.set(Calendar.MINUTE, 40);
         calendar.set(Calendar.SECOND, 0);
 
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
-        // Ustaw alarm na codziennie o 20:00
+
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
                 AlarmManager.INTERVAL_DAY, pendingIntent);
     }
@@ -208,6 +209,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void setRegionBasedOnCountryCode(String countryCode) {
+        Log.d(TAG, "setting region ");
         if ("PL".equals(countryCode)) {
             region = getString(R.string.poland);
         } else {

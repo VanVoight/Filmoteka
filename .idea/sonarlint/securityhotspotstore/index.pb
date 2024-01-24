@@ -87,7 +87,9 @@ p
 @app/src/main/java/pl/edu/pb/filmoteka/DB/FavouriteMoviesDao.java,4\d\4dba8b0f46c0d2532f957056ebe740620f212b79
 j
 :app/src/main/java/pl/edu/pb/filmoteka/SharedViewModel.java,e\1\e10f6e49fa3baddf89e8352073cb95b15d98e073
+h
+8app/src/main/java/pl/edu/pb/filmoteka/AlarmReceiver.java,e\2\e2110a01a0eeac2a04e612520143776cfbc2007e
 j
 :app/src/main/java/pl/edu/pb/filmoteka/ProfileFragment.java,b\b\bb28b1a7c95648b43e25edd1ce5d2861791905c9
-X
-(gradle/wrapper/gradle-wrapper.properties,f\b\fbe448ebfc3eb2d4e308f6b8b043666f5b57235e
+n
+>app/src/main/java/pl/edu/pb/filmoteka/EditProfileFragment.java,4\d\4d96c8032f0313f7a135b318fe108e8a73704adb

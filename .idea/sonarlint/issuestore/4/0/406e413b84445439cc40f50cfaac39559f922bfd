@@ -1,29 +1,35 @@
 
 E
-java:S1604["(Make this anonymous inner class a lambda(»ä”ö8Ì óîÒ1
+java:S1604e"(Make this anonymous inner class a lambda(»ä”ö8ì¡ÊêÓ1
 J
-java:S1604u"(Make this anonymous inner class a lambda(ó›¾ûÿÿÿÿ8Ì óîÒ1
-E
-java:S1604"(Make this anonymous inner class a lambda(‰À„Í8Í óîÒ1
+java:S1604|"(Make this anonymous inner class a lambda(ó›¾ûÿÿÿÿ8ì¡ÊêÓ1
 F
-java:S1604ƒ"(Make this anonymous inner class a lambda(Õä8Í óîÒ1
+java:S1604†"(Make this anonymous inner class a lambda(‰À„Í8ì¡ÊêÓ1
+F
+java:S1604¬"(Make this anonymous inner class a lambda(ÇÏïğ8ì¡ÊêÓ1
+F
+java:S1604Š"(Make this anonymous inner class a lambda(Õä8í¡ÊêÓ1
 E
-java:S1604‹"(Make this anonymous inner class a lambda(Ì©šs8Í óîÒ1
+java:S1604’"(Make this anonymous inner class a lambda(Ì©šs8í¡ÊêÓ1
 ˆ
-java:S1488Ğ"eImmediately return this expression instead of assigning it to the temporary variable "roundedBitmap".(¥À½¯ùÿÿÿÿ8Î óîÒ1
+java:S1488×"eImmediately return this expression instead of assigning it to the temporary variable "roundedBitmap".(¥À½¯ùÿÿÿÿ8í¡ÊêÓ1
+r
+java:S1450/"URemove the "userId" field and declare it as a local variable in the relevant methods.(ñ’êŞ8£¢ÊêÓ1
 c
-java:S1126f"AReplace this if-then-else statement by a single return statement.(Æüğˆúÿÿÿÿ8‚¡óîÒ1
+java:S1126n"AReplace this if-then-else statement by a single return statement.(Æüğˆúÿÿÿÿ8®¢ÊêÓ1
 T
-java:S1874µ"6Remove this use of "setColorFilter"; it is deprecated.(®éÜ¿8“¡óîÒ1
+java:S1874¼"6Remove this use of "setColorFilter"; it is deprecated.(®éÜ¿8¶¢ÊêÓ1
 M
-java:S1874·"/Remove this use of "execute"; it is deprecated.(ëñ€¥8À¡óîÒ1
+java:S1874¾"/Remove this use of "execute"; it is deprecated.(ëñ€¥8¶¢ÊêÓ1
 T
-java:S1874Â"1Remove this use of "AsyncTask"; it is deprecated.(¢´¬“ÿÿÿÿÿ8¬¹óîÒ1
+java:S1874É"1Remove this use of "AsyncTask"; it is deprecated.(¢´¬“ÿÿÿÿÿ8º¢ÊêÓ1
 m
-java:S1874Ú"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÿà—óùÿÿÿÿ8ÃåàîÒ1
+java:S1874á"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÿà—óùÿÿÿÿ8½¢ÊêÓ1
 S
-java:S1874Û"5Remove this use of "onPostExecute"; it is deprecated.(¿åß¯8¯¹óîÒ1
+java:S1874â"5Remove this use of "onPostExecute"; it is deprecated.(¿åß¯8¿¢ÊêÓ1
 p
-java:S3252ş"MUse static access with "android.text.Spanned" for "SPAN_EXCLUSIVE_EXCLUSIVE".(¹œÀûÿÿÿÿ8¾¹óîÒ1
+java:S3252…"MUse static access with "android.text.Spanned" for "SPAN_EXCLUSIVE_EXCLUSIVE".(¹œÀûÿÿÿÿ8Ê¢ÊêÓ1
+G
+java:S1068/"*Remove this unused "userId" private field.(ñ’êŞ8Ï¢ÊêÓ1
 J
-java:S1068K"-Remove this unused "movieList" private field.(­óÇ£8Ç¹óîÒ1
+java:S1068P"-Remove this unused "movieList" private field.(­óÇ£8Ï¢ÊêÓ1

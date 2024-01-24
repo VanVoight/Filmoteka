@@ -20,7 +20,7 @@ public class HomeActivity extends AppCompatActivity implements CategoryFragment.
 
     private SharedViewModel sharedViewModel;
     private String userName;
-
+    private long userId;
 
 
     @Override
@@ -30,8 +30,11 @@ public class HomeActivity extends AppCompatActivity implements CategoryFragment.
 
         Intent intent = getIntent();
         if(intent != null){
+            userId = intent.getLongExtra("userId", -1);
             userName = intent.getStringExtra("userName");
         }
+        MovieAdapter movieAdapter = new MovieAdapter();
+        movieAdapter.setUserId(userId);
 
 
 
