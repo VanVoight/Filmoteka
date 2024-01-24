@@ -29,6 +29,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
@@ -41,18 +42,21 @@ import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.List;
 
+import pl.edu.pb.filmoteka.DB.AppDatabase;
+import pl.edu.pb.filmoteka.DB.FavouriteMovies;
+
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
 
 	private List<Movie> movies;
-	private long userId;
-
-	public void setUserId(long userId) {
-		this.userId = userId;
-	}
+	private static long userId;
+	private static AppDatabase appDatabase;
 	public void setMovies(List<Movie> movies) {
 		this.movies = movies;
 	}
-
+	public MovieAdapter(long id, AppDatabase appDatabase){
+		this.userId=id;
+		this.appDatabase=appDatabase;
+	}
 	@NonNull
 	@Override
 	public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -76,10 +80,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 		private TextView titleTextView;
 		private ImageView moviePosterImageView;
 		private ImageView topRightIconImageView;
+
 		private View circle;
 		private List<Movie> movieList;
 		private TextView releaseDateTextView;
-
+		private static int movieId;
 		private TextView voteAverageTextView;
 
 		private int highVoteColor;
@@ -87,11 +92,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 		private int lowVoteColor;
 		private String overview;
 		private String key;
-		private long userId;
-
-		public void setUserId(long userId) {
-			this.userId = userId;
-		}
 		private void showPopupMenu(View view, Context context) {
 			PopupMenu popupMenu = new PopupMenu(context, view);
 			MenuInflater inflater = popupMenu.getMenuInflater();
@@ -102,7 +102,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 				@Override
 				public boolean onMenuItemClick(MenuItem item) {
 					if (item.getItemId() == R.id.menu_favorite) {
-						Log.d("ID USER","DZIAŁA EZ:"+userId);
+						Log.d("Logowanie","Oby było git"+userId);
+						addToFavorites();
+
 						return true;
 					} else if (item.getItemId() == R.id.menu_watched) {
 
@@ -116,6 +118,46 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 				}
 			});
 			popupMenu.show();
+		}
+		private void addToFavorites() {
+
+			FavouriteMovies favouriteMovie = new FavouriteMovies();
+			favouriteMovie.userId = userId;
+			favouriteMovie.movieDbId = movieId;
+
+			new AddToFavoritesTask(itemView).execute(favouriteMovie);
+		}
+
+		private static class AddToFavoritesTask extends AsyncTask<FavouriteMovies, Void, Integer> {
+			private WeakReference<View> itemViewReference;
+
+			public AddToFavoritesTask(View itemView) {
+				itemViewReference = new WeakReference<>(itemView);
+			}
+			@Override
+			protected Integer doInBackground(FavouriteMovies... favouriteMovies) {
+				int existingCount = appDatabase.favouriteMoviesDao().checkIfFavouriteMovieExists(userId, movieId);
+
+				if (existingCount == 0) {
+					appDatabase.favouriteMoviesDao().insertFavouriteMovie(favouriteMovies[0]);
+				}
+
+				return existingCount;
+			}
+
+			@Override
+			protected void onPostExecute(Integer existingCount) {
+				View itemView = itemViewReference.get();
+				String toastMessage = itemView.getContext().getString(R.string.toast_already_in);
+				String toastMessage2 = itemView.getContext().getString(R.string.toast_added_to_fav);
+				if (itemView != null) {
+					if (existingCount == 0) {
+						Toast.makeText(itemView.getContext(), toastMessage2, Toast.LENGTH_SHORT).show();
+					} else {
+						Toast.makeText(itemView.getContext(), toastMessage, Toast.LENGTH_SHORT).show();
+					}
+				}
+			}
 		}
 		public MovieViewHolder(@NonNull View itemView) {
 			super(itemView);
@@ -164,6 +206,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 			titleTextView.setText(movie.getTitle());
 			releaseDateTextView.setText(movie.getReleaseDate());
 			overview = movie.getOverview();
+			movieId=movie.getId();
 			double voteAverage = movie.getVoteAverage();
 			DecimalFormat decimalFormat = new DecimalFormat("#.0");
 			String formattedVoteAverage = decimalFormat.format(voteAverage);

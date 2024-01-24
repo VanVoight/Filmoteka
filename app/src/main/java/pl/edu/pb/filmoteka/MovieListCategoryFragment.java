@@ -12,13 +12,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import pl.edu.pb.filmoteka.DB.AppDatabase;
+
 public class MovieListCategoryFragment extends Fragment {
 
 	private RecyclerView recyclerView;
 	private MovieAdapter movieAdapter;
+
+	private AppDatabase appDatabase;
 	private TextView genreName;
 	private List<Movie> movieList;
-
+	private long userId;
 	private int categoryId;
 	public MovieListCategoryFragment() {
 
@@ -27,18 +31,20 @@ public class MovieListCategoryFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
-
+		appDatabase = AppDatabase.getInstance(requireContext());
 		View view = inflater.inflate(R.layout.category_list, container, false);
 		genreName = view.findViewById(R.id.textView);
 		Bundle bundle = getArguments();
 		if (bundle != null) {
 			categoryId = bundle.getInt("categoryId", 0);
+			userId = bundle.getLong("userId",0);
 			String categoryName = bundle.getString("categoryName", "");
+
 			genreName.setText(categoryName);
 		}
 		recyclerView = view.findViewById(R.id.recyclerView);
 		recyclerView.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
-		movieAdapter = new MovieAdapter();
+		movieAdapter = new MovieAdapter(userId,appDatabase);
 		recyclerView.setAdapter(movieAdapter);
 
 

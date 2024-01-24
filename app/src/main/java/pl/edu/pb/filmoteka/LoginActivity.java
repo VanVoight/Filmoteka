@@ -103,6 +103,7 @@ public class LoginActivity extends AppCompatActivity {
 						Log.d(TAG, "onPostExecute: Starting HomeActivity");
 						Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
 						intent.putExtra("userId", user.userId);
+						Log.d("Logowanie","ID TAKIE O MA BYĆ:"+user.userId);
 						intent.putExtra("userName", username.getText().toString());
 						startActivity(intent);
 					}

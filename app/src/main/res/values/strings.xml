@@ -61,5 +61,7 @@
     <string name="find_film_hint">Tytuł filmu...</string>
     <string name="rand_film_popup">Wylosuj film na dziś</string>
     <string name="back">Wróć</string>
+    <string name="toast_already_in">Film już został dodany do ulubionych!</string>
+    <string name="toast_added_to_fav">Film dodany do ulubionych</string>
 
 </resources>
