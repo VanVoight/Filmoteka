@@ -3,6 +3,7 @@ package pl.edu.pb.filmoteka;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.fragment.app.Fragment;
@@ -12,12 +13,16 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.room.Room;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import pl.edu.pb.filmoteka.DB.AppDatabase;
 
 public class HomeActivity extends AppCompatActivity implements CategoryFragment.OnCategoryClickListener {
     private static final String KEY_CURRENT_INDEX = "currentIndex";
 
+    private AppDatabase appDatabase;
     private SharedViewModel sharedViewModel;
     private String userName;
     private long userId;
@@ -27,14 +32,15 @@ public class HomeActivity extends AppCompatActivity implements CategoryFragment.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "my-database")
+                .build();
         Intent intent = getIntent();
         if(intent != null){
             userId = intent.getLongExtra("userId", -1);
+            Log.d("Logowanie","Takie jest w Home Activity:"+userId);
             userName = intent.getStringExtra("userName");
         }
-        MovieAdapter movieAdapter = new MovieAdapter();
-        movieAdapter.setUserId(userId);
+
 
 
 
@@ -82,6 +88,9 @@ public class HomeActivity extends AppCompatActivity implements CategoryFragment.
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         MovieListFragment movieListFragment = new MovieListFragment();
+        Bundle bundle = new Bundle();
+        bundle.putLong("userId", userId);
+        movieListFragment.setArguments(bundle);
         fragmentTransaction.replace(R.id.fragment_container, movieListFragment);
         fragmentTransaction.commit();
         sharedViewModel.setCurrentIndex(0);
@@ -101,6 +110,7 @@ public class HomeActivity extends AppCompatActivity implements CategoryFragment.
         Bundle bundle = new Bundle();
         bundle.putInt("categoryId", categoryId);
         bundle.putString("categoryName", name);
+        bundle.putLong("userId", userId);
         movieListFragment.setArguments(bundle);
         fragmentTransaction.replace(R.id.fragment_container, movieListFragment);
         fragmentTransaction.commit();
