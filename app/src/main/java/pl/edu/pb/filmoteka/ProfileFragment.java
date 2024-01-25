@@ -75,6 +75,19 @@ public class ProfileFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
+        seenFilmsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                WatchedListFragment watchedListFragment = new WatchedListFragment();
+                Bundle bundle = new Bundle();
+                bundle.putLong("userId", userId);
+                watchedListFragment.setArguments(bundle);
+                fragmentTransaction.replace(R.id.fragment_container, watchedListFragment);
+                fragmentTransaction.commit();
+            }
+        });
 
         // Przypisanie obsługi zdarzenia kliknięcia dla przycisku randFilmsButton
         randFilmsButton.setOnClickListener(new View.OnClickListener() {

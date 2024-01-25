@@ -15,8 +15,8 @@ public interface WatchedMoviesDao {
     @Query("SELECT COUNT(*) FROM watched_movies WHERE userId = :userId AND movieDbId = :movieDbId")
     int checkIfWatchedMovieExists(long userId, int movieDbId);
 
-    @Query("SELECT * FROM watched_movies")
-    List<WatchedMovies> getAllWatchedMovies();
+    @Query("SELECT * FROM watched_movies WHERE userId = :userId")
+    List<WatchedMovies> getAllWatchedMovies(long userId);
     @Query("DELETE FROM watched_movies")
     void deleteAllWatchedMovies();
 }

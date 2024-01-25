@@ -71,4 +71,5 @@
     <string name="add_review">Dodaj recenzję</string>
     <string name="add_rating">Oceń</string>
     <string name="favourite_list">Ulubione</string>
+    <string name="watched_list">Obejrzane</string>
 </resources>
