@@ -28,6 +28,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -141,6 +142,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
                         return true;
                     } else if (item.getItemId() == R.id.menu_star_rating) {
                         // Handle star rating menu item
+                        showRatingDialog(itemView.getContext());
                         return true;
                     } else {
                         return false;
@@ -150,6 +152,38 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
             popupMenu.show();
         }
+
+        private void showRatingDialog(Context context) {
+            LayoutInflater inflater = LayoutInflater.from(context);
+            View dialogView = inflater.inflate(R.layout.dialog_layout, null);
+
+            RatingBar ratingBar = dialogView.findViewById(R.id.ratingBar);
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.CustomAlertDialog);
+            builder.setView(dialogView);
+            builder.setTitle(context.getString(R.string.rate));
+
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    float rating = ratingBar.getRating();
+                    // Handle the rating (save it, display it, etc.)
+                    Toast.makeText(itemView.getContext(), "You rated the movie: " + rating, Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
+                }
+            });
+
+            builder.setNeutralButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
+
         private void removeFromFavorites() {
             // Remove the movie from the FavouriteMovies table
             new RemoveFromFavoritesTask(itemView).execute();

@@ -76,4 +76,6 @@
 <string name="favourite_list">Ulubione</string>
 <string name="watched_list">Obejrzane</string>
     <string name="rem_fav">- Usuń z ulubionych</string>
+    <string name="rate">Oceń film</string>
+    <string name="cancel">Anuluj</string>
 </resources>
