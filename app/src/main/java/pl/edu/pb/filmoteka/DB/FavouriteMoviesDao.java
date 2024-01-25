@@ -15,8 +15,8 @@ public interface FavouriteMoviesDao {
     @Query("SELECT COUNT(*) FROM favourite_movies WHERE userId = :userId AND movieDbId = :movieDbId")
     int checkIfFavouriteMovieExists(long userId, int movieDbId);
 
-    @Query("SELECT * FROM favourite_movies")
-    List<FavouriteMovies> getAllFavouriteMovies();
+    @Query("SELECT * FROM favourite_movies WHERE userId = :userId")
+    List<FavouriteMovies> getFavouriteMovies(long userId);
     @Query("DELETE FROM favourite_movies")
     void deleteAllFavouriteMovies();
 }

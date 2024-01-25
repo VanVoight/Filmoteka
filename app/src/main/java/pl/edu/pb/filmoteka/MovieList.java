@@ -12,354 +12,439 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import pl.edu.pb.filmoteka.DB.AppDatabase;
+import pl.edu.pb.filmoteka.DB.FavouriteMovies;
 
 public class MovieList {
-	private static String language;
-	private static String region;
-	public static void setLanguageAndRegion(Context context) {
-		Resources resources = context.getResources();
-		language = resources.getString(R.string.poland);
-		region = resources.getString(R.string.poland);
-	}
-	public interface OnMoviesFetchedListener {
-		void onMoviesFetched(List<Movie> movies);
-	}
+    private static String language;
+    private static String region;
 
-	public static void getPopularMovies(String accessToken, OnMoviesFetchedListener listener) {
-		new FetchMovieListTask(listener).execute(accessToken);
-	}
+    public static void setLanguageAndRegion(Context context) {
+        Resources resources = context.getResources();
+        language = resources.getString(R.string.poland);
+        region = resources.getString(R.string.poland);
+    }
 
-	private static class FetchMovieListTask extends AsyncTask<String, Void, List<Movie>> {
-		private final OnMoviesFetchedListener listener;
+    public interface OnMoviesFetchedListener {
+        void onMoviesFetched(List<Movie> movies);
+    }
 
-		FetchMovieListTask(OnMoviesFetchedListener listener) {
-			this.listener = listener;
-		}
+    public static void getFavouriteMovies(AppDatabase appDatabase, long userId, String accessToken, OnMoviesFetchedListener listener) {
+        new FetchFavouriteListTask(appDatabase, userId, listener).execute(accessToken);
+    }
 
-		@Override
-		protected List<Movie> doInBackground(String... tokens) {
-			String accessToken = tokens[0];
-			String apiUrl = "https://api.themoviedb.org/3/movie/popular?include_adult=false&include_video=false&language="+language+"&page=1&region="+region+"&sort_by=popularity.desc";
+    private static class FetchFavouriteListTask extends AsyncTask<String, Void, List<Movie>> {
+        private final OnMoviesFetchedListener listener;
+        private final AppDatabase appDatabase;
 
-			OkHttpClient client = new OkHttpClient.Builder()
-					.addNetworkInterceptor(new StethoInterceptor())
-					.build();
+        private final long userId;
 
-			Request request = new Request.Builder()
-					.url(apiUrl)
-					.header("Authorization", "Bearer " + accessToken)
-					.header("accept", "application/json")
-					.build();
+        FetchFavouriteListTask(AppDatabase appDatabase, long userId, OnMoviesFetchedListener listener) {
+            this.appDatabase = appDatabase;
+            this.listener = listener;
+            this.userId = userId;
+        }
 
-			try {
-				Response response = client.newCall(request).execute();
-				if (response.isSuccessful()) {
-					Gson gson = new Gson();
-					TypeToken<MovieResult> token = new TypeToken<MovieResult>() {};
-					MovieResult movieResponse = gson.fromJson(response.body().string(), token.getType());
-					return movieResponse.getResults();
-				} else {
-					// Handle error
-					Log.e("MovieList", "Error fetching movie list");
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+        @Override
+        protected List<Movie> doInBackground(String... tokens) {
+            String accessToken = tokens[0];
 
-			return null;
-		}
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .addNetworkInterceptor(new StethoInterceptor())
+                    .build();
 
-		@Override
-		protected void onPostExecute(List<Movie> movies) {
-			super.onPostExecute(movies);
+            List<Movie> movies = new ArrayList<>();
 
-			if (movies != null) {
-				listener.onMoviesFetched(movies);
-			}
-		}
-
-	}
-	public static void getTopRatedMovies(String accessToken, OnMoviesFetchedListener listener) {
-		new FetchTopRatedMovieListTask(listener).execute(accessToken);
-	}
-	private static class FetchTopRatedMovieListTask extends AsyncTask<String, Void, List<Movie>> {
-		private final OnMoviesFetchedListener listener;
-
-		FetchTopRatedMovieListTask(OnMoviesFetchedListener listener) {
-			this.listener = listener;
-		}
-
-		@Override
-		protected List<Movie> doInBackground(String... tokens) {
-			String accessToken = tokens[0];
-			String apiUrl = "https://api.themoviedb.org/3/movie/top_rated?include_adult=false&include_video=false&language="+language+"&page=1&region="+region+"&sort_by=vote_average.desc&without_genres=99,10755&vote_count.gte=200";
-
-			OkHttpClient client = new OkHttpClient.Builder()
-					.addNetworkInterceptor(new StethoInterceptor())
-					.build();
-
-			Request request = new Request.Builder()
-					.url(apiUrl)
-					.header("Authorization", "Bearer " + accessToken)
-					.header("accept", "application/json")
-					.build();
-
-			try {
-				Response response = client.newCall(request).execute();
-				if (response.isSuccessful()) {
-					Gson gson = new Gson();
-					TypeToken<MovieResult> token = new TypeToken<MovieResult>() {};
-					MovieResult movieResponse = gson.fromJson(response.body().string(), token.getType());
-					return movieResponse.getResults();
-				} else {
-					// Handle error
-					Log.e("MovieList", "Error fetching top-rated movie list");
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-
-			return null;
-		}
-
-		@Override
-		protected void onPostExecute(List<Movie> movies) {
-			super.onPostExecute(movies);
-
-			if (movies != null) {
-				listener.onMoviesFetched(movies);
-			}
-		}
-	}
-	public static void getReleasedMovies(String accessToken, OnMoviesFetchedListener listener) {
-		new FetchReleasedMovieListTask(listener).execute(accessToken);
-	}
-
-	private static class FetchReleasedMovieListTask extends AsyncTask<String, Void, List<Movie>> {
-		private final OnMoviesFetchedListener listener;
+            List<FavouriteMovies> favouriteMovies = appDatabase.favouriteMoviesDao().getFavouriteMovies(userId);
 
 
-		FetchReleasedMovieListTask(OnMoviesFetchedListener listener) {
-			this.listener = listener;
+            // Loop through each movie ID and fetch details
+            for (FavouriteMovies favouriteMovie : favouriteMovies) {
+                String apiUrl = "https://api.themoviedb.org/3/movie/" + favouriteMovie.movieDbId + "?language=" + language + "&region=" + region;
 
-		}
+                Request request = new Request.Builder()
+                        .url(apiUrl)
+                        .header("Authorization", "Bearer " + accessToken)
+                        .header("accept", "application/json")
+                        .build();
 
-		@Override
-		protected List<Movie> doInBackground(String... tokens) {
-			String accessToken = tokens[0];
-			String apiUrl = "https://api.themoviedb.org/3/movie/now_playing?include_adult=false&include_video=false&language="+language+"&page=1&region="+region+"&sort_by=popularity.desc";
+                try {
+                    Response response = client.newCall(request).execute();
+                    if (response.isSuccessful()) {
+                        Gson gson = new Gson();
+                        Movie movie = gson.fromJson(response.body().string(), Movie.class);
+                        movies.add(movie);
+                    } else {
+                        // Handle error
+                        Log.e("MovieList", "Error fetching movie with ID: " + favouriteMovie.movieDbId);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
 
-			OkHttpClient client = new OkHttpClient.Builder()
-					.addNetworkInterceptor(new StethoInterceptor())
-					.build();
+            return movies;
+        }
 
-			Request request = new Request.Builder()
-					.url(apiUrl)
-					.header("Authorization", "Bearer " + accessToken)
-					.header("accept", "application/json")
-					.build();
+        @Override
+        protected void onPostExecute(List<Movie> movies) {
+            super.onPostExecute(movies);
 
-			try {
-				Response response = client.newCall(request).execute();
-				if (response.isSuccessful()) {
-					Gson gson = new Gson();
-					TypeToken<MovieResult> token = new TypeToken<MovieResult>() {};
-					MovieResult movieResponse = gson.fromJson(response.body().string(), token.getType());
-					return movieResponse.getResults();
-				} else {
-					// Handle error
-					Log.e("MovieList", "Error fetching released movie list");
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+            if (movies != null) {
+                listener.onMoviesFetched(movies);
+            }
+        }
 
-			return null;
-		}
-
-		@Override
-		protected void onPostExecute(List<Movie> movies) {
-			super.onPostExecute(movies);
-
-			if (movies != null) {
-				listener.onMoviesFetched(movies);
-			}
-		}
-	}
-	public static void getCustomReleaseMovies(String accessToken, OnMoviesFetchedListener listener) {
-		new FetchCustomReleaseMovieListTask(listener).execute(accessToken);
-	}
-
-	private static class FetchCustomReleaseMovieListTask extends AsyncTask<String, Void, List<Movie>> {
-		private final OnMoviesFetchedListener listener;
+    }
 
 
-		FetchCustomReleaseMovieListTask(OnMoviesFetchedListener listener) {
-			this.listener = listener;
+    public static void getPopularMovies(String accessToken, OnMoviesFetchedListener listener) {
+        new FetchMovieListTask(listener).execute(accessToken);
+    }
 
-		}
+    private static class FetchMovieListTask extends AsyncTask<String, Void, List<Movie>> {
+        private final OnMoviesFetchedListener listener;
 
-		@Override
-		protected List<Movie> doInBackground(String... tokens) {
-			String accessToken = tokens[0];
+        FetchMovieListTask(OnMoviesFetchedListener listener) {
+            this.listener = listener;
+        }
 
-			String apiUrl = "https://api.themoviedb.org/3/movie/upcoming?include_adult=false&include_video=false&language="+language+"&page=1&region="+region+"&sort_by=popularity.desc";
+        @Override
+        protected List<Movie> doInBackground(String... tokens) {
+            String accessToken = tokens[0];
+            String apiUrl = "https://api.themoviedb.org/3/movie/popular?include_adult=false&include_video=false&language=" + language + "&page=1&region=" + region + "&sort_by=popularity.desc";
 
-			OkHttpClient client = new OkHttpClient.Builder()
-					.addNetworkInterceptor(new StethoInterceptor())
-					.build();
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .addNetworkInterceptor(new StethoInterceptor())
+                    .build();
 
-			Request request = new Request.Builder()
-					.url(apiUrl)
-					.header("Authorization", "Bearer " + accessToken)
-					.header("accept", "application/json")
-					.build();
+            Request request = new Request.Builder()
+                    .url(apiUrl)
+                    .header("Authorization", "Bearer " + accessToken)
+                    .header("accept", "application/json")
+                    .build();
 
-			try {
-				Response response = client.newCall(request).execute();
-				if (response.isSuccessful()) {
-					Gson gson = new Gson();
-					TypeToken<MovieResult> token = new TypeToken<MovieResult>() {};
-					MovieResult movieResponse = gson.fromJson(response.body().string(), token.getType());
-					return movieResponse.getResults();
-				} else {
-					// Handle error
-					Log.e("MovieList", "Error fetching custom release movie list");
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+            try {
+                Response response = client.newCall(request).execute();
+                if (response.isSuccessful()) {
+                    Gson gson = new Gson();
+                    TypeToken<MovieResult> token = new TypeToken<MovieResult>() {
+                    };
+                    MovieResult movieResponse = gson.fromJson(response.body().string(), token.getType());
+                    return movieResponse.getResults();
+                } else {
+                    // Handle error
+                    Log.e("MovieList", "Error fetching movie list");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
-			return null;
-		}
+            return null;
+        }
 
-		@Override
-		protected void onPostExecute(List<Movie> movies) {
-			super.onPostExecute(movies);
+        @Override
+        protected void onPostExecute(List<Movie> movies) {
+            super.onPostExecute(movies);
 
-			if (movies != null) {
-				listener.onMoviesFetched(movies);
-			}
-		}
-	}
-	public static void getMovieVideos(String accessToken, int movieId, OnVideosFetchedListener listener) {
-		new FetchMovieVideosTask(listener).execute(accessToken, String.valueOf(movieId));
-	}
+            if (movies != null) {
+                listener.onMoviesFetched(movies);
+            }
+        }
 
-	private static class FetchMovieVideosTask extends AsyncTask<String, Void, List<Video>> {
-		private final OnVideosFetchedListener listener;
+    }
 
-		FetchMovieVideosTask(OnVideosFetchedListener listener) {
-			this.listener = listener;
-		}
+    public static void getTopRatedMovies(String accessToken, OnMoviesFetchedListener listener) {
+        new FetchTopRatedMovieListTask(listener).execute(accessToken);
+    }
 
-		@Override
-		protected List<Video> doInBackground(String... tokens) {
-			String accessToken = tokens[0];
-			int movieId = Integer.parseInt(tokens[1]);
-			String apiUrl = "https://api.themoviedb.org/3/movie/" + movieId + "/videos?language="+language;
+    private static class FetchTopRatedMovieListTask extends AsyncTask<String, Void, List<Movie>> {
+        private final OnMoviesFetchedListener listener;
 
-			OkHttpClient client = new OkHttpClient.Builder()
-					.addNetworkInterceptor(new StethoInterceptor())
-					.build();
+        FetchTopRatedMovieListTask(OnMoviesFetchedListener listener) {
+            this.listener = listener;
+        }
 
-			Request request = new Request.Builder()
-					.url(apiUrl)
-					.header("Authorization", "Bearer " + accessToken)
-					.header("accept", "application/json")
-					.build();
+        @Override
+        protected List<Movie> doInBackground(String... tokens) {
+            String accessToken = tokens[0];
+            String apiUrl = "https://api.themoviedb.org/3/movie/top_rated?include_adult=false&include_video=false&language=" + language + "&page=1&region=" + region + "&sort_by=vote_average.desc&without_genres=99,10755&vote_count.gte=200";
 
-			try {
-				Response response = client.newCall(request).execute();
-				if (response.isSuccessful()) {
-					Gson gson = new Gson();
-					TypeToken<VideoResult> token = new TypeToken<VideoResult>() {};
-					VideoResult videoResponse = gson.fromJson(response.body().string(), token.getType());
-					return videoResponse.getResults();
-				} else {
-					// Handle error
-					Log.e("MovieList", "Error fetching movie videos");
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .addNetworkInterceptor(new StethoInterceptor())
+                    .build();
 
-			return null;
-		}
+            Request request = new Request.Builder()
+                    .url(apiUrl)
+                    .header("Authorization", "Bearer " + accessToken)
+                    .header("accept", "application/json")
+                    .build();
 
-		@Override
-		protected void onPostExecute(List<Video> videos) {
-			super.onPostExecute(videos);
+            try {
+                Response response = client.newCall(request).execute();
+                if (response.isSuccessful()) {
+                    Gson gson = new Gson();
+                    TypeToken<MovieResult> token = new TypeToken<MovieResult>() {
+                    };
+                    MovieResult movieResponse = gson.fromJson(response.body().string(), token.getType());
+                    return movieResponse.getResults();
+                } else {
+                    // Handle error
+                    Log.e("MovieList", "Error fetching top-rated movie list");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
-			if (videos != null) {
-				listener.onVideosFetched(videos);
-			}
-		}
-	}
+            return null;
+        }
 
-	public interface OnVideosFetchedListener {
-		void onVideosFetched(List<Video> videos);
-	}
-	public static void getMoviesByGenre(String accessToken, int genreId, OnMoviesFetchedListener listener) {
-		new FetchMoviesByGenreTask(listener).execute(accessToken, String.valueOf(genreId));
-	}
+        @Override
+        protected void onPostExecute(List<Movie> movies) {
+            super.onPostExecute(movies);
 
-	private static class FetchMoviesByGenreTask extends AsyncTask<String, Void, List<Movie>> {
-		private final OnMoviesFetchedListener listener;
+            if (movies != null) {
+                listener.onMoviesFetched(movies);
+            }
+        }
+    }
 
-		FetchMoviesByGenreTask(OnMoviesFetchedListener listener) {
-			this.listener = listener;
-		}
+    public static void getReleasedMovies(String accessToken, OnMoviesFetchedListener listener) {
+        new FetchReleasedMovieListTask(listener).execute(accessToken);
+    }
 
-		@Override
-		protected List<Movie> doInBackground(String... tokens) {
-			String accessToken = tokens[0];
-			int genreId = Integer.parseInt(tokens[1]);
-			String apiUrl = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language="+ language + "&page=1&region=" + region + "&sort_by=popularity.desc&with_genres=" + genreId;
+    private static class FetchReleasedMovieListTask extends AsyncTask<String, Void, List<Movie>> {
+        private final OnMoviesFetchedListener listener;
 
-			OkHttpClient client = new OkHttpClient.Builder()
-					.addNetworkInterceptor(new StethoInterceptor())
-					.build();
 
-			Request request = new Request.Builder()
-					.url(apiUrl)
-					.header("Authorization", "Bearer " + accessToken)
-					.header("accept", "application/json")
-					.build();
+        FetchReleasedMovieListTask(OnMoviesFetchedListener listener) {
+            this.listener = listener;
 
-			try {
-				Response response = client.newCall(request).execute();
-				if (response.isSuccessful()) {
-					Gson gson = new Gson();
-					TypeToken<MovieResult> token = new TypeToken<MovieResult>() {
-					};
-					MovieResult movieResponse = gson.fromJson(response.body().string(), token.getType());
-					return movieResponse.getResults();
-				} else {
-					// Handle error
-					Log.e("MovieList", "Error fetching movies by genre");
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+        }
 
-			return null;
-		}
+        @Override
+        protected List<Movie> doInBackground(String... tokens) {
+            String accessToken = tokens[0];
+            String apiUrl = "https://api.themoviedb.org/3/movie/now_playing?include_adult=false&include_video=false&language=" + language + "&page=1&region=" + region + "&sort_by=popularity.desc";
 
-		@Override
-		protected void onPostExecute(List<Movie> movies) {
-			super.onPostExecute(movies);
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .addNetworkInterceptor(new StethoInterceptor())
+                    .build();
 
-			if (movies != null) {
-				listener.onMoviesFetched(movies);
-			}
-		}
-	}
+            Request request = new Request.Builder()
+                    .url(apiUrl)
+                    .header("Authorization", "Bearer " + accessToken)
+                    .header("accept", "application/json")
+                    .build();
+
+            try {
+                Response response = client.newCall(request).execute();
+                if (response.isSuccessful()) {
+                    Gson gson = new Gson();
+                    TypeToken<MovieResult> token = new TypeToken<MovieResult>() {
+                    };
+                    MovieResult movieResponse = gson.fromJson(response.body().string(), token.getType());
+                    return movieResponse.getResults();
+                } else {
+                    // Handle error
+                    Log.e("MovieList", "Error fetching released movie list");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(List<Movie> movies) {
+            super.onPostExecute(movies);
+
+            if (movies != null) {
+                listener.onMoviesFetched(movies);
+            }
+        }
+    }
+
+    public static void getCustomReleaseMovies(String accessToken, OnMoviesFetchedListener listener) {
+        new FetchCustomReleaseMovieListTask(listener).execute(accessToken);
+    }
+
+    private static class FetchCustomReleaseMovieListTask extends AsyncTask<String, Void, List<Movie>> {
+        private final OnMoviesFetchedListener listener;
+
+
+        FetchCustomReleaseMovieListTask(OnMoviesFetchedListener listener) {
+            this.listener = listener;
+
+        }
+
+        @Override
+        protected List<Movie> doInBackground(String... tokens) {
+            String accessToken = tokens[0];
+
+            String apiUrl = "https://api.themoviedb.org/3/movie/upcoming?include_adult=false&include_video=false&language=" + language + "&page=1&region=" + region + "&sort_by=popularity.desc";
+
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .addNetworkInterceptor(new StethoInterceptor())
+                    .build();
+
+            Request request = new Request.Builder()
+                    .url(apiUrl)
+                    .header("Authorization", "Bearer " + accessToken)
+                    .header("accept", "application/json")
+                    .build();
+
+            try {
+                Response response = client.newCall(request).execute();
+                if (response.isSuccessful()) {
+                    Gson gson = new Gson();
+                    TypeToken<MovieResult> token = new TypeToken<MovieResult>() {
+                    };
+                    MovieResult movieResponse = gson.fromJson(response.body().string(), token.getType());
+                    return movieResponse.getResults();
+                } else {
+                    // Handle error
+                    Log.e("MovieList", "Error fetching custom release movie list");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(List<Movie> movies) {
+            super.onPostExecute(movies);
+
+            if (movies != null) {
+                listener.onMoviesFetched(movies);
+            }
+        }
+    }
+
+    public static void getMovieVideos(String accessToken, int movieId, OnVideosFetchedListener listener) {
+        new FetchMovieVideosTask(listener).execute(accessToken, String.valueOf(movieId));
+    }
+
+    private static class FetchMovieVideosTask extends AsyncTask<String, Void, List<Video>> {
+        private final OnVideosFetchedListener listener;
+
+        FetchMovieVideosTask(OnVideosFetchedListener listener) {
+            this.listener = listener;
+        }
+
+        @Override
+        protected List<Video> doInBackground(String... tokens) {
+            String accessToken = tokens[0];
+            int movieId = Integer.parseInt(tokens[1]);
+            String apiUrl = "https://api.themoviedb.org/3/movie/" + movieId + "/videos?language=" + language;
+
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .addNetworkInterceptor(new StethoInterceptor())
+                    .build();
+
+            Request request = new Request.Builder()
+                    .url(apiUrl)
+                    .header("Authorization", "Bearer " + accessToken)
+                    .header("accept", "application/json")
+                    .build();
+
+            try {
+                Response response = client.newCall(request).execute();
+                if (response.isSuccessful()) {
+                    Gson gson = new Gson();
+                    TypeToken<VideoResult> token = new TypeToken<VideoResult>() {
+                    };
+                    VideoResult videoResponse = gson.fromJson(response.body().string(), token.getType());
+                    return videoResponse.getResults();
+                } else {
+                    // Handle error
+                    Log.e("MovieList", "Error fetching movie videos");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(List<Video> videos) {
+            super.onPostExecute(videos);
+
+            if (videos != null) {
+                listener.onVideosFetched(videos);
+            }
+        }
+    }
+
+    public interface OnVideosFetchedListener {
+        void onVideosFetched(List<Video> videos);
+    }
+
+    public static void getMoviesByGenre(String accessToken, int genreId, OnMoviesFetchedListener listener) {
+        new FetchMoviesByGenreTask(listener).execute(accessToken, String.valueOf(genreId));
+    }
+
+    private static class FetchMoviesByGenreTask extends AsyncTask<String, Void, List<Movie>> {
+        private final OnMoviesFetchedListener listener;
+
+        FetchMoviesByGenreTask(OnMoviesFetchedListener listener) {
+            this.listener = listener;
+        }
+
+        @Override
+        protected List<Movie> doInBackground(String... tokens) {
+            String accessToken = tokens[0];
+            int genreId = Integer.parseInt(tokens[1]);
+            String apiUrl = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=" + language + "&page=1&region=" + region + "&sort_by=popularity.desc&with_genres=" + genreId;
+
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .addNetworkInterceptor(new StethoInterceptor())
+                    .build();
+
+            Request request = new Request.Builder()
+                    .url(apiUrl)
+                    .header("Authorization", "Bearer " + accessToken)
+                    .header("accept", "application/json")
+                    .build();
+
+            try {
+                Response response = client.newCall(request).execute();
+                if (response.isSuccessful()) {
+                    Gson gson = new Gson();
+                    TypeToken<MovieResult> token = new TypeToken<MovieResult>() {
+                    };
+                    MovieResult movieResponse = gson.fromJson(response.body().string(), token.getType());
+                    return movieResponse.getResults();
+                } else {
+                    // Handle error
+                    Log.e("MovieList", "Error fetching movies by genre");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(List<Movie> movies) {
+            super.onPostExecute(movies);
+
+            if (movies != null) {
+                listener.onMoviesFetched(movies);
+            }
+        }
+    }
 
 
 }

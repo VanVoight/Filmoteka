@@ -128,6 +128,7 @@ public class HomeActivity extends AppCompatActivity implements CategoryFragment.
         ProfileFragment profileFragment = new ProfileFragment();
         Bundle bundle = new Bundle();
         bundle.putString("userName", userName);
+        bundle.putLong("userId", userId);
         profileFragment.setArguments(bundle);
         fragmentTransaction.replace(R.id.fragment_container, profileFragment);
         fragmentTransaction.commit();
