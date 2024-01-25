@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase;
 import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {User.class, UserRole.class, Role.class, Movie.class, FavouriteMovies.class}, version = 2, exportSchema = false)
+@Database(entities = {User.class, UserRole.class, Role.class, Movie.class, FavouriteMovies.class, WatchedMovies.class, MyListMovies.class}, version = 2, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract UserDao userDao();
 
@@ -20,7 +20,8 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract MovieDao movieDao();
 
     public abstract FavouriteMoviesDao favouriteMoviesDao();
-
+    public abstract WatchedMoviesDao watchedMoviesDao();
+    public abstract MyListMoviesDao myListMoviesDao();
     private static AppDatabase instance;
 
     public static synchronized AppDatabase getInstance(Context context) {

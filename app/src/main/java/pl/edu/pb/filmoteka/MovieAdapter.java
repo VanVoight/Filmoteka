@@ -44,6 +44,9 @@ import java.util.List;
 
 import pl.edu.pb.filmoteka.DB.AppDatabase;
 import pl.edu.pb.filmoteka.DB.FavouriteMovies;
+import pl.edu.pb.filmoteka.DB.MyListMovies;
+import pl.edu.pb.filmoteka.DB.MyListMoviesDao;
+import pl.edu.pb.filmoteka.DB.WatchedMovies;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
 
@@ -107,10 +110,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
 						return true;
 					} else if (item.getItemId() == R.id.menu_watched) {
-
+						addToWatched();
 						return true;
 					} else if (item.getItemId() == R.id.menu_rate) {
-
+						addToMyList();
 						return true;
 					} else {
 						return false;
@@ -150,6 +153,86 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 				View itemView = itemViewReference.get();
 				String toastMessage = itemView.getContext().getString(R.string.toast_already_in);
 				String toastMessage2 = itemView.getContext().getString(R.string.toast_added_to_fav);
+				if (itemView != null) {
+					if (existingCount == 0) {
+						Toast.makeText(itemView.getContext(), toastMessage2, Toast.LENGTH_SHORT).show();
+					} else {
+						Toast.makeText(itemView.getContext(), toastMessage, Toast.LENGTH_SHORT).show();
+					}
+				}
+			}
+		}
+		private void addToWatched() {
+
+			WatchedMovies watchedMovies = new WatchedMovies();
+			watchedMovies.userId = userId;
+			watchedMovies.movieDbId = movieId;
+
+			new AddToWatchedTask(itemView).execute(watchedMovies);
+		}
+
+		private static class AddToWatchedTask extends AsyncTask<WatchedMovies, Void, Integer> {
+			private WeakReference<View> itemViewReference;
+
+			public AddToWatchedTask(View itemView) {
+				itemViewReference = new WeakReference<>(itemView);
+			}
+			@Override
+			protected Integer doInBackground(WatchedMovies... watchedMovies) {
+				int existingCount = appDatabase.watchedMoviesDao().checkIfWatchedMovieExists(userId, movieId);
+
+				if (existingCount == 0) {
+					appDatabase.watchedMoviesDao().insertWatchedMovie(watchedMovies[0]);
+				}
+
+				return existingCount;
+			}
+
+			@Override
+			protected void onPostExecute(Integer existingCount) {
+				View itemView = itemViewReference.get();
+				String toastMessage = itemView.getContext().getString(R.string.toast_already_in_watch);
+				String toastMessage2 = itemView.getContext().getString(R.string.toast_added_to_watch);
+				if (itemView != null) {
+					if (existingCount == 0) {
+						Toast.makeText(itemView.getContext(), toastMessage2, Toast.LENGTH_SHORT).show();
+					} else {
+						Toast.makeText(itemView.getContext(), toastMessage, Toast.LENGTH_SHORT).show();
+					}
+				}
+			}
+		}
+		private void addToMyList() {
+
+			MyListMovies myListMovies = new MyListMovies();
+			myListMovies.userId = userId;
+			myListMovies.movieDbId = movieId;
+
+			new AddToMyListTask(itemView).execute(myListMovies);
+		}
+
+		private static class AddToMyListTask extends AsyncTask<MyListMovies, Void, Integer> {
+			private WeakReference<View> itemViewReference;
+
+			public AddToMyListTask(View itemView) {
+				itemViewReference = new WeakReference<>(itemView);
+			}
+			@Override
+			protected Integer doInBackground(MyListMovies... myListMovies) {
+				int existingCount = appDatabase.myListMoviesDao().checkIfMyListMovieExists(userId, movieId);
+
+				if (existingCount == 0) {
+					appDatabase.myListMoviesDao().insertMyListMovie(myListMovies[0]);
+				}
+
+				return existingCount;
+			}
+
+			@Override
+			protected void onPostExecute(Integer existingCount) {
+				View itemView = itemViewReference.get();
+				String toastMessage = itemView.getContext().getString(R.string.toast_already_in_ml);
+				String toastMessage2 = itemView.getContext().getString(R.string.toast_added_to_ml);
 				if (itemView != null) {
 					if (existingCount == 0) {
 						Toast.makeText(itemView.getContext(), toastMessage2, Toast.LENGTH_SHORT).show();

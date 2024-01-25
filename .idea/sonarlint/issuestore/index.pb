@@ -121,3 +121,11 @@ Q.idea/sonarlint/securityhotspotstore/e/2/e2110a01a0eeac2a04e612520143776cfbc200
 Q.idea/sonarlint/securityhotspotstore/a/c/acef284178e19011a322d4f8460a07f503d595cd,0\d\0dc7cac754508f2dcbab0fce5dd923d094b12ad7
 w
 G.idea/sonarlint/issuestore/e/2/e2110a01a0eeac2a04e612520143776cfbc2007e,4\4\445f3df1ba837a099a5e436b6fe678ee74346396
+k
+;app/src/main/java/pl/edu/pb/filmoteka/DB/WatchedMovies.java,3\9\39fcc371c3d8c22efce6653ed46e5fda45880428
+n
+>app/src/main/java/pl/edu/pb/filmoteka/DB/WatchedMoviesDao.java,8\6\8653bde589bd7879491a1098134d713fcd0740c9
+j
+:app/src/main/java/pl/edu/pb/filmoteka/DB/MyListMovies.java,4\d\4de33a2ed157834c805879840c796d0e6a0426e7
+m
+=app/src/main/java/pl/edu/pb/filmoteka/DB/MyListMoviesDao.java,d\9\d980d9daceb2a91fc632fc29f45c39a246fa5cfa

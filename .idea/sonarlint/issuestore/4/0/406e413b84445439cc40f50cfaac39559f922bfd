@@ -1,47 +1,57 @@
 
 E
-java:S1604e"(Make this anonymous inner class a lambda(»ä”ö8æ…îÓ1
+java:S1604h"(Make this anonymous inner class a lambda(»ä”ö8ğœõ…Ô1
 K
-java:S1604¦"(Make this anonymous inner class a lambda(ó›¾ûÿÿÿÿ8æ…îÓ1
+java:S1604ù"(Make this anonymous inner class a lambda(ó›¾ûÿÿÿÿ8ğœõ…Ô1
 F
-java:S1604°"(Make this anonymous inner class a lambda(‰À„Í8æ…îÓ1
+java:S1604ƒ"(Make this anonymous inner class a lambda(‰À„Í8ñœõ…Ô1
 F
-java:S1604×"(Make this anonymous inner class a lambda(ÇÏïğ8æ…îÓ1
+java:S1604ª"(Make this anonymous inner class a lambda(ÇÏïğ8ñœõ…Ô1
 F
-java:S1604µ"(Make this anonymous inner class a lambda(Õä8æ…îÓ1
+java:S1604ˆ"(Make this anonymous inner class a lambda(Õä8ñœõ…Ô1
 E
-java:S1604½"(Make this anonymous inner class a lambda(Ì©šs8æ…îÓ1
+java:S1604"(Make this anonymous inner class a lambda(Ì©šs8ñœõ…Ô1
 ˆ
-java:S1488‚"eImmediately return this expression instead of assigning it to the temporary variable "roundedBitmap".(¥À½¯ùÿÿÿÿ8Ÿæ…îÓ1
+java:S1488Õ"eImmediately return this expression instead of assigning it to the temporary variable "roundedBitmap".(¥À½¯ùÿÿÿÿ8ñœõ…Ô1
 E
-java:S30109"#Remove this assignment of "userId".(ÔŸ‰Üüÿÿÿÿ8Ùæ…îÓ1
+java:S3010<"#Remove this assignment of "userId".(ÔŸ‰Üüÿÿÿÿ8Áõ…Ô1
 E
-java:S3010:"(Remove this assignment of "appDatabase".(­’–ä8Ùæ…îÓ1
+java:S3010="(Remove this assignment of "appDatabase".(­’–ä8Áõ…Ô1
 W
-java:S22099"5Change this instance-reference to a static reference.(ÔŸ‰Üüÿÿÿÿ8Ùæ…îÓ1
+java:S2209<"5Change this instance-reference to a static reference.(ÔŸ‰Üüÿÿÿÿ8Áõ…Ô1
 R
-java:S2209:"5Change this instance-reference to a static reference.(­’–ä8Ùæ…îÓ1
-c
-java:S1126p"AReplace this if-then-else statement by a single return statement.(Æüğˆúÿÿÿÿ8Şæ…îÓ1
+java:S2209="5Change this instance-reference to a static reference.(­’–ä8Áõ…Ô1
 M
-java:S1874€"/Remove this use of "execute"; it is deprecated.(†«âé8²ì†îÓ1
+java:S1874ƒ"/Remove this use of "execute"; it is deprecated.(†«âé8Ìõ…Ô1
 T
-java:S1874ƒ"1Remove this use of "AsyncTask"; it is deprecated.(å¢—ùÿÿÿÿ8³ì†îÓ1
+java:S1874†"1Remove this use of "AsyncTask"; it is deprecated.(å¢—ùÿÿÿÿ8Íõ…Ô1
 h
-java:S1874•"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(¨Ö»Ä8ïæ…îÓ1
-T
-java:S2696Ñ"6Make the enclosing method "static" or remove this set.(È±ÚÎ8çæ…îÓ1
-T
-java:S1874ç"6Remove this use of "setColorFilter"; it is deprecated.(®éÜ¿8êæ…îÓ1
+java:S1874˜"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(¨Ö»Ä8Îõ…Ô1
+R
+java:S1874«"/Remove this use of "execute"; it is deprecated.(˜ş‰©ûÿÿÿÿ8Ñõ…Ô1
+O
+java:S1874®"1Remove this use of "AsyncTask"; it is deprecated.(‚†ÛÙ8Ñõ…Ô1
+h
+java:S1874À"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(¨Ö»Ä8Óõ…Ô1
 M
-java:S1874é"/Remove this use of "execute"; it is deprecated.(ëñ€¥8úíîÓ1
+java:S1874Ó"/Remove this use of "execute"; it is deprecated.(»¡…Í8×õ…Ô1
+O
+java:S1874Ö"1Remove this use of "AsyncTask"; it is deprecated.(Á±ØÛ8×õ…Ô1
+h
+java:S1874è"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(¨Ö»Ä8Ùõ…Ô1
 T
-java:S1874ô"1Remove this use of "AsyncTask"; it is deprecated.(¢´¬“ÿÿÿÿÿ8ûíîÓ1
+java:S2696¤"6Make the enclosing method "static" or remove this set.(È±ÚÎ8âõ…Ô1
+T
+java:S1874º"6Remove this use of "setColorFilter"; it is deprecated.(®éÜ¿8èõ…Ô1
+M
+java:S1874¼"/Remove this use of "execute"; it is deprecated.(ëñ€¥8èõ…Ô1
+T
+java:S1874Ç"1Remove this use of "AsyncTask"; it is deprecated.(¢´¬“ÿÿÿÿÿ8éõ…Ô1
 m
-java:S1874Œ"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÿà—óùÿÿÿÿ8µì†îÓ1
+java:S1874ß"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÿà—óùÿÿÿÿ8îõ…Ô1
 S
-java:S1874"5Remove this use of "onPostExecute"; it is deprecated.(¿åß¯8îîÓ1
+java:S1874à"5Remove this use of "onPostExecute"; it is deprecated.(¿åß¯8ïõ…Ô1
 p
-java:S3252°"MUse static access with "android.text.Spanned" for "SPAN_EXCLUSIVE_EXCLUSIVE".(¹œÀûÿÿÿÿ8øæ…îÓ1
+java:S3252ƒ"MUse static access with "android.text.Spanned" for "SPAN_EXCLUSIVE_EXCLUSIVE".(¹œÀûÿÿÿÿ8üõ…Ô1
 J
-java:S1068U"-Remove this unused "movieList" private field.(­óÇ£8ıæ…îÓ1
+java:S1068X"-Remove this unused "movieList" private field.(­óÇ£8õ…Ô1
