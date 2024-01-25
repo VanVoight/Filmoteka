@@ -1,6 +1,7 @@
 package pl.edu.pb.filmoteka.DB;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
@@ -17,6 +18,9 @@ public interface FavouriteMoviesDao {
 
     @Query("SELECT * FROM favourite_movies WHERE userId = :userId")
     List<FavouriteMovies> getFavouriteMovies(long userId);
-    @Query("DELETE FROM favourite_movies")
-    void deleteAllFavouriteMovies();
+    @Delete
+    void deleteFavouriteMovie(FavouriteMovies favouriteMovie);
+
+    @Query("DELETE FROM favourite_movies WHERE userId = :userId AND movieDbId = :movieDbId")
+    void deleteFavouriteMovie(long userId, int movieDbId);
 }
