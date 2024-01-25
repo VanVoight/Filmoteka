@@ -29,6 +29,7 @@ public class MovieListFragment extends Fragment {
 	private List<Movie> nowPlayingMovieList;
 	private List<Movie> upcomingMovieList;
 	private long userId;
+	private long userRoleId;
 
 	public MovieListFragment() {
 
@@ -42,11 +43,12 @@ public class MovieListFragment extends Fragment {
 		Bundle bundle = getArguments();
 		if (bundle != null) {
 			userId = bundle.getLong("userId", 0);
+			userRoleId = bundle.getLong("userRoleId",0);
 		}
 		appDatabase = AppDatabase.getInstance(requireContext());
 		recyclerView = view.findViewById(R.id.recyclerView);
 		recyclerView.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
-		movieAdapter = new MovieAdapter(userId,appDatabase);
+		movieAdapter = new MovieAdapter(userId,appDatabase,userRoleId);
 		recyclerView.setAdapter(movieAdapter);
 
 		MovieList.setLanguageAndRegion(getContext());
@@ -60,7 +62,7 @@ public class MovieListFragment extends Fragment {
 		});
 		topRatedRecyclerView = view.findViewById(R.id.recyclerViewTopRated);
 		topRatedRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
-		topRatedMovieAdapter = new MovieAdapter(userId,appDatabase);
+		topRatedMovieAdapter = new MovieAdapter(userId,appDatabase,userRoleId);
 		topRatedRecyclerView.setAdapter(topRatedMovieAdapter);
 
 
@@ -74,7 +76,7 @@ public class MovieListFragment extends Fragment {
 		});
 		recyclerNowPlaying = view.findViewById(R.id.recyclerNowPlaying);
 		recyclerNowPlaying.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
-		nowPlayingMovieAdapter = new MovieAdapter(userId,appDatabase);
+		nowPlayingMovieAdapter = new MovieAdapter(userId,appDatabase,userRoleId);
 		recyclerNowPlaying.setAdapter(nowPlayingMovieAdapter);
 		MovieList.getReleasedMovies("eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NmI1OTA2OTU4ZDY0YjRmOWM1MjMzMzQxNjM3M2Y0YiIsInN1YiI6IjY1OTVhYTFjNTkwN2RlMDE2NzYzYmYwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IlVmj8Oxv5RunQqXK55LVmJerMote8EMPNsO6jcEdRA",  new MovieList.OnMoviesFetchedListener() {
 			@Override
@@ -86,7 +88,7 @@ public class MovieListFragment extends Fragment {
 		});
 		recyclerViewUpcoming = view.findViewById(R.id.recyclerViewUpcoming);
 		recyclerViewUpcoming.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
-		upcomingMovieAdapter = new MovieAdapter(userId,appDatabase);
+		upcomingMovieAdapter = new MovieAdapter(userId,appDatabase,userRoleId);
 		recyclerViewUpcoming.setAdapter(upcomingMovieAdapter);
 		MovieList.getCustomReleaseMovies("eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NmI1OTA2OTU4ZDY0YjRmOWM1MjMzMzQxNjM3M2Y0YiIsInN1YiI6IjY1OTVhYTFjNTkwN2RlMDE2NzYzYmYwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IlVmj8Oxv5RunQqXK55LVmJerMote8EMPNsO6jcEdRA",  new MovieList.OnMoviesFetchedListener() {
 			@Override

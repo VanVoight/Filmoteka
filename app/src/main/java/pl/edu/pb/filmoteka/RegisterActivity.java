@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Button;
 import android.widget.Toast;
@@ -23,14 +24,18 @@ public class RegisterActivity extends AppCompatActivity {
 	private static final String KEY_SURNAME = "surname";
 	private static final String KEY_EMAIL = "email";
 
+	private static final String KEY_CHECKBOX_STATE = "checkbox_state";
+
 	private String savedUsername;
 	private String savedPassword;
 	private String savedRepassword;
 	private String savedName;
 	private String savedSurname;
 	private String savedEmail;
+	private boolean isCheckBoxChecked;
 	EditText username, password, repassword,name,surname,email;
 	Button signup, signin;
+	CheckBox checkBox;
 	private AppDatabase appDatabase;
 
 	@Override
@@ -47,7 +52,13 @@ public class RegisterActivity extends AppCompatActivity {
 		repassword = findViewById(R.id.repeat_password);
 		signup = findViewById(R.id.button_signup);
 		signin = findViewById(R.id.button_signin);
-
+		checkBox = findViewById(R.id.agree_terms_checkbox);
+		checkBox.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				isCheckBoxChecked = !isCheckBoxChecked;
+			}
+		});
 		if (savedInstanceState != null) {
 
 			savedUsername = savedInstanceState.getString(KEY_USERNAME);
@@ -56,6 +67,7 @@ public class RegisterActivity extends AppCompatActivity {
 			savedName = savedInstanceState.getString(KEY_NAME);
 			savedSurname = savedInstanceState.getString(KEY_SURNAME);
 			savedEmail = savedInstanceState.getString(KEY_EMAIL);
+			isCheckBoxChecked = savedInstanceState.getBoolean(KEY_CHECKBOX_STATE);
 
 			username.setText(savedUsername);
 			password.setText(savedPassword);
@@ -88,13 +100,13 @@ public class RegisterActivity extends AppCompatActivity {
 					return;
 				}
 				User newUser = new User();
-				newUser.setUserRoleId(2);
+				newUser.setUserRoleId(isCheckBoxChecked ? 2 : 1);
 				newUser.setUserName(enteredUsername);
 				newUser.setPassword(enteredPassword);
 				newUser.setLastName(enteredSurname);
 				newUser.setFirstName(eneteredName);
 				newUser.setEmail(enteredEmail);
-
+				Log.d("sprawdzamy role","RoleID:"+newUser.userRoleId);
 				new InsertUserAsyncTask().execute(newUser);
 			}
 		});
@@ -115,6 +127,7 @@ public class RegisterActivity extends AppCompatActivity {
 		outState.putString(KEY_NAME, name.getText().toString());
 		outState.putString(KEY_SURNAME, surname.getText().toString());
 		outState.putString(KEY_EMAIL, email.getText().toString());
+		outState.putBoolean(KEY_CHECKBOX_STATE, isCheckBoxChecked);
 	}
 	private class InsertUserAsyncTask extends AsyncTask<User, Void, Void> {
 		@Override
@@ -133,6 +146,7 @@ public class RegisterActivity extends AppCompatActivity {
 		protected void onPostExecute(Void aVoid) {
 			Log.d("InsertUserAsyncTask", "onPostExecute");
 			String toastregisterMessage = getResources().getString(R.string.toast_register);
+
 			Toast.makeText(RegisterActivity.this,toastregisterMessage, Toast.LENGTH_SHORT).show();
 			Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
 			startActivity(intent);

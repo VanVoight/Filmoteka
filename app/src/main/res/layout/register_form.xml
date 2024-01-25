@@ -100,4 +100,18 @@
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="25dp"
         app:srcCompat="@drawable/logo_wout_name" />
+    <CheckBox
+        android:id="@+id/agree_terms_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/reviewer"
+        android:layout_below="@+id/repeat_password"
+        android:textColor="@color/gold"
+        android:textSize="18dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="9dp"
+        android:checked="false"
+        android:button="@drawable/checkbox_selector"
+        />
+
 </RelativeLayout>

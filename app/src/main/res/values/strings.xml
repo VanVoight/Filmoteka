@@ -67,4 +67,7 @@
     <string name="toast_added_to_watch">Film dodany do obejrzanych</string>
     <string name="toast_already_in_ml">Film już został dodany do Mojej Listy!</string>
     <string name="toast_added_to_ml">Film dodany do Mojej Listy</string>
+    <string name="reviewer">Recenzent</string>
+    <string name="add_review">Dodaj recenzję</string>
+    <string name="add_rating">Oceń</string>
 </resources>

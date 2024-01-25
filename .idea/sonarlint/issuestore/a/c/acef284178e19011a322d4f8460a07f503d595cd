@@ -1,9 +1,11 @@
 
 J
-java:S1604-"(Make this anonymous inner class a lambda(ŒÆ½ôøÿÿÿÿ8ñ»±Ó1
-—
-java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(›·Öö
-n
-java:S1450"XRemove the "genreName" field and declare it as a local variable in the relevant methods.(¶¸ôŒ
-v
-java:S1450"[Remove the "recyclerView" field and declare it as a local variable in the relevant methods.(¿á© ıÿÿÿÿ
+java:S16046"(Make this anonymous inner class a lambda(ŒÆ½ôøÿÿÿÿ8ı²ç‡Ô1
+
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(›·Öö8³ç‡Ô1
+|
+java:S1450"ZRemove the "appDatabase" field and declare it as a local variable in the relevant methods.(í¯Õ—şÿÿÿÿ8³ç‡Ô1
+u
+java:S1450"XRemove the "genreName" field and declare it as a local variable in the relevant methods.(¶¸ôŒ8³ç‡Ô1
+}
+java:S1450"[Remove the "recyclerView" field and declare it as a local variable in the relevant methods.(¿á© ıÿÿÿÿ8³ç‡Ô1

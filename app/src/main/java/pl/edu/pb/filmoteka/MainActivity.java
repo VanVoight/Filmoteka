@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
         setDailyNotificationAlarm();
     }
 
+
     private void setDailyNotificationAlarm() {
         Intent intent = new Intent(this, AlarmReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
@@ -134,7 +135,19 @@ public class MainActivity extends AppCompatActivity {
                 return new ApiResponse(false, null, "Error: " + e.getMessage());
             }
         }
+        private void addRolesToDatabase() {
+            // Sprawdź, czy role już istnieją w bazie danych
+            List<Role> roles = appDatabase.roleDao().getAllRoles();
+            if (roles == null || roles.isEmpty()) {
+                // Dodaj dwie role: User i Recenzent
+                Role userRole = new Role(1,"User");
+                Role recenzentRole = new Role(2,"Recenzent");
 
+                // Wstaw role do bazy danych
+                appDatabase.roleDao().insertRole(userRole);
+                appDatabase.roleDao().insertRole(recenzentRole);
+            }
+        }
         @Override
         protected void onPostExecute(ApiResponse result) {
             // Tutaj możesz obsłużyć wynik zapytania do API

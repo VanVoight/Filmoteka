@@ -52,13 +52,16 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
 	private List<Movie> movies;
 	private static long userId;
+
+	private static long userRoleId;
 	private static AppDatabase appDatabase;
 	public void setMovies(List<Movie> movies) {
 		this.movies = movies;
 	}
-	public MovieAdapter(long id, AppDatabase appDatabase){
+	public MovieAdapter(long id, AppDatabase appDatabase, long roleId){
 		this.userId=id;
 		this.appDatabase=appDatabase;
+		this.userRoleId=roleId;
 	}
 	@NonNull
 	@Override
@@ -98,29 +101,61 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 		private void showPopupMenu(View view, Context context) {
 			PopupMenu popupMenu = new PopupMenu(context, view);
 			MenuInflater inflater = popupMenu.getMenuInflater();
-			inflater.inflate(R.menu.popup_menu, popupMenu.getMenu());
+			if(userRoleId==1) {
+				inflater.inflate(R.menu.popup_menu, popupMenu.getMenu());
+				popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+					@Override
+					public boolean onMenuItemClick(MenuItem item) {
+						if (item.getItemId() == R.id.menu_favorite) {
+							Log.d("Logowanie","Oby było git"+userId);
+							addToFavorites();
 
-
-			popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-				@Override
-				public boolean onMenuItemClick(MenuItem item) {
-					if (item.getItemId() == R.id.menu_favorite) {
-						Log.d("Logowanie","Oby było git"+userId);
-						addToFavorites();
-
-						return true;
-					} else if (item.getItemId() == R.id.menu_watched) {
-						addToWatched();
-						return true;
-					} else if (item.getItemId() == R.id.menu_rate) {
-						addToMyList();
-						return true;
-					} else {
-						return false;
+							return true;
+						} else if (item.getItemId() == R.id.menu_watched) {
+							addToWatched();
+							return true;
+						} else if (item.getItemId() == R.id.menu_rate) {
+							addToMyList();
+							return true;
+						} else {
+							return false;
+						}
 					}
-				}
-			});
-			popupMenu.show();
+				});
+				popupMenu.show();
+			}
+			else{
+				inflater.inflate(R.menu.popup_menu_reviewer, popupMenu.getMenu());
+				popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+					@Override
+					public boolean onMenuItemClick(MenuItem item) {
+						if (item.getItemId() == R.id.menu_favorite) {
+							Log.d("Logowanie","Oby było git"+userId);
+							addToFavorites();
+
+							return true;
+						} else if (item.getItemId() == R.id.menu_watched) {
+							addToWatched();
+							return true;
+						} else if (item.getItemId() == R.id.menu_rate) {
+							addToMyList();
+							return true;
+						} else if (item.getItemId() == R.id.menu_review) {
+							addToMyList();
+							return true;
+						}else if (item.getItemId() == R.id.menu_star_rating) {
+							addToMyList();
+							return true;
+						}else {
+							return false;
+						}
+					}
+				});
+				popupMenu.show();
+			}
+
+
+
 		}
 		private void addToFavorites() {
 

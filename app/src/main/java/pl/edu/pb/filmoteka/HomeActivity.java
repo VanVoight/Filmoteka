@@ -26,6 +26,7 @@ public class HomeActivity extends AppCompatActivity implements CategoryFragment.
     private SharedViewModel sharedViewModel;
     private String userName;
     private long userId;
+    private long userRoleId;
 
 
     @Override
@@ -36,7 +37,8 @@ public class HomeActivity extends AppCompatActivity implements CategoryFragment.
                 .build();
         Intent intent = getIntent();
         if(intent != null){
-            userId = intent.getLongExtra("userId", -1);
+            userId = intent.getLongExtra("userId", 1);
+            userRoleId = intent.getLongExtra("userRoleId",1);
             Log.d("Logowanie","Takie jest w Home Activity:"+userId);
             userName = intent.getStringExtra("userName");
         }
@@ -90,6 +92,7 @@ public class HomeActivity extends AppCompatActivity implements CategoryFragment.
         MovieListFragment movieListFragment = new MovieListFragment();
         Bundle bundle = new Bundle();
         bundle.putLong("userId", userId);
+        bundle.putLong("userRoleId",userRoleId);
         movieListFragment.setArguments(bundle);
         fragmentTransaction.replace(R.id.fragment_container, movieListFragment);
         fragmentTransaction.commit();
@@ -110,6 +113,7 @@ public class HomeActivity extends AppCompatActivity implements CategoryFragment.
         Bundle bundle = new Bundle();
         bundle.putInt("categoryId", categoryId);
         bundle.putString("categoryName", name);
+        bundle.putLong("userRoleId",userRoleId);
         bundle.putLong("userId", userId);
         movieListFragment.setArguments(bundle);
         fragmentTransaction.replace(R.id.fragment_container, movieListFragment);

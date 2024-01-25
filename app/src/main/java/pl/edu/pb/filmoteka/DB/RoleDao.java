@@ -15,4 +15,6 @@ public interface RoleDao {
     void insertRole(Role role);
     @Insert
     void insertRoles(List<Role> roles);
+    @Query("SELECT * FROM roles")
+    List<Role> getAllRoles();
 }

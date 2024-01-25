@@ -23,6 +23,8 @@ public class MovieListCategoryFragment extends Fragment {
 	private TextView genreName;
 	private List<Movie> movieList;
 	private long userId;
+
+	private long userRoleId;
 	private int categoryId;
 	public MovieListCategoryFragment() {
 
@@ -38,13 +40,14 @@ public class MovieListCategoryFragment extends Fragment {
 		if (bundle != null) {
 			categoryId = bundle.getInt("categoryId", 0);
 			userId = bundle.getLong("userId",0);
+			userRoleId = bundle.getLong("userRoleId",0);
 			String categoryName = bundle.getString("categoryName", "");
 
 			genreName.setText(categoryName);
 		}
 		recyclerView = view.findViewById(R.id.recyclerView);
 		recyclerView.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
-		movieAdapter = new MovieAdapter(userId,appDatabase);
+		movieAdapter = new MovieAdapter(userId,appDatabase,userRoleId);
 		recyclerView.setAdapter(movieAdapter);
 
 

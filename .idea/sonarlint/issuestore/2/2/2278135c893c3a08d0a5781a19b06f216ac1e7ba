@@ -1,31 +1,33 @@
 
-q
-java:S1192z"TDefine a constant instead of duplicating this literal "InsertUserAsyncTask" 4 times.(£µ¤¼8çÃñÏ1
+r
+java:S1192‡"TDefine a constant instead of duplicating this literal "InsertUserAsyncTask" 4 times.(£µ¤¼8©’¿‡Ô1
 E
-java:S1604E"(Make this anonymous inner class a lambda(©º¬8’Í«ğÏ1
+java:S16048"(Make this anonymous inner class a lambda(š¨ã¥8©’¿‡Ô1
+E
+java:S1604Q"(Make this anonymous inner class a lambda(©º¬8©’¿‡Ô1
 J
-java:S1604e"(Make this anonymous inner class a lambda(ğò‹¬şÿÿÿÿ8èÃñÏ1
+java:S1604q"(Make this anonymous inner class a lambda(ğò‹¬şÿÿÿÿ8Ñ»ªˆÔ1
 b
-java:S1659 "EDeclare "password" and all following declarations on a separate line.(¬‡ÏÙ8ÖÏ«ğÏ1
+java:S1659$"EDeclare "password" and all following declarations on a separate line.(¬‡ÏÙ8˜“¿‡Ô1
 @
-java:S1659!"$Declare "signin" on a separate line.(¡˜C8ÖÏ«ğÏ1
+java:S1659%"$Declare "signin" on a separate line.(¡˜C8˜“¿‡Ô1
 v
-java:S1450"YRemove the "savedEmail" field and declare it as a local variable in the relevant methods.(ïÓÿ­8íÒ1
+java:S1450""YRemove the "savedEmail" field and declare it as a local variable in the relevant methods.(ïÓÿ­8˜“¿‡Ô1
 z
-java:S1450"XRemove the "savedName" field and declare it as a local variable in the relevant methods.(â¾‚éÿÿÿÿÿ8íÒ1
+java:S1450 "XRemove the "savedName" field and declare it as a local variable in the relevant methods.(â¾‚éÿÿÿÿÿ8š“¿‡Ô1
 y
-java:S1450"\Remove the "savedPassword" field and declare it as a local variable in the relevant methods.(Ò™é“8‚íÒ1
+java:S1450"\Remove the "savedPassword" field and declare it as a local variable in the relevant methods.(Ò™é“8›“¿‡Ô1
 {
-java:S1450"^Remove the "savedRepassword" field and declare it as a local variable in the relevant methods.(óø¬8‚íÒ1
+java:S1450"^Remove the "savedRepassword" field and declare it as a local variable in the relevant methods.(óø¬8›“¿‡Ô1
 x
-java:S1450"[Remove the "savedSurname" field and declare it as a local variable in the relevant methods.(Š¸¬¦8ƒíÒ1
+java:S1450!"[Remove the "savedSurname" field and declare it as a local variable in the relevant methods.(Š¸¬¦8œ“¿‡Ô1
 y
-java:S1450"\Remove the "savedUsername" field and declare it as a local variable in the relevant methods.(ÙÀòˆ8„íÒ1
+java:S1450"\Remove the "savedUsername" field and declare it as a local variable in the relevant methods.(ÙÀòˆ8“¿‡Ô1
 h
-java:S1764S"KCorrect one of the identical sub-expressions on both sides of operator "||"(õÄÖ†8ïÄñÏ1
+java:S1764_"KCorrect one of the identical sub-expressions on both sides of operator "||"(õÄÖ†8º“¿‡Ô1
 L
-java:S1874b"/Remove this use of "execute"; it is deprecated.(ù·¬°8óÄñÏ1
-S
-java:S1874w"1Remove this use of "AsyncTask"; it is deprecated.(èã¨Îùÿÿÿÿ8„ÅñÏ1
+java:S1874n"/Remove this use of "execute"; it is deprecated.(ù·¬°8¾“¿‡Ô1
+T
+java:S1874„"1Remove this use of "AsyncTask"; it is deprecated.(èã¨Îùÿÿÿÿ8Ç“¿‡Ô1
 m
-java:S1874…"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(Û¶…óøÿÿÿÿ8‹ÅñÏ1
+java:S1874’"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(Û¶…óøÿÿÿÿ8É“¿‡Ô1
