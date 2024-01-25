@@ -105,59 +105,78 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         private void showPopupMenu(View view, Context context) {
             PopupMenu popupMenu = new PopupMenu(context, view);
             MenuInflater inflater = popupMenu.getMenuInflater();
+
             if (userRoleId == 1) {
                 inflater.inflate(R.menu.popup_menu, popupMenu.getMenu());
-                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-                        if (item.getItemId() == R.id.menu_favorite) {
-                            Log.d("Logowanie", "Oby było git" + userId);
-                            addToFavorites();
-
-                            return true;
-                        } else if (item.getItemId() == R.id.menu_watched) {
-                            addToWatched();
-                            return true;
-                        } else if (item.getItemId() == R.id.menu_rate) {
-                            addToMyList();
-                            return true;
-                        } else {
-                            return false;
-                        }
-                    }
-                });
-                popupMenu.show();
             } else {
                 inflater.inflate(R.menu.popup_menu_reviewer, popupMenu.getMenu());
-                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-                        if (item.getItemId() == R.id.menu_favorite) {
-                            Log.d("Logowanie", "Oby było git" + userId);
-                            addToFavorites();
-
-                            return true;
-                        } else if (item.getItemId() == R.id.menu_watched) {
-                            addToWatched();
-                            return true;
-                        } else if (item.getItemId() == R.id.menu_rate) {
-                            addToMyList();
-                            return true;
-                        } else if (item.getItemId() == R.id.menu_review) {
-                            addToMyList();
-                            return true;
-                        } else if (item.getItemId() == R.id.menu_star_rating) {
-                            addToMyList();
-                            return true;
-                        } else {
-                            return false;
-                        }
-                    }
-                });
-                popupMenu.show();
             }
 
+            MenuItem favoriteMenuItem = popupMenu.getMenu().findItem(R.id.menu_favorite);
 
+            if (isMovieInFavorites()) {
+                favoriteMenuItem.setTitle(R.string.rem_fav);
+            } else {
+                favoriteMenuItem.setTitle(R.string.add_fav);
+            }
+
+            popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    if (item.getItemId() == R.id.menu_favorite) {
+                        if (isMovieInFavorites()) {
+                            removeFromFavorites();
+                        } else {
+                            addToFavorites();
+                        }
+                        return true;
+                    } else if (item.getItemId() == R.id.menu_watched) {
+                        addToWatched();
+                        return true;
+                    } else if (item.getItemId() == R.id.menu_rate) {
+                        addToMyList();
+                        return true;
+                    } else if (item.getItemId() == R.id.menu_review) {
+                        // Handle review menu item
+                        return true;
+                    } else if (item.getItemId() == R.id.menu_star_rating) {
+                        // Handle star rating menu item
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            });
+
+            popupMenu.show();
+        }
+        private void removeFromFavorites() {
+            // Remove the movie from the FavouriteMovies table
+            new RemoveFromFavoritesTask(itemView).execute();
+        }
+
+        private class RemoveFromFavoritesTask extends AsyncTask<Void, Void, Void> {
+            private WeakReference<View> itemViewReference;
+
+            public RemoveFromFavoritesTask(View itemView) {
+                itemViewReference = new WeakReference<>(itemView);
+            }
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                // Remove the movie from the FavouriteMovies table
+                appDatabase.favouriteMoviesDao().deleteFavouriteMovie(userId, movieId);
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                View itemView = itemViewReference.get();
+                if (itemView != null) {
+                    // Update UI or show a toast message if needed
+                    Toast.makeText(itemView.getContext(), R.string.toast_remove, Toast.LENGTH_SHORT).show();
+                }
+            }
         }
 
         private void addToFavorites() {
@@ -306,11 +325,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
                     switch (event.getAction()) {
                         case MotionEvent.ACTION_DOWN:
                             topRightIconImageView.setImageResource(R.drawable.img_dots_menu_down);
-                            showPopupMenu(v, itemView.getContext());
+                            showPopupMenu(topRightIconImageView, itemView.getContext()); // Zmieniłem 'v' na 'topRightIconImageView'
                             return true;
                         case MotionEvent.ACTION_UP:
                             topRightIconImageView.setImageResource(R.drawable.img_dots_menu);
-
                             return true;
                         default:
                             return false;
@@ -327,7 +345,26 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             lowVoteColor = ContextCompat.getColor(itemView.getContext(), R.color.low_vote_color);
 
         }
-
+        private boolean isMovieInFavorites() {
+            // Use AsyncTask to check if the movie is in the FavouriteMovies table
+            try {
+                return new CheckFavoritesTask(movieId).execute().get(); // Odczekaj na wynik AsyncTask
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
+        private static class CheckFavoritesTask extends AsyncTask<Void, Void, Boolean> {
+            private int movieId;
+            public CheckFavoritesTask(int movieId) {
+                this.movieId = movieId;
+            }
+            @Override
+            protected Boolean doInBackground(Void... voids) {
+                // Execute database query in the background
+                return appDatabase.favouriteMoviesDao().checkIfFavouriteMovieExists(userId, movieId) > 0;
+            }
+        }
         public void bind(Movie movie) {
             titleTextView.setText(movie.getTitle());
             titleTextView.setText(movie.getTitle());
