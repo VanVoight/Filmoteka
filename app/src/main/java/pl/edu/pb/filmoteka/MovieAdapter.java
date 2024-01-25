@@ -93,7 +93,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         private View circle;
         private List<Movie> movieList;
         private TextView releaseDateTextView;
-        private static int movieId;
+        private int movieId;
         private TextView voteAverageTextView;
 
         private int highVoteColor;
@@ -169,7 +169,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             new AddToFavoritesTask(itemView).execute(favouriteMovie);
         }
 
-        private static class AddToFavoritesTask extends AsyncTask<FavouriteMovies, Void, Integer> {
+        private class AddToFavoritesTask extends AsyncTask<FavouriteMovies, Void, Integer> {
             private WeakReference<View> itemViewReference;
 
             public AddToFavoritesTask(View itemView) {
@@ -211,7 +211,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             new AddToWatchedTask(itemView).execute(watchedMovies);
         }
 
-        private static class AddToWatchedTask extends AsyncTask<WatchedMovies, Void, Integer> {
+        private class AddToWatchedTask extends AsyncTask<WatchedMovies, Void, Integer> {
             private WeakReference<View> itemViewReference;
 
             public AddToWatchedTask(View itemView) {
@@ -253,7 +253,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             new AddToMyListTask(itemView).execute(myListMovies);
         }
 
-        private static class AddToMyListTask extends AsyncTask<MyListMovies, Void, Integer> {
+        private class AddToMyListTask extends AsyncTask<MyListMovies, Void, Integer> {
             private WeakReference<View> itemViewReference;
 
             public AddToMyListTask(View itemView) {
