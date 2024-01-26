@@ -85,5 +85,8 @@
     <string name="random_film">Wylosowany film</string>
     <string name="to_see_films">Filmy do obejrzenia</string>
     <string name="my_list">Do obejrzenia</string>
+    <string name="write_review">Napisz recenzję</string>
+    <string name="review_submitted">Dodano recenzję</string>
+    <string name="review_already_exists">Dodano już recenzję tego filmu</string>
 
 </resources>

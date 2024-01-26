@@ -1,14 +1,14 @@
 
 m
-java:S1192)"KDefine a constant instead of duplicating this literal "userRoleId" 3 times.(ÿ¥úâüÿÿÿÿ8å™‰’Ô1
+java:S1192)"KDefine a constant instead of duplicating this literal "userRoleId" 3 times.(ÿ¥úâüÿÿÿÿ8’ÓÉ¬Ô1
 i
 java:S1192("GDefine a constant instead of duplicating this literal "userId" 4 times.(¸ûøÊøÿÿÿÿ8å™‰’Ô1
 J
-java:S1604?"(Make this anonymous inner class a lambda(õßØµüÿÿÿÿ8æ™‰’Ô1
+java:S1604?"(Make this anonymous inner class a lambda(õßØµüÿÿÿÿ8’ÓÉ¬Ô1
 |
-java:S1450"ZRemove the "appDatabase" field and declare it as a local variable in the relevant methods.(í¯Õ—şÿÿÿÿ8º«îÓ1
+java:S1450"ZRemove the "appDatabase" field and declare it as a local variable in the relevant methods.(í¯Õ—şÿÿÿÿ8È–Ë¬Ô1
 m
-java:S1874?"KRemove this use of "setOnNavigationItemSelectedListener"; it is deprecated.(õßØµüÿÿÿÿ8®š‰’Ô1
-D	java:S131Š""Add a default case to this switch.(øãş•ÿÿÿÿÿ8™•„ÀÓ1
+java:S1874?"KRemove this use of "setOnNavigationItemSelectedListener"; it is deprecated.(õßØµüÿÿÿÿ8à–Ë¬Ô1
+D	java:S131Š""Add a default case to this switch.(øãş•ÿÿÿÿÿ8ï–Ë¬Ô1
 Q
-java:S1068"/Remove this unused "appDatabase" private field.(í¯Õ—şÿÿÿÿ8é«îÓ1
+java:S1068"/Remove this unused "appDatabase" private field.(í¯Õ—şÿÿÿÿ8ğ–Ë¬Ô1
