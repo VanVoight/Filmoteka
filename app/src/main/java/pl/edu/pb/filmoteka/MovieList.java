@@ -703,7 +703,64 @@ public class MovieList {
             }
         }
     }
+    public static void getMovieDetails(String accessToken, int movieId, OnMoviesFetchedDetailsListener listener) {
+        new FetchMovieDetailsTask(listener).execute(accessToken, String.valueOf(movieId));
+    }
+    public interface OnMoviesFetchedDetailsListener {
+        void onMoviesFetched(List<MovieDetails> movies);
+    }
 
+    private static class FetchMovieDetailsTask extends AsyncTask<String, Void, MovieDetails> {
+        private final OnMoviesFetchedDetailsListener listener;
+
+        FetchMovieDetailsTask(OnMoviesFetchedDetailsListener listener) {
+            this.listener = listener;
+        }
+
+        @Override
+        protected MovieDetails doInBackground(String... tokens) {
+            String accessToken = tokens[0];
+            int movieId = Integer.parseInt(tokens[1]);
+            String apiUrl = "https://api.themoviedb.org/3/movie/" + movieId + "?language=" + language;
+
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .addNetworkInterceptor(new StethoInterceptor())
+                    .build();
+
+            Request request = new Request.Builder()
+                    .url(apiUrl)
+                    .header("Authorization", "Bearer " + accessToken)
+                    .header("accept", "application/json")
+                    .build();
+
+            try {
+                Response response = client.newCall(request).execute();
+                if (response.isSuccessful()) {
+                    Gson gson = new Gson();
+                    MovieDetails movie = gson.fromJson(response.body().string(), MovieDetails.class);
+                    return movie;
+                } else {
+                    // Handle error
+                    Log.e("MovieList", "Error fetching movie details");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(MovieDetails movie) {
+            super.onPostExecute(movie);
+
+            if (movie != null) {
+                List<MovieDetails> movies = new ArrayList<>();
+                movies.add(movie);
+                listener.onMoviesFetched(movies);
+            }
+        }
+    }
 
 
 

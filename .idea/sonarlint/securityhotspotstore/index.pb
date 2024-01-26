@@ -141,3 +141,7 @@ d
 4app/src/main/java/pl/edu/pb/filmoteka/DB/Rating.java,1\2\12caf642810ea53c4767ef7014cfbf47d156ba37
 g
 7app/src/main/java/pl/edu/pb/filmoteka/DB/RatingDao.java,5\9\5979bba61044a549950f2e4fba05da958de7b1cd
+g
+7app/src/main/java/pl/edu/pb/filmoteka/MovieDetails.java,3\c\3ca6bbe9a22e519b267da17377bb41f915419ea3
+j
+:app/src/main/java/pl/edu/pb/filmoteka/DetailsActivity.java,e\3\e3693c7ab82d27405fce6037e4f333934b77cfde

@@ -566,6 +566,19 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
                     return true;
                 }
             });
+            moviePosterImageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent = new Intent(v.getContext(), DetailsActivity.class);
+
+
+                    intent.putExtra("movieId", movieId);
+
+
+                    v.getContext().startActivity(intent);
+                }
+            });
             topRightIconImageView = itemView.findViewById(R.id.topRightIconImageView);
 
             topRightIconImageView.setOnTouchListener(new View.OnTouchListener() {

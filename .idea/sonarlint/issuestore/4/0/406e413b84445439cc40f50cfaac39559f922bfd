@@ -11,16 +11,18 @@ K
 java:S1604™"(Make this anonymous inner class a lambda(éÖğ˜şÿÿÿÿ8»è®±Ô1
 K
 java:S1604±"(Make this anonymous inner class a lambda(ó›¾ûÿÿÿÿ8»è®±Ô1
-F
-java:S1604»"(Make this anonymous inner class a lambda(‰À„Í8»è®±Ô1
-F
-java:S1604 "(Make this anonymous inner class a lambda(ÇÏïğ8»è®±Ô1
-F
-java:S1604€"(Make this anonymous inner class a lambda(Õä8¼è®±Ô1
 E
-java:S1604ˆ"(Make this anonymous inner class a lambda(Ì©šs8¼è®±Ô1
+java:S1604¹"(Make this anonymous inner class a lambda(É•äZ8¤Õ”¼Ô1
+F
+java:S1604È"(Make this anonymous inner class a lambda(‰À„Í8»è®±Ô1
+F
+java:S1604­"(Make this anonymous inner class a lambda(ÇÏïğ8»è®±Ô1
+F
+java:S1604"(Make this anonymous inner class a lambda(Õä8¼è®±Ô1
+E
+java:S1604•"(Make this anonymous inner class a lambda(Ì©šs8¼è®±Ô1
 ˆ
-java:S1488Í"eImmediately return this expression instead of assigning it to the temporary variable "roundedBitmap".(¥À½¯ùÿÿÿÿ8½è®±Ô1
+java:S1488Ú"eImmediately return this expression instead of assigning it to the temporary variable "roundedBitmap".(¥À½¯ùÿÿÿÿ8½è®±Ô1
 E
 java:S3010G"#Remove this assignment of "userId".(ÔŸ‰Üüÿÿÿÿ8·ê®±Ô1
 E
@@ -90,41 +92,41 @@ java:S1874Œ"1Remove this use of "AsyncTask"; it is deprecated.(àì¼D8âê®±Ô1
 h
 java:S1874Ÿ"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(¨Ö»Ä8ãê®±Ô1
 |
-java:S2142Ù"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(”ı¾8çê®±Ô1
+java:S2142æ"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(”ı¾8çê®±Ô1
 M
-java:S1874Ø"/Remove this use of "execute"; it is deprecated.(¯Ì‚’8èê®±Ô1
+java:S1874å"/Remove this use of "execute"; it is deprecated.(¯Ì‚’8èê®±Ô1
 I
-java:S1874Ø"+Remove this use of "get"; it is deprecated.(¯Ì‚’8èê®±Ô1
+java:S1874å"+Remove this use of "get"; it is deprecated.(¯Ì‚’8èê®±Ô1
 O
-java:S1874Ş"1Remove this use of "AsyncTask"; it is deprecated.(’ô  8èê®±Ô1
+java:S1874ë"1Remove this use of "AsyncTask"; it is deprecated.(’ô  8èê®±Ô1
 |
-java:S2142ì"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(”ı¾8éê®±Ô1
+java:S2142ù"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(”ı¾8éê®±Ô1
 M
-java:S1874ë"/Remove this use of "execute"; it is deprecated.(×Ÿşş8êê®±Ô1
+java:S1874ø"/Remove this use of "execute"; it is deprecated.(×Ÿşş8êê®±Ô1
 I
-java:S1874ë"+Remove this use of "get"; it is deprecated.(×Ÿşş8êê®±Ô1
+java:S1874ø"+Remove this use of "get"; it is deprecated.(×Ÿşş8êê®±Ô1
 T
-java:S1874ó"1Remove this use of "AsyncTask"; it is deprecated.(Ú”Ëşúÿÿÿÿ8êê®±Ô1
+java:S1874€"1Remove this use of "AsyncTask"; it is deprecated.(Ú”Ëşúÿÿÿÿ8êê®±Ô1
 |
-java:S2142‚"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(”ı¾8ëê®±Ô1
+java:S2142"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(”ı¾8ëê®±Ô1
 R
-java:S1874"/Remove this use of "execute"; it is deprecated.(Ÿ¨Îúúÿÿÿÿ8ëê®±Ô1
+java:S1874"/Remove this use of "execute"; it is deprecated.(Ÿ¨Îúúÿÿÿÿ8ëê®±Ô1
 N
-java:S1874"+Remove this use of "get"; it is deprecated.(Ÿ¨Îúúÿÿÿÿ8ëê®±Ô1
+java:S1874"+Remove this use of "get"; it is deprecated.(Ÿ¨Îúúÿÿÿÿ8ëê®±Ô1
 O
-java:S1874‰"1Remove this use of "AsyncTask"; it is deprecated.(Ó“‰®8ìê®±Ô1
+java:S1874–"1Remove this use of "AsyncTask"; it is deprecated.(Ó“‰®8ìê®±Ô1
 T
-java:S1874°"6Remove this use of "setColorFilter"; it is deprecated.(®éÜ¿8ñê®±Ô1
+java:S1874½"6Remove this use of "setColorFilter"; it is deprecated.(®éÜ¿8ñê®±Ô1
 M
-java:S1874²"/Remove this use of "execute"; it is deprecated.(ëñ€¥8ñê®±Ô1
+java:S1874¿"/Remove this use of "execute"; it is deprecated.(ëñ€¥8ñê®±Ô1
 T
-java:S1874¿"1Remove this use of "AsyncTask"; it is deprecated.(¢´¬“ÿÿÿÿÿ8òê®±Ô1
+java:S1874Ì"1Remove this use of "AsyncTask"; it is deprecated.(¢´¬“ÿÿÿÿÿ8òê®±Ô1
 m
-java:S1874×"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÿà—óùÿÿÿÿ8õê®±Ô1
+java:S1874ä"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÿà—óùÿÿÿÿ8õê®±Ô1
 S
-java:S1874Ø"5Remove this use of "onPostExecute"; it is deprecated.(¿åß¯8õê®±Ô1
+java:S1874å"5Remove this use of "onPostExecute"; it is deprecated.(¿åß¯8õê®±Ô1
 p
-java:S3252û"MUse static access with "android.text.Spanned" for "SPAN_EXCLUSIVE_EXCLUSIVE".(¹œÀûÿÿÿÿ8ıê®±Ô1
+java:S3252ˆ"MUse static access with "android.text.Spanned" for "SPAN_EXCLUSIVE_EXCLUSIVE".(¹œÀûÿÿÿÿ8ıê®±Ô1
 J
 java:S1068e"-Remove this unused "movieList" private field.(­óÇ£8‚ë®±Ô1
 S

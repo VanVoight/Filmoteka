@@ -1,0 +1,38 @@
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Wewnętrzne czarne tło -->
+    <item>
+        <shape
+            android:shape="oval">
+            <solid android:color="#000000"/> <!-- Kolor wewnętrznego okręgu -->
+        </shape>
+    </item>
+
+    <!-- Złota obwódka -->
+    <item android:right="2dp" android:left="2dp" android:top="2dp" android:bottom="2dp">
+        <shape
+            android:shape="oval">
+            <solid android:color="@color/gold"/>
+        </shape>
+    </item>
+
+    <!-- Czarne tło dla obwódki -->
+    <item android:right="4dp" android:left="4dp" android:top="4dp" android:bottom="4dp">
+        <shape
+            android:shape="oval">
+            <solid android:color="#000000"/>
+        </shape>
+    </item>
+
+    <!-- Czarna obwódka -->
+    <item android:right="4dp" android:left="4dp" android:top="4dp" android:bottom="4dp">
+        <shape
+            android:shape="oval">
+            <solid android:color="#00000000"/>
+            <stroke
+                android:width="2dp"
+                android:color="#000000"/>
+        </shape>
+    </item>
+</layer-list>
