@@ -58,6 +58,14 @@
             android:text="@string/seen_films" />
 
         <Button
+            android:id="@+id/to_see_films_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_rounded"
+            android:text="@string/to_see_films" />
+
+        <Button
             android:id="@+id/rand_films_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

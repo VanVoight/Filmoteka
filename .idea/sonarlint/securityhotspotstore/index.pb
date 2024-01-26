@@ -129,3 +129,7 @@ j
 :app/src/main/java/pl/edu/pb/filmoteka/DB/MyListMovies.java,4\d\4de33a2ed157834c805879840c796d0e6a0426e7
 m
 =app/src/main/java/pl/edu/pb/filmoteka/DB/MyListMoviesDao.java,d\9\d980d9daceb2a91fc632fc29f45c39a246fa5cfa
+p
+@app/src/main/java/pl/edu/pb/filmoteka/FavouriteListFragment.java,0\d\0d2f3c9bce4e187ff2e489d35ca494a250e7d148
+h
+8app/src/main/java/pl/edu/pb/filmoteka/ShakeDetector.java,9\1\918780eca7adc70438db9b247708e7fe6c28f3c5

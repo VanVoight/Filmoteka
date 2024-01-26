@@ -5,6 +5,16 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.hardware.SensorManager;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.ViewGroup;
@@ -16,6 +26,10 @@ import android.widget.Space;
 import android.widget.TextView;
 
 public class CustomPopup {
+
+    private static SensorManager sensorManager;
+    private static Sensor accelerometer;
+    private static ShakeDetector shakeDetector;
 
     public static void showRandomFilmPopup(Context context) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -71,9 +85,81 @@ public class CustomPopup {
 
         imageView.startAnimation(animation);
 
+        //wywołanie metody inicjalizacji sensorów
+        initializeSensors(context);
+
+        //obsługa potrząśnięcia
+        shakeDetector.setOnShakeListener(new ShakeDetector.OnShakeListener() {
+            @Override
+            public void onShake() {
+                Log.d("CustomPopup", "Device shaken - opening RandomFilmFragment");
+                // Obsługa potrząśnięcia - przeniesienie do nowego fragmentu
+                goToRandomFilmFragment(context, dialog);
+            }
+        });
+
         dialog.show();
     }
     private static int dpToPx(Context context, int dp) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, context.getResources().getDisplayMetrics());
     }
+
+    //funkcja inicjalizująca sensory
+    private static void initializeSensors(Context context) {
+        sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
+        if (sensorManager != null) {
+            accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+            shakeDetector = new ShakeDetector();
+
+            if (accelerometer != null) {
+                sensorManager.registerListener(shakeDetector, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+            } else {
+                Log.e("CustomPopup", "Accelerometer not available");
+            }
+        } else {
+            Log.e("CustomPopup", "SensorManager not available");
+        }
+    }
+
+    private static void goToRandomFilmFragment(final Context context,  final AlertDialog dialog) {
+        // Przeniesienie do nowego fragmentu po potrząśnięciu
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                if (context instanceof HomeActivity) {
+                    // Tworzenie nowego fragmentu
+                    Fragment randomFilmFragment = new RandomFilmFragment();
+
+                    // Rozpoczęcie transakcji fragmentu
+                    FragmentTransaction transaction = ((HomeActivity) context).getSupportFragmentManager().beginTransaction();
+
+                    // Zamiana fragmentów
+                    transaction.replace(R.id.fragment_container, randomFilmFragment);
+                    transaction.addToBackStack(null);
+
+                    // Zatwierdzenie transakcji
+                    transaction.commit();
+                    sensorManager.unregisterListener(shakeDetector);
+
+                    Log.d("CustomPopup", "Navigating to RandomFilmFragment");
+
+                    //Zamknięcie okeienka popup po otworzeniu fragmetnu z wylosowanym filmem
+                    if (dialog != null && dialog.isShowing()) {
+                        dialog.dismiss();
+                    }
+                } else {
+                    Log.e("CustomPopup", "Context is not MainActivity");
+                }
+            }
+        });
+    }
+
+
+    //funkcja zatrzmująca działanie sensora
+  /*  public static void stopSensorsListening() {
+        if (sensorManager != null) {
+            Log.e("CustomPopup", "Sensor stopped");
+            sensorManager.unregisterListener(shakeDetector);
+        }
+    }*/
 }

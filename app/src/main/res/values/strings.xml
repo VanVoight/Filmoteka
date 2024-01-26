@@ -78,4 +78,6 @@
     <string name="rem_fav">- Usuń z ulubionych</string>
     <string name="rate">Oceń film</string>
     <string name="cancel">Anuluj</string>
+    <string name="random_film">Wylosowany film</string>
+    <string name="to_see_films">Filmy do obejrzenia</string>
 </resources>

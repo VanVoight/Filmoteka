@@ -1,37 +1,43 @@
 
+i
+java:S1192>"GDefine a constant instead of duplicating this literal "userId" 3 times.(µ¸©³øÿÿÿÿ8ÄÚ¥—Ô1
 J
-java:S1604<"(Make this anonymous inner class a lambda(ì§õûÿÿÿÿ8ôç¨ëÓ1
+java:S1604C"(Make this anonymous inner class a lambda(¨¥íÈıÿÿÿÿ8ÅÚ¥—Ô1
+J
+java:S1604P"(Make this anonymous inner class a lambda(—©øÙûÿÿÿÿ8ÅÚ¥—Ô1
+J
+java:S1604_"(Make this anonymous inner class a lambda(ì§õûÿÿÿÿ8ÅÚ¥—Ô1
 {
-java:S1450"^Remove the "avatarImageView" field and declare it as a local variable in the relevant methods.(ÚÙÙÇ8ÏŸ„ëÓ1
+java:S1450"^Remove the "avatarImageView" field and declare it as a local variable in the relevant methods.(ÚÙÙÇ8ØÚ¥—Ô1
 |
-java:S1450""_Remove the "delProfileButton" field and declare it as a local variable in the relevant methods.(ÏÆä‰8ÏŸ„ëÓ1
+java:S1450&"_Remove the "delProfileButton" field and declare it as a local variable in the relevant methods.(ÏÆä‰8ØÚ¥—Ô1
 }
-java:S1450!"`Remove the "editProfileButton" field and declare it as a local variable in the relevant methods.(˜¢áô8ÑŸ„ëÓ1
+java:S1450%"`Remove the "editProfileButton" field and declare it as a local variable in the relevant methods.(˜¢áô8ØÚ¥—Ô1
 
-java:S1450"]Remove the "favFilmsButton" field and declare it as a local variable in the relevant methods.(‡Ùˆãÿÿÿÿÿ8ÑŸ„ëÓ1
+java:S1450!"]Remove the "favFilmsButton" field and declare it as a local variable in the relevant methods.(‡Ùˆãÿÿÿÿÿ8ØÚ¥—Ô1
 {
-java:S1450 "^Remove the "randFilmsButton" field and declare it as a local variable in the relevant methods.(ïÁ‡Á8ÑŸ„ëÓ1
+java:S1450$"^Remove the "randFilmsButton" field and declare it as a local variable in the relevant methods.(ïÁ‡Á8ØÚ¥—Ô1
 {
-java:S1450"YRemove the "searchFilm" field and declare it as a local variable in the relevant methods.(“¾‘¬üÿÿÿÿ8ÒŸ„ëÓ1
+java:S1450 "YRemove the "searchFilm" field and declare it as a local variable in the relevant methods.(“¾‘¬üÿÿÿÿ8ÙÚ¥—Ô1
 €
-java:S1450"^Remove the "seenFilmsButton" field and declare it as a local variable in the relevant methods.(®à³úùÿÿÿÿ8ÒŸ„ëÓ1
-y
-java:S1450#"WRemove the "userName" field and declare it as a local variable in the relevant methods.(Û”øÚøÿÿÿÿ8ÓŸ„ëÓ1
+java:S1450""^Remove the "seenFilmsButton" field and declare it as a local variable in the relevant methods.(®à³úùÿÿÿÿ8ÙÚ¥—Ô1
 |
-java:S1450"_Remove the "userNameTextView" field and declare it as a local variable in the relevant methods.(‰·¿®8ÓŸ„ëÓ1
+java:S1450#"_Remove the "toSeeFilmsButton" field and declare it as a local variable in the relevant methods.(¨–ÔÅ8¿†§—Ô1
+y
+java:S1450'"WRemove the "userName" field and declare it as a local variable in the relevant methods.(Û”øÚøÿÿÿÿ8ÙÚ¥—Ô1
+|
+java:S1450"_Remove the "userNameTextView" field and declare it as a local variable in the relevant methods.(‰·¿®8ÙÚ¥—Ô1
 W
-java:S1161&":Add the "@Override" annotation above this method signature(ï ±ª8ÙŸ„ëÓ1
-X	java:S125D"<This block of commented-out lines of code should be removed.(Ùéé8ú¼…ëÓ1
-]	java:S125Q"<This block of commented-out lines of code should be removed.(©ß„Îûÿÿÿÿ8€ÁÓìÓ1
+java:S1161,":Add the "@Override" annotation above this method signature(ï ±ª8İÚ¥—Ô1
+X	java:S125g"<This block of commented-out lines of code should be removed.(Ùéé8èÚ¥—Ô1
+]	java:S125t"<This block of commented-out lines of code should be removed.(©ß„Îûÿÿÿÿ8éÚ¥—Ô1
 P
-java:S1068"3Remove this unused "avatarImageView" private field.(ÚÙÙÇ8åŸ„ëÓ1
+java:S1068"3Remove this unused "avatarImageView" private field.(ÚÙÙÇ8éÚ¥—Ô1
 P
-java:S1068".Remove this unused "searchFilm" private field.(“¾‘¬üÿÿÿÿ8åŸ„ëÓ1
-T
-java:S1068"2Remove this unused "favFilmsButton" private field.(‡Ùˆãÿÿÿÿÿ8çŸ„ëÓ1
-U
-java:S1068"3Remove this unused "seenFilmsButton" private field.(®à³úùÿÿÿÿ8çŸ„ëÓ1
-R
-java:S1068!"5Remove this unused "editProfileButton" private field.(˜¢áô8ş¼…ëÓ1
+java:S1068 ".Remove this unused "searchFilm" private field.(“¾‘¬üÿÿÿÿ8éÚ¥—Ô1
 Q
-java:S1068""4Remove this unused "delProfileButton" private field.(ÏÆä‰8çŸ„ëÓ1
+java:S1068#"4Remove this unused "toSeeFilmsButton" private field.(¨–ÔÅ8Í†§—Ô1
+R
+java:S1068%"5Remove this unused "editProfileButton" private field.(˜¢áô8éÚ¥—Ô1
+Q
+java:S1068&"4Remove this unused "delProfileButton" private field.(ÏÆä‰8éÚ¥—Ô1

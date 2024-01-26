@@ -32,6 +32,7 @@ public class ProfileFragment extends Fragment {
     private EditText searchFilm;
     private Button favFilmsButton;
     private Button seenFilmsButton;
+    private Button toSeeFilmsButton;
     private Button randFilmsButton;
     private Button editProfileButton;
     private Button delProfileButton;
@@ -49,6 +50,7 @@ public class ProfileFragment extends Fragment {
         searchFilm = view.findViewById(R.id.inputFindFilm);
         favFilmsButton = view.findViewById(R.id.fav_films_button);
         seenFilmsButton = view.findViewById(R.id.seen_films_button);
+        toSeeFilmsButton = view.findViewById(R.id.to_see_films_button);
         randFilmsButton = view.findViewById(R.id.rand_films_button);
         editProfileButton = view.findViewById(R.id.edit_profile_button);
         delProfileButton = view.findViewById(R.id.del_profile_button);
