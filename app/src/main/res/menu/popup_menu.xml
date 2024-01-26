@@ -4,13 +4,19 @@
     <item
         android:id="@+id/menu_favorite"
         android:title="@string/add_fav"
-        android:icon="@drawable/img_fav" />
+        android:icon="@drawable/img_fav"
+        app:actionLayout="@layout/custom_menu_item"
+        app:showAsAction="always" />
     <item
         android:id="@+id/menu_watched"
         android:title="@string/add_seen"
-        android:icon="@drawable/ic_watched"/>
+        app:actionLayout="@layout/custom_menu_item"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_watched" />
     <item
         android:id="@+id/menu_rate"
         android:title="@string/add_to_watch"
+        app:actionLayout="@layout/custom_menu_item"
+        app:showAsAction="always"
         android:icon="@drawable/ic_list" />
 </menu>
