@@ -44,7 +44,7 @@ public class RandomFilmFragment extends Fragment {
 
         randomMovieId = getRandomMovieId();
 
-        MovieList.getRandomMovie(accessToken, randomMovieId, new MovieList.OnMoviesFetchedListener() {
+        MovieList.getRandomTopMovies(accessToken, 10, new MovieList.OnMoviesFetchedListener() {
             @Override
             public void onMoviesFetched(List<Movie> movies) {
                 if (movies != null && !movies.isEmpty()) {

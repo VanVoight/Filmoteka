@@ -14,6 +14,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -638,6 +639,72 @@ public class MovieList {
 
 
     }
+    public static void getRandomTopMovies(String accessToken, int totalPages, OnMoviesFetchedListener listener) {
+        // Losuj liczbę od 1 do totalPages (włącznie)
+        int randomPage = new Random().nextInt(totalPages) + 1;
+        new FetchRandomTopMoviesTask(listener).execute(accessToken, String.valueOf(randomPage));
+    }
+
+    private static class FetchRandomTopMoviesTask extends AsyncTask<String, Void, List<Movie>> {
+        private final OnMoviesFetchedListener listener;
+
+        FetchRandomTopMoviesTask(OnMoviesFetchedListener listener) {
+            this.listener = listener;
+        }
+
+        @Override
+        protected List<Movie> doInBackground(String... tokens) {
+            String accessToken = tokens[0];
+            int page = Integer.parseInt(tokens[1]);
+            String apiUrl = "https://api.themoviedb.org/3/movie/top_rated?language=" + language + "&region=" + region + "&page=" + page;
+
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .addNetworkInterceptor(new StethoInterceptor())
+                    .build();
+
+            Request request = new Request.Builder()
+                    .url(apiUrl)
+                    .header("Authorization", "Bearer " + accessToken)
+                    .header("accept", "application/json")
+                    .build();
+
+            try {
+                Response response = client.newCall(request).execute();
+                if (response.isSuccessful()) {
+                    Gson gson = new Gson();
+                    MovieResult discoverMoviesResponse = gson.fromJson(response.body().string(), MovieResult.class);
+                    return discoverMoviesResponse.getResults();
+                } else {
+                    // Handle error
+                    Log.e("MovieList", "Error fetching random top rated movies");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(List<Movie> movies) {
+            super.onPostExecute(movies);
+
+            if (movies != null && !movies.isEmpty()) {
+
+                int randomIndex = new Random().nextInt(movies.size());
+                Movie randomMovie = movies.get(randomIndex);
+
+
+                List<Movie> randomMovieList = new ArrayList<>();
+                randomMovieList.add(randomMovie);
+
+
+                listener.onMoviesFetched(randomMovieList);
+            }
+        }
+    }
+
+
 
 
 }
