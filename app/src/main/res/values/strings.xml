@@ -1,5 +1,4 @@
-
-
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 <string name="app_name">Filmoteka</string>
 <string name="username_hint">Nazwa użytkownika</string>
@@ -89,6 +88,7 @@
     <string name="review_submitted">Dodano recenzję</string>
     <string name="review_already_exists">Dodano już recenzję tego filmu</string>
     <string name="rated_movie_as">Wystawiona ocena</string>
+
     <string name="description">Opis</string>
     <string name="released">Wydany:</string>
     <string name="user_rating">Ocena użytkowników</string>
