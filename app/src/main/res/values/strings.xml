@@ -80,4 +80,6 @@
     <string name="cancel">Anuluj</string>
     <string name="random_film">Wylosowany film</string>
     <string name="to_see_films">Filmy do obejrzenia</string>
+    <string name="my_list">Do obejrzenia</string>
+
 </resources>

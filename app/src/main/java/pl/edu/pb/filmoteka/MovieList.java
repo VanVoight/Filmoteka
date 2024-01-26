@@ -21,6 +21,7 @@ import okhttp3.Response;
 import pl.edu.pb.filmoteka.DB.AppDatabase;
 import pl.edu.pb.filmoteka.DB.FavouriteMovies;
 import pl.edu.pb.filmoteka.DB.WatchedMovies;
+import pl.edu.pb.filmoteka.DB.MyListMovies;
 
 public class MovieList {
     private static String language;
@@ -171,7 +172,72 @@ public class MovieList {
         }
     }
 
+    public static void getMyMovies(AppDatabase appDatabase, long userId, String accessToken, OnMoviesFetchedListener listener) {
+        new FetchMyListTask(appDatabase, userId, listener).execute(accessToken);
+    }
 
+    private static class FetchMyListTask extends AsyncTask<String, Void, List<Movie>> {
+        private final OnMoviesFetchedListener listener;
+        private final AppDatabase appDatabase;
+
+        private final long userId;
+
+        FetchMyListTask(AppDatabase appDatabase, long userId, OnMoviesFetchedListener listener) {
+            this.appDatabase = appDatabase;
+            this.listener = listener;
+            this.userId = userId;
+        }
+
+        @Override
+        protected List<Movie> doInBackground(String... tokens) {
+            String accessToken = tokens[0];
+
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .addNetworkInterceptor(new StethoInterceptor())
+                    .build();
+
+            List<Movie> movies = new ArrayList<>();
+
+            List<MyListMovies> myListMovies = appDatabase.myListMoviesDao().getAllMyListMovies(userId);
+
+            // Loop through each movie ID and fetch details
+            for (MyListMovies myListMovie : myListMovies) {
+                String apiUrl = "https://api.themoviedb.org/3/movie/" + myListMovie.movieDbId + "?language=" + language + "&region=" + region;
+
+                Request request = new Request.Builder()
+                        .url(apiUrl)
+                        .header("Authorization", "Bearer " + accessToken)
+                        .header("accept", "application/json")
+                        .build();
+
+                try {
+                    Response response = client.newCall(request).execute();
+                    if (response.isSuccessful()) {
+                        Gson gson = new Gson();
+                        Movie movie = gson.fromJson(response.body().string(), Movie.class);
+                        movies.add(movie);
+                    } else {
+                        System.out.println("Error fetching movie with ID: " + myListMovie.movieDbId);
+                        // Handle error
+                        Log.e("MovieList", "Error fetching movie with ID: " + myListMovie.movieDbId);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            return movies;
+        }
+
+        @Override
+        protected void onPostExecute(List<Movie> movies) {
+            super.onPostExecute(movies);
+
+            if (movies != null) {
+                listener.onMoviesFetched(movies);
+            }
+        }
+    }
     public static void getPopularMovies(String accessToken, OnMoviesFetchedListener listener) {
         new FetchMovieListTask(listener).execute(accessToken);
     }

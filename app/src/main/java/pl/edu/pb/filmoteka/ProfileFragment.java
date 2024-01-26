@@ -24,6 +24,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import pl.edu.pb.filmoteka.DB.MyListMovies;
+
 
 public class ProfileFragment extends Fragment {
 
@@ -90,6 +92,19 @@ public class ProfileFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
+        toSeeFilmsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                MyListFragment myListMoviesFragment = new MyListFragment();
+                Bundle bundle = new Bundle();
+                bundle.putLong("userId", userId);
+                myListMoviesFragment.setArguments(bundle);
+                fragmentTransaction.replace(R.id.fragment_container, myListMoviesFragment);
+                fragmentTransaction.commit();
+            }
+        });
 
         // Przypisanie obsługi zdarzenia kliknięcia dla przycisku randFilmsButton
         randFilmsButton.setOnClickListener(new View.OnClickListener() {
@@ -103,8 +118,14 @@ public class ProfileFragment extends Fragment {
         /*editProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Obsługa kliknięcia przycisku "Edytuj profil"
-                openEditProfileFragment();
+                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                EditProfileFragment editProfileFragment = new EditProfileFragment();
+                Bundle bundle = new Bundle();
+                bundle.putLong("userId", userId);
+                editProfileFragment.setArguments(bundle);
+                fragmentTransaction.replace(R.id.fragment_container, editProfileFragment);
+                fragmentTransaction.commit();
             }
         });*/
 

@@ -14,9 +14,8 @@ public interface MyListMoviesDao {
 
     @Query("SELECT COUNT(*) FROM my_list_movies WHERE userId = :userId AND movieDbId = :movieDbId")
     int checkIfMyListMovieExists(long userId, int movieDbId);
-
-    @Query("SELECT * FROM my_list_movies")
-    List<MyListMovies> getAllMyListMovies();
+    @Query("SELECT * FROM my_list_movies WHERE userId = :userId")
+    List<MyListMovies> getAllMyListMovies(long userId);
     @Query("DELETE FROM my_list_movies")
     void deleteAllMyListMovies();
 }
