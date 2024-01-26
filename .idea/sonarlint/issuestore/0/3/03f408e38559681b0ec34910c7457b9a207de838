@@ -2,7 +2,7 @@
 f
 java:S1192H"IDefine a constant instead of duplicating this literal "&region=" 5 times.(¯çÂ™8½¨ı»Ô1
 q
-java:S1192L"ODefine a constant instead of duplicating this literal "Authorization" 12 times.(Î²ªıÿÿÿÿ8½¨ı»Ô1
+java:S1192L"ODefine a constant instead of duplicating this literal "Authorization" 14 times.(Î²ªıÿÿÿÿ8½¨ı»Ô1
 h
 java:S1192H"KDefine a constant instead of duplicating this literal "?language=" 5 times.(¯çÂ™8½¨ı»Ô1
 s
@@ -10,17 +10,17 @@ java:S1192€"PDefine a constant instead of duplicating this literal "&page=1&re
 |
 java:S1192€"YDefine a constant instead of duplicating this literal "&sort_by=popularity.desc" 3 times.(°·€ëüÿÿÿÿ8½¨ı»Ô1
 o
-java:S1192M"RDefine a constant instead of duplicating this literal "application/json" 12 times.(ƒÆêµ8½¨ı»Ô1
+java:S1192M"RDefine a constant instead of duplicating this literal "application/json" 14 times.(ƒÆêµ8½¨ı»Ô1
 e
-java:S1192M"HDefine a constant instead of duplicating this literal "accept" 12 times.(ƒÆêµ8½¨ı»Ô1
+java:S1192M"HDefine a constant instead of duplicating this literal "accept" 14 times.(ƒÆêµ8½¨ı»Ô1
 |
 java:S1192X"_Define a constant instead of duplicating this literal "Error fetching movie with ID: " 5 times.(¡×ˆÚ8½¨ı»Ô1
 
-java:S1192H"dDefine a constant instead of duplicating this literal "https://api.themoviedb.org/3/movie/" 6 times.(¯çÂ™8½¨ı»Ô1
+java:S1192H"dDefine a constant instead of duplicating this literal "https://api.themoviedb.org/3/movie/" 8 times.(¯çÂ™8½¨ı»Ô1
 h
-java:S1192X"KDefine a constant instead of duplicating this literal "MovieList" 12 times.(¡×ˆÚ8¾¨ı»Ô1
+java:S1192X"KDefine a constant instead of duplicating this literal "MovieList" 13 times.(¡×ˆÚ8¾¨ı»Ô1
 k
-java:S1192L"IDefine a constant instead of duplicating this literal "Bearer " 12 times.(Î²ªıÿÿÿÿ8¾¨ı»Ô1
+java:S1192L"IDefine a constant instead of duplicating this literal "Bearer " 14 times.(Î²ªıÿÿÿÿ8¾¨ı»Ô1
 €
 java:S1488ç"]Immediately return this expression instead of assigning it to the temporary variable "movie".(›¤›­ıÿÿÿÿ8À¨ı»Ô1
 {
@@ -141,3 +141,19 @@ m
 java:S1874ò"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(²Ëıÿÿÿÿ8ß©ı»Ô1
 X
 java:S1874ó"5Remove this use of "onPostExecute"; it is deprecated.(ÑÇ‰ûÿÿÿÿ8ß©ı»Ô1
+L
+java:S1874€"/Remove this use of "execute"; it is deprecated.(Ú®š8ËÄ½Ô1
+T
+java:S1874ƒ"1Remove this use of "AsyncTask"; it is deprecated.(öÆ’‚ùÿÿÿÿ8ËÄ½Ô1
+m
+java:S1874¬"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(‘½ôåûÿÿÿÿ8„ËÄ½Ô1
+X
+java:S1874­"5Remove this use of "onPostExecute"; it is deprecated.(—îù–ùÿÿÿÿ8ÖÄõ¾Ô1
+R
+java:S1874µ"/Remove this use of "execute"; it is deprecated.(¯£İØıÿÿÿÿ8úàı¾Ô1
+T
+java:S1874¸"1Remove this use of "AsyncTask"; it is deprecated.(¤ñá¹üÿÿÿÿ8úàı¾Ô1
+h
+java:S1874æ"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÒÇä8üàı¾Ô1
+X
+java:S1874ç"5Remove this use of "onPostExecute"; it is deprecated.(¶ö¹ùÿÿÿÿ8ıàı¾Ô1

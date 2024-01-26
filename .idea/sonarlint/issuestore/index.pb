@@ -145,3 +145,11 @@ g
 7app/src/main/java/pl/edu/pb/filmoteka/MovieDetails.java,3\c\3ca6bbe9a22e519b267da17377bb41f915419ea3
 j
 :app/src/main/java/pl/edu/pb/filmoteka/DetailsActivity.java,e\3\e3693c7ab82d27405fce6037e4f333934b77cfde
+g
+7app/src/main/java/pl/edu/pb/filmoteka/MovieCredits.java,b\d\bdaec23a844aa04e752808b1b7fa076f3b32222f
+e
+5app/src/main/java/pl/edu/pb/filmoteka/CrewMember.java,2\b\2b3e1b4f947bf8a1e4cbd03521c87a8610013d2a
+e
+5app/src/main/java/pl/edu/pb/filmoteka/CastMember.java,0\8\086a58c28028fd523ec1cdd2c9413fb7f71e8042
+f
+6app/src/main/java/pl/edu/pb/filmoteka/CastAdapter.java,1\1\11c93cec7335f726dbd0fc67011e59643efa72b9

@@ -761,7 +761,119 @@ public class MovieList {
             }
         }
     }
+    public interface OnCreditsFetchedListener {
+        void onCreditsFetched(MovieCredits movieCredits);
+    }
+    public static void getMovieCredits(String accessToken, int movieId, OnCreditsFetchedListener listener) {
+        new FetchMovieCreditsTask(listener).execute(accessToken, String.valueOf(movieId));
+    }
 
+    private static class FetchMovieCreditsTask extends AsyncTask<String, Void, MovieCredits> {
+        private final OnCreditsFetchedListener listener;
 
+        FetchMovieCreditsTask(OnCreditsFetchedListener listener) {
+            this.listener = listener;
+        }
+
+        @Override
+        protected MovieCredits doInBackground(String... tokens) {
+            String accessToken = tokens[0];
+            int movieId = Integer.parseInt(tokens[1]);
+            String apiUrl = "https://api.themoviedb.org/3/movie/" + movieId + "/credits";
+
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .addNetworkInterceptor(new StethoInterceptor())
+                    .build();
+
+            Request request = new Request.Builder()
+                    .url(apiUrl)
+                    .header("Authorization", "Bearer " + accessToken)
+                    .header("accept", "application/json")
+                    .build();
+
+            try {
+                Response response = client.newCall(request).execute();
+                if (response.isSuccessful()) {
+                    Gson gson = new Gson();
+                    TypeToken<MovieCredits> token = new TypeToken<MovieCredits>() {};
+                    return gson.fromJson(response.body().string(), token.getType());
+                } else {
+                    // Handle error
+                    Log.e("MovieCredits", "Error fetching movie credits");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(MovieCredits movieCredits) {
+            super.onPostExecute(movieCredits);
+
+            if (movieCredits != null) {
+                listener.onCreditsFetched(movieCredits);
+            }
+        }
+    }
+    public static void getRecommendedMovies(int movieId, String accessToken, OnMoviesFetchedListener listener) {
+        new FetchRecommendationsTask(movieId, listener).execute(accessToken);
+    }
+
+    private static class FetchRecommendationsTask extends AsyncTask<String, Void, List<Movie>> {
+        private final OnMoviesFetchedListener listener;
+        private final int movieId;
+
+        FetchRecommendationsTask(int movieId, OnMoviesFetchedListener listener) {
+            this.movieId = movieId;
+            this.listener = listener;
+        }
+
+        @Override
+        protected List<Movie> doInBackground(String... tokens) {
+            String accessToken = tokens[0];
+
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .addNetworkInterceptor(new StethoInterceptor())
+                    .build();
+
+            List<Movie> movies = new ArrayList<>();
+
+            // Create URL for recommendations based on the provided movieId
+            String apiUrl = "https://api.themoviedb.org/3/movie/" + movieId + "/recommendations?language="+language;
+
+            Request request = new Request.Builder()
+                    .url(apiUrl)
+                    .header("Authorization", "Bearer " + accessToken)
+                    .header("accept", "application/json")
+                    .build();
+
+            try {
+                Response response = client.newCall(request).execute();
+                if (response.isSuccessful()) {
+                    Gson gson = new Gson();
+                    TypeToken<List<Movie>> token = new TypeToken<List<Movie>>() {};
+                    movies = gson.fromJson(response.body().string(), token.getType());
+                } else {
+                    // Handle error
+                    Log.e("MovieList", "Error fetching recommended movies");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return movies;
+        }
+
+        @Override
+        protected void onPostExecute(List<Movie> movies) {
+            super.onPostExecute(movies);
+
+            if (movies != null) {
+                listener.onMoviesFetched(movies);
+            }
+        }
+    }
 
 }

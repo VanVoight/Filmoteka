@@ -28,6 +28,7 @@
 
             <TextView
                 android:id="@+id/textViewTitleYear"
+                android:fontFamily="@font/kavivanar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="The Shawshank Redemption (1994)"
@@ -69,6 +70,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/description"
                 android:textColor="@color/gold"
+
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:paddingTop="8dp"/>
@@ -154,6 +156,42 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:fontFamily="@font/kavivanar"
+                android:text="@string/cast"
+                android:layout_marginLeft="130dp"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/gold"
+                android:textSize="35dp"
+                android:textStyle="bold"
+                />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/textViewVoteAverage" />
+            <ImageView
+                android:id="@+id/imageBackdrop"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/placeholder_poster"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewrecommendations"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/textViewVoteAverage" />
         </LinearLayout>
 
     </ScrollView>

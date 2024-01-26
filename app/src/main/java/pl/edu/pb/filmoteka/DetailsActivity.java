@@ -1,7 +1,10 @@
 package pl.edu.pb.filmoteka;
 
+import static pl.edu.pb.filmoteka.MovieList.getMovieCredits;
 import static pl.edu.pb.filmoteka.MovieList.getMovieDetails;
+import static pl.edu.pb.filmoteka.MovieList.getMovieVideos;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -12,6 +15,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.ImageButton;
@@ -21,6 +25,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
@@ -32,6 +37,8 @@ import java.lang.ref.WeakReference;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.List;
+
+import pl.edu.pb.filmoteka.DB.AppDatabase;
 
 
 public class DetailsActivity extends AppCompatActivity{
@@ -48,33 +55,57 @@ public class DetailsActivity extends AppCompatActivity{
 	private CardView cardView;
 	private ImageButton imageButton;
 	private TextView ytTextView;
+	private ImageView backdrop;
 	private int movieId;
+	private long userRole;
+	private List<Movie> movieList;
+	private RecyclerView recyclerViewcast;
+	private RecyclerView recyclerViewrecommend;
+	private MovieCredits movieCredits;
+	private AppDatabase appDatabase;
+	private long userId;
+	private String key;
 	private MovieDetails movieDetails;
+	private MovieAdapter movieAdapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.details_layout);
 		if (getIntent() != null && getIntent().hasExtra("movieId")) {
-			movieId = getIntent().getIntExtra("movieId", 0); // Zakładając, że domyślną wartością jest 0
+			movieId = getIntent().getIntExtra("movieId", 0);
+			userId = getIntent().getLongExtra("userId", 0);
+			userRole = getIntent().getLongExtra("roleId",1);
 		} else {
-			// Obsłuż brak przekazanego movieId, na przykład wyświetl komunikat błędu lub zakończ aktywność
+
 			Toast.makeText(this, "Brak informacji o movieId", Toast.LENGTH_SHORT).show();
-			finish(); // Zakończ aktywność
+			finish();
 			return;
 		}
-
+		appDatabase = AppDatabase.getInstance(this);
 		imageViewPoster = findViewById(R.id.imageViewPoster);
 		textViewTitleYear = findViewById(R.id.textViewTitleYear);
 		textViewReleaseDate = findViewById(R.id.textViewReleaseDate);
 		textViewGenres = findViewById(R.id.textViewGenres);
 		textViewVoteAverage = findViewById(R.id.textViewVoteAverage);
+		recyclerViewrecommend = findViewById(R.id.recyclerViewrecommendations);
+		backdrop = findViewById(R.id.imageBackdrop);
 		textViewOverview = findViewById(R.id.textViewOverview);
 		tagline = findViewById(R.id.TagLine);
 		cardView = findViewById(R.id.cardView);
 		imageButton = findViewById(R.id.imageButtonPlayTrailer);
 		ytTextView = findViewById(R.id.ytTextView);
+		recyclerViewcast = findViewById(R.id.recyclerView);
+		cardView.setOnClickListener(view -> {
+			if (key != null && !key.isEmpty()) {
 
+				Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=" + key));
+				startActivity(intent);
+			} else {
+
+				Toast.makeText(this, "No video available", Toast.LENGTH_SHORT).show();
+			}
+		});
 
 		String accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NmI1OTA2OTU4ZDY0YjRmOWM1MjMzMzQxNjM3M2Y0YiIsInN1YiI6IjY1OTVhYTFjNTkwN2RlMDE2NzYzYmYwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IlVmj8Oxv5RunQqXK55LVmJerMote8EMPNsO6jcEdRA";
 		getMovieDetails(accessToken, movieId, new MovieList.OnMoviesFetchedDetailsListener() {
@@ -89,10 +120,46 @@ public class DetailsActivity extends AppCompatActivity{
 				}
 			}
 		});
+		getMovieVideos(accessToken, movieId, new MovieList.OnVideosFetchedListener() {
+			@Override
+			public void onVideosFetched(List<Video> videos) {
+				if (videos != null && !videos.isEmpty()) {
+					for (Video video : videos) {
 
+						if ("Trailer".equals(video.getType()) && video.isOfficial()) {
+
+							key = video.getKey();
+							break;
+						}
+					}
+				}
+			}
+		});
+			getMovieCredits(accessToken, movieId, new MovieList.OnCreditsFetchedListener() {
+				@Override
+				public void onCreditsFetched(MovieCredits credits) {
+					if (credits != null) {
+						movieCredits = credits;
+						updateCastUI(movieCredits);
+					} else {
+
+					}
+				}
+			});
 
 	}
 
+
+
+
+
+	private void updateCastUI(MovieCredits movieCredits) {
+
+		if (recyclerViewcast != null && movieCredits != null) {
+			CastAdapter castAdapter = new CastAdapter(this, movieCredits.getCast());
+			recyclerViewcast.setAdapter(castAdapter);
+		}
+	}
 
 
 	private void updateUI(MovieDetails movie) {
@@ -130,30 +197,16 @@ public class DetailsActivity extends AppCompatActivity{
 		}
 
 
-		/*String backdropPath = movie.getBackdropPath();
+		String backdropPath = movie.getBackdropPath();
 		if (backdropPath != null && !backdropPath.isEmpty()) {
 			Picasso.get().load("https://image.tmdb.org/t/p/w500" + backdropPath)
 					.placeholder(R.drawable.placeholder_poster)
-					.into(new Target() {
-						@Override
-						public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-							findViewById(R.id.mainLayout).setBackground(new BitmapDrawable(getResources(), bitmap));
-						}
+					.into(backdrop);
 
-						@Override
-						public void onBitmapFailed(Exception e, Drawable errorDrawable) {
-
-						}
-
-						@Override
-						public void onPrepareLoad(Drawable placeHolderDrawable) {
-
-						}
-					});
 		} else {
 
 			findViewById(R.id.mainLayout).setBackgroundResource(R.drawable.placeholder_poster);
-		}*/
+		}
 	}
 	public class RoundedCornersTransformation implements Transformation {
 
@@ -194,5 +247,6 @@ public class DetailsActivity extends AppCompatActivity{
 			return "rounded_corners";
 		}
 	}
+
 
 }
