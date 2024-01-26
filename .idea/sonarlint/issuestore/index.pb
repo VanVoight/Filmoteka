@@ -133,3 +133,7 @@ p
 @app/src/main/java/pl/edu/pb/filmoteka/FavouriteListFragment.java,0\d\0d2f3c9bce4e187ff2e489d35ca494a250e7d148
 h
 8app/src/main/java/pl/edu/pb/filmoteka/ShakeDetector.java,9\1\918780eca7adc70438db9b247708e7fe6c28f3c5
+d
+4app/src/main/java/pl/edu/pb/filmoteka/DB/Review.java,8\e\8e85fad3712164d2d9d1c6b9df46c17822446fd0
+g
+7app/src/main/java/pl/edu/pb/filmoteka/DB/ReviewDao.java,7\0\703c3292bf22cfd9d89d25c02256c2f499d40891

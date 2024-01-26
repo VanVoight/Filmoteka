@@ -26,15 +26,19 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
+
+
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -47,6 +51,7 @@ import pl.edu.pb.filmoteka.DB.AppDatabase;
 import pl.edu.pb.filmoteka.DB.FavouriteMovies;
 import pl.edu.pb.filmoteka.DB.MyListMovies;
 import pl.edu.pb.filmoteka.DB.MyListMoviesDao;
+import pl.edu.pb.filmoteka.DB.Review;
 import pl.edu.pb.filmoteka.DB.WatchedMovies;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
@@ -138,10 +143,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
                         addToMyList();
                         return true;
                     } else if (item.getItemId() == R.id.menu_review) {
-                        // Handle review menu item
+                        showReviewEditorDialog(itemView.getContext());
                         return true;
                     } else if (item.getItemId() == R.id.menu_star_rating) {
-                        // Handle star rating menu item
+
                         showRatingDialog(itemView.getContext());
                         return true;
                     } else {
@@ -152,7 +157,82 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
             popupMenu.show();
         }
+        private void showReviewEditorDialog(Context context) {
+            LayoutInflater inflater = LayoutInflater.from(context);
+            View dialogView = inflater.inflate(R.layout.review_editor_layout, null);
 
+            AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.CustomAlertDialog);
+            builder.setView(dialogView);
+            builder.setTitle(context.getString(R.string.write_review));
+
+
+            EditText reviewEditText = dialogView.findViewById(R.id.rtEditText);
+            reviewEditText.setTextColor(ContextCompat.getColor(context, R.color.gold));
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                    String reviewText = reviewEditText.getText().toString();
+                    saveReviewToDatabase(reviewText);
+                    Toast.makeText(itemView.getContext(), R.string.review_submitted, Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
+                }
+            });
+
+            builder.setNeutralButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
+        private void saveReviewToDatabase(String reviewText) {
+
+            Review review = new Review();
+            review.userId=userId;
+            review.movieId=movieId;
+            review.content=reviewText;
+
+            new SaveReviewTask(itemView).execute(review);
+        }
+
+
+        private class SaveReviewTask extends AsyncTask<Review, Void, Integer> {
+            private WeakReference<View> itemViewReference;
+
+            public SaveReviewTask(View itemView) {
+                itemViewReference = new WeakReference<>(itemView);
+            }
+
+            @Override
+            protected Integer doInBackground(Review... reviews) {
+                int existingCount = appDatabase.reviewDao().checkIfReviewExists(userId, movieId);
+
+                if (existingCount == 0) {
+                    appDatabase.reviewDao().insertReview(reviews[0]);
+                }
+
+                return existingCount;
+            }
+
+
+            @Override
+            protected void onPostExecute(Integer existingCount) {
+                View itemView = itemViewReference.get();
+                String toastMessage = itemView.getContext().getString(R.string.review_already_exists);
+                String toastMessage2 = itemView.getContext().getString(R.string.review_submitted);
+                if (itemView != null) {
+                    if (existingCount == 0) {
+                        Toast.makeText(itemView.getContext(), toastMessage2, Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(itemView.getContext(), toastMessage, Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        }
         private void showRatingDialog(Context context) {
             LayoutInflater inflater = LayoutInflater.from(context);
             View dialogView = inflater.inflate(R.layout.dialog_layout, null);
