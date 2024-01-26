@@ -112,13 +112,26 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             } else {
                 inflater.inflate(R.menu.popup_menu_reviewer, popupMenu.getMenu());
             }
+            MenuItem watchedMenuItem = popupMenu.getMenu().findItem(R.id.menu_watched);
 
+            if (isMovieWatched()) {
+                watchedMenuItem.setTitle(R.string.rem_seen);
+            } else {
+                watchedMenuItem.setTitle(R.string.add_seen);
+            }
             MenuItem favoriteMenuItem = popupMenu.getMenu().findItem(R.id.menu_favorite);
 
             if (isMovieInFavorites()) {
                 favoriteMenuItem.setTitle(R.string.rem_fav);
             } else {
                 favoriteMenuItem.setTitle(R.string.add_fav);
+            }
+            MenuItem myListMenuItem = popupMenu.getMenu().findItem(R.id.menu_rate);
+
+            if (isMovieInMyList()) {
+                myListMenuItem.setTitle(R.string.rem_to_watch);
+            } else {
+                myListMenuItem.setTitle(R.string.add_to_watch);
             }
 
             popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -132,10 +145,18 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
                         }
                         return true;
                     } else if (item.getItemId() == R.id.menu_watched) {
-                        addToWatched();
+                        if (isMovieWatched()) {
+                            removeFromWatched();
+                        } else {
+                            addToWatched();
+                        }
                         return true;
                     } else if (item.getItemId() == R.id.menu_rate) {
-                        addToMyList();
+                        if (isMovieInMyList()) {
+                            removeFromMyList();
+                        } else {
+                            addToMyList();
+                        }
                         return true;
                     } else if (item.getItemId() == R.id.menu_review) {
                         // Handle review menu item
@@ -254,7 +275,34 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
                 }
             }
         }
+        private void removeFromWatched() {
+            // Remove the movie from the WatchedMovies table
+            new RemoveFromWatchedTask(itemView).execute();
+        }
 
+        private class RemoveFromWatchedTask extends AsyncTask<Void, Void, Void> {
+            private WeakReference<View> itemViewReference;
+
+            public RemoveFromWatchedTask(View itemView) {
+                itemViewReference = new WeakReference<>(itemView);
+            }
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                // Remove the movie from the WatchedMovies table
+                appDatabase.watchedMoviesDao().deleteWatchedMovies(userId, movieId);
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                View itemView = itemViewReference.get();
+                if (itemView != null) {
+                    // Update UI or show a toast message if needed
+                    Toast.makeText(itemView.getContext(), R.string.toast_remove_watched, Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
         private void addToWatched() {
 
             WatchedMovies watchedMovies = new WatchedMovies();
@@ -293,6 +341,34 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
                     } else {
                         Toast.makeText(itemView.getContext(), toastMessage, Toast.LENGTH_SHORT).show();
                     }
+                }
+            }
+        }
+        private void removeFromMyList() {
+            // Remove the movie from the FavouriteMovies table
+            new RemoveFromMyListTask(itemView).execute();
+        }
+
+        private class RemoveFromMyListTask extends AsyncTask<Void, Void, Void> {
+            private WeakReference<View> itemViewReference;
+
+            public RemoveFromMyListTask(View itemView) {
+                itemViewReference = new WeakReference<>(itemView);
+            }
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                // Remove the movie from the FavouriteMovies table
+                appDatabase.myListMoviesDao().deleteMyListMovies(userId, movieId);
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                View itemView = itemViewReference.get();
+                if (itemView != null) {
+                    // Update UI or show a toast message if needed
+                    Toast.makeText(itemView.getContext(), R.string.toast_remove_list, Toast.LENGTH_SHORT).show();
                 }
             }
         }
@@ -397,6 +473,50 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             protected Boolean doInBackground(Void... voids) {
                 // Execute database query in the background
                 return appDatabase.favouriteMoviesDao().checkIfFavouriteMovieExists(userId, movieId) > 0;
+            }
+        }
+        private boolean isMovieWatched() {
+            try {
+                return new CheckWatchedTask(movieId).execute().get();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
+
+        // AsyncTask to check if the movie is in WatchedMovies
+        private static class CheckWatchedTask extends AsyncTask<Void, Void, Boolean> {
+            private int movieId;
+
+            public CheckWatchedTask(int movieId) {
+                this.movieId = movieId;
+            }
+
+            @Override
+            protected Boolean doInBackground(Void... voids) {
+                return appDatabase.watchedMoviesDao().checkIfWatchedMovieExists(userId, movieId) > 0;
+            }
+        }
+        private boolean isMovieInMyList() {
+            try {
+                return new CheckMyListTask(movieId).execute().get();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
+
+        // AsyncTask to check if the movie is in MyListMovies
+        private static class CheckMyListTask extends AsyncTask<Void, Void, Boolean> {
+            private int movieId;
+
+            public CheckMyListTask(int movieId) {
+                this.movieId = movieId;
+            }
+
+            @Override
+            protected Boolean doInBackground(Void... voids) {
+                return appDatabase.myListMoviesDao().checkIfMyListMovieExists(userId, movieId) > 0;
             }
         }
         public void bind(Movie movie) {

@@ -53,7 +53,9 @@
 <string name="US">US</string>
 <string name="add_fav">+ Dodaj do ulubionych</string>
 <string name="add_seen">+ Dodaj do obejrzanych</string>
-<string name="add_to_watch">+Moja lista</string>
+    <string name="rem_seen">- Usuń z obejrzanych</string>
+<string name="add_to_watch">+ Dodaj do mojej listy</string>
+    <string name="rem_to_watch">- Usuń z mojej listy</string>
 <string name="localization_permission">Na udostępnienie lokalizacji możesz zezwolić w ustawieniach telefonu.</string>
 <string name="fav_films">Ulubione filmy</string>
 <string name="seen_films">Obejrzane filmy</string>
@@ -67,6 +69,8 @@
 <string name="toast_added_to_fav">Film dodany do ulubionych</string>
 <string name="toast_already_in_watch">Film już został dodany do obejrzanych!</string>
     <string name="toast_remove">Film został usunięty z ulubionych!</string>
+    <string name="toast_remove_watched">Film został usunięty z ulubionych!</string>
+    <string name="toast_remove_list">Film został usunięty z twojej listy!</string>
 <string name="toast_added_to_watch">Film dodany do obejrzanych</string>
 <string name="toast_already_in_ml">Film już został dodany do Mojej Listy!</string>
 <string name="toast_added_to_ml">Film dodany do Mojej Listy</string>

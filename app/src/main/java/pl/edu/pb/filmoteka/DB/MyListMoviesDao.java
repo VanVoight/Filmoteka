@@ -18,4 +18,6 @@ public interface MyListMoviesDao {
     List<MyListMovies> getAllMyListMovies(long userId);
     @Query("DELETE FROM my_list_movies")
     void deleteAllMyListMovies();
-}
+    @Query("DELETE FROM my_list_movies WHERE userId = :userId AND movieDbId = :movieDbId")
+    void deleteMyListMovies(long userId, int movieDbId);
+    }
