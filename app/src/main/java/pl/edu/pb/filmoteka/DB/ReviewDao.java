@@ -12,7 +12,7 @@ public interface ReviewDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     long insertReview(Review review);
 
-    @Query("SELECT COUNT(*) FROM watched_movies WHERE userId = :userId AND movieDbId = :movieDbId")
+    @Query("SELECT COUNT(*) FROM reviews WHERE userId = :userId AND movieId = :movieDbId")
     int checkIfReviewExists(long userId, int movieDbId);
 
 }

@@ -51,6 +51,7 @@ import pl.edu.pb.filmoteka.DB.AppDatabase;
 import pl.edu.pb.filmoteka.DB.FavouriteMovies;
 import pl.edu.pb.filmoteka.DB.MyListMovies;
 import pl.edu.pb.filmoteka.DB.MyListMoviesDao;
+import pl.edu.pb.filmoteka.DB.Rating;
 import pl.edu.pb.filmoteka.DB.Review;
 import pl.edu.pb.filmoteka.DB.WatchedMovies;
 
@@ -259,7 +260,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             View dialogView = inflater.inflate(R.layout.dialog_layout, null);
 
             RatingBar ratingBar = dialogView.findViewById(R.id.ratingBar);
-
+            float savedRating = getSavedRatingFromDatabase();
+            ratingBar.setRating(savedRating);
             AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.CustomAlertDialog);
             builder.setView(dialogView);
             builder.setTitle(context.getString(R.string.rate));
@@ -268,8 +270,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     float rating = ratingBar.getRating();
-                    // Handle the rating (save it, display it, etc.)
-                    Toast.makeText(itemView.getContext(), "You rated the movie: " + rating, Toast.LENGTH_SHORT).show();
+                    saveRatingToDatabase(rating);
+                    String message = itemView.getContext().getString(R.string.rated_movie_as) + ": " + rating;
+                    Toast.makeText(itemView.getContext(), message, Toast.LENGTH_SHORT).show();
+
                     dialog.dismiss();
                 }
             });
@@ -284,7 +288,62 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             AlertDialog dialog = builder.create();
             dialog.show();
         }
+        private void saveRatingToDatabase(float rating) {
+            Rating movieRating = new Rating();
+            movieRating.userId = userId;
+            movieRating.movieId = movieId;
+            movieRating.rating = rating;
 
+            new SaveRatingTask(itemView).execute(movieRating);
+        }
+
+        // Metoda do pobierania oceny z bazy danych
+        private float getSavedRatingFromDatabase() {
+            try {
+                return new GetRatingTask(movieId).execute().get();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return 0.0f;
+            }
+        }
+
+        // AsyncTask do zapisywania oceny
+        private class SaveRatingTask extends AsyncTask<Rating, Void, Void> {
+            private WeakReference<View> itemViewReference;
+
+            public SaveRatingTask(View itemView) {
+                itemViewReference = new WeakReference<>(itemView);
+            }
+
+            @Override
+            protected Void doInBackground(Rating... ratings) {
+                int existingCount = appDatabase.ratingDao().checkIfRatingExists(userId, movieId);
+
+                if (existingCount > 0) {
+                    appDatabase.ratingDao().updateRatings(userId,movieId,ratings[0].rating);
+
+                } else {
+                    appDatabase.ratingDao().insertRating(ratings[0]);
+
+                }
+
+                return null;
+            }
+        }
+
+
+        private static class GetRatingTask extends AsyncTask<Void, Void, Float> {
+            private int movieId;
+
+            public GetRatingTask(int movieId) {
+                this.movieId = movieId;
+            }
+
+            @Override
+            protected Float doInBackground(Void... voids) {
+                return appDatabase.ratingDao().getRatingForMovie(userId, movieId);
+            }
+        }
         private void removeFromFavorites() {
             // Remove the movie from the FavouriteMovies table
             new RemoveFromFavoritesTask(itemView).execute();

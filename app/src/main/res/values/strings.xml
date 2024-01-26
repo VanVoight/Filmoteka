@@ -88,5 +88,6 @@
     <string name="write_review">Napisz recenzję</string>
     <string name="review_submitted">Dodano recenzję</string>
     <string name="review_already_exists">Dodano już recenzję tego filmu</string>
+    <string name="rated_movie_as">Wystawiona ocena</string>
 
 </resources>
