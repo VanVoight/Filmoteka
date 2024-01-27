@@ -60,7 +60,7 @@
 <string name="seen_films">Obejrzane filmy</string>
 <string name="rand_films">Losuj film</string>
 <string name="edit_profile">Edytuj profil</string>
-<string name="del_profile">Usuń profil</string>
+<string name="del_profile">Wyloguj</string>
 <string name="find_film_hint">Tytuł filmu...</string>
 <string name="rand_film_popup">Wylosuj film na dziś</string>
 <string name="back">Wróć</string>

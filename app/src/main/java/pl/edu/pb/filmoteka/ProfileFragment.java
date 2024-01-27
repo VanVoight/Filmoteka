@@ -2,6 +2,7 @@ package pl.edu.pb.filmoteka;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -128,25 +129,15 @@ public class ProfileFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
-
+        delProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(requireContext(), LoginActivity.class);
+                startActivity(intent);
+                requireActivity().finish();
+            }
+        });
         return view;
     }
 
-
-
-  /*  private void openEditProfileFragment() {
-        // Przygotuj dane do przekazania do EditFragmentProfile
-        Bundle bundle = new Bundle();
-        bundle.putString("userName", userName);
-
-        // Tworzymy nowy fragment
-        EditProfileFragment editFragment = new EditProfileFragment();
-        editFragment.setArguments(bundle);
-
-        // Otwieramy fragment
-        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, editFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }*/
 }
