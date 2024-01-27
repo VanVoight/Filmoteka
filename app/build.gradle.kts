@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId = "pl.edu.pb.filmoteka"
-        minSdk = 24
+        minSdk = 31
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
@@ -47,5 +47,6 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation ("com.google.android.gms:play-services-location:18.0.0")
     implementation ("com.squareup.picasso:picasso:2.71828")
+
 
 }

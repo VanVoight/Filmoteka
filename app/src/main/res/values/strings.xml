@@ -96,6 +96,7 @@
     <string name="average_rating">Średnia ocen recenzentów</string>
     <string name="reviews_list">Recenzje</string>
     <string name="save">Zapisz</string>
+    <string name="profile_pic_edit">Edytuj zdjęcie profilowe</string>
 
 
 </resources>

@@ -4,10 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
 import android.os.Handler;
 import android.os.Looper;
 import android.hardware.SensorManager;
@@ -24,6 +21,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Space;
 import android.widget.TextView;
+
+import pl.edu.pb.filmoteka.Activities.HomeActivity;
+import pl.edu.pb.filmoteka.Fragments.RandomFilmFragment;
 
 public class CustomPopup {
 

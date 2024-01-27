@@ -1,7 +1,5 @@
 package pl.edu.pb.filmoteka;
 
-import static android.provider.Settings.System.getString;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.AsyncTask;
@@ -23,6 +21,12 @@ import pl.edu.pb.filmoteka.DB.AppDatabase;
 import pl.edu.pb.filmoteka.DB.FavouriteMovies;
 import pl.edu.pb.filmoteka.DB.WatchedMovies;
 import pl.edu.pb.filmoteka.DB.MyListMovies;
+import pl.edu.pb.filmoteka.Models.Movie;
+import pl.edu.pb.filmoteka.Models.MovieCredits;
+import pl.edu.pb.filmoteka.Models.MovieDetails;
+import pl.edu.pb.filmoteka.Models.MovieResult;
+import pl.edu.pb.filmoteka.Models.Video;
+import pl.edu.pb.filmoteka.Models.VideoResult;
 
 public class MovieList {
     private static String language;

@@ -27,4 +27,10 @@ public interface UserDao {
     void updateUser(User user);
     @Query("UPDATE users SET firstName = :firstName, lastName = :lastName, email = :email WHERE userId = :userId")
     void updateUserDetails(long userId, String firstName, String lastName, String email);
+
+    @Query("UPDATE users SET profileImage = :newImageBytes WHERE userId = :userId")
+    void updateProfileImage(long userId, byte[] newImageBytes);
+
+    @Query("SELECT profileImage FROM users WHERE userId = :userId")
+    byte[] getUserProfileImage(long userId);
 }
