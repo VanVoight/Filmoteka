@@ -1,12 +1,17 @@
 package pl.edu.pb.filmoteka;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -36,6 +41,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ReviewView
 
 		holder.textViewAuthor.setText(review.authorUserName);
 		holder.textViewContent.setText(review.content);
+		holder.itemView.setOnClickListener(view -> showReviewDialog(review));
 	}
 
 	@Override
@@ -52,5 +58,16 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ReviewView
 			textViewAuthor = itemView.findViewById(R.id.textViewAuthor);
 			textViewContent = itemView.findViewById(R.id.textViewContent);
 		}
+	}
+	private void showReviewDialog(ReviewDao.ReviewWithAuthor review) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(context,R.style.CustomAlertDialog);
+		builder.setTitle("Review by " + review.authorUserName);
+		String message = review.content;
+		ForegroundColorSpan colorSpan = new ForegroundColorSpan(ContextCompat.getColor(context, R.color.gold));
+		SpannableString spannableString = new SpannableString(message);
+		spannableString.setSpan(colorSpan, 0, message.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		builder.setMessage(spannableString);
+		builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
+		builder.show();
 	}
 }
