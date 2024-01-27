@@ -7,10 +7,12 @@
     android:padding="16dp">
 
     <TextView
+
         android:id="@+id/textViewHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Edycja Profilu"
+        android:text="@string/edit_profile"
+        android:textColor="@color/gold"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
@@ -20,10 +22,13 @@
 
     <!-- Pole do edycji imienia -->
     <EditText
+        android:drawableLeft="@drawable/ic_user"
         android:id="@+id/editTextFirstName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Imię"
+        android:textColor="@color/gold"
+        android:textColorHint="@color/gold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -33,10 +38,13 @@
 
     <!-- Pole do edycji nazwiska -->
     <EditText
+        android:drawableLeft="@drawable/ic_user"
         android:id="@+id/editTextLastName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Nazwisko"
+        android:textColor="@color/gold"
+        android:textColorHint="@color/gold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -49,26 +57,30 @@
         android:id="@+id/editTextEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Numer telefonu"
-        android:inputType="phone"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
+        android:textColor="@color/gold"
+        android:drawableLeft="@drawable/ic_email"
+        android:textColorHint="@color/gold"
         android:padding="8dp"/>
 
-    <!-- Przycisk do wyboru/zmiany zdjęcia profilowego -->
+
     <Button
         android:id="@+id/saveChangesButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Zapisz"
+        android:text="@string/save"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        android:padding="8dp"/>
+        android:padding="8dp"
+        style="@style/ButtonStyle"/>
 
 </LinearLayout>

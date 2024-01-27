@@ -95,6 +95,7 @@
     <string name="recommendation">Spróbuj także</string>
     <string name="average_rating">Średnia ocen recenzentów</string>
     <string name="reviews_list">Recenzje</string>
+    <string name="save">Zapisz</string>
 
 
 </resources>

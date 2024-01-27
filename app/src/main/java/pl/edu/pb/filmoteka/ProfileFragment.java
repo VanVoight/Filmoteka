@@ -106,16 +106,16 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        // Przypisanie obsługi zdarzenia kliknięcia dla przycisku randFilmsButton
+
         randFilmsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Metoda do obsługi otwierania okienka popup
+
                 CustomPopup.showRandomFilmPopup(requireContext());
             }
         });
 
-        /*editProfileButton.setOnClickListener(new View.OnClickListener() {
+        editProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
@@ -127,7 +127,7 @@ public class ProfileFragment extends Fragment {
                 fragmentTransaction.replace(R.id.fragment_container, editProfileFragment);
                 fragmentTransaction.commit();
             }
-        });*/
+        });
 
         return view;
     }

@@ -1,6 +1,6 @@
 
 i
-java:S1192@"GDefine a constant instead of duplicating this literal "userId" 4 times.(µ¸©³øÿÿÿÿ8ÄÚ¥—Ô1
+java:S1192@"GDefine a constant instead of duplicating this literal "userId" 5 times.(µ¸©³øÿÿÿÿ8ÄÚ¥—Ô1
 J
 java:S1604E"(Make this anonymous inner class a lambda(¨¥íÈıÿÿÿÿ8ÅÚ¥—Ô1
 J
@@ -9,6 +9,8 @@ D
 java:S1604_"(Make this anonymous inner class a lambda(²îÁQ8ÅÚ¥—Ô1
 J
 java:S1604n"(Make this anonymous inner class a lambda(ì§õûÿÿÿÿ8šı”¨Ô1
+J
+java:S1604v"(Make this anonymous inner class a lambda(’Ùûıÿÿÿÿ8‘ÿç×Ô1
 {
 java:S1450 "^Remove the "avatarImageView" field and declare it as a local variable in the relevant methods.(ÚÙÙÇ8ØÚ¥—Ô1
 |
@@ -31,13 +33,10 @@ java:S1450)"WRemove the "userName" field and declare it as a local variable in 
 java:S1450!"_Remove the "userNameTextView" field and declare it as a local variable in the relevant methods.(‰·¿®8ÙÚ¥—Ô1
 W
 java:S1161.":Add the "@Override" annotation above this method signature(ï ±ª8İÚ¥—Ô1
-X	java:S125v"<This block of commented-out lines of code should be removed.(Ùéé8èÚ¥—Ô1
 ^	java:S125‰"<This block of commented-out lines of code should be removed.(©ß„Îûÿÿÿÿ8éÚ¥—Ô1
 P
 java:S1068 "3Remove this unused "avatarImageView" private field.(ÚÙÙÇ8éÚ¥—Ô1
 P
 java:S1068"".Remove this unused "searchFilm" private field.(“¾‘¬üÿÿÿÿ8éÚ¥—Ô1
-R
-java:S1068'"5Remove this unused "editProfileButton" private field.(˜¢áô8éÚ¥—Ô1
 Q
 java:S1068("4Remove this unused "delProfileButton" private field.(ÏÆä‰8éÚ¥—Ô1
