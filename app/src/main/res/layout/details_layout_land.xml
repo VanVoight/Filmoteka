@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainLayout"
+    android:background="@color/colorPrimary">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="36dp">
+
+            <ImageView
+                android:id="@+id/imageViewPoster"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/placeholder_poster"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"/>
+
+            <TextView
+                android:id="@+id/textViewTitleYear"
+                android:fontFamily="@font/kavivanar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="The Shawshank Redemption (1994)"
+                android:textColor="@color/gold"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:paddingTop="8dp"/>
+
+            <TextView
+                android:id="@+id/textViewReleaseDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Released: September 23, 1994"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:paddingTop="4dp"/>
+
+            <TextView
+                android:id="@+id/textViewGenres"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Drama, Crime"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:paddingTop="4dp"/>
+
+            <TextView
+                android:id="@+id/TagLine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text= "Przyjaźń, troska i walka. Wartości, które są niezbędne, aby przetrwać w więzieniu."
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:textColor="@color/white"
+                android:paddingTop="8dp"/>
+            <TextView
+                android:id="@+id/textViewHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/description"
+                android:textColor="@color/gold"
+
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:paddingTop="8dp"/>
+
+            <TextView
+                android:id="@+id/textViewOverview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gold"
+                android:text="Framed in the 1940s for the double murder of his wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison, where he puts his accounting skills to work for an amoral warden. During his long stretch in prison, Dufresne comes to be admired by the other inmates -- including an older prisoner named Red -- for his integrity and unquenchable sense of hope."
+                android:textSize="18sp"
+                android:paddingTop="4dp"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/textViewVoteAverage"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="11dp"
+                    android:layout_marginLeft="180dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/circle_background"
+                    android:gravity="center"
+                    android:text="8.7"
+                    android:textSize="50sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:layout_marginTop="-10dp"
+                    android:text="@string/user_rating"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp">
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="230dp"
+                    app:cardCornerRadius="25dp"
+                    app:cardBackgroundColor="@color/gold"
+                    android:layout_gravity="end">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp"
+                        android:padding="10dp">
+
+
+                        <ImageButton
+                            android:id="@+id/imageButtonPlayTrailer"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:background="@drawable/circle_background"
+                            android:contentDescription="Play Trailer"
+                            android:onClick="playTrailer"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ic_play_button" />
+
+
+                        <TextView
+                            android:id="@+id/ytTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="8dp"
+                            android:text="@string/trailer_yt"
+                            android:textStyle="bold"
+                            android:textColor="#000000"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:fontFamily="@font/kavivanar"
+                android:text="@string/cast"
+                android:layout_marginLeft="280dp"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/gold"
+                android:textSize="35dp"
+                android:textStyle="bold"
+                />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/textViewVoteAverage" />
+
+            <ImageView
+                android:id="@+id/imageBackdrop"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/placeholder_poster"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
+                />
+            <TextView
+                android:id="@+id/textViewReviews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/kavivanar"
+                android:text="@string/reviews_list"
+                android:layout_marginLeft="260dp"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/gold"
+                android:textSize="35dp"
+                android:textStyle="bold"
+                />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewreviews"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="200dp"
+                android:layout_marginTop="16dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/textViewReviews" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="200dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/kavivanar"
+                android:gravity="center_horizontal"
+                android:text="@string/average_rating"
+                android:textAlignment="center"
+                android:textColor="@color/gold"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="230dp"
+                android:layout_marginTop="25dp"
+                android:numStars="5"
+                android:rating="0"
+                android:stepSize="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:fontFamily="@font/kavivanar"
+                android:text="@string/recommendation"
+                android:layout_marginLeft="240dp"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/gold"
+                android:textSize="35dp"
+                android:textStyle="bold"
+                />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewrecommendations"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/textViewVoteAverage" />
+        </LinearLayout>
+
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

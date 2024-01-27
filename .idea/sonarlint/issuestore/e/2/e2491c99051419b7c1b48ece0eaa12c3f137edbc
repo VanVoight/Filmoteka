@@ -1,23 +1,23 @@
 
 ·
-java:S11927"”Define a constant instead of duplicating this literal "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NmI1OTA2OTU4ZDY0YjRmOWM1MjMzMzQxNjM3M2Y0YiIsInN1YiI6IjY1OTVhYTFjNTkwN2RlMDE2NzYzYmYwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IlVmj8Oxv5RunQqXK55LVmJerMote8EMPNsO6jcEdRA" 4 times.(ƒœä¸ûÿÿÿÿ8»‚ã‡Ô1
+java:S11928"”Define a constant instead of duplicating this literal "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NmI1OTA2OTU4ZDY0YjRmOWM1MjMzMzQxNjM3M2Y0YiIsInN1YiI6IjY1OTVhYTFjNTkwN2RlMDE2NzYzYmYwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IlVmj8Oxv5RunQqXK55LVmJerMote8EMPNsO6jcEdRA" 4 times.(ƒœä¸ûÿÿÿÿ8šºÀéÔ1
 J
-java:S16047"(Make this anonymous inner class a lambda(ƒœä¸ûÿÿÿÿ8»‚ã‡Ô1
+java:S16048"(Make this anonymous inner class a lambda(ƒœä¸ûÿÿÿÿ8›ºÀéÔ1
 J
-java:S1604E"(Make this anonymous inner class a lambda(Â¥Ù„úÿÿÿÿ8¼‚ã‡Ô1
+java:S1604F"(Make this anonymous inner class a lambda(Â¥Ù„úÿÿÿÿ8›ºÀéÔ1
 J
-java:S1604Q"(Make this anonymous inner class a lambda(ÑéÆîşÿÿÿÿ8¼‚ã‡Ô1
+java:S1604R"(Make this anonymous inner class a lambda(ÑéÆîşÿÿÿÿ8›ºÀéÔ1
 J
-java:S1604]"(Make this anonymous inner class a lambda(¥™ ûÿÿÿÿ8¼‚ã‡Ô1
+java:S1604^"(Make this anonymous inner class a lambda(¥™ ûÿÿÿÿ8›ºÀéÔ1
 £
-java:S1186""€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(çü…öÿÿÿÿÿ8Ï‚ã‡Ô1
+java:S1186#"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(çü…öÿÿÿÿÿ8¶ºÀéÔ1
 |
-java:S1450"ZRemove the "appDatabase" field and declare it as a local variable in the relevant methods.(í¯Õ—şÿÿÿÿ8Ñ‚ã‡Ô1
+java:S1450"ZRemove the "appDatabase" field and declare it as a local variable in the relevant methods.(í¯Õ—şÿÿÿÿ8¸ºÀéÔ1
 ~
-java:S1450"aRemove the "recyclerNowPlaying" field and declare it as a local variable in the relevant methods.(°‰ùÜ8Ò‚ã‡Ô1
+java:S1450"aRemove the "recyclerNowPlaying" field and declare it as a local variable in the relevant methods.(°‰ùÜ8¹ºÀéÔ1
 }
-java:S1450"[Remove the "recyclerView" field and declare it as a local variable in the relevant methods.(¿á© ıÿÿÿÿ8Ò‚ã‡Ô1
+java:S1450"[Remove the "recyclerView" field and declare it as a local variable in the relevant methods.(¿á© ıÿÿÿÿ8¹ºÀéÔ1
 €
-java:S1450"cRemove the "recyclerViewUpcoming" field and declare it as a local variable in the relevant methods.(˜†×8Ó‚ã‡Ô1
+java:S1450"cRemove the "recyclerViewUpcoming" field and declare it as a local variable in the relevant methods.(˜†×8ººÀéÔ1
 €
-java:S1450"cRemove the "topRatedRecyclerView" field and declare it as a local variable in the relevant methods.(Š½´–8Ó‚ã‡Ô1
+java:S1450"cRemove the "topRatedRecyclerView" field and declare it as a local variable in the relevant methods.(Š½´–8ººÀéÔ1

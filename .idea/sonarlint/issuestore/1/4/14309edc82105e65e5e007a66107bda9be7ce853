@@ -1,17 +1,18 @@
 
 J
-java:S1604F"(Make this anonymous inner class a lambda(ƒœä¸ûÿÿÿÿ8Ç¯®éÓ1
+java:S1604R"(Make this anonymous inner class a lambda(ƒœä¸ûÿÿÿÿ8¤÷éÔ1
 £
-java:S11860"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÿ­Û÷ûÿÿÿÿ8é‡×àÑ1
+java:S11861"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÿ­Û÷ûÿÿÿÿ8Á÷éÔ1
+X	java:S125:"<This block of commented-out lines of code should be removed.(Å´İé8£¯÷éÔ1
 S
-java:S1874]"6Remove this use of "setColorFilter"; it is deprecated.(®éÜ¿8­âéâÑ1
+java:S1874i"6Remove this use of "setColorFilter"; it is deprecated.(®éÜ¿8Ò÷éÔ1
 L
-java:S1874_"/Remove this use of "execute"; it is deprecated.(ëñ€¥8®âéâÑ1
+java:S1874k"/Remove this use of "execute"; it is deprecated.(ëñ€¥8Ó÷éÔ1
 S
-java:S1874k"1Remove this use of "AsyncTask"; it is deprecated.(¢´¬“ÿÿÿÿÿ8ˆˆ×àÑ1
-l
-java:S1874"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÿà—óùÿÿÿÿ8Á²ŞŞÑ1
+java:S1874w"1Remove this use of "AsyncTask"; it is deprecated.(¢´¬“ÿÿÿÿÿ8Õ÷éÔ1
+m
+java:S1874‹"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÿà—óùÿÿÿÿ8Û÷éÔ1
 S
-java:S1874€"5Remove this use of "onPostExecute"; it is deprecated.(¿åß¯8ˆ×àÑ1
+java:S1874Œ"5Remove this use of "onPostExecute"; it is deprecated.(¿åß¯8Ü÷éÔ1
 @
-java:S1128"Remove this duplicated import.(‚Š©“ùÿÿÿÿ8Ã¨è‘Ò1
+java:S1128"Remove this duplicated import.(‚Š©“ùÿÿÿÿ8Ş÷éÔ1

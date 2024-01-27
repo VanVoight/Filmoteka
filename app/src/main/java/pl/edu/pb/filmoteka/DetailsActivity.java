@@ -7,6 +7,7 @@ import static pl.edu.pb.filmoteka.MovieList.getRecommendationsForMovie;
 
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -20,6 +21,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -80,7 +82,19 @@ public class DetailsActivity extends AppCompatActivity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.details_layout);
+		//setContentView(R.layout.details_layout);
+		Configuration configuration = getResources().getConfiguration();
+
+		if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+			Log.e("szczegóły","siema ustawiam pionową");
+			// Bieżąca orientacja to pionowa
+			setContentView(R.layout.details_layout);
+		} else if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+			// Bieżąca orientacja to pozioma
+			Log.e("szczegóły","siema ustawiam poziomą");
+			setContentView(R.layout.details_layout_land);
+		}
+
 		appDatabase = AppDatabase.getInstance(this);
 		if (getIntent() != null && getIntent().hasExtra("movieId")) {
 			movieId = getIntent().getIntExtra("movieId", 0);
