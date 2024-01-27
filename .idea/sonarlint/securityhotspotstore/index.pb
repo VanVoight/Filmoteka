@@ -153,3 +153,5 @@ e
 5app/src/main/java/pl/edu/pb/filmoteka/CastMember.java,0\8\086a58c28028fd523ec1cdd2c9413fb7f71e8042
 f
 6app/src/main/java/pl/edu/pb/filmoteka/CastAdapter.java,1\1\11c93cec7335f726dbd0fc67011e59643efa72b9
+h
+8app/src/main/java/pl/edu/pb/filmoteka/ReviewAdapter.java,f\f\ff4a1b50551748319ea8d29fe85e29daab46d7ed

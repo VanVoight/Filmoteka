@@ -3,6 +3,8 @@ package pl.edu.pb.filmoteka;
 import static pl.edu.pb.filmoteka.MovieList.getMovieCredits;
 import static pl.edu.pb.filmoteka.MovieList.getMovieDetails;
 import static pl.edu.pb.filmoteka.MovieList.getMovieVideos;
+import static pl.edu.pb.filmoteka.MovieList.getRecommendationsForMovie;
+
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -20,11 +22,13 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -39,6 +43,7 @@ import java.text.DecimalFormat;
 import java.util.List;
 
 import pl.edu.pb.filmoteka.DB.AppDatabase;
+import pl.edu.pb.filmoteka.DB.ReviewDao;
 
 
 public class DetailsActivity extends AppCompatActivity{
@@ -59,7 +64,10 @@ public class DetailsActivity extends AppCompatActivity{
 	private int movieId;
 	private long userRole;
 	private List<Movie> movieList;
+	private List<ReviewDao.ReviewWithAuthor> reviewList;
 	private RecyclerView recyclerViewcast;
+
+	private RecyclerView recyclerViewReviews;
 	private RecyclerView recyclerViewrecommend;
 	private MovieCredits movieCredits;
 	private AppDatabase appDatabase;
@@ -67,11 +75,13 @@ public class DetailsActivity extends AppCompatActivity{
 	private String key;
 	private MovieDetails movieDetails;
 	private MovieAdapter movieAdapter;
+	private RatingBar ratingBar;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.details_layout);
+		appDatabase = AppDatabase.getInstance(this);
 		if (getIntent() != null && getIntent().hasExtra("movieId")) {
 			movieId = getIntent().getIntExtra("movieId", 0);
 			userId = getIntent().getLongExtra("userId", 0);
@@ -86,9 +96,11 @@ public class DetailsActivity extends AppCompatActivity{
 		imageViewPoster = findViewById(R.id.imageViewPoster);
 		textViewTitleYear = findViewById(R.id.textViewTitleYear);
 		textViewReleaseDate = findViewById(R.id.textViewReleaseDate);
+		ratingBar = findViewById(R.id.ratingBar);
 		textViewGenres = findViewById(R.id.textViewGenres);
 		textViewVoteAverage = findViewById(R.id.textViewVoteAverage);
 		recyclerViewrecommend = findViewById(R.id.recyclerViewrecommendations);
+		recyclerViewReviews = findViewById(R.id.recyclerViewreviews);
 		backdrop = findViewById(R.id.imageBackdrop);
 		textViewOverview = findViewById(R.id.textViewOverview);
 		tagline = findViewById(R.id.TagLine);
@@ -96,6 +108,7 @@ public class DetailsActivity extends AppCompatActivity{
 		imageButton = findViewById(R.id.imageButtonPlayTrailer);
 		ytTextView = findViewById(R.id.ytTextView);
 		recyclerViewcast = findViewById(R.id.recyclerView);
+		new FetchAverageRatingTask().execute(movieId);
 		cardView.setOnClickListener(view -> {
 			if (key != null && !key.isEmpty()) {
 
@@ -106,6 +119,8 @@ public class DetailsActivity extends AppCompatActivity{
 				Toast.makeText(this, "No video available", Toast.LENGTH_SHORT).show();
 			}
 		});
+
+
 
 		String accessToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NmI1OTA2OTU4ZDY0YjRmOWM1MjMzMzQxNjM3M2Y0YiIsInN1YiI6IjY1OTVhYTFjNTkwN2RlMDE2NzYzYmYwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IlVmj8Oxv5RunQqXK55LVmJerMote8EMPNsO6jcEdRA";
 		getMovieDetails(accessToken, movieId, new MovieList.OnMoviesFetchedDetailsListener() {
@@ -146,11 +161,56 @@ public class DetailsActivity extends AppCompatActivity{
 					}
 				}
 			});
-
+			movieAdapter = new MovieAdapter(userId,appDatabase,userRole);
+			recyclerViewrecommend.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+			recyclerViewrecommend.setAdapter(movieAdapter);
+			getRecommendationsForMovie(accessToken,movieId, new MovieList.OnMoviesFetchedListener() {
+				@Override
+				public void onMoviesFetched(List<Movie> movies) {
+					movieList = movies;
+					movieAdapter.setMovies(movieList);
+					movieAdapter.notifyDataSetChanged();
+				}
+			});
+		new FetchReviewsTask().execute(movieId);
 	}
 
+	private class FetchReviewsTask extends AsyncTask<Integer, Void, List<ReviewDao.ReviewWithAuthor>> {
 
+		@Override
+		protected List<ReviewDao.ReviewWithAuthor> doInBackground(Integer... params) {
+			int movieId = params[0];
+			return appDatabase.reviewDao().getReviewsWithAuthorByMovieId(movieId);
+		}
 
+		@Override
+		protected void onPostExecute(List<ReviewDao.ReviewWithAuthor> reviews) {
+			if (reviews != null && !reviews.isEmpty()) {
+				ReviewAdapter reviewAdapter = new ReviewAdapter(DetailsActivity.this, reviews);
+				recyclerViewReviews.setLayoutManager(new LinearLayoutManager(DetailsActivity.this,LinearLayoutManager.HORIZONTAL, false));
+				recyclerViewReviews.setAdapter(reviewAdapter);
+			} else {
+				 Toast.makeText(DetailsActivity.this, "Brak recenzji", Toast.LENGTH_SHORT).show();
+			}
+		}
+	}
+
+	private class FetchAverageRatingTask extends AsyncTask<Integer, Void, Float> {
+
+		@Override
+		protected Float doInBackground(Integer... params) {
+			int movieId = params[0];
+			return appDatabase.ratingDao().getAverageRatingForMovie(movieId);
+		}
+
+		@Override
+		protected void onPostExecute(Float averageRating) {
+
+			if (averageRating != null) {
+				ratingBar.setRating(averageRating.floatValue());
+			}
+		}
+	}
 
 
 	private void updateCastUI(MovieCredits movieCredits) {

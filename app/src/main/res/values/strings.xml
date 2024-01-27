@@ -92,6 +92,9 @@
     <string name="released">Wydany:</string>
     <string name="user_rating">Ocena użytkowników</string>
     <string name="cast">Obsada</string>
+    <string name="recommendation">Spróbuj także</string>
+    <string name="average_rating">Średnia ocen recenzentów</string>
+    <string name="reviews_list">Recenzje</string>
 
 
 </resources>

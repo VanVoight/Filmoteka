@@ -817,31 +817,28 @@ public class MovieList {
             }
         }
     }
-    public static void getRecommendedMovies(int movieId, String accessToken, OnMoviesFetchedListener listener) {
-        new FetchRecommendationsTask(movieId, listener).execute(accessToken);
+
+    public static void getRecommendationsForMovie(String accessToken, int movieId, OnMoviesFetchedListener listener) {
+        new FetchRecommendationsTask(listener).execute(accessToken, String.valueOf(movieId));
     }
 
     private static class FetchRecommendationsTask extends AsyncTask<String, Void, List<Movie>> {
         private final OnMoviesFetchedListener listener;
-        private final int movieId;
 
-        FetchRecommendationsTask(int movieId, OnMoviesFetchedListener listener) {
-            this.movieId = movieId;
+        FetchRecommendationsTask(OnMoviesFetchedListener listener) {
             this.listener = listener;
         }
 
         @Override
         protected List<Movie> doInBackground(String... tokens) {
             String accessToken = tokens[0];
+            int movieId = Integer.parseInt(tokens[1]);
+
+            String apiUrl = "https://api.themoviedb.org/3/movie/" + movieId + "/recommendations?include_adult=false&language=" + language + "&page=1";
 
             OkHttpClient client = new OkHttpClient.Builder()
                     .addNetworkInterceptor(new StethoInterceptor())
                     .build();
-
-            List<Movie> movies = new ArrayList<>();
-
-            // Create URL for recommendations based on the provided movieId
-            String apiUrl = "https://api.themoviedb.org/3/movie/" + movieId + "/recommendations?language="+language;
 
             Request request = new Request.Builder()
                     .url(apiUrl)
@@ -853,17 +850,18 @@ public class MovieList {
                 Response response = client.newCall(request).execute();
                 if (response.isSuccessful()) {
                     Gson gson = new Gson();
-                    TypeToken<List<Movie>> token = new TypeToken<List<Movie>>() {};
-                    movies = gson.fromJson(response.body().string(), token.getType());
+                    TypeToken<MovieResult> token = new TypeToken<MovieResult>() {};
+                    MovieResult movieResponse = gson.fromJson(response.body().string(), token.getType());
+                    return movieResponse.getResults();
                 } else {
                     // Handle error
-                    Log.e("MovieList", "Error fetching recommended movies");
+                    Log.e("MovieList", "Error fetching movie recommendations");
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
-            return movies;
+            return null;
         }
 
         @Override
@@ -875,5 +873,6 @@ public class MovieList {
             }
         }
     }
+
 
 }

@@ -150,10 +150,12 @@ java:S1874¬"JDon't override a deprecated method or explicitly mark it as "@Dep
 X
 java:S1874­"5Remove this use of "onPostExecute"; it is deprecated.(—îù–ùÿÿÿÿ8ÖÄõ¾Ô1
 R
-java:S1874µ"/Remove this use of "execute"; it is deprecated.(¯£İØıÿÿÿÿ8úàı¾Ô1
+java:S1874¶"/Remove this use of "execute"; it is deprecated.(Çå­Âøÿÿÿÿ8áĞ‡ÓÔ1
 T
-java:S1874¸"1Remove this use of "AsyncTask"; it is deprecated.(¤ñá¹üÿÿÿÿ8úàı¾Ô1
+java:S1874¹"1Remove this use of "AsyncTask"; it is deprecated.(¤ñá¹üÿÿÿÿ8ãĞ‡ÓÔ1
+I
+java:S1168à"+Return an empty collection instead of null.(¥¹ï8çĞ‡ÓÔ1
 h
-java:S1874æ"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÒÇä8üàı¾Ô1
+java:S1874ä"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÒÇä8çĞ‡ÓÔ1
 X
-java:S1874ç"5Remove this use of "onPostExecute"; it is deprecated.(¶ö¹ùÿÿÿÿ8ıàı¾Ô1
+java:S1874å"5Remove this use of "onPostExecute"; it is deprecated.(¶ö¹ùÿÿÿÿ8èĞ‡ÓÔ1

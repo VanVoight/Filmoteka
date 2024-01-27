@@ -16,7 +16,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public abstract RoleDao roleDao();
 
-    // Dodaj nowe DAO dla nowych tabel
+
     public abstract MovieDao movieDao();
 
     public abstract FavouriteMoviesDao favouriteMoviesDao();

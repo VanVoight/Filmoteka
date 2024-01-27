@@ -20,5 +20,7 @@ public interface RatingDao {
     void updateRating(Rating rating);
     @Query("UPDATE ratings SET rating = :newRating WHERE userId = :userId AND movieId = :movieDbId")
     void updateRatings(long userId, int movieDbId, float newRating);
+    @Query("SELECT AVG(rating) AS averageRating FROM ratings WHERE movieId = :movieId")
+    float getAverageRatingForMovie(long movieId);
 
 }
