@@ -1,25 +1,34 @@
 
-m	java:S117^"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹¥œ™8öÖĞ‡Ô1
-r	java:S117_"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŸòÂùÿÿÿÿ8öÖĞ‡Ô1
+n	java:S117Ÿ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹¥œ™8ÿúØÛÔ1
+s	java:S117 "QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŸòÂùÿÿÿÿ8ÿúØÛÔ1
 J
-java:S1604-"(Make this anonymous inner class a lambda(ğò‹¬şÿÿÿÿ8öÖĞ‡Ô1
+java:S16048"(Make this anonymous inner class a lambda(ğò‹¬şÿÿÿÿ8ÿúØÛÔ1
 E
-java:S1604A"(Make this anonymous inner class a lambda(©º¬8öÖĞ‡Ô1
+java:S1604L"(Make this anonymous inner class a lambda(©º¬8€ûØÛÔ1
 J
-java:S1604d"(Make this anonymous inner class a lambda(˜ã¯şÿÿÿÿ8öÖĞ‡Ô1
-H
-java:S1659"&Declare "password" on a separate line.(ÅèÍ‹øÿÿÿÿ8¬×Ğ‡Ô1
+java:S1604m"(Make this anonymous inner class a lambda(ğò‹¬şÿÿÿÿ8€ûØÛÔ1
 F
-java:S1659"$Declare "signup" on a separate line.(ÖÃ‘íşÿÿÿÿ8¬×Ğ‡Ô1
+java:S1604"(Make this anonymous inner class a lambda(©º¬8€ûØÛÔ1
+K
+java:S1604¥"(Make this anonymous inner class a lambda(˜ã¯şÿÿÿÿ8€ûØÛÔ1
+H
+java:S1659"&Declare "password" on a separate line.(ÅèÍ‹øÿÿÿÿ8¹ûØÛÔ1
+F
+java:S1659"$Declare "signup" on a separate line.(ÖÃ‘íşÿÿÿÿ8¹ûØÛÔ1
+]	java:S125""<This block of commented-out lines of code should be removed.(¸ıºéúÿÿÿÿ8ÂûØÛÔ1
 Q
-java:S1874<"/Remove this use of "execute"; it is deprecated.(ÿú›¸úÿÿÿÿ8¹×Ğ‡Ô1
+java:S1874G"/Remove this use of "execute"; it is deprecated.(ÿú›¸úÿÿÿÿ8ÆûØÛÔ1
 W
-java:S1161I":Add the "@Override" annotation above this method signature(Ñ‚«µ8½×Ğ‡Ô1
-S
-java:S1874O"1Remove this use of "AsyncTask"; it is deprecated.(îî¾«ûÿÿÿÿ8¿×Ğ‡Ô1
-Y
-java:S1117R"<Rename "username" which hides the field declared at line 21.(¼Ñœ’8Á×Ğ‡Ô1
-Y
-java:S1117S"<Rename "password" which hides the field declared at line 21.(×‘Çˆ8Á×Ğ‡Ô1
-l
-java:S1874]"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ßÁ›ÿÿÿÿÿ8‚ÍÀ§Ô1
+java:S1161U":Add the "@Override" annotation above this method signature(íµ±³8ËûØÛÔ1
+Q
+java:S1874|"/Remove this use of "execute"; it is deprecated.(ÿú›¸úÿÿÿÿ8ÏûØÛÔ1
+X
+java:S1161Š":Add the "@Override" annotation above this method signature(Ñ‚«µ8ÒûØÛÔ1
+T
+java:S1874"1Remove this use of "AsyncTask"; it is deprecated.(îî¾«ûÿÿÿÿ8ÓûØÛÔ1
+Z
+java:S1117“"<Rename "username" which hides the field declared at line 23.(¼Ñœ’8ÔûØÛÔ1
+Z
+java:S1117”"<Rename "password" which hides the field declared at line 23.(×‘Çˆ8ÔûØÛÔ1
+m
+java:S1874"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ßÁ›ÿÿÿÿÿ8ÖûØÛÔ1

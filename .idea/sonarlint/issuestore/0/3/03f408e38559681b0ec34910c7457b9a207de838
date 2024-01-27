@@ -1,161 +1,133 @@
 
 f
-java:S1192H"IDefine a constant instead of duplicating this literal "&region=" 5 times.(¯çÂ™8½¨ı»Ô1
-q
-java:S1192L"ODefine a constant instead of duplicating this literal "Authorization" 14 times.(Î²ªıÿÿÿÿ8½¨ı»Ô1
+java:S1192H"IDefine a constant instead of duplicating this literal "&region=" 5 times.(¯çÂ™8¬ÖÆ’Ô1
+j
+java:S1192L"ODefine a constant instead of duplicating this literal "Authorization" 11 times.(Î²ªıÿÿÿÿ
 h
-java:S1192H"KDefine a constant instead of duplicating this literal "?language=" 5 times.(¯çÂ™8½¨ı»Ô1
+java:S1192H"KDefine a constant instead of duplicating this literal "?language=" 4 times.(¯çÂ™8ŸŠ×—Ô1
 s
-java:S1192€"PDefine a constant instead of duplicating this literal "&page=1&region=" 5 times.(°·€ëüÿÿÿÿ8½¨ı»Ô1
+java:S1192€"PDefine a constant instead of duplicating this literal "&page=1&region=" 5 times.(°·€ëüÿÿÿÿ8¶ÖÆ’Ô1
 |
-java:S1192€"YDefine a constant instead of duplicating this literal "&sort_by=popularity.desc" 3 times.(°·€ëüÿÿÿÿ8½¨ı»Ô1
-o
-java:S1192M"RDefine a constant instead of duplicating this literal "application/json" 14 times.(ƒÆêµ8½¨ı»Ô1
-e
-java:S1192M"HDefine a constant instead of duplicating this literal "accept" 14 times.(ƒÆêµ8½¨ı»Ô1
+java:S1192€"YDefine a constant instead of duplicating this literal "&sort_by=popularity.desc" 3 times.(°·€ëüÿÿÿÿ8·ÖÆ’Ô1
+h
+java:S1192M"RDefine a constant instead of duplicating this literal "application/json" 11 times.(ƒÆêµ
+^
+java:S1192M"HDefine a constant instead of duplicating this literal "accept" 11 times.(ƒÆêµ
 |
-java:S1192X"_Define a constant instead of duplicating this literal "Error fetching movie with ID: " 5 times.(¡×ˆÚ8½¨ı»Ô1
+java:S1192X"_Define a constant instead of duplicating this literal "Error fetching movie with ID: " 5 times.(¡×ˆÚ8«ÖÆ’Ô1
 
-java:S1192H"dDefine a constant instead of duplicating this literal "https://api.themoviedb.org/3/movie/" 8 times.(¯çÂ™8½¨ı»Ô1
+java:S1192H"dDefine a constant instead of duplicating this literal "https://api.themoviedb.org/3/movie/" 5 times.(¯çÂ™8 Š×—Ô1
 h
-java:S1192X"KDefine a constant instead of duplicating this literal "MovieList" 13 times.(¡×ˆÚ8¾¨ı»Ô1
-k
-java:S1192L"IDefine a constant instead of duplicating this literal "Bearer " 14 times.(Î²ªıÿÿÿÿ8¾¨ı»Ô1
+java:S1192X"KDefine a constant instead of duplicating this literal "MovieList" 11 times.(¡×ˆÚ8­ÖÆ’Ô1
+d
+java:S1192L"IDefine a constant instead of duplicating this literal "Bearer " 11 times.(Î²ªıÿÿÿÿ
 €
-java:S1488ç"]Immediately return this expression instead of assigning it to the temporary variable "movie".(›¤›­ıÿÿÿÿ8À¨ı»Ô1
-{
-java:S1488ä"]Immediately return this expression instead of assigning it to the temporary variable "movie".(Ÿ8À¨ı»Ô1
+java:S1488ç"]Immediately return this expression instead of assigning it to the temporary variable "movie".(›¤›­ıÿÿÿÿ8„áõ§Ô1
 Q
-java:S1874*"/Remove this use of "execute"; it is deprecated.(úóºüşÿÿÿÿ8©ı»Ô1
+java:S1874*"/Remove this use of "execute"; it is deprecated.(úóºüşÿÿÿÿ8›ØÆ’Ô1
 N
-java:S1874-"1Remove this use of "AsyncTask"; it is deprecated.(ôŒÊá8©ı»Ô1
+java:S1874-"1Remove this use of "AsyncTask"; it is deprecated.(ôŒÊá8¦ØÆ’Ô1
 g
-java:S1874c"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÒÇä8§©ı»Ô1
-W
-java:S1874d"5Remove this use of "onPostExecute"; it is deprecated.(¶ö¹ùÿÿÿÿ8¨©ı»Ô1
+java:S1874c"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÒÇä8İØÆ’Ô1
+P
+java:S1874d"5Remove this use of "onPostExecute"; it is deprecated.(¶ö¹ùÿÿÿÿ
 L
-java:S1874n"/Remove this use of "execute"; it is deprecated.(†¢¶š8©©ı»Ô1
+java:S1874n"/Remove this use of "execute"; it is deprecated.(†¢¶š8âØÆ’Ô1
 N
-java:S1874q"1Remove this use of "AsyncTask"; it is deprecated.(êäÑÃ8ª©ı»Ô1
-H	java:S106š"+Replace this use of System.out by a logger.(ï‰Ø‰8­©ı»Ô1
+java:S1874q"1Remove this use of "AsyncTask"; it is deprecated.(êäÑÃ8äØÆ’Ô1
+H	java:S106š"+Replace this use of System.out by a logger.(ï‰Ø‰8òØÆ’Ô1
 h
-java:S1874§"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÒÇä8®©ı»Ô1
-X
-java:S1874¨"5Remove this use of "onPostExecute"; it is deprecated.(¶ö¹ùÿÿÿÿ8¯©ı»Ô1
+java:S1874§"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÒÇä8ôØÆ’Ô1
+Q
+java:S1874¨"5Remove this use of "onPostExecute"; it is deprecated.(¶ö¹ùÿÿÿÿ
+F
+java:S1874±"/Remove this use of "execute"; it is deprecated.(¢â«»
 M
-java:S1874±"/Remove this use of "execute"; it is deprecated.(¢â«»8°©ı»Ô1
-T
-java:S1874´"1Remove this use of "AsyncTask"; it is deprecated.(üÙê­ùÿÿÿÿ8°©ı»Ô1
-M	java:S106İ"+Replace this use of System.out by a logger.(·§¢Åûÿÿÿÿ8³©ı»Ô1
+java:S1874´"1Remove this use of "AsyncTask"; it is deprecated.(üÙê­ùÿÿÿÿ
+M	java:S106İ"+Replace this use of System.out by a logger.(·§¢Åûÿÿÿÿ8à‡Ù§Ô1
 h
-java:S1874ê"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÒÇä8´©ı»Ô1
-X
-java:S1874ë"5Remove this use of "onPostExecute"; it is deprecated.(¶ö¹ùÿÿÿÿ8µ©ı»Ô1
+java:S1874ê"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÒÇä8ŠÙÆ’Ô1
+Q
+java:S1874ë"5Remove this use of "onPostExecute"; it is deprecated.(¶ö¹ùÿÿÿÿ
 L
-java:S1874ó"/Remove this use of "execute"; it is deprecated.(üŞÒQ8µ©ı»Ô1
+java:S1874ó"/Remove this use of "execute"; it is deprecated.(üŞÒQ8å‡Ù§Ô1
 O
-java:S1874ö"1Remove this use of "AsyncTask"; it is deprecated.(…Ï8¶©ı»Ô1
+java:S1874ö"1Remove this use of "AsyncTask"; it is deprecated.(…Ï8æ‡Ù§Ô1
 I
-java:S1168œ"+Return an empty collection instead of null.(¥¹ï8¹©ı»Ô1
+java:S1168œ"+Return an empty collection instead of null.(¥¹ï8ŠÙÆ’Ô1
 h
-java:S1874 "JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÒÇä8¹©ı»Ô1
-X
-java:S1874¡"5Remove this use of "onPostExecute"; it is deprecated.(¶ö¹ùÿÿÿÿ8º©ı»Ô1
-R
-java:S1874«"/Remove this use of "execute"; it is deprecated.(©İÑàúÿÿÿÿ8º©ı»Ô1
-O
-java:S1874®"1Remove this use of "AsyncTask"; it is deprecated.(‚‰ï¿8»©ı»Ô1
+java:S1874 "JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÒÇä8ÙÆ’Ô1
+Q
+java:S1874¡"5Remove this use of "onPostExecute"; it is deprecated.(¶ö¹ùÿÿÿÿ
+K
+java:S1874«"/Remove this use of "execute"; it is deprecated.(©İÑàúÿÿÿÿ
+H
+java:S1874®"1Remove this use of "AsyncTask"; it is deprecated.(‚‰ï¿
 I
-java:S1168Ô"+Return an empty collection instead of null.(¥¹ï8½©ı»Ô1
+java:S1168Ô"+Return an empty collection instead of null.(¥¹ï8œÙÆ’Ô1
 h
-java:S1874Ø"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÒÇä8½©ı»Ô1
-X
-java:S1874Ù"5Remove this use of "onPostExecute"; it is deprecated.(¶ö¹ùÿÿÿÿ8½©ı»Ô1
-R
-java:S1874â"/Remove this use of "execute"; it is deprecated.(€î‰şÿÿÿÿ8¾©ı»Ô1
-T
-java:S1874å"1Remove this use of "AsyncTask"; it is deprecated.(„å‡àúÿÿÿÿ8¾©ı»Ô1
-I
-java:S1168"+Return an empty collection instead of null.(¥¹ï8Á©ı»Ô1
-h
-java:S1874‘"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÒÇä8Á©ı»Ô1
-X
-java:S1874’"5Remove this use of "onPostExecute"; it is deprecated.(¶ö¹ùÿÿÿÿ8Á©ı»Ô1
+java:S1874Ø"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÒÇä8©ÙÆ’Ô1
+Q
+java:S1874Ù"5Remove this use of "onPostExecute"; it is deprecated.(¶ö¹ùÿÿÿÿ
+K
+java:S1874â"/Remove this use of "execute"; it is deprecated.(€î‰şÿÿÿÿ
 M
-java:S1874›"/Remove this use of "execute"; it is deprecated.(ìËÒ‚8Â©ı»Ô1
-T
-java:S1874"1Remove this use of "AsyncTask"; it is deprecated.(ò’è¿ÿÿÿÿÿ8Â©ı»Ô1
+java:S1874å"1Remove this use of "AsyncTask"; it is deprecated.(„å‡àúÿÿÿÿ
 I
-java:S1168Ç"+Return an empty collection instead of null.(¥¹ï8Æ©ı»Ô1
+java:S1168"+Return an empty collection instead of null.(¥¹ï8©ÙÆ’Ô1
 h
-java:S1874Ë"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÒÇä8Æ©ı»Ô1
+java:S1874‘"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÒÇä8´ÙÆ’Ô1
 X
-java:S1874Ì"5Remove this use of "onPostExecute"; it is deprecated.(¶ö¹ùÿÿÿÿ8Ç©ı»Ô1
-R
-java:S1874Õ"/Remove this use of "execute"; it is deprecated.(ÄÁ­çşÿÿÿÿ8Ç©ı»Ô1
-O
-java:S1874Ø"1Remove this use of "AsyncTask"; it is deprecated.(é¡Í¯8È©ı»Ô1
+java:S1874’"5Remove this use of "onPostExecute"; it is deprecated.(¶ö¹ùÿÿÿÿ8µÙÆ’Ô1
+F
+java:S1874›"/Remove this use of "execute"; it is deprecated.(ìËÒ‚
+M
+java:S1874"1Remove this use of "AsyncTask"; it is deprecated.(ò’è¿ÿÿÿÿÿ
 I
-java:S1168ÿ"+Return an empty collection instead of null.(¥¹ï8Ë©ı»Ô1
+java:S1168Ç"+Return an empty collection instead of null.(¥¹ï8´ÙÆ’Ô1
+h
+java:S1874Ë"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÒÇä8ÄÙÆ’Ô1
+X
+java:S1874Ì"5Remove this use of "onPostExecute"; it is deprecated.(¶ö¹ùÿÿÿÿ8ÆÙÆ’Ô1
+K
+java:S1874Õ"/Remove this use of "execute"; it is deprecated.(ÄÁ­çşÿÿÿÿ
+H
+java:S1874Ø"1Remove this use of "AsyncTask"; it is deprecated.(é¡Í¯
+I
+java:S1168ÿ"+Return an empty collection instead of null.(¥¹ï8¼ÙÆ’Ô1
 g
-java:S1874ƒ"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(»»U8Ë©ı»Ô1
-S
-java:S1874„"5Remove this use of "onPostExecute"; it is deprecated.(çßİ8Ì©ı»Ô1
-R
-java:S1874‘"/Remove this use of "execute"; it is deprecated.(¾³Ç§ıÿÿÿÿ8Í©ı»Ô1
-N
-java:S1874”"1Remove this use of "AsyncTask"; it is deprecated.(Ä¼º+8Í©ı»Ô1
+java:S1874ƒ"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(»»U8¼ÙÆ’Ô1
+L
+java:S1874„"5Remove this use of "onPostExecute"; it is deprecated.(çßİ
+K
+java:S1874‘"/Remove this use of "execute"; it is deprecated.(¾³Ç§ıÿÿÿÿ
+G
+java:S1874”"1Remove this use of "AsyncTask"; it is deprecated.(Ä¼º+
 I
-java:S1168»"+Return an empty collection instead of null.(¥¹ï8Ğ©ı»Ô1
+java:S1168»"+Return an empty collection instead of null.(¥¹ï8ÄÙÆ’Ô1
 h
-java:S1874¿"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÒÇä8Ğ©ı»Ô1
+java:S1874¿"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÒÇä8ÄˆÙ§Ô1
 X
-java:S1874À"5Remove this use of "onPostExecute"; it is deprecated.(¶ö¹ùÿÿÿÿ8Ğ©ı»Ô1
+java:S1874À"5Remove this use of "onPostExecute"; it is deprecated.(¶ö¹ùÿÿÿÿ8ÆˆÙ§Ô1
 R
-java:S1874É"/Remove this use of "execute"; it is deprecated.(«ß­ìúÿÿÿÿ8Ñ©ı»Ô1
+java:S1874É"/Remove this use of "execute"; it is deprecated.(«ß­ìúÿÿÿÿ8­âõ§Ô1
 O
-java:S1874Ì"1Remove this use of "AsyncTask"; it is deprecated.(Û„î•8Ò©ı»Ô1
+java:S1874Ì"1Remove this use of "AsyncTask"; it is deprecated.(Û„î•8®âõ§Ô1
 m
-java:S1874õ"JDon't override a deprecated method or explicitly mark it as "@Deprecated".( ¢èùÿÿÿÿ8Ô©ı»Ô1
+java:S1874õ"JDon't override a deprecated method or explicitly mark it as "@Deprecated".( ¢èùÿÿÿÿ8±âõ§Ô1
 X
-java:S1874ö"5Remove this use of "onPostExecute"; it is deprecated.(ÑÇ‰ûÿÿÿÿ8Ô©ı»Ô1
+java:S1874ö"5Remove this use of "onPostExecute"; it is deprecated.(ÑÇ‰ûÿÿÿÿ8±âõ§Ô1
 A
-java:S2119„"Save and re-use this "Random".(ÕÛàõÿÿÿÿÿ8Ö©ı»Ô1
+java:S2119„"Save and re-use this "Random".(ÕÛàõÿÿÿÿÿ8ïæŠ¨Ô1
 R
-java:S1874…"/Remove this use of "execute"; it is deprecated.(ÕòÑûÿÿÿÿ8Ö©ı»Ô1
+java:S1874…"/Remove this use of "execute"; it is deprecated.(ÕòÑûÿÿÿÿ8à«Š¨Ô1
 O
-java:S1874ˆ"1Remove this use of "AsyncTask"; it is deprecated.(³¶İ8×©ı»Ô1
+java:S1874ˆ"1Remove this use of "AsyncTask"; it is deprecated.(³¶İ8á«Š¨Ô1
 I
-java:S1168­"+Return an empty collection instead of null.(¥¹ï8Ù©ı»Ô1
+java:S1168­"+Return an empty collection instead of null.(¥¹ï8ã«Š¨Ô1
 h
-java:S1874±"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÒÇä8Ú©ı»Ô1
+java:S1874±"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÒÇä8Ç†’¨Ô1
 X
-java:S1874²"5Remove this use of "onPostExecute"; it is deprecated.(¶ö¹ùÿÿÿÿ8Ú©ı»Ô1
+java:S1874²"5Remove this use of "onPostExecute"; it is deprecated.(¶ö¹ùÿÿÿÿ8Ç†’¨Ô1
 ;
-java:S2119¶"Save and re-use this "Random".(‘ÙÖB8Û©ı»Ô1
-R
-java:S1874Ã"/Remove this use of "execute"; it is deprecated.(â®õıÿÿÿÿ8Û©ı»Ô1
-O
-java:S1874É"1Remove this use of "AsyncTask"; it is deprecated.(èîŒï8Ü©ı»Ô1
-m
-java:S1874ò"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(²Ëıÿÿÿÿ8ß©ı»Ô1
-X
-java:S1874ó"5Remove this use of "onPostExecute"; it is deprecated.(ÑÇ‰ûÿÿÿÿ8ß©ı»Ô1
-L
-java:S1874€"/Remove this use of "execute"; it is deprecated.(Ú®š8ËÄ½Ô1
-T
-java:S1874ƒ"1Remove this use of "AsyncTask"; it is deprecated.(öÆ’‚ùÿÿÿÿ8ËÄ½Ô1
-m
-java:S1874¬"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(‘½ôåûÿÿÿÿ8„ËÄ½Ô1
-X
-java:S1874­"5Remove this use of "onPostExecute"; it is deprecated.(—îù–ùÿÿÿÿ8ÖÄõ¾Ô1
-R
-java:S1874¶"/Remove this use of "execute"; it is deprecated.(Çå­Âøÿÿÿÿ8áĞ‡ÓÔ1
-T
-java:S1874¹"1Remove this use of "AsyncTask"; it is deprecated.(¤ñá¹üÿÿÿÿ8ãĞ‡ÓÔ1
-I
-java:S1168à"+Return an empty collection instead of null.(¥¹ï8çĞ‡ÓÔ1
-h
-java:S1874ä"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ÒÇä8çĞ‡ÓÔ1
-X
-java:S1874å"5Remove this use of "onPostExecute"; it is deprecated.(¶ö¹ùÿÿÿÿ8èĞ‡ÓÔ1
+java:S2119¶"Save and re-use this "Random".(‘ÙÖB8Ç†’¨Ô1

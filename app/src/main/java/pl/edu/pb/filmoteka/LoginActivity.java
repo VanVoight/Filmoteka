@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -29,7 +31,16 @@ public class LoginActivity extends AppCompatActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.login_form);
+		//setContentView(R.layout.login_form);
+		Configuration configuration = getResources().getConfiguration();
+
+		if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+			// Bieżąca orientacja to pionowa
+			setContentView(R.layout.login_form);
+		} else if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+			// Bieżąca orientacja to pozioma
+			setContentView(R.layout.login_form_land);
+		}
 
 		username = findViewById(R.id.username);
 		password = findViewById(R.id.password);
@@ -70,6 +81,60 @@ public class LoginActivity extends AppCompatActivity {
 			}
 		});
 	}
+
+	public void onConfigurationChanged(@NonNull Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+
+		// Sprawdź, czy zmieniła się orientacja ekranu
+		if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+			Log.e("LoginActivity-orientacja","ustawiam poziomą");
+			// Zmiana na orientację poziomą
+			setContentView(R.layout.login_form_land);
+		} else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+			Log.e("LoginActivity-orientacja","ustawiam pionową");
+			// Zmiana na orientację pionową
+			setContentView(R.layout.login_form);
+		}
+
+		username = findViewById(R.id.username);
+		password = findViewById(R.id.password);
+		signin = findViewById(R.id.button_signin);
+		signup = findViewById(R.id.button_signup);
+
+		if (savedUsername != null && savedPassword != null) {
+			Log.e("Dane","Ustawiam login spowrotem");
+			username.setText(savedUsername);
+			password.setText(savedPassword);
+		}
+		signin.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				String enteredUsername = username.getText().toString();
+				String enteredPassword = password.getText().toString();
+
+				savedUsername = enteredUsername;
+				savedPassword = enteredPassword;
+
+				Log.d(TAG, "onClick: Username: " + enteredUsername + ", Password: " + enteredPassword);
+
+				if (enteredUsername.isEmpty() || enteredPassword.isEmpty()) {
+					Toast.makeText(LoginActivity.this, getString(R.string.toast_fields), Toast.LENGTH_SHORT).show();
+				} else {
+
+					new DatabaseAsyncTask().execute(enteredUsername, enteredPassword);
+				}
+			}
+		});
+
+		signup.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+				startActivity(intent);
+			}
+		});
+	}
+
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
 
