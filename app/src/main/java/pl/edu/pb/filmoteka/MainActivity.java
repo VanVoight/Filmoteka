@@ -16,6 +16,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -57,15 +58,30 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        //setContentView(R.layout.activity_main);
+
+        Configuration configuration = getResources().getConfiguration();
+
+        if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            // Bieżąca orientacja to pionowa
+            setContentView(R.layout.activity_main);
+        } else if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            // Bieżąca orientacja to pozioma
+            setContentView(R.layout.activity_main_land);
+        }
+
         signin = findViewById(R.id.btnsignin);
         signup = findViewById(R.id.btnsignup);
         imgv = findViewById(R.id.imageView3);
 
+
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View view) {
+                Log.e("MainA","Kliknięto zaloguj");
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
@@ -87,6 +103,46 @@ public class MainActivity extends AppCompatActivity {
         checkLocationPermission();
         setDailyNotificationAlarm();
     }
+
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        // Sprawdź, czy zmieniła się orientacja ekranu
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Log.e("MainActivity-orientacja","ustawiam poziomą");
+            // Zmiana na orientację poziomą
+            setContentView(R.layout.activity_main_land);
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            Log.e("MainActivity-orientacja","ustawiam pionową");
+
+            // Zmiana na orientację pionową
+            setContentView(R.layout.activity_main);
+        }
+        signin = findViewById(R.id.btnsignin);
+        signup = findViewById(R.id.btnsignup);
+
+       // signin.setEnabled(isButtonEnabled);
+
+        signin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.e("MainA", "Kliknięto zaloguj");
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+
+    }
+
 
 
     private void setDailyNotificationAlarm() {
