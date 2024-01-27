@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +14,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Button;
 import android.widget.Toast;
+
+import java.io.ByteArrayOutputStream;
 
 import pl.edu.pb.filmoteka.DB.User;
 import pl.edu.pb.filmoteka.DB.AppDatabase;
@@ -23,7 +27,7 @@ public class RegisterActivity extends AppCompatActivity {
 	private static final String KEY_NAME = "name";
 	private static final String KEY_SURNAME = "surname";
 	private static final String KEY_EMAIL = "email";
-
+	private static final int DEFAULT_PROFILE_IMAGE_RESOURCE = R.drawable.ic_profile;
 	private static final String KEY_CHECKBOX_STATE = "checkbox_state";
 
 	private String savedUsername;
@@ -75,6 +79,7 @@ public class RegisterActivity extends AppCompatActivity {
 			name.setText(savedName);
 			surname.setText(savedSurname);
 			email.setText(savedEmail);
+
 		}
 		appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "my-database")
 				.build();
@@ -106,6 +111,10 @@ public class RegisterActivity extends AppCompatActivity {
 				newUser.setLastName(enteredSurname);
 				newUser.setFirstName(eneteredName);
 				newUser.setEmail(enteredEmail);
+				Bitmap defaultProfileBitmap = BitmapFactory.decodeResource(getResources(), DEFAULT_PROFILE_IMAGE_RESOURCE);
+				byte[] defaultProfileImage = convertBitmapToByteArray(defaultProfileBitmap);
+				newUser.setProfileImage(defaultProfileImage);
+
 				Log.d("sprawdzamy role","RoleID:"+newUser.userRoleId);
 				new InsertUserAsyncTask().execute(newUser);
 			}
@@ -128,6 +137,11 @@ public class RegisterActivity extends AppCompatActivity {
 		outState.putString(KEY_SURNAME, surname.getText().toString());
 		outState.putString(KEY_EMAIL, email.getText().toString());
 		outState.putBoolean(KEY_CHECKBOX_STATE, isCheckBoxChecked);
+	}
+	private byte[] convertBitmapToByteArray(Bitmap bitmap) {
+		ByteArrayOutputStream stream = new ByteArrayOutputStream();
+		bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+		return stream.toByteArray();
 	}
 	private class InsertUserAsyncTask extends AsyncTask<User, Void, Void> {
 		@Override

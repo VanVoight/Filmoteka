@@ -25,7 +25,15 @@ public class User {
     public String password;
     @NonNull
     public long userRoleId;
+    public byte[] profileImage;
 
+    public byte[] getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(byte[] profileImage) {
+        this.profileImage = profileImage;
+    }
 
 
     public long getUserRoleId() {
