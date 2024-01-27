@@ -5,10 +5,6 @@ import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-import java.util.List;
-
-import pl.edu.pb.filmoteka.Movie;
-
 @Entity(tableName = "users", indices = {@Index(value = "userName", unique = true)})
 public class User {
     @PrimaryKey(autoGenerate = true)
