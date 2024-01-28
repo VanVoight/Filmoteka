@@ -57,6 +57,7 @@
 
         </activity>
 
+        <receiver android:name=".AlarmReceiver" />
 
 
         <meta-data
