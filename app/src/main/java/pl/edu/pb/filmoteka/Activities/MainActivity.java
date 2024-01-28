@@ -27,6 +27,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.stetho.Stetho;
@@ -45,15 +46,18 @@ import okhttp3.Response;
 import pl.edu.pb.filmoteka.DB.AppDatabase;
 import pl.edu.pb.filmoteka.DB.Role;
 import pl.edu.pb.filmoteka.Models.ApiResponse;
+import pl.edu.pb.filmoteka.MovieList;
 import pl.edu.pb.filmoteka.R;
 
 
 public class MainActivity extends AppCompatActivity {
-    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     private static final int NOTIFICATION_ID = 1;
     private static final String TAG = "MainActivity";
     private static final String CHANNEL_ID = "MYCHANNEL";
+    private static final int REQUEST_LOCATION_PERMISSION = 10;
     public static String region;
+    private Location lastLocation;
+    private FusedLocationProviderClient fusedLocationProviderClient;
     private AppDatabase appDatabase;
     Button signin, signup;
     ImageView imgv;
@@ -102,10 +106,11 @@ public class MainActivity extends AppCompatActivity {
                 .allowMainThreadQueries()
                 .build();
         new MyAsyncTask().execute();
-        checkLocationPermission();
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
         createNotificationChannel();
         sendNotification();
-
+        getLocation();
     }
 
     @Override
@@ -231,71 +236,65 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void checkLocationPermission() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
-                ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            initializeLocation();
-        } else {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
+
+    private void getLocation(){
+        if (ContextCompat.checkSelfPermission(this,
+            Manifest.permission.ACCESS_FINE_LOCATION)
+        !=PackageManager.PERMISSION_GRANTED){
+    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},REQUEST_LOCATION_PERMISSION);
+
+        }else{
+            Log.d("lokalizacja", "getLocation: permission granted");
+            fusedLocationProviderClient.getLastLocation().addOnSuccessListener(
+                    location -> {
+                        if (location != null) {
+                            lastLocation = location;
+                            getAddressFromLocation(location);
+                        } else {
+                            Toast.makeText(this,R.string.no_location,Toast.LENGTH_SHORT).show();
+                        }
+                    });
         }
     }
-    private void showPermissionToast(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                initializeLocation();
-            } else {
-                String permissionMessage = getString(R.string.localization_permission);
-                showPermissionToast(permissionMessage); }
-        }
-    }
-
-    private void initializeLocation() {
-        FusedLocationProviderClient fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
-        fusedLocationClient.getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(Location location) {
-                if (location != null) {
-                    double latitude = location.getLatitude();
-                    double longitude = location.getLongitude();
-                    determineRegionFromLocation(latitude, longitude);
-
-                }
-            }
-        });
-    }
-
-    private void determineRegionFromLocation(double latitude, double longitude) {
+    private void getAddressFromLocation(Location location) {
         Geocoder geocoder = new Geocoder(this, Locale.getDefault());
         try {
-            List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
-
-            if (!addresses.isEmpty()) {
+            List<Address> addresses = geocoder.getFromLocation(
+                    location.getLatitude(),
+                    location.getLongitude(),
+                    1
+            );
+            if (addresses != null && addresses.size() > 0) {
                 Address address = addresses.get(0);
-                String countryCode = address.getCountryCode();
-                setRegionBasedOnCountryCode(countryCode);
+                region = address.getCountryCode();
+                MovieList.setRegion(region);
+                Log.d("lokalizacja", "Region: " + region);
+                Log.d("lokalizacja", "Latitude: " + location.getLatitude() + ", Longitude: " + location.getLongitude());
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
-    public void setRegionBasedOnCountryCode(String countryCode) {
-        Log.d("lokalizacja", "setting region "+countryCode);
-        if ("PL".equals(countryCode)) {
-            region = getString(R.string.poland);
-        } else {
-            region = getString(R.string.US);
+
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,@NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case REQUEST_LOCATION_PERMISSION:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    getLocation();
+                } else {
+                    Toast.makeText(this,
+                            R.string.localization_permission,
+                            Toast.LENGTH_SHORT).show();
+                }
+                break;
         }
     }
+
+
+
 
 }

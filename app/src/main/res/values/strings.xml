@@ -97,6 +97,7 @@
     <string name="reviews_list">Recenzje</string>
     <string name="save">Zapisz</string>
     <string name="profile_pic_edit">Edytuj zdjęcie profilowe</string>
-
+    <string name="location_text">"Szerokość geograficzna %1$.4f \n Długość geograficzna: %2$.4f \n Czas: %3$tr"</string>
+    <string name="no_location">Brak lokalizacji</string>
 
 </resources>

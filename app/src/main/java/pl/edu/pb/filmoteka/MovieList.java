@@ -30,12 +30,16 @@ import pl.edu.pb.filmoteka.Models.VideoResult;
 
 public class MovieList {
     private static String language;
-    private static String region;
+    private static String region="pl";
 
     public static void setLanguageAndRegion(Context context) {
         Resources resources = context.getResources();
         language = resources.getString(R.string.poland);
-        region = resources.getString(R.string.poland);
+
+    }
+    public static void setRegion(String name) {
+
+        region = name;
     }
 
     public interface OnMoviesFetchedListener {
