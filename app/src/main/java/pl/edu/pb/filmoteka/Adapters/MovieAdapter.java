@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -19,6 +20,7 @@ import android.os.AsyncTask;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -60,6 +62,15 @@ import pl.edu.pb.filmoteka.R;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
 
+    // Dodaj pole przechowujące informację o orientacji
+    private int orientation = Configuration.ORIENTATION_PORTRAIT;
+
+    // Dodaj metodę ustawiającą nową orientację
+    public void setOrientation(int orientation) {
+        this.orientation = orientation;
+        notifyDataSetChanged(); // Wywołaj notifyDataSetChanged, aby zaktualizować widoki
+    }
+
     private List<Movie> movies;
     private static long userId;
 
@@ -79,7 +90,18 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     @NonNull
     @Override
     public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_movie_details, parent, false);
+        //View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_movie_details, parent, false);
+        View view;
+        // Sprawdź orientację telefonu
+        if (parent.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            // Telefon w orientacji poziomej, użyj innego widoku
+            Log.e("MovieAdapter","ustawiam widok poziomy");
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_movie_details_land, parent, false);
+        } else {
+            // Telefon w orientacji pionowej, użyj standardowego widoku
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_movie_details, parent, false);
+            Log.e("MovieAdapter","ustawiam widok pionowy");
+        }
         return new MovieViewHolder(view);
     }
 

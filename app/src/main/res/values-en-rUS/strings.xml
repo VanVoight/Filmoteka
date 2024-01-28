@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Filmoteka</string>
     <string name="username_hint">User name</string>
     <string name="password_hint">Password</string>
     <string name="repeat_password_hint">Repeat password</string>
@@ -59,7 +60,7 @@
     <string name="seen_films">Watched films</string>
     <string name="rand_films">Draw film</string>
     <string name="edit_profile">Edit profile</string>
-    <string name="del_profile">Delete profile</string>
+    <string name="del_profile">Log out</string>
     <string name="find_film_hint">Movie title...</string>
     <string name="rand_film_popup">Draw a film for today</string>
     <string name="back">Back</string>
@@ -87,4 +88,15 @@
     <string name="review_submitted">Review added</string>
     <string name="review_already_exists">"A review of this film has already been added "</string>
     <string name="rated_movie_as">Rating given</string>
+    <string name="description">Descriptions</string>
+    <string name="released">Released</string>
+    <string name="user_rating">Users ratings</string>
+    <string name="cast">Cast</string>
+    <string name="recommendation">Recommendation</string>
+    <string name="average_rating">Avarage rating</string>
+    <string name="reviews_list">Reviews</string>
+    <string name="save">Save</string>
+    <string name="profile_pic_edit">Edit profile pick</string>
+    <string name="location_text">Latitude %1$.4f   Longitude: %2$.4f   Time: %3$tr</string>
+    <string name="no_location">No location</string>
 </resources>
