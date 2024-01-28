@@ -650,64 +650,12 @@ public class MovieList {
         }
     }
 
-    public static void getRandomMovie(String accessToken,int movieId, OnMoviesFetchedListener listener) {
-        new FetchRandomMovieTask(listener).execute(accessToken, String.valueOf(movieId));
-    }
-
-    private static class FetchRandomMovieTask extends AsyncTask<String, Void, Movie> {
-        private final OnMoviesFetchedListener listener;
-
-        FetchRandomMovieTask(OnMoviesFetchedListener listener) {
-            this.listener = listener;
-        }
-
-        @Override
-        protected Movie doInBackground(String... tokens) {
-            String accessToken = tokens[0];
-            int randomMovieId = Integer.parseInt(tokens[1]);
-            String apiUrl = "https://api.themoviedb.org/3/movie/" + randomMovieId + "?language=" + language + "&region=" + region;
-
-            OkHttpClient client = new OkHttpClient.Builder()
-                    .addNetworkInterceptor(new StethoInterceptor())
-                    .build();
-
-            Request request = new Request.Builder()
-                    .url(apiUrl)
-                    .header("Authorization", "Bearer " + accessToken)
-                    .header("accept", "application/json")
-                    .build();
-
-            try {
-                Response response = client.newCall(request).execute();
-                if (response.isSuccessful()) {
-                    Gson gson = new Gson();
-                    Movie movie = gson.fromJson(response.body().string(), Movie.class);
-                    return movie;
-                } else {
-                    // Handle error
-                    Log.e("MovieList", "Error fetching random movie");
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Movie movie) {
-            super.onPostExecute(movie);
-
-            if (movie != null) {
-                List<Movie> movies = new ArrayList<>();
-                movies.add(movie);
-                listener.onMoviesFetched(movies);
-            }
-        }
 
 
 
-    }
+
+
+
     public static void getRandomTopMovies(String accessToken, int totalPages, OnMoviesFetchedListener listener) {
         // Losuj liczbę od 1 do totalPages (włącznie)
         int randomPage = new Random().nextInt(totalPages) + 1;

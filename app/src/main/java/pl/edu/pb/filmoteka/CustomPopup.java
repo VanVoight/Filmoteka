@@ -154,12 +154,4 @@ public class CustomPopup {
         });
     }
 
-
-    //funkcja zatrzmująca działanie sensora
-  /*  public static void stopSensorsListening() {
-        if (sensorManager != null) {
-            Log.e("CustomPopup", "Sensor stopped");
-            sensorManager.unregisterListener(shakeDetector);
-        }
-    }*/
 }

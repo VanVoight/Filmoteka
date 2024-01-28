@@ -7,7 +7,7 @@ import android.hardware.SensorManager;
 public class ShakeDetector implements SensorEventListener {
 
     // Czas między kolejnymi potrząśnięciami
-    private static final int SHAKE_INTERVAL = 4000;
+    private static final int SHAKE_INTERVAL = 5000;
 
     // Ostatni czas potrząśnięcia
     private long lastShakeTime;

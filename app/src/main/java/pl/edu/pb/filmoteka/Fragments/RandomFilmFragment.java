@@ -82,7 +82,7 @@ public class RandomFilmFragment extends Fragment {
 
     private int getRandomMovieId() {
         Random random = new Random();
-        // Zakres identyfikatorów filmów dostępnych w bazie TMDB (możesz dostosować ten zakres do własnych potrzeb)
+        // Zakres identyfikatorów filmów dostępnych w bazie TMDB
         int minMovieId = 3580;
         int maxMovieId = 1236146;
         return random.nextInt(maxMovieId - minMovieId + 1) + minMovieId;

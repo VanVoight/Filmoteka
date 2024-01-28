@@ -613,7 +613,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
                     switch (event.getAction()) {
                         case MotionEvent.ACTION_DOWN:
                             topRightIconImageView.setImageResource(R.drawable.img_dots_menu_down);
-                            showPopupMenu(topRightIconImageView, itemView.getContext()); // Zmieniłem 'v' na 'topRightIconImageView'
+                            showPopupMenu(topRightIconImageView, itemView.getContext());
                             return true;
                         case MotionEvent.ACTION_UP:
                             topRightIconImageView.setImageResource(R.drawable.img_dots_menu);

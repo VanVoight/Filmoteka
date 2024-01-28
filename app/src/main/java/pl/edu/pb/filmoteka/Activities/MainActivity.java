@@ -57,7 +57,6 @@ import pl.edu.pb.filmoteka.R;
 
 public class MainActivity extends AppCompatActivity {
     private static final int NOTIFICATION_ID = 1;
-    private static final String TAG = "MainActivity";
     private static final String CHANNEL_ID = "MYCHANNEL";
     private static final int REQUEST_LOCATION_PERMISSION = 10;
     public static String region;

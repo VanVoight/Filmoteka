@@ -50,7 +50,7 @@ import pl.edu.pb.filmoteka.R;
 public class DetailsActivity extends AppCompatActivity{
 
 
-	private ImageView imageViewBackdrop;
+
 	private ImageView imageViewPoster;
 	private TextView textViewTitleYear;
 	private TextView textViewReleaseDate;
@@ -65,7 +65,7 @@ public class DetailsActivity extends AppCompatActivity{
 	private int movieId;
 	private long userRole;
 	private List<Movie> movieList;
-	private List<ReviewDao.ReviewWithAuthor> reviewList;
+
 	private RecyclerView recyclerViewcast;
 
 	private RecyclerView recyclerViewReviews;
@@ -74,7 +74,7 @@ public class DetailsActivity extends AppCompatActivity{
 	private AppDatabase appDatabase;
 	private long userId;
 	private String key;
-	private MovieDetails movieDetails;
+
 	private MovieAdapter movieAdapter;
 	private RatingBar ratingBar;
 
@@ -203,7 +203,7 @@ public class DetailsActivity extends AppCompatActivity{
 				recyclerViewReviews.setLayoutManager(new LinearLayoutManager(DetailsActivity.this,LinearLayoutManager.HORIZONTAL, false));
 				recyclerViewReviews.setAdapter(reviewAdapter);
 			} else {
-				Toast.makeText(DetailsActivity.this, "Brak recenzji", Toast.LENGTH_SHORT).show();
+
 			}
 		}
 	}
