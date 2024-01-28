@@ -163,28 +163,28 @@ public class DetailsActivity extends AppCompatActivity{
 				}
 			}
 		});
-			getMovieCredits(accessToken, movieId, new MovieList.OnCreditsFetchedListener() {
-				@Override
-				public void onCreditsFetched(MovieCredits credits) {
-					if (credits != null) {
-						movieCredits = credits;
-						updateCastUI(movieCredits);
-					} else {
+		getMovieCredits(accessToken, movieId, new MovieList.OnCreditsFetchedListener() {
+			@Override
+			public void onCreditsFetched(MovieCredits credits) {
+				if (credits != null) {
+					movieCredits = credits;
+					updateCastUI(movieCredits);
+				} else {
 
-					}
 				}
-			});
-			movieAdapter = new MovieAdapter(userId,appDatabase,userRole);
-			recyclerViewrecommend.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-			recyclerViewrecommend.setAdapter(movieAdapter);
-			getRecommendationsForMovie(accessToken,movieId, new MovieList.OnMoviesFetchedListener() {
-				@Override
-				public void onMoviesFetched(List<Movie> movies) {
-					movieList = movies;
-					movieAdapter.setMovies(movieList);
-					movieAdapter.notifyDataSetChanged();
-				}
-			});
+			}
+		});
+		movieAdapter = new MovieAdapter(userId,appDatabase,userRole);
+		recyclerViewrecommend.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+		recyclerViewrecommend.setAdapter(movieAdapter);
+		getRecommendationsForMovie(accessToken,movieId, new MovieList.OnMoviesFetchedListener() {
+			@Override
+			public void onMoviesFetched(List<Movie> movies) {
+				movieList = movies;
+				movieAdapter.setMovies(movieList);
+				movieAdapter.notifyDataSetChanged();
+			}
+		});
 		new FetchReviewsTask().execute(movieId);
 	}
 
@@ -203,7 +203,7 @@ public class DetailsActivity extends AppCompatActivity{
 				recyclerViewReviews.setLayoutManager(new LinearLayoutManager(DetailsActivity.this,LinearLayoutManager.HORIZONTAL, false));
 				recyclerViewReviews.setAdapter(reviewAdapter);
 			} else {
-				 Toast.makeText(DetailsActivity.this, "Brak recenzji", Toast.LENGTH_SHORT).show();
+				Toast.makeText(DetailsActivity.this, "Brak recenzji", Toast.LENGTH_SHORT).show();
 			}
 		}
 	}
