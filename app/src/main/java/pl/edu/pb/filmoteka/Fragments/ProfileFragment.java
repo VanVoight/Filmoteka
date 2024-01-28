@@ -63,7 +63,12 @@ public class ProfileFragment extends Fragment {
         editProfileButton = view.findViewById(R.id.edit_profile_button);
         delProfileButton = view.findViewById(R.id.del_profile_button);
 
-
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            userName = bundle.getString("userName", "");
+            userNameTextView.setText(userName);
+            userId = bundle.getLong("userId");
+        }
         searchFilm = view.findViewById(R.id.inputSearchFilm);
         Button searchButton = view.findViewById(R.id.searchButton); // Assuming you have a search button
 
@@ -210,10 +215,10 @@ public class ProfileFragment extends Fragment {
         canvas.drawARGB(0, 0, 0, 0);
         paint.setColor(color);
 
-        // Rysuj okrągłe tło
+
         canvas.drawCircle(width / 2, height / 2, width / 2, paint);
 
-        // Kopiuj bitmapę do okrągłego obszaru
+
         paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
         canvas.drawBitmap(bitmap, rect, rect, paint);
 
