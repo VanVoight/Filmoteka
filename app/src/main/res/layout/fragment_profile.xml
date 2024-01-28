@@ -33,7 +33,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/inputFindFilm"
+            android:id="@+id/inputSearchFilm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="90dp"
@@ -42,6 +42,13 @@
             android:padding="8dp"
             android:textColor="@color/gold"
             android:textColorHint="@color/gold" />
+        <Button
+            android:id="@+id/searchButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_rounded"
+            android:text="@string/search" />
 
         <Button
             android:id="@+id/fav_films_button"

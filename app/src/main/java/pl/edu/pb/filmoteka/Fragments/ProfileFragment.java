@@ -45,6 +45,8 @@ public class ProfileFragment extends Fragment {
     private String userName;
     private AppDatabase appDatabase;
     private long userId;
+    private long userRoleId;
+    private SearchFilmFragment searchFilmFragment;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -53,7 +55,7 @@ public class ProfileFragment extends Fragment {
         appDatabase = AppDatabase.getInstance(requireContext());
         avatarImageView = view.findViewById(R.id.avatar_img);
         userNameTextView = view.findViewById(R.id.nameTextView);
-        searchFilm = view.findViewById(R.id.inputFindFilm);
+        searchFilm = view.findViewById(R.id.inputSearchFilm);
         favFilmsButton = view.findViewById(R.id.fav_films_button);
         seenFilmsButton = view.findViewById(R.id.seen_films_button);
         toSeeFilmsButton = view.findViewById(R.id.to_see_films_button);
@@ -62,12 +64,32 @@ public class ProfileFragment extends Fragment {
         delProfileButton = view.findViewById(R.id.del_profile_button);
 
 
-        Bundle bundle = getArguments();
-        if (bundle != null) {
-            userName = bundle.getString("userName", "");
-            userNameTextView.setText(userName);
-            userId = bundle.getLong("userId");
-        }
+        searchFilm = view.findViewById(R.id.inputSearchFilm);
+        Button searchButton = view.findViewById(R.id.searchButton); // Assuming you have a search button
+
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (searchFilmFragment != null) {
+                    searchFilmFragment.updateSearchQuery(searchFilm.getText().toString());
+                }
+
+                // Create or replace the SearchFilmFragment when search button is clicked
+                if (searchFilmFragment == null) {
+                    searchFilmFragment = new SearchFilmFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putLong("userId", userId);
+                    bundle.putLong("userRoleId", userRoleId);
+                    bundle.putString("search", searchFilm.getText().toString());
+                    searchFilmFragment.setArguments(bundle);
+                }
+
+                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, searchFilmFragment); // Update the ID as per your layout
+                fragmentTransaction.commit();
+            }
+        });
 
         randFilmsButton = view.findViewById(R.id.rand_films_button);
 
