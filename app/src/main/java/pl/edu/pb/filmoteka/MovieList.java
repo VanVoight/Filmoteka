@@ -42,6 +42,67 @@ public class MovieList {
         region = name;
     }
 
+    public static void searchMovies(AppDatabase appDatabase, String query, String accessToken, OnMoviesFetchedListener listener) {
+        new FetchSearchMoviesTask(appDatabase, query, listener).execute(accessToken);
+    }
+    private static class FetchSearchMoviesTask extends AsyncTask<String, Void, List<Movie>> {
+        private final OnMoviesFetchedListener listener;
+        private final AppDatabase appDatabase;
+        private final String query;
+
+        FetchSearchMoviesTask(AppDatabase appDatabase, String query, OnMoviesFetchedListener listener) {
+            this.appDatabase = appDatabase;
+            this.query = query;
+            this.listener = listener;
+        }
+
+        @Override
+        protected List<Movie> doInBackground(String... tokens) {
+            String accessToken = tokens[0];
+
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .addNetworkInterceptor(new StethoInterceptor())
+                    .build();
+
+            List<Movie> movies = new ArrayList<>();
+
+            // Construct the API URL for searching movies
+            String apiUrl = "https://api.themoviedb.org/3/search/movie?query=" + query + "&language=" + language + "&region=" + region;
+
+            Request request = new Request.Builder()
+                    .url(apiUrl)
+                    .header("Authorization", "Bearer " + accessToken)
+                    .header("accept", "application/json")
+                    .build();
+
+            try {
+                Response response = client.newCall(request).execute();
+                if (response.isSuccessful()) {
+                    Gson gson = new Gson();
+                    TypeToken<MovieResult> token = new TypeToken<MovieResult>() {};
+                    MovieResult movieResponse = gson.fromJson(response.body().string(), token.getType());
+                    movies = movieResponse.getResults();
+                } else {
+                    // Handle error
+                    Log.e("MovieList", "Error fetching search results");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return movies;
+        }
+
+        @Override
+        protected void onPostExecute(List<Movie> movies) {
+            super.onPostExecute(movies);
+
+            if (movies != null) {
+                listener.onMoviesFetched(movies);
+            }
+        }
+    }
+
     public interface OnMoviesFetchedListener {
         void onMoviesFetched(List<Movie> movies);
     }
