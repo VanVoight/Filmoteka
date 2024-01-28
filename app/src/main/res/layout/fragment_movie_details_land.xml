@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp"
+    android:layout_marginRight="-450dp">
+
+    <ImageView
+        android:id="@+id/moviePosterImageView"
+        android:layout_width="250dp"
+        android:layout_height="320dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="500dp"
+        app:layout_constraintDimensionRatio="h,1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.5"
+        app:srcCompat="@drawable/placeholder_poster" />
+
+    <ImageView
+        android:id="@+id/topRightIconImageView"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toEndOf="@+id/moviePosterImageView"
+        app:layout_constraintHorizontal_bias="0.263"
+        app:layout_constraintStart_toStartOf="@+id/moviePosterImageView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_dots_menu" />
+
+    <FrameLayout
+        android:id="@+id/FrameLayout"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="-90dp"
+        app:layout_constraintEnd_toEndOf="@+id/moviePosterImageView"
+        app:layout_constraintStart_toStartOf="@+id/moviePosterImageView"
+        app:layout_constraintTop_toBottomOf="@+id/moviePosterImageView">
+
+        <View
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:background="@drawable/round_background" />
+
+        <View
+            android:id="@+id/circleView"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:background="@drawable/circle" />
+
+        <TextView
+            android:id="@+id/voteAverageTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/kavivanar"
+            android:text="75%"
+            android:textColor="@android:color/white"
+            android:textSize="28dp"
+            android:textStyle="bold" />
+
+    </FrameLayout>
+
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:text="Movie Title"
+        android:fontFamily="@font/kavivanar"
+        android:textColor="@color/gold"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.023"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/moviePosterImageView" />
+
+    <TextView
+        android:id="@+id/releaseDateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Release Date"
+        android:fontFamily="@font/kavivanar"
+        android:textColor="@color/gold"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

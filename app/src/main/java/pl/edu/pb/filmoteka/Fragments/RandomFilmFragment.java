@@ -1,5 +1,6 @@
 package pl.edu.pb.filmoteka.Fragments;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -37,7 +38,17 @@ public class RandomFilmFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //sprawdzamy czy weszlismy do tego fragmentu
         Log.e("RandFragment", "We are in RandFragment");
-        View view = inflater.inflate(R.layout.fragment_random_film, container, false);
+
+       // View view = inflater.inflate(R.layout.fragment_random_film, container, false);
+        View view = inflater.inflate(R.layout.fragment_random_film, container, false); // Domyślnie ustawiamy widok dla orientacji pionowej
+
+        Configuration configuration = getResources().getConfiguration();
+
+        if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Log.e("Drawn","Ustawiam poziomy widok");
+            view = inflater.inflate(R.layout.fragment_random_film_land, container, false); // Zmiana widoku dla orientacji poziomej
+        }
+
         filmNameTextView = view.findViewById(R.id.textViewRandom);
 
         AppDatabase appDatabase = AppDatabase.getInstance(requireContext());

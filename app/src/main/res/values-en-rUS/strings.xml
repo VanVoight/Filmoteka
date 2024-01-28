@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Filmoteka</string>
     <string name="username_hint">User name</string>
     <string name="password_hint">Password</string>
     <string name="repeat_password_hint">Repeat password</string>
@@ -87,6 +88,17 @@
     <string name="review_submitted">Review added</string>
     <string name="review_already_exists">"A review of this film has already been added "</string>
     <string name="rated_movie_as">Rating given</string>
+    <string name="description">Descriptions</string>
+    <string name="released">Released</string>
+    <string name="user_rating">Users ratings</string>
+    <string name="cast">Cast</string>
+    <string name="recommendation">Recommendation</string>
+    <string name="average_rating">Avarage rating</string>
+    <string name="reviews_list">Reviews</string>
+    <string name="save">Save</string>
+    <string name="profile_pic_edit">Edit profile pick</string>
+    <string name="location_text">Latitude %1$.4f   Longitude: %2$.4f   Time: %3$tr</string>
+    <string name="no_location">No location</string>
     <string name="search">Search</string>
     <string name="search_result">Search results</string>
 </resources>
