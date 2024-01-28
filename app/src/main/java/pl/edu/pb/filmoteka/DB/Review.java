@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "reviews")
 
-public class Review {
+public class    Review {
     @PrimaryKey(autoGenerate = true)
     public long reviewId;
     public long userId;
