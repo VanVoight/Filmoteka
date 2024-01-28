@@ -105,25 +105,9 @@ public class MainActivity extends AppCompatActivity {
         checkLocationPermission();
         createNotificationChannel();
         sendNotification();
-        Intent intent = getIntent();
-        if (intent != null && intent.getAction() != null) {
-            if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
 
-                sendNotificationOnBoot();
-            }
-        }
     }
-    private void sendNotificationOnBoot() {
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_launcher_foreground)
-                .setContentTitle("FILMOTEKA zaprasza")
-                .setContentText("Wybierz coś do obejrzenia wieczorem przy uruchomieniu")
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-        notificationManager.notify(NOTIFICATION_ID, builder.build());
-    }
     @Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
@@ -306,7 +290,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void setRegionBasedOnCountryCode(String countryCode) {
-        Log.d(TAG, "setting region ");
+        Log.d("lokalizacja", "setting region "+countryCode);
         if ("PL".equals(countryCode)) {
             region = getString(R.string.poland);
         } else {
