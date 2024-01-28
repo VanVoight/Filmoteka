@@ -88,4 +88,5 @@
     <string name="review_already_exists">"A review of this film has already been added "</string>
     <string name="rated_movie_as">Rating given</string>
     <string name="search">Search</string>
+    <string name="search_result">Search results</string>
 </resources>
