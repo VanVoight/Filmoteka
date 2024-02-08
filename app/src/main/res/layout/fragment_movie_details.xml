@@ -1,44 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="16dp"
-    android:layout_marginRight="-500dp">
+    android:layout_marginLeft="25dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
         android:id="@+id/moviePosterImageView"
-        android:layout_width="600dp"
+        android:layout_width="match_parent"
         android:layout_height="520dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginEnd="390dp"
-        app:layout_constraintDimensionRatio="h,1:1"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/placeholder_poster"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.5"
-        app:srcCompat="@drawable/placeholder_poster" />
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
     <ImageView
         android:id="@+id/topRightIconImageView"
         android:layout_width="46dp"
         android:layout_height="46dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="28dp"
-        app:layout_constraintEnd_toEndOf="@+id/moviePosterImageView"
-        app:layout_constraintHorizontal_bias="0.263"
-        app:layout_constraintStart_toStartOf="@+id/moviePosterImageView"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/moviePosterImageView"
         app:srcCompat="@drawable/img_dots_menu" />
 
     <FrameLayout
         android:id="@+id/FrameLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="300dp"
-        android:layout_marginTop="-60dp"
-        app:layout_constraintEnd_toEndOf="@+id/moviePosterImageView"
-        app:layout_constraintStart_toStartOf="@+id/moviePosterImageView"
-        app:layout_constraintTop_toBottomOf="@+id/moviePosterImageView">
+        app:layout_constraintBottom_toBottomOf="@+id/moviePosterImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/moviePosterImageView"
+        android:layout_marginTop="500dp">>
 
         <View
             android:layout_width="100dp"
@@ -66,19 +63,19 @@
 
     </FrameLayout>
 
-
     <TextView
         android:id="@+id/titleTextView"
-        android:layout_width="280dp"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="1dp"
-        android:text="Movie Title"
         android:fontFamily="@font/kavivanar"
+        android:text="Movie Title"
         android:textColor="@color/gold"
         android:textSize="24dp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.023"
+        app:layout_constraintEnd_toStartOf="@+id/FrameLayout"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/moviePosterImageView" />
 
@@ -86,12 +83,12 @@
         android:id="@+id/releaseDateTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Release Date"
         android:fontFamily="@font/kavivanar"
+        android:text="Release Date"
         android:textColor="@color/gold"
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintHorizontal_bias="0.056"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 

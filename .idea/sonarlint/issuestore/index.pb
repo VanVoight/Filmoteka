@@ -37,8 +37,6 @@ f
 6app/src/main/java/pl/edu/pb/filmoteka/DB/UserRole.java,a\b\ab3195f55ec3ea4700f61259a9a42da8e9fb498e
 d
 4app/src/main/java/pl/edu/pb/filmoteka/MovieList.java,0\3\03f408e38559681b0ec34910c7457b9a207de838
-y
-Iapp/src/main/java/pl/edu/pb/filmoteka/YourFusedLocationProviderClass.java,0\3\039b26228408846a774345d5065b80e1bd0420e0
 c
 3app/src/main/java/pl/edu/pb/filmoteka/DB/Movie.java,f\9\f91a3ef7be9475b0e3ca2349592a1df9b786ffb7
 f
