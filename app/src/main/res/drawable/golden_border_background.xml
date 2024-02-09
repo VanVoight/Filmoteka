@@ -1,0 +1,7 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/bottomNavigationItemBackground" />
+    <corners android:radius="25dp" />
+    <stroke
+        android:width="5dp"
+    android:color="@color/gold" />
+</shape>

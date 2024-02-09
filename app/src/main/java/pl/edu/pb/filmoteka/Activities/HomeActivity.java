@@ -1,6 +1,8 @@
 package pl.edu.pb.filmoteka.Activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -41,15 +43,10 @@ public class HomeActivity extends AppCompatActivity implements CategoryFragment.
         appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "my-database")
                 .build();
         Intent intent = getIntent();
-        if(intent != null){
-            userId = intent.getLongExtra("userId", 1);
-            userRoleId = intent.getLongExtra("userRoleId",1);
-            Log.d("Logowanie","Takie jest w Home Activity:"+userId);
-            userName = intent.getStringExtra("userName");
-        }
-
-
-
+        userName = getLoggedInUsername();
+        userRoleId = getLoggedInRoleId();
+        userId = getLoggedInId();
+        Log.d("puty w shared preferences","Username:" + userName+" UserId:"+ userId + " roleID: "+ userRoleId);
 
         sharedViewModel = new ViewModelProvider(this).get(SharedViewModel.class);
 
@@ -80,6 +77,18 @@ public class HomeActivity extends AppCompatActivity implements CategoryFragment.
                 return true;
             }
         });
+    }
+    private String getLoggedInUsername() {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        return sharedPreferences.getString("loggedInUsername", "");
+    }
+    private long getLoggedInId() {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        return sharedPreferences.getLong("loggedInId", 1);
+    }
+    private long getLoggedInRoleId() {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        return sharedPreferences.getLong("loggedInRoleId", 1);
     }
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -158,5 +167,7 @@ public class HomeActivity extends AppCompatActivity implements CategoryFragment.
 
 
         }
+
     }
+
 }

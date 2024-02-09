@@ -71,6 +71,9 @@ public class ProfileFragment extends Fragment {
             userNameTextView.setText(userName);
             userId = bundle.getLong("userId");
         }
+        userName = getLoggedInUsername();
+        userNameTextView.setText(userName);
+
         searchFilm = view.findViewById(R.id.inputSearchFilm);
         Button searchButton = view.findViewById(R.id.searchButton); // Assuming you have a search button
 
@@ -180,6 +183,10 @@ public class ProfileFragment extends Fragment {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
         editor.apply();
+    }
+    private String getLoggedInUsername() {
+        SharedPreferences sharedPreferences = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        return sharedPreferences.getString("loggedInUsername", "");
     }
     private class LoadProfilePictureTask extends AsyncTask<Long, Void, Bitmap> {
 

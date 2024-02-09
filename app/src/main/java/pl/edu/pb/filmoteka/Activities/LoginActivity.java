@@ -28,6 +28,9 @@ public class LoginActivity extends AppCompatActivity {
 	Button signin, signup;
 	private static final String KEY_USERNAME = "username";
 	private static final String KEY_PASSWORD = "password";
+
+	private long userId;
+	private long roleId;
 	private String savedUsername;
 	private String savedPassword;
 	private static final String TAG = "LoginActivity";
@@ -180,6 +183,8 @@ public class LoginActivity extends AppCompatActivity {
 			String fail_message = getResources().getString(R.string.login_not_valid);
 			Log.d(TAG, "onPostExecute: User: " + user);
 			if (user != null) {
+				userId = user.userId;
+				roleId = user.userRoleId;
 				saveLoginStatus(true);
 				Toast.makeText(LoginActivity.this, succes_message, Toast.LENGTH_SHORT).show();
 				runOnUiThread(new Runnable() {
@@ -187,10 +192,6 @@ public class LoginActivity extends AppCompatActivity {
 					public void run() {
 						Log.d(TAG, "onPostExecute: Starting HomeActivity");
 						Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-						intent.putExtra("userId", user.userId);
-						Log.d("Logowanie","ID TAKIE O MA BYĆ:"+user.userId);
-						intent.putExtra("userRoleId", user.userRoleId);
-						intent.putExtra("userName", username.getText().toString());
 						startActivity(intent);
 					}
 				});
@@ -204,7 +205,11 @@ public class LoginActivity extends AppCompatActivity {
 		private void saveLoginStatus(boolean isLoggedIn) {
 			SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
 			SharedPreferences.Editor editor = sharedPreferences.edit();
+			editor.putString("loggedInUsername", username.getText().toString().trim());
+			editor.putLong("loggedInId",userId);
+			editor.putLong("loggedInRoleId",roleId);
 			editor.putBoolean("isLoggedIn", isLoggedIn);
+			Log.d("puty w shared preferences","Username:" + username.getText().toString().trim()+" UserId:"+ userId + " roleID: "+ roleId);
 			editor.apply();
 		}
 	}

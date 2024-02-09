@@ -33,4 +33,6 @@ public interface UserDao {
 
     @Query("SELECT profileImage FROM users WHERE userId = :userId")
     byte[] getUserProfileImage(long userId);
+
+
 }
