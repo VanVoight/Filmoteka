@@ -16,6 +16,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import pl.edu.pb.filmoteka.DB.User;
 import pl.edu.pb.filmoteka.DB.AppDatabase;
@@ -91,25 +93,55 @@ public class RegisterActivity extends AppCompatActivity {
 				Log.d("RegisterActivity", "Zarejestruj się button clicked");
 				String toastfieldsMessage = getResources().getString(R.string.toast_fields);
 				String toastpasswordsMessage = getResources().getString(R.string.toast_passwords);
+				String toastShortName = getResources().getString(R.string.toastShortName);
+				String toastShortSurname = getResources().getString(R.string.toastShortSurname);
+				String toastShortPassword = getResources().getString(R.string.toastShortPassword);
+				String toastInvalidEmail = getResources().getString(R.string.toastInvalidEmail);
 
-				String enteredUsername = username.getText().toString();
-				String enteredPassword = password.getText().toString();
-				String enteredRepassword = repassword.getText().toString();
-				String eneteredName = name.getText().toString();
-				String enteredSurname = surname.getText().toString();
-				String enteredEmail = email.getText().toString();
+				String enteredUsername = username.getText().toString().trim();
+				String enteredPassword = password.getText().toString().trim();
+				String enteredRepassword = repassword.getText().toString().trim();
+				String eneteredName = name.getText().toString().trim();
+				String enteredSurname = surname.getText().toString().trim();
+				String enteredEmail = email.getText().toString().trim();
 
 				if(enteredUsername.isEmpty()||enteredEmail.isEmpty()||enteredPassword.isEmpty()||enteredRepassword.isEmpty()|| enteredSurname.isEmpty()||enteredEmail.isEmpty()||eneteredName.isEmpty()){
 					Toast.makeText(RegisterActivity.this, toastfieldsMessage, Toast.LENGTH_SHORT).show();
+					return;
 				}
 				if (!enteredPassword.equals(enteredRepassword)) {
 					Toast.makeText(RegisterActivity.this, toastpasswordsMessage, Toast.LENGTH_SHORT).show();
 					return;
 				}
+				if (eneteredName.length() < 3) {
+					Toast.makeText(RegisterActivity.this, toastShortName, Toast.LENGTH_SHORT).show();
+					return;
+				}
+
+				if (enteredSurname.length() < 3) {
+					Toast.makeText(RegisterActivity.this, toastShortSurname, Toast.LENGTH_SHORT).show();
+					return;
+				}
+
+				if (enteredPassword.length() < 4) {
+					Toast.makeText(RegisterActivity.this, toastShortPassword, Toast.LENGTH_SHORT).show();
+					return;
+				}
+
+				if (!enteredPassword.equals(enteredRepassword)) {
+					Toast.makeText(RegisterActivity.this, toastpasswordsMessage, Toast.LENGTH_SHORT).show();
+					return;
+				}
+
+				if (!android.util.Patterns.EMAIL_ADDRESS.matcher(enteredEmail).matches()) {
+					Toast.makeText(RegisterActivity.this, toastInvalidEmail, Toast.LENGTH_SHORT).show();
+					return;
+				}
+				String hashedPassword = hashPassword(enteredPassword);
 				User newUser = new User();
 				newUser.setUserRoleId(isCheckBoxChecked ? 2 : 1);
 				newUser.setUserName(enteredUsername);
-				newUser.setPassword(enteredPassword);
+				newUser.setPassword(hashedPassword);
 				newUser.setLastName(enteredSurname);
 				newUser.setFirstName(eneteredName);
 				newUser.setEmail(enteredEmail);
@@ -128,6 +160,23 @@ public class RegisterActivity extends AppCompatActivity {
 				startActivity(intent);
 			}
 		});
+	}
+	private String hashPassword(String password) {
+		try {
+			MessageDigest digest = MessageDigest.getInstance("SHA-256");
+			byte[] hashedBytes = digest.digest(password.getBytes());
+
+
+			StringBuilder builder = new StringBuilder();
+			for (byte b : hashedBytes) {
+				builder.append(String.format("%02x", b));
+			}
+
+			return builder.toString();
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {

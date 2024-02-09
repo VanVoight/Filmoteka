@@ -2,7 +2,7 @@ package pl.edu.pb.filmoteka.Activities;
 
 import static pl.edu.pb.filmoteka.MovieList.getMovieCredits;
 import static pl.edu.pb.filmoteka.MovieList.getMovieDetails;
-import static pl.edu.pb.filmoteka.MovieList.getMovieVideos;
+import static pl.edu.pb.filmoteka.MovieList.getMovieVideosDefault;
 import static pl.edu.pb.filmoteka.MovieList.getRecommendationsForMovie;
 
 
@@ -148,7 +148,7 @@ public class DetailsActivity extends AppCompatActivity{
 				}
 			}
 		});
-		getMovieVideos(accessToken, movieId, new MovieList.OnVideosFetchedListener() {
+		getMovieVideosDefault(accessToken, movieId, new MovieList.OnVideosFetchedListener() {
 			@Override
 			public void onVideosFetched(List<Video> videos) {
 				if (videos != null && !videos.isEmpty()) {

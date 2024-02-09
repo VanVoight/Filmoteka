@@ -101,4 +101,8 @@
     <string name="no_location">No location</string>
     <string name="search">Search</string>
     <string name="search_result">Search results</string>
+    <string name="toastShortName">Name is too short (min. 3 characters)</string>
+    <string name="toastShortSurname">Surname is too short (min. 3 characters)</string>
+    <string name="toastShortPassword">Password is too short (min. 4 characters)</string>
+    <string name="toastInvalidEmail">Invalid e-mail format</string>
 </resources>

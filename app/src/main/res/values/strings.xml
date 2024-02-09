@@ -101,4 +101,8 @@
     <string name="no_location">Brak lokalizacji</string>
     <string name="search">Wyszukaj</string>
     <string name="search_result">Wyniki wyszukiwania</string>
+    <string name="toastShortName">Podane imię jest za krótkie (minimum 3 znaki)</string>
+    <string name="toastShortSurname">Podane nazwisko jest za krótkie (minimum 3 znaki)</string>
+    <string name="toastShortPassword">Podane hasło jest za krótkie (minimum 4 znaki)</string>
+    <string name="toastInvalidEmail">Zły adres email </string>
 </resources>

@@ -14,6 +14,9 @@ import android.widget.EditText;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import pl.edu.pb.filmoteka.DB.AppDatabase;
 import pl.edu.pb.filmoteka.DB.User;
 import pl.edu.pb.filmoteka.DB.UserDao;
@@ -56,8 +59,8 @@ public class LoginActivity extends AppCompatActivity {
 		signin.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				String enteredUsername = username.getText().toString();
-				String enteredPassword = password.getText().toString();
+				String enteredUsername = username.getText().toString().trim();
+				String enteredPassword = password.getText().toString().trim();
 
 				savedUsername = enteredUsername;
 				savedPassword = enteredPassword;
@@ -67,8 +70,8 @@ public class LoginActivity extends AppCompatActivity {
 				if (enteredUsername.isEmpty() || enteredPassword.isEmpty()) {
 					Toast.makeText(LoginActivity.this, getString(R.string.toast_fields), Toast.LENGTH_SHORT).show();
 				} else {
-
-					new DatabaseAsyncTask().execute(enteredUsername, enteredPassword);
+					String hashedPassword = hashPassword(enteredPassword);
+					new DatabaseAsyncTask().execute(enteredUsername, hashedPassword);
 				}
 			}
 		});
@@ -81,7 +84,23 @@ public class LoginActivity extends AppCompatActivity {
 			}
 		});
 	}
+	private String hashPassword(String password) {
+		try {
+			MessageDigest digest = MessageDigest.getInstance("SHA-256");
+			byte[] hashedBytes = digest.digest(password.getBytes());
 
+
+			StringBuilder builder = new StringBuilder();
+			for (byte b : hashedBytes) {
+				builder.append(String.format("%02x", b));
+			}
+
+			return builder.toString();
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 	public void onConfigurationChanged(@NonNull Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
 

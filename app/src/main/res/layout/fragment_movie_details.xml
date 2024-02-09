@@ -1,41 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="25dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:paddingTop="15dp">
 
     <ImageView
         android:id="@+id/moviePosterImageView"
         android:layout_width="match_parent"
         android:layout_height="520dp"
         app:srcCompat="@drawable/placeholder_poster"
-        app:layout_constraintTop_toTopOf="parent"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         />
 
     <ImageView
         android:id="@+id/topRightIconImageView"
         android:layout_width="46dp"
         android:layout_height="46dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="28dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/moviePosterImageView"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="-500dp"
+        android:layout_marginBottom="400dp"
         app:srcCompat="@drawable/img_dots_menu" />
 
     <FrameLayout
         android:id="@+id/FrameLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/moviePosterImageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/moviePosterImageView"
-        android:layout_marginTop="500dp">>
+        android:layout_gravity="bottom|end">
 
         <View
             android:layout_width="100dp"
@@ -65,19 +57,15 @@
 
     <TextView
         android:id="@+id/titleTextView"
-        android:layout_width="230dp"
+        android:layout_width="235dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="1dp"
         android:fontFamily="@font/kavivanar"
         android:text="Movie Title"
         android:textColor="@color/gold"
         android:textSize="24dp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/FrameLayout"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/moviePosterImageView" />
+        android:layout_marginTop="-45dp"
+        android:layout_marginLeft="30dp"/>
 
     <TextView
         android:id="@+id/releaseDateTextView"
@@ -87,9 +75,6 @@
         android:text="Release Date"
         android:textColor="@color/gold"
         android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.056"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+        android:layout_marginLeft="30dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

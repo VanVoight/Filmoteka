@@ -534,7 +534,7 @@ public class MovieList {
         }
     }
 
-    public static void getMovieVideos(String accessToken, int movieId, OnVideosFetchedListener listener) {
+    public static void getMovieVideosDefault(String accessToken, int movieId, OnVideosFetchedListener listener) {
         new FetchMovieVideosTask(listener).execute(accessToken, String.valueOf(movieId));
     }
 
@@ -565,10 +565,29 @@ public class MovieList {
                 Response response = client.newCall(request).execute();
                 if (response.isSuccessful()) {
                     Gson gson = new Gson();
-                    TypeToken<VideoResult> token = new TypeToken<VideoResult>() {
-                    };
+                    TypeToken<VideoResult> token = new TypeToken<VideoResult>() {};
                     VideoResult videoResponse = gson.fromJson(response.body().string(), token.getType());
-                    return videoResponse.getResults();
+
+                    List<Video> videos = videoResponse.getResults();
+
+                    if (videos != null && !videos.isEmpty()) {
+                        return videos;
+                    } else {
+                        apiUrl = "https://api.themoviedb.org/3/movie/" + movieId + "/videos?language=en-US";
+                        request = new Request.Builder()
+                                .url(apiUrl)
+                                .header("Authorization", "Bearer " + accessToken)
+                                .header("accept", "application/json")
+                                .build();
+
+                        response = client.newCall(request).execute();
+                        if (response.isSuccessful()) {
+                            videoResponse = gson.fromJson(response.body().string(), token.getType());
+                            return videoResponse.getResults();
+                        } else {
+                            Log.e("MovieList", "Error fetching movie videos");
+                        }
+                    }
                 } else {
                     // Handle error
                     Log.e("MovieList", "Error fetching movie videos");

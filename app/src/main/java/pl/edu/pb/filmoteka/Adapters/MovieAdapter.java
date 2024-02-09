@@ -1,6 +1,7 @@
 package pl.edu.pb.filmoteka.Adapters;
 
-import static pl.edu.pb.filmoteka.MovieList.getMovieVideos;
+import static pl.edu.pb.filmoteka.MovieList.getMovieVideosDefault;
+import static pl.edu.pb.filmoteka.MovieList.getMovieVideosDefault;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -708,7 +709,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             String formattedVoteAverage = decimalFormat.format(voteAverage);
             voteAverageTextView.setText(formattedVoteAverage);
 
-            getMovieVideos("eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NmI1OTA2OTU4ZDY0YjRmOWM1MjMzMzQxNjM3M2Y0YiIsInN1YiI6IjY1OTVhYTFjNTkwN2RlMDE2NzYzYmYwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IlVmj8Oxv5RunQqXK55LVmJerMote8EMPNsO6jcEdRA", movie.getId(), new MovieList.OnVideosFetchedListener() {
+            getMovieVideosDefault("eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NmI1OTA2OTU4ZDY0YjRmOWM1MjMzMzQxNjM3M2Y0YiIsInN1YiI6IjY1OTVhYTFjNTkwN2RlMDE2NzYzYmYwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IlVmj8Oxv5RunQqXK55LVmJerMote8EMPNsO6jcEdRA", movie.getId(), new MovieList.OnVideosFetchedListener() {
                 @Override
                 public void onVideosFetched(List<Video> videos) {
                     if (videos != null && !videos.isEmpty()) {
@@ -721,6 +722,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
                             }
                         }
                     }
+
                 }
             });
             int circleStrokeColor = getCircleStrokeColorBasedOnVoteAverage(movie.getVoteAverage());
