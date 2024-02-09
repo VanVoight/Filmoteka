@@ -17,6 +17,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.location.Address;
@@ -70,7 +71,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_main);
+        if (isUserLoggedIn()) {
+            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish();
+            return;
+        }
+
 
         Configuration configuration = getResources().getConfiguration();
 
@@ -117,6 +124,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         getLocation();
+    }
+    private boolean isUserLoggedIn() {
+
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        return sharedPreferences.getBoolean("isLoggedIn", false);
     }
     public static void startAlarmBroadcastReceiver(Context context) {
         Intent _intent = new Intent(context, AlarmReceiver.class);

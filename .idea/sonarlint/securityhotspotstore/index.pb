@@ -137,3 +137,5 @@ w
 Gapp/src/main/java/pl/edu/pb/filmoteka/Fragments/SearchFilmFragment.java,b\4\b49188d309e67023d03e6cdac62bbd6b94d12045
 h
 8app/src/main/java/pl/edu/pb/filmoteka/AlarmReceiver.java,e\2\e2110a01a0eeac2a04e612520143776cfbc2007e
+i
+9app/src/main/java/pl/edu/pb/filmoteka/SessionManager.java,c\c\cc2cf72a2651d83fea6fdb0ee701dbf1c05f3d37

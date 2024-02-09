@@ -1,6 +1,8 @@
 package pl.edu.pb.filmoteka.Fragments;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -163,6 +165,7 @@ public class ProfileFragment extends Fragment {
         delProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                clearLoggedInUser();
                 Intent intent = new Intent(requireContext(), LoginActivity.class);
                 startActivity(intent);
                 requireActivity().finish();
@@ -170,6 +173,13 @@ public class ProfileFragment extends Fragment {
         });
         new LoadProfilePictureTask().execute(userId);
         return view;
+    }
+    private void clearLoggedInUser() {
+
+        SharedPreferences sharedPreferences = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
     }
     private class LoadProfilePictureTask extends AsyncTask<Long, Void, Bitmap> {
 

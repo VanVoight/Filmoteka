@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -179,7 +180,7 @@ public class LoginActivity extends AppCompatActivity {
 			String fail_message = getResources().getString(R.string.login_not_valid);
 			Log.d(TAG, "onPostExecute: User: " + user);
 			if (user != null) {
-
+				saveLoginStatus(true);
 				Toast.makeText(LoginActivity.this, succes_message, Toast.LENGTH_SHORT).show();
 				runOnUiThread(new Runnable() {
 					@Override
@@ -194,11 +195,17 @@ public class LoginActivity extends AppCompatActivity {
 					}
 				});
 			} else {
-
+				saveLoginStatus(false);
 				Toast.makeText(LoginActivity.this, fail_message, Toast.LENGTH_SHORT).show();
 				Log.d(TAG, "onPostExecute: Invalid username or password");
 				Toast.makeText(LoginActivity.this, fail_message, Toast.LENGTH_SHORT).show();
 			}
+		}
+		private void saveLoginStatus(boolean isLoggedIn) {
+			SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+			SharedPreferences.Editor editor = sharedPreferences.edit();
+			editor.putBoolean("isLoggedIn", isLoggedIn);
+			editor.apply();
 		}
 	}
 }
