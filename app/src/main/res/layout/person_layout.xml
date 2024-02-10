@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bottomNavigationBackground">
+<ScrollView
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+
+    <ImageView
+        android:id="@+id/imageViewProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/placeholder_poster"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"/>
+
+
+    <TextView
+        android:id="@+id/textViewName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Morgan Freeman"
+        android:fontFamily="@font/kavivanar"
+        android:textColor="@color/gold"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:paddingTop="8dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:paddingTop="4dp"
+            android:text="@string/born"/>
+    <TextView
+        android:id="@+id/textViewBirthInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Memphis, Tennessee, USA, June 1, 1937"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:paddingTop="4dp"
+        android:layout_marginLeft="2dp"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/dead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:paddingTop="4dp"
+            android:text="@string/death"/>
+        <TextView
+            android:id="@+id/textViewDeath"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_marginTop="4dp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gold"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:paddingTop="8dp"
+        android:text="@string/biography"/>
+
+    <TextView
+        android:id="@+id/textViewBiography"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gold"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
+        android:textSize="18sp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="100dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:fontFamily="@font/kavivanar"
+        android:text="@string/known_as"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/gold"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        android:layout_gravity="center"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewMovies"
+        android:layout_width="match_parent"
+        android:layout_height="760dp"
+        android:layout_marginStart="-15dp"
+        android:layout_marginTop="15dp"
+        android:paddingBottom="50dp"
+        android:layout_marginEnd="-15dp"
+        android:paddingTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"/>
+</LinearLayout>
+</ScrollView>
+
+</RelativeLayout>

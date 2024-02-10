@@ -105,4 +105,9 @@
     <string name="toastShortSurname">Podane nazwisko jest za krótkie (minimum 3 znaki)</string>
     <string name="toastShortPassword">Podane hasło jest za krótkie (minimum 4 znaki)</string>
     <string name="toastInvalidEmail">Zły adres email </string>
+    <string name="born">Data i miejsce urodzenia </string>
+    <string name="death">Data śmierci </string>
+    <string name="known_as">Znany z filmów </string>
+    <string name="biography">Biografia </string>
+
 </resources>

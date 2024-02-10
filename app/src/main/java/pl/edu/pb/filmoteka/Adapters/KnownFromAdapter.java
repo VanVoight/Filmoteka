@@ -1,4 +1,6 @@
 package pl.edu.pb.filmoteka.Adapters;
+
+import android.app.Person;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -17,59 +19,55 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.picasso.Picasso; // Pamiętaj, aby dodać odpowiednią bibliotekę do ładowania obrazów
+import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;
 
 import java.util.List;
 
 import pl.edu.pb.filmoteka.Activities.ActorActivity;
+import pl.edu.pb.filmoteka.Activities.DetailsActivity;
 import pl.edu.pb.filmoteka.Models.CastMember;
+import pl.edu.pb.filmoteka.Models.PersonMovieCredits;
 import pl.edu.pb.filmoteka.R;
 
-public class CastAdapter extends RecyclerView.Adapter<CastAdapter.CastViewHolder> {
-
+public class KnownFromAdapter extends RecyclerView.Adapter<KnownFromAdapter.KnownFromViewHolder> {
 	private Context context;
-	private List<CastMember> castList;
- 	private int  actor_id;
+	private List<PersonMovieCredits.MovieCredit> castList;
+	private int  movie_id;
 
-	public CastAdapter(Context context, List<CastMember> castList) {
+	public KnownFromAdapter(Context context, List<PersonMovieCredits.MovieCredit> castList) {
 		this.context = context;
 		this.castList = castList;
 	}
-
 	@NonNull
 	@Override
-	public CastViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+	public KnownFromAdapter.KnownFromViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 		View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.actor_layout, parent, false);
-		return new CastViewHolder(view);
+		return new KnownFromAdapter.KnownFromViewHolder(view);
 	}
-
+	public void setCastList(List<PersonMovieCredits.MovieCredit> castList) {
+		this.castList = castList;
+	}
 	@Override
-	public void onBindViewHolder(@NonNull CastViewHolder holder, int position) {
-		CastMember castMember = castList.get(position);
+	public void onBindViewHolder(@NonNull KnownFromAdapter.KnownFromViewHolder holder, int position) {
+		PersonMovieCredits.MovieCredit castMember = castList.get(position);
 
 
-		if (castMember.getProfilePath() != null && !castMember.getProfilePath().isEmpty()) {
+		if (castMember.getPosterPath() != null && !castMember.getPosterPath().isEmpty()) {
 			Picasso.get()
-					.load("https://image.tmdb.org/t/p/w500" + castMember.getProfilePath())
+					.load("https://image.tmdb.org/t/p/w500" + castMember.getPosterPath())
 					.placeholder(R.drawable.placeholder_poster)
 					.error(R.drawable.placeholder_poster)
-					.transform(new RoundedCornersTransformation(50, 0))
+					.transform(new KnownFromAdapter.RoundedCornersTransformation(50, 0))
 					.into(holder.imageViewProfile);
 		} else {
 			holder.imageViewProfile.setImageResource(R.drawable.placeholder_poster);
 		}
 
 
-		holder.textViewName.setText(castMember.getName());
+		holder.textViewName.setText(castMember.getTitle());
 		holder.textViewCharacter.setText(castMember.getCharacter());
-
-
-		holder.textViewName.setText(castMember.getName());
-
-
-		holder.textViewCharacter.setText(castMember.getCharacter());
-		holder.actorId = castMember.getId();
+		holder.movieId = castMember.getId();
 
 
 
@@ -117,15 +115,14 @@ public class CastAdapter extends RecyclerView.Adapter<CastAdapter.CastViewHolder
 	public int getItemCount() {
 		return castList.size();
 	}
-
-	public class CastViewHolder extends RecyclerView.ViewHolder {
+	public class KnownFromViewHolder extends RecyclerView.ViewHolder {
 		ImageView imageViewProfile;
 		TextView textViewName;
 		TextView textViewCharacter;
 		CardView cardView;
-		int actorId;
+		int movieId;
 
-		public CastViewHolder(@NonNull View itemView) {
+		public KnownFromViewHolder(@NonNull View itemView) {
 			super(itemView);
 
 			imageViewProfile = itemView.findViewById(R.id.imageViewProfile);
@@ -136,9 +133,9 @@ public class CastAdapter extends RecyclerView.Adapter<CastAdapter.CastViewHolder
 			imageViewProfile.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					Intent intent = new Intent(v.getContext(), ActorActivity.class);
-					intent.putExtra("actorId", actorId);
-					Log.d("ActorID","ActorIDADapter: "+ actorId);
+					Intent intent = new Intent(v.getContext(), DetailsActivity.class);
+					intent.putExtra("movieId", movieId);
+
 					v.getContext().startActivity(intent);
 				}
 			});
@@ -146,4 +143,5 @@ public class CastAdapter extends RecyclerView.Adapter<CastAdapter.CastViewHolder
 
 		}
 	}
+
 }

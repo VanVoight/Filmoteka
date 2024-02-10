@@ -60,7 +60,7 @@ public class CustomPopup {
         ImageView imageView = new ImageView(context);
         imageView.setImageResource(R.drawable.mobile_phone);
         int imageSize = dpToPx(context, 100);
-        int padding = dpToPx(context, 16); // Dodaj dowolny padding w pikselach
+        int padding = dpToPx(context, 16);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(imageSize, imageSize);
         imageView.setLayoutParams(params);
         imageView.setPadding(padding, padding, padding, padding);
@@ -93,7 +93,7 @@ public class CustomPopup {
             @Override
             public void onShake() {
                 Log.d("CustomPopup", "Device shaken - opening RandomFilmFragment");
-                // Obsługa potrząśnięcia - przeniesienie do nowego fragmentu
+
                 goToRandomFilmFragment(context, dialog);
             }
         });

@@ -41,7 +41,6 @@ public class FavouriteListFragment extends Fragment {
         recyclerView.setAdapter(movieAdapter);
 
         MovieList.setLanguageAndRegion(getContext());
-
         MovieList.getFavouriteMovies(appDatabase, userId, "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NmI1OTA2OTU4ZDY0YjRmOWM1MjMzMzQxNjM3M2Y0YiIsInN1YiI6IjY1OTVhYTFjNTkwN2RlMDE2NzYzYmYwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IlVmj8Oxv5RunQqXK55LVmJerMote8EMPNsO6jcEdRA", movies -> {
             movieList = movies;
             movieAdapter.setMovies(movieList);

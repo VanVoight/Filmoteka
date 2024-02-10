@@ -25,6 +25,8 @@ import pl.edu.pb.filmoteka.Models.Movie;
 import pl.edu.pb.filmoteka.Models.MovieCredits;
 import pl.edu.pb.filmoteka.Models.MovieDetails;
 import pl.edu.pb.filmoteka.Models.MovieResult;
+import pl.edu.pb.filmoteka.Models.PersonDetails;
+import pl.edu.pb.filmoteka.Models.PersonMovieCredits;
 import pl.edu.pb.filmoteka.Models.Video;
 import pl.edu.pb.filmoteka.Models.VideoResult;
 
@@ -909,6 +911,179 @@ public class MovieList {
             }
         }
     }
+    public static void getPersonDetails(String accessToken, int personId, OnPersonFetchedListener listener) {
+        new FetchPersonDetailsTask(listener).execute(accessToken, String.valueOf(personId));
+    }
+
+    private static class FetchPersonDetailsTask extends AsyncTask<String, Void, PersonDetails> {
+        private final OnPersonFetchedListener listener;
+
+        FetchPersonDetailsTask(OnPersonFetchedListener listener) {
+            this.listener = listener;
+        }
+
+        @Override
+        protected PersonDetails doInBackground(String... tokens) {
+            String accessToken = tokens[0];
+            int personId = Integer.parseInt(tokens[1]);
+
+            String apiUrl = "https://api.themoviedb.org/3/person/" + personId + "?language=" + language;
+
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .addNetworkInterceptor(new StethoInterceptor())
+                    .build();
+
+            Request request = new Request.Builder()
+                    .url(apiUrl)
+                    .header("Authorization", "Bearer " + accessToken)
+                    .header("accept", "application/json")
+                    .build();
+
+            try {
+                Response response = client.newCall(request).execute();
+                if (response.isSuccessful()) {
+                    Gson gson = new Gson();
+                    return gson.fromJson(response.body().string(), PersonDetails.class);
+                } else {
+                    // Handle error
+                    Log.e("PersonDetails", "Error fetching person details");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(PersonDetails personDetails) {
+            super.onPostExecute(personDetails);
+
+            if (personDetails != null) {
+                listener.onPersonFetched(personDetails);
+            }
+        }
+    }
+    public interface OnPersonFetchedListener {
+        void onPersonFetched(PersonDetails personDetails);
+
+        void onFetchError(String errorMessage);
+    }
+    public static void getPersonDetailsEng(String accessToken, int personId, OnPersonFetchedListener listener) {
+        new FetchPersonDetailsEngTask(listener).execute(accessToken, String.valueOf(personId));
+    }
+
+    private static class FetchPersonDetailsEngTask extends AsyncTask<String, Void, PersonDetails> {
+        private final OnPersonFetchedListener listener;
+
+        FetchPersonDetailsEngTask(OnPersonFetchedListener listener) {
+            this.listener = listener;
+        }
+
+        @Override
+        protected PersonDetails doInBackground(String... tokens) {
+            String accessToken = tokens[0];
+            int personId = Integer.parseInt(tokens[1]);
+
+            String apiUrl = "https://api.themoviedb.org/3/person/" + personId + "?language=en-US";
+
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .addNetworkInterceptor(new StethoInterceptor())
+                    .build();
+
+            Request request = new Request.Builder()
+                    .url(apiUrl)
+                    .header("Authorization", "Bearer " + accessToken)
+                    .header("accept", "application/json")
+                    .build();
+
+            try {
+                Response response = client.newCall(request).execute();
+                if (response.isSuccessful()) {
+                    Gson gson = new Gson();
+                    return gson.fromJson(response.body().string(), PersonDetails.class);
+                } else {
+
+                    Log.e("PersonDetails", "Error fetching person details");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(PersonDetails personDetails) {
+            super.onPostExecute(personDetails);
+
+            if (personDetails != null) {
+                listener.onPersonFetched(personDetails);
+            }
+        }
+    }
+    public static void getPersonMovieCredits(String accessToken, int personId, OnMovieCreditsFetchedListener listener) {
+        new FetchPersonMovieCreditsTask(listener).execute(accessToken, String.valueOf(personId));
+    }
+
+    private static class FetchPersonMovieCreditsTask extends AsyncTask<String, Void, PersonMovieCredits> {
+        private final OnMovieCreditsFetchedListener listener;
+
+        FetchPersonMovieCreditsTask(OnMovieCreditsFetchedListener listener) {
+            this.listener = listener;
+        }
+
+        @Override
+        protected PersonMovieCredits doInBackground(String... tokens) {
+            String accessToken = tokens[0];
+            int personId = Integer.parseInt(tokens[1]);
+
+            String apiUrl = "https://api.themoviedb.org/3/person/" + personId + "/movie_credits?language=" + language;
+
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .addNetworkInterceptor(new StethoInterceptor())
+                    .build();
+
+            Request request = new Request.Builder()
+                    .url(apiUrl)
+                    .header("Authorization", "Bearer " + accessToken)
+                    .header("accept", "application/json")
+                    .build();
+
+            try {
+                Response response = client.newCall(request).execute();
+                if (response.isSuccessful()) {
+                    Gson gson = new Gson();
+                    return gson.fromJson(response.body().string(), PersonMovieCredits.class);
+                } else {
+                    // Handle error
+                    Log.e("MovieCredits", "Error fetching movie credits");
+                    listener.onFetchError("Error fetching movie credits");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(PersonMovieCredits personMovieCredits) {
+            super.onPostExecute(personMovieCredits);
+
+            if (personMovieCredits != null) {
+                listener.onMovieCreditsFetched(personMovieCredits);
+            }
+        }
+    }
+
+    public interface OnMovieCreditsFetchedListener {
+        void onMovieCreditsFetched(PersonMovieCredits personMovieCredits);
+
+        void onFetchError(String errorMessage);
+    }
+
+
 
 
 }

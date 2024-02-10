@@ -37,7 +37,7 @@ public class SearchFilmFragment extends Fragment {
             searchQuery = bundle.getString("search", "Lord of the rings");
         }
         AppDatabase appDatabase = AppDatabase.getInstance(requireContext());
-        RecyclerView recyclerView = view.findViewById(R.id.searchRecyclerView); // Update the ID as per your layout
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
         movieAdapter = new MovieAdapter(userId, appDatabase, userRoleId);
         recyclerView.setAdapter(movieAdapter);
