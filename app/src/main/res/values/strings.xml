@@ -109,5 +109,7 @@
     <string name="death">Data śmierci </string>
     <string name="known_as">Znany z filmów </string>
     <string name="biography">Biografia </string>
-
+    <string name="movies">Filmy</string>
+    <string name="tvshows">Seriale</string>
+    <string name="airing_today">Na antenie</string>
 </resources>

@@ -85,10 +85,9 @@ public class CustomPopup {
 
         imageView.startAnimation(animation);
 
-        //wywołanie metody inicjalizacji sensorów
+
         initializeSensors(context);
 
-        //obsługa potrząśnięcia
         shakeDetector.setOnShakeListener(new ShakeDetector.OnShakeListener() {
             @Override
             public void onShake() {
@@ -133,7 +132,7 @@ public class CustomPopup {
                     // Rozpoczęcie transakcji fragmentu
                     FragmentTransaction transaction = ((HomeActivity) context).getSupportFragmentManager().beginTransaction();
 
-                    // Zamiana fragmentów
+
                     transaction.replace(R.id.fragment_container, randomFilmFragment);
                     transaction.addToBackStack(null);
 

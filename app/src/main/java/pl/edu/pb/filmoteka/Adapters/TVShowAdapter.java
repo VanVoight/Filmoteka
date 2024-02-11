@@ -1,7 +1,6 @@
 package pl.edu.pb.filmoteka.Adapters;
 
 import static pl.edu.pb.filmoteka.MovieList.getMovieVideosDefault;
-import static pl.edu.pb.filmoteka.MovieList.getMovieVideosDefault;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -35,12 +34,9 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
-
-
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -49,19 +45,20 @@ import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.List;
 
+import pl.edu.pb.filmoteka.Activities.DetailsActivity;
 import pl.edu.pb.filmoteka.DB.AppDatabase;
 import pl.edu.pb.filmoteka.DB.FavouriteMovies;
 import pl.edu.pb.filmoteka.DB.MyListMovies;
 import pl.edu.pb.filmoteka.DB.Rating;
 import pl.edu.pb.filmoteka.DB.Review;
 import pl.edu.pb.filmoteka.DB.WatchedMovies;
-import pl.edu.pb.filmoteka.Activities.DetailsActivity;
 import pl.edu.pb.filmoteka.Models.Movie;
+import pl.edu.pb.filmoteka.Models.TVShow;
 import pl.edu.pb.filmoteka.Models.Video;
 import pl.edu.pb.filmoteka.MovieList;
 import pl.edu.pb.filmoteka.R;
 
-public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
+public class TVShowAdapter extends RecyclerView.Adapter<TVShowAdapter.TVShowViewHolder> {
 
 
     private int orientation = Configuration.ORIENTATION_PORTRAIT;
@@ -72,17 +69,16 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         notifyDataSetChanged();
     }
 
-    private List<Movie> movies;
+    private List<TVShow> movies;
     private static long userId;
-
     private static long userRoleId;
     private static AppDatabase appDatabase;
 
-    public void setMovies(List<Movie> movies) {
+    public void setMovies(List<TVShow> movies) {
         this.movies = movies;
     }
 
-    public MovieAdapter(long id, AppDatabase appDatabase, long roleId) {
+    public TVShowAdapter(long id, AppDatabase appDatabase, long roleId) {
         this.userId = id;
         this.appDatabase = appDatabase;
         this.userRoleId = roleId;
@@ -90,7 +86,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
     @NonNull
     @Override
-    public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public TVShowViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view;
 
@@ -103,13 +99,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_movie_details, parent, false);
             Log.e("MovieAdapter","ustawiam widok pionowy");
         }
-        return new MovieViewHolder(view);
+        return new TVShowViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull TVShowViewHolder holder, int position) {
 
-        Movie movie = movies.get(position);
+        TVShow movie = movies.get(position);
         holder.bind(movie);
     }
 
@@ -118,13 +114,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         return movies != null ? movies.size() : 0;
     }
 
-    public static class MovieViewHolder extends RecyclerView.ViewHolder {
+    public static class TVShowViewHolder extends RecyclerView.ViewHolder {
         private TextView titleTextView;
         private ImageView moviePosterImageView;
         private ImageView topRightIconImageView;
 
         private View circle;
-        private List<Movie> movieList;
+        private List<TVShow> movieList;
         private TextView releaseDateTextView;
         private int movieId;
         private TextView voteAverageTextView;
@@ -323,7 +319,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             new SaveRatingTask(itemView).execute(movieRating);
         }
 
-        // Metoda do pobierania oceny z bazy danych
+
         private float getSavedRatingFromDatabase() {
             try {
                 return new GetRatingTask(movieId).execute().get();
@@ -333,7 +329,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             }
         }
 
-        // AsyncTask do zapisywania oceny
+
         private class SaveRatingTask extends AsyncTask<Rating, Void, Void> {
             private WeakReference<View> itemViewReference;
 
@@ -371,7 +367,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             }
         }
         private void removeFromFavorites() {
-            // Remove the movie from the FavouriteMovies table
+
             new RemoveFromFavoritesTask(itemView).execute();
         }
 
@@ -384,7 +380,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
             @Override
             protected Void doInBackground(Void... voids) {
-                // Remove the movie from the FavouriteMovies table
+
                 appDatabase.favouriteMoviesDao().deleteFavouriteMovie(userId, movieId);
                 return null;
             }
@@ -393,7 +389,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             protected void onPostExecute(Void aVoid) {
                 View itemView = itemViewReference.get();
                 if (itemView != null) {
-                    // Update UI or show a toast message if needed
+
                     Toast.makeText(itemView.getContext(), R.string.toast_remove, Toast.LENGTH_SHORT).show();
                 }
             }
@@ -441,7 +437,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             }
         }
         private void removeFromWatched() {
-            // Remove the movie from the WatchedMovies table
+
             new RemoveFromWatchedTask(itemView).execute();
         }
 
@@ -454,7 +450,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
             @Override
             protected Void doInBackground(Void... voids) {
-                // Remove the movie from the WatchedMovies table
+
                 appDatabase.watchedMoviesDao().deleteWatchedMovies(userId, movieId);
                 return null;
             }
@@ -463,7 +459,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             protected void onPostExecute(Void aVoid) {
                 View itemView = itemViewReference.get();
                 if (itemView != null) {
-                    // Update UI or show a toast message if needed
+
                     Toast.makeText(itemView.getContext(), R.string.toast_remove_watched, Toast.LENGTH_SHORT).show();
                 }
             }
@@ -510,7 +506,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             }
         }
         private void removeFromMyList() {
-            // Remove the movie from the FavouriteMovies table
+
             new RemoveFromMyListTask(itemView).execute();
         }
 
@@ -523,7 +519,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
             @Override
             protected Void doInBackground(Void... voids) {
-                // Remove the movie from the FavouriteMovies table
+
                 appDatabase.myListMoviesDao().deleteMyListMovies(userId, movieId);
                 return null;
             }
@@ -532,7 +528,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             protected void onPostExecute(Void aVoid) {
                 View itemView = itemViewReference.get();
                 if (itemView != null) {
-                    // Update UI or show a toast message if needed
+
                     Toast.makeText(itemView.getContext(), R.string.toast_remove_list, Toast.LENGTH_SHORT).show();
                 }
             }
@@ -580,7 +576,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             }
         }
 
-        public MovieViewHolder(@NonNull View itemView) {
+        public TVShowViewHolder(@NonNull View itemView) {
             super(itemView);
             titleTextView = itemView.findViewById(R.id.titleTextView);
             moviePosterImageView = itemView.findViewById(R.id.moviePosterImageView);
@@ -635,9 +631,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
         }
         private boolean isMovieInFavorites() {
-            // Use AsyncTask to check if the movie is in the FavouriteMovies table
+
             try {
-                return new CheckFavoritesTask(movieId).execute().get(); // Odczekaj na wynik AsyncTask
+                return new CheckFavoritesTask(movieId).execute().get();
             } catch (Exception e) {
                 e.printStackTrace();
                 return false;
@@ -650,7 +646,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             }
             @Override
             protected Boolean doInBackground(Void... voids) {
-                // Execute database query in the background
+
                 return appDatabase.favouriteMoviesDao().checkIfFavouriteMovieExists(userId, movieId) > 0;
             }
         }
@@ -663,7 +659,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             }
         }
 
-        // AsyncTask to check if the movie is in WatchedMovies
+
         private static class CheckWatchedTask extends AsyncTask<Void, Void, Boolean> {
             private int movieId;
 
@@ -685,7 +681,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             }
         }
 
-        // AsyncTask to check if the movie is in MyListMovies
+
         private static class CheckMyListTask extends AsyncTask<Void, Void, Boolean> {
             private int movieId;
 
@@ -698,10 +694,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
                 return appDatabase.myListMoviesDao().checkIfMyListMovieExists(userId, movieId) > 0;
             }
         }
-        public void bind(Movie movie) {
-            titleTextView.setText(movie.getTitle());
-            titleTextView.setText(movie.getTitle());
-            releaseDateTextView.setText(movie.getReleaseDate());
+        public void bind(TVShow movie) {
+            titleTextView.setText(movie.getName());
+            releaseDateTextView.setText(movie.getFirstAirDate());
             overview = movie.getOverview();
             movieId = movie.getId();
             double voteAverage = movie.getVoteAverage();
@@ -728,7 +723,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             int circleStrokeColor = getCircleStrokeColorBasedOnVoteAverage(movie.getVoteAverage());
             circle.getBackground().setColorFilter(circleStrokeColor, PorterDuff.Mode.SRC_ATOP);
 
-            new LoadImageTask(moviePosterImageView).execute(movie.getPosterUrl());
+            new LoadImageTask(moviePosterImageView).execute(movie.getPosterPath());
         }
 
         private int getCircleStrokeColorBasedOnVoteAverage(double voteAverage) {

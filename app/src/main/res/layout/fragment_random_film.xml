@@ -25,7 +25,7 @@
                 android:layout_height="46dp"
                 android:fontFamily="@font/kavivanar"
                 android:gravity="center"
-                android:text="@string/popular_list"
+                android:text="@string/random_film"
                 android:textColor="@color/gold"
                 android:textSize="35dp"
                 android:textStyle="bold"

@@ -6,6 +6,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.Switch;
+import android.widget.TextView;
 
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -22,6 +26,7 @@ import pl.edu.pb.filmoteka.Fragments.CategoryFragment;
 import pl.edu.pb.filmoteka.Fragments.MovieListCategoryFragment;
 import pl.edu.pb.filmoteka.Fragments.MovieListFragment;
 import pl.edu.pb.filmoteka.Fragments.ProfileFragment;
+import pl.edu.pb.filmoteka.Fragments.TVShowsListFragment;
 import pl.edu.pb.filmoteka.Models.Category;
 import pl.edu.pb.filmoteka.Models.SharedViewModel;
 import pl.edu.pb.filmoteka.R;
@@ -40,6 +45,30 @@ public class HomeActivity extends AppCompatActivity implements CategoryFragment.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        Switch mySwitch = findViewById(R.id.mySwitch);
+        TextView option1Description = findViewById(R.id.option1_description);
+        TextView option2Description = findViewById(R.id.option2_description);
+        if (mySwitch.isChecked()) {
+            option1Description.setVisibility(View.VISIBLE);
+            option2Description.setVisibility(View.GONE);
+        } else {
+            option1Description.setVisibility(View.GONE);
+            option2Description.setVisibility(View.VISIBLE);
+        }
+        mySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+
+                    option1Description.setVisibility(View.VISIBLE);
+                    option2Description.setVisibility(View.GONE);
+                } else {
+
+                    option1Description.setVisibility(View.GONE);
+                    option2Description.setVisibility(View.VISIBLE);
+                }
+            }
+        });
         appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "my-database")
                 .build();
         Intent intent = getIntent();
@@ -70,7 +99,13 @@ public class HomeActivity extends AppCompatActivity implements CategoryFragment.
                     addCategoryFragment();
 
                 } else if (itemId == R.id.menu_home) {
-                    addMovieListFragment();
+                    if (mySwitch.isChecked()) {
+
+                        addMovieListFragment();
+                    } else {
+
+                        addTVShowListFragment();
+                    }
                 } else if (itemId == R.id.menu_profile) {
                     addProfileFragment();
                 }
@@ -109,6 +144,18 @@ public class HomeActivity extends AppCompatActivity implements CategoryFragment.
         bundle.putLong("userRoleId",userRoleId);
         movieListFragment.setArguments(bundle);
         fragmentTransaction.replace(R.id.fragment_container, movieListFragment);
+        fragmentTransaction.commit();
+        sharedViewModel.setCurrentIndex(0);
+    }
+    private void addTVShowListFragment() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        TVShowsListFragment tvShowListFragment = new TVShowsListFragment(); // Załóżmy, że masz fragment o nazwie TVShowListFragment
+        Bundle bundle = new Bundle();
+        bundle.putLong("userId", userId);
+        bundle.putLong("userRoleId", userRoleId);
+        tvShowListFragment.setArguments(bundle);
+        fragmentTransaction.replace(R.id.fragment_container, tvShowListFragment);
         fragmentTransaction.commit();
         sharedViewModel.setCurrentIndex(0);
     }

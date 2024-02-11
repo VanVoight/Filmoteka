@@ -36,10 +36,10 @@ public class RandomFilmFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        //sprawdzamy czy weszlismy do tego fragmentu
+
         Log.e("RandFragment", "We are in RandFragment");
 
-       // View view = inflater.inflate(R.layout.fragment_random_film, container, false);
+
         View view = inflater.inflate(R.layout.fragment_random_film, container, false); // Domyślnie ustawiamy widok dla orientacji pionowej
 
         Configuration configuration = getResources().getConfiguration();
@@ -59,7 +59,7 @@ public class RandomFilmFragment extends Fragment {
 
         randomMovieId = getRandomMovieId();
 
-        MovieList.getRandomTopMovies(accessToken, 10, new MovieList.OnMoviesFetchedListener() {
+        MovieList.getRandomTopMovies(accessToken, 20, new MovieList.OnMoviesFetchedListener() {
             @Override
             public void onMoviesFetched(List<Movie> movies) {
                 if (movies != null && !movies.isEmpty()) {

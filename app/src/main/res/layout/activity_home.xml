@@ -7,11 +7,50 @@
     style="@style/AppTheme"
     android:background="@color/bottomNavigationBackground"
     tools:context=".Activities.HomeActivity">
+    <Switch
+        android:id="@+id/mySwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:checked="true"/>
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/mySwitch">
+    <TextView
+        android:id="@+id/option1_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/kavivanar"
+        android:textColor="@color/gold"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:layout_marginTop="8dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/movies" />
+
+    <TextView
+        android:id="@+id/option2_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/kavivanar"
+        android:textColor="@color/gold"
+        android:textStyle="bold"
+        android:textSize="25sp"
+
+        android:layout_marginTop="8dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/tvshows" />
+    </LinearLayout>
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/navigation_bar_item_icon_view" />
+        android:layout_above="@+id/navigation_bar_item_icon_view"
+        android:layout_below="@+id/linear"/>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation_bar_item_icon_view"
         android:layout_width="match_parent"

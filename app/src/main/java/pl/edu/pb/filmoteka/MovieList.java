@@ -27,6 +27,8 @@ import pl.edu.pb.filmoteka.Models.MovieDetails;
 import pl.edu.pb.filmoteka.Models.MovieResult;
 import pl.edu.pb.filmoteka.Models.PersonDetails;
 import pl.edu.pb.filmoteka.Models.PersonMovieCredits;
+import pl.edu.pb.filmoteka.Models.TVShow;
+import pl.edu.pb.filmoteka.Models.TVShowResult;
 import pl.edu.pb.filmoteka.Models.Video;
 import pl.edu.pb.filmoteka.Models.VideoResult;
 
@@ -69,7 +71,7 @@ public class MovieList {
             List<Movie> movies = new ArrayList<>();
 
             // Construct the API URL for searching movies
-            String apiUrl = "https://api.themoviedb.org/3/search/movie?query=" + query + "&language=" + language + "&region=" + region;
+            String apiUrl = "https://api.themoviedb.org/3/search/movie?include_adult=false&query=" + query + "&language=" + language + "&region=" + region;
 
             Request request = new Request.Builder()
                     .url(apiUrl)
@@ -678,7 +680,7 @@ public class MovieList {
 
 
     public static void getRandomTopMovies(String accessToken, int totalPages, OnMoviesFetchedListener listener) {
-        // Losuj liczbę od 1 do totalPages (włącznie)
+
         int randomPage = new Random().nextInt(totalPages) + 1;
         new FetchRandomTopMoviesTask(listener).execute(accessToken, String.valueOf(randomPage));
     }
@@ -694,7 +696,7 @@ public class MovieList {
         protected List<Movie> doInBackground(String... tokens) {
             String accessToken = tokens[0];
             int page = Integer.parseInt(tokens[1]);
-            String apiUrl = "https://api.themoviedb.org/3/movie/top_rated?language=" + language + "&region=" + region + "&page=" + page;
+            String apiUrl = "https://api.themoviedb.org/3/movie/popular?include_adult=false&language=" + language + "&region=" + region + "&page=" + page;
 
             OkHttpClient client = new OkHttpClient.Builder()
                     .addNetworkInterceptor(new StethoInterceptor())
@@ -1081,6 +1083,226 @@ public class MovieList {
         void onMovieCreditsFetched(PersonMovieCredits personMovieCredits);
 
         void onFetchError(String errorMessage);
+    }
+
+    public static void getTopRatedTVShows(String accessToken, OnTVShowsFetchedListener listener) {
+        new FetchTopRatedTVShowListTask(listener).execute(accessToken);
+    }
+
+    private static class FetchTopRatedTVShowListTask extends AsyncTask<String, Void, List<TVShow>> {
+        private final OnTVShowsFetchedListener listener;
+
+        FetchTopRatedTVShowListTask(OnTVShowsFetchedListener listener) {
+            this.listener = listener;
+        }
+
+        @Override
+        protected List<TVShow> doInBackground(String... tokens) {
+            String accessToken = tokens[0];
+            String apiUrl = "https://api.themoviedb.org/3/tv/top_rated?language=" + language + "&page=1";
+
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .addNetworkInterceptor(new StethoInterceptor())
+                    .build();
+
+            Request request = new Request.Builder()
+                    .url(apiUrl)
+                    .header("Authorization", "Bearer " + accessToken)
+                    .header("accept", "application/json")
+                    .build();
+
+            try {
+                Response response = client.newCall(request).execute();
+                if (response.isSuccessful()) {
+                    Gson gson = new Gson();
+                    TypeToken<TVShowResult> token = new TypeToken<TVShowResult>() {};
+                    TVShowResult tvShowResponse = gson.fromJson(response.body().string(), token.getType());
+                    return tvShowResponse.getResults();
+                } else {
+                    // Handle error
+                    Log.e("TVShowList", "Error fetching top-rated TV show list");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(List<TVShow> tvShows) {
+            super.onPostExecute(tvShows);
+
+            if (tvShows != null) {
+                listener.onTVShowsFetched(tvShows);
+            }
+        }
+    }
+    public static void getPopularTVShows(String accessToken, OnTVShowsFetchedListener listener) {
+        new FetchPopularTVShowListTask(listener).execute(accessToken);
+    }
+
+    private static class FetchPopularTVShowListTask extends AsyncTask<String, Void, List<TVShow>> {
+        private final OnTVShowsFetchedListener listener;
+
+        FetchPopularTVShowListTask(OnTVShowsFetchedListener listener) {
+            this.listener = listener;
+        }
+
+        @Override
+        protected List<TVShow> doInBackground(String... tokens) {
+            String accessToken = tokens[0];
+            String apiUrl = "https://api.themoviedb.org/3/tv/popular?language=" + language +"&region="+ region + "&page=1";
+
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .addNetworkInterceptor(new StethoInterceptor())
+                    .build();
+
+            Request request = new Request.Builder()
+                    .url(apiUrl)
+                    .header("Authorization", "Bearer " + accessToken)
+                    .header("accept", "application/json")
+                    .build();
+
+            try {
+                Response response = client.newCall(request).execute();
+                if (response.isSuccessful()) {
+                    Gson gson = new Gson();
+                    TypeToken<TVShowResult> token = new TypeToken<TVShowResult>() {};
+                    TVShowResult tvShowResponse = gson.fromJson(response.body().string(), token.getType());
+                    return tvShowResponse.getResults();
+                } else {
+                    // Handle error
+                    Log.e("TVShowList", "Error fetching popular TV show list");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(List<TVShow> tvShows) {
+            super.onPostExecute(tvShows);
+
+            if (tvShows != null) {
+                listener.onTVShowsFetched(tvShows);
+            }
+        }
+    }
+    public static void getAiringTodayTVShows(String accessToken, OnTVShowsFetchedListener listener) {
+        new FetchAiringTodayTVShowListTask(listener).execute(accessToken);
+    }
+
+    private static class FetchAiringTodayTVShowListTask extends AsyncTask<String, Void, List<TVShow>> {
+        private final OnTVShowsFetchedListener listener;
+
+        FetchAiringTodayTVShowListTask(OnTVShowsFetchedListener listener) {
+            this.listener = listener;
+        }
+
+        @Override
+        protected List<TVShow> doInBackground(String... tokens) {
+            String accessToken = tokens[0];
+            String apiUrl = "https://api.themoviedb.org/3/tv/airing_today?language=" + language +"&region="+ region + "&page=1";
+
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .addNetworkInterceptor(new StethoInterceptor())
+                    .build();
+
+            Request request = new Request.Builder()
+                    .url(apiUrl)
+                    .header("Authorization", "Bearer " + accessToken)
+                    .header("accept", "application/json")
+                    .build();
+
+            try {
+                Response response = client.newCall(request).execute();
+                if (response.isSuccessful()) {
+                    Gson gson = new Gson();
+                    TypeToken<TVShowResult> token = new TypeToken<TVShowResult>() {};
+                    TVShowResult tvShowResponse = gson.fromJson(response.body().string(), token.getType());
+                    return tvShowResponse.getResults();
+                } else {
+                    // Handle error
+                    Log.e("TVShowList", "Error fetching airing today TV show list");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(List<TVShow> tvShows) {
+            super.onPostExecute(tvShows);
+
+            if (tvShows != null) {
+                listener.onTVShowsFetched(tvShows);
+            }
+        }
+    }
+
+    public static void getOnTheAirTVShows(String accessToken, OnTVShowsFetchedListener listener) {
+        new FetchOnTheAirTVShowListTask(listener).execute(accessToken);
+    }
+
+    private static class FetchOnTheAirTVShowListTask extends AsyncTask<String, Void, List<TVShow>> {
+        private final OnTVShowsFetchedListener listener;
+
+        FetchOnTheAirTVShowListTask(OnTVShowsFetchedListener listener) {
+            this.listener = listener;
+        }
+
+        @Override
+        protected List<TVShow> doInBackground(String... tokens) {
+            String accessToken = tokens[0];
+            String apiUrl = "https://api.themoviedb.org/3/tv/on_the_air?language=" + language + "&region="+region+ "&page=1";
+
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .addNetworkInterceptor(new StethoInterceptor())
+                    .build();
+
+            Request request = new Request.Builder()
+                    .url(apiUrl)
+                    .header("Authorization", "Bearer " + accessToken)
+                    .header("accept", "application/json")
+                    .build();
+
+            try {
+                Response response = client.newCall(request).execute();
+                if (response.isSuccessful()) {
+                    Gson gson = new Gson();
+                    TypeToken<TVShowResult> token = new TypeToken<TVShowResult>() {};
+                    TVShowResult tvShowResponse = gson.fromJson(response.body().string(), token.getType());
+                    return tvShowResponse.getResults();
+                } else {
+                    // Handle error
+                    Log.e("TVShowList", "Error fetching on the air TV show list");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(List<TVShow> tvShows) {
+            super.onPostExecute(tvShows);
+
+            if (tvShows != null) {
+                listener.onTVShowsFetched(tvShows);
+            }
+        }
+    }
+
+
+    public interface OnTVShowsFetchedListener {
+        void onTVShowsFetched(List<TVShow> tvShows);
+        void onError(String errorMessage);
     }
 
 
